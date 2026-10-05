@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\UIAdmin">
+      <UniqueIdentifier>{c294f608-6326-4e1a-9c5c-d293408da5fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\UICliente">
+      <UniqueIdentifier>{1eee455b-f050-4bc9-a2d4-f9b680370943}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\UIAdmin\SubUIsAdmin">
+      <UniqueIdentifier>{63ca021e-73a1-4f21-94b9-11bfc388bc67}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="frmPrincipal.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="frmModInfo.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="frmSuscripcion.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="frmVerInfo.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="frmSaldo.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="frmVehiculosAsociados.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="frmMapa.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="frmOfrecerSuscripcion.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="frmLogin.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="frmPrincipalAdmin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="frmConsultarTiempo.cpp">
+      <Filter>Header Files\UICliente</Filter>
+    </ClCompile>
+    <ClCompile Include="frmEditarInfo.cpp">
+      <Filter>Header Files\UIAdmin</Filter>
+    </ClCompile>
+    <ClCompile Include="frmInfoCliente.cpp">
+      <Filter>Header Files\UICliente</Filter>
+    </ClCompile>
+    <ClCompile Include="frmBuscar.cpp">
+      <Filter>Header Files\UIAdmin</Filter>
+    </ClCompile>
+    <ClCompile Include="frmMapaAdmin.cpp">
+      <Filter>Header Files\UIAdmin</Filter>
+    </ClCompile>
+    <ClCompile Include="frmReportar.cpp">
+      <Filter>Header Files\UIAdmin</Filter>
+    </ClCompile>
+    <ClCompile Include="frmAdminEmpleados.cpp">
+      <Filter>Header Files\UIAdmin</Filter>
+    </ClCompile>
+    <ClCompile Include="frmTurno.cpp">
+      <Filter>Header Files\UIAdmin</Filter>
+    </ClCompile>
+    <ClCompile Include="frmBalanceTurno.cpp">
+      <Filter>Header Files\UIAdmin\SubUIsAdmin</Filter>
+    </ClCompile>
+    <ClCompile Include="frmEmergencia.cpp">
+      <Filter>Header Files\UIAdmin\SubUIsAdmin</Filter>
+    </ClCompile>
+    <ClCompile Include="frmBuscarCliente.cpp">
+      <Filter>Header Files\UIAdmin\SubUIsAdmin</Filter>
+    </ClCompile>
+    <ClCompile Include="frmBuscarPlaca.cpp">
+      <Filter>Header Files\UIAdmin\SubUIsAdmin</Filter>
+    </ClCompile>
+    <ClCompile Include="frmRegistrarMulta.cpp">
+      <Filter>Header Files\UIAdmin\SubUIsAdmin</Filter>
+    </ClCompile>
+    <ClCompile Include="frmEditarMulta.cpp">
+      <Filter>Header Files\UIAdmin\SubUIsAdmin</Filter>
+    </ClCompile>
+    <ClCompile Include="frmRegistrarEmpleado.cpp">
+      <Filter>Header Files\UIAdmin\SubUIsAdmin</Filter>
+    </ClCompile>
+    <ClCompile Include="frmEditarEmpleado.cpp">
+      <Filter>Header Files\UIAdmin\SubUIsAdmin</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="frmPrincipalCliente.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="frmModInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="frmSuscripcion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="frmInfoCliente.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="frmConsultarTiempo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="frmEditarInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="frmVerInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="frmSaldo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="frmVehiculosAsociados.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="frmMapa.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="frmOfrecerSuscripcion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="frmLogin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="frmPrincipalAdmin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="frmBuscar.h">
+      <Filter>Header Files\UIAdmin</Filter>
+    </ClInclude>
+    <ClInclude Include="frmMapaAdmin.h">
+      <Filter>Header Files\UIAdmin</Filter>
+    </ClInclude>
+    <ClInclude Include="frmReportar.h">
+      <Filter>Header Files\UIAdmin</Filter>
+    </ClInclude>
+    <ClInclude Include="frmAdminEmpleados.h">
+      <Filter>Header Files\UIAdmin</Filter>
+    </ClInclude>
+    <ClInclude Include="frmTurno.h">
+      <Filter>Header Files\UIAdmin</Filter>
+    </ClInclude>
+    <ClInclude Include="frmBalanceTurno.h">
+      <Filter>Header Files\UIAdmin\SubUIsAdmin</Filter>
+    </ClInclude>
+    <ClInclude Include="frmEmergencia.h">
+      <Filter>Header Files\UIAdmin\SubUIsAdmin</Filter>
+    </ClInclude>
+    <ClInclude Include="frmBuscarCliente.h">
+      <Filter>Header Files\UIAdmin\SubUIsAdmin</Filter>
+    </ClInclude>
+    <ClInclude Include="frmBuscarPlaca.h">
+      <Filter>Header Files\UIAdmin\SubUIsAdmin</Filter>
+    </ClInclude>
+    <ClInclude Include="frmRegistrarMulta.h">
+      <Filter>Header Files\UIAdmin\SubUIsAdmin</Filter>
+    </ClInclude>
+    <ClInclude Include="frmEditarMulta.h">
+      <Filter>Header Files\UIAdmin\SubUIsAdmin</Filter>
+    </ClInclude>
+    <ClInclude Include="frmRegistrarEmpleado.h">
+      <Filter>Header Files\UIAdmin\SubUIsAdmin</Filter>
+    </ClInclude>
+    <ClInclude Include="frmEditarEmpleado.h">
+      <Filter>Header Files\UIAdmin\SubUIsAdmin</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

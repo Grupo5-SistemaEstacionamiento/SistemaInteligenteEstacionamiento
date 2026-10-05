@@ -1,0 +1,2 @@
+#include "frmEditarInfo.h"
+

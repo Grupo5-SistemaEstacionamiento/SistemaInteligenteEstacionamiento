@@ -1,0 +1,2 @@
+#include "frmBuscar.h"
+

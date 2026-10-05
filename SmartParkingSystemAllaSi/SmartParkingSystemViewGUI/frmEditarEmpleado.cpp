@@ -1,0 +1,2 @@
+#include "frmEditarEmpleado.h"
+

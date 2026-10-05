@@ -1,0 +1,10 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="SmartParkingSystemController/SmartParkingSystemController.vcxproj" />
+  <Project Path="SmartParkingSystemDAO/SmartParkingSystemDAO.vcxproj" />
+  <Project Path="SmartParkingSystemModel/SmartParkingSystemModel.vcxproj" />
+  <Project Path="SmartParkingSystemViewGUI/SmartParkingSystemViewGUI.vcxproj" />
+</Solution>
