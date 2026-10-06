@@ -3,6 +3,10 @@ Assembly SmartParkingSystemController, Version=1.0.*, Culture=Invariant Language
 	hash=SHA1, flags=PublicKey
 Assembly mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
 	hash=None, flags=None
+Assembly SmartParkingSystemDAO, Version=1.0.*, Culture=Invariant Language (Invariant Country): 
+	hash=None, flags=None
+Assembly SmartParkingSystemModel, Version=1.0.*, Culture=Invariant Language (Invariant Country): 
+	hash=None, flags=None
 Assembly System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
 	hash=None, flags=None
 Assembly System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
@@ -11,3 +15,13 @@ Assembly System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c5619
 	hash=None, flags=None
 Class SmartParkingSystemController.Class1: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class SmartParkingSystemController.TarifaController: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    listarTarifas(): PrivateScope, Public, HideBySig
+    buscarTarifa(Int32): PrivateScope, Public, HideBySig
+    registrarTarifa(Double, Double, Double, Double): PrivateScope, Public, HideBySig
+    modificarTarifa(Int32, Double, Double, Double, Double): PrivateScope, Public, HideBySig
+    eliminarTarifa(Int32): PrivateScope, Public, HideBySig
+    obtenerSiguienteId(): PrivateScope, Public, HideBySig
+    validarTarifa(Double, Double, Double, Double): PrivateScope, Public, HideBySig

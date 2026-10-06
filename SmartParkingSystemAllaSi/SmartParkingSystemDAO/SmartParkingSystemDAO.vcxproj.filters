@@ -13,6 +13,24 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Admin">
+      <UniqueIdentifier>{12c63be5-9a7d-4d69-95d9-5f2c5f6d8bd7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Terminal">
+      <UniqueIdentifier>{3b06e540-83eb-4f11-a064-6874df72a468}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Cliente">
+      <UniqueIdentifier>{a9f6ff9d-cd60-4144-8d8e-cd3b2a53dcc6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Admin">
+      <UniqueIdentifier>{c3d95b61-7ecf-4b55-8713-169e043efbe9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Cliente">
+      <UniqueIdentifier>{d36a15c7-dfec-4569-bb67-0703876f130c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Terminal">
+      <UniqueIdentifier>{2b39d1f0-c70a-4a26-b99a-a6351cafda78}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SmartParkingSystemDAO.h">
@@ -24,6 +42,9 @@
     <ClInclude Include="pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="TarifaDAO.h">
+      <Filter>Header Files\Admin</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SmartParkingSystemDAO.cpp">
@@ -34,6 +55,9 @@
     </ClCompile>
     <ClCompile Include="pch.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TarifaDAO.cpp">
+      <Filter>Source Files\Admin</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

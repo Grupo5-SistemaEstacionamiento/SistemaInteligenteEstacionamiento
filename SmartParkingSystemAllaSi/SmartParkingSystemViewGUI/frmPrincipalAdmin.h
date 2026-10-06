@@ -5,10 +5,10 @@
 #include "frmMapaAdmin.h"
 #include "frmReportar.h"
 #include "frmAdminEmpleados.h"
+#include "frmTarifa.h"
 /*
 #include "frmAdminTarjetas.h"
 #include "frmAdminSuscripciones.h"
-#include "frmTarifas"
 #include "frmBalance"
 */ 
 
@@ -444,6 +444,8 @@ private: System::Void AdminRFIDbtn_Click(System::Object^ sender, System::EventAr
 private: System::Void AdminSubsbtn_Click(System::Object^ sender, System::EventArgs^ e) { //Admin Membresia
 }
 private: System::Void AdminTarifasbtn_Click(System::Object^ sender, System::EventArgs^ e) { //Admin Tarifas
+
+	this->AbrirFormulario(gcnew frmTarifa());
 }
 private: System::Void Balancebtn_Click(System::Object^ sender, System::EventArgs^ e) { //Balance
 }

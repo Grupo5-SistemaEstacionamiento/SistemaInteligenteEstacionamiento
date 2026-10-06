@@ -123,6 +123,9 @@
     <ClCompile Include="frmBalanceTurno.cpp">
       <Filter>Header Files\UI_Admin\SubUI_Admin\Turno</Filter>
     </ClCompile>
+    <ClCompile Include="frmTarifa.cpp">
+      <Filter>Header Files\UI_Admin</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="frmLogin.h">
@@ -200,6 +203,9 @@
     <ClInclude Include="frmBalanceTurno.h">
       <Filter>Header Files\UI_Admin\SubUI_Admin\Turno</Filter>
     </ClInclude>
+    <ClInclude Include="frmTarifa.h">
+      <Filter>Header Files\UI_Admin</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="frmLogin.resx">
@@ -276,6 +282,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmBalanceTurno.resx">
       <Filter>Header Files\UI_Admin\SubUI_Admin\Turno</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTarifa.resx">
+      <Filter>Header Files\UI_Admin</Filter>
     </EmbeddedResource>
   </ItemGroup>
 </Project>

@@ -134,6 +134,7 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SmartParkingSystemController.h" />
+    <ClInclude Include="TarifaController.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
@@ -144,6 +145,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="SmartParkingSystemController.cpp" />
+    <ClCompile Include="TarifaController.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="app.rc" />
@@ -155,6 +157,14 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SmartParkingSystemDAO\SmartParkingSystemDAO.vcxproj">
+      <Project>{0efe9d3f-3c0f-d4a2-bc92-e402684712d2}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\SmartParkingSystemModel\SmartParkingSystemModel.vcxproj">
+      <Project>{ee4ff2d9-2aa0-c51a-2664-4c02fe3aaa33}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

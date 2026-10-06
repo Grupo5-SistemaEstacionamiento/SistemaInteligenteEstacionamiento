@@ -91,17 +91,17 @@ namespace SmartParkingSystemViewGUI {
 			this->panel3 = (gcnew System::Windows::Forms::Panel());
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column6 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
 			this->TextBuscarEmpleado = (gcnew System::Windows::Forms::TextBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column6 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->panel1->SuspendLayout();
 			this->panel3->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
@@ -227,6 +227,36 @@ namespace SmartParkingSystemViewGUI {
 			this->dataGridView1->Size = System::Drawing::Size(792, 312);
 			this->dataGridView1->TabIndex = 41;
 			// 
+			// Column1
+			// 
+			this->Column1->HeaderText = L"Codigo Empleado";
+			this->Column1->Name = L"Column1";
+			this->Column1->ReadOnly = true;
+			// 
+			// Column2
+			// 
+			this->Column2->HeaderText = L"Nombres";
+			this->Column2->Name = L"Column2";
+			this->Column2->ReadOnly = true;
+			// 
+			// Column3
+			// 
+			this->Column3->HeaderText = L"Apellidos";
+			this->Column3->Name = L"Column3";
+			this->Column3->ReadOnly = true;
+			// 
+			// Column4
+			// 
+			this->Column4->HeaderText = L"Fecha Contratacion";
+			this->Column4->Name = L"Column4";
+			this->Column4->ReadOnly = true;
+			// 
+			// Column6
+			// 
+			this->Column6->HeaderText = L"Turno";
+			this->Column6->Name = L"Column6";
+			this->Column6->ReadOnly = true;
+			// 
 			// panel2
 			// 
 			this->panel2->BackColor = System::Drawing::Color::White;
@@ -253,7 +283,7 @@ namespace SmartParkingSystemViewGUI {
 			this->groupBox2->Size = System::Drawing::Size(792, 94);
 			this->groupBox2->TabIndex = 40;
 			this->groupBox2->TabStop = false;
-			this->groupBox2->Text = L"Buscar Placa";
+			this->groupBox2->Text = L"Buscar Empleado";
 			// 
 			// button2
 			// 
@@ -305,36 +335,6 @@ namespace SmartParkingSystemViewGUI {
 			this->label2->Size = System::Drawing::Size(134, 22);
 			this->label2->TabIndex = 29;
 			this->label2->Text = L"ID Empleado:";
-			// 
-			// Column1
-			// 
-			this->Column1->HeaderText = L"Codigo Empleado";
-			this->Column1->Name = L"Column1";
-			this->Column1->ReadOnly = true;
-			// 
-			// Column2
-			// 
-			this->Column2->HeaderText = L"Nombres";
-			this->Column2->Name = L"Column2";
-			this->Column2->ReadOnly = true;
-			// 
-			// Column3
-			// 
-			this->Column3->HeaderText = L"Apellidos";
-			this->Column3->Name = L"Column3";
-			this->Column3->ReadOnly = true;
-			// 
-			// Column4
-			// 
-			this->Column4->HeaderText = L"Fecha Contratacion";
-			this->Column4->Name = L"Column4";
-			this->Column4->ReadOnly = true;
-			// 
-			// Column6
-			// 
-			this->Column6->HeaderText = L"Turno";
-			this->Column6->Name = L"Column6";
-			this->Column6->ReadOnly = true;
 			// 
 			// frmAdminEmpleados
 			// 

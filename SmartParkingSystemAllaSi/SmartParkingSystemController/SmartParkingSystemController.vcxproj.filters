@@ -13,6 +13,24 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Admin">
+      <UniqueIdentifier>{64e974b9-8ee8-47d7-8e75-e67b9f7a57b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Terminal">
+      <UniqueIdentifier>{b5af2200-0422-4ced-9cf1-d3b38f26eb92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Cliente">
+      <UniqueIdentifier>{65be9829-4da6-476a-856f-4fb4ae717acc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Admin">
+      <UniqueIdentifier>{049b67ec-9b61-4ffd-a738-5afcdd7f8f32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Cliente">
+      <UniqueIdentifier>{e23a150a-8836-4249-9308-ad294964fa0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Terminal">
+      <UniqueIdentifier>{3b16aba0-4cb9-4878-8f3c-da1a1807b525}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SmartParkingSystemController.h">
@@ -24,6 +42,9 @@
     <ClInclude Include="pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="TarifaController.h">
+      <Filter>Header Files\Admin</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SmartParkingSystemController.cpp">
@@ -34,6 +55,9 @@
     </ClCompile>
     <ClCompile Include="pch.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TarifaController.cpp">
+      <Filter>Source Files\Admin</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

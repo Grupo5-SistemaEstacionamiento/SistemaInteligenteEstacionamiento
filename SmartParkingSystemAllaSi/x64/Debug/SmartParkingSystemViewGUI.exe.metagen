@@ -20,6 +20,7 @@
   SmartParkingSystemViewGUI.frmReportar.resources - Embedded, ContainedInManifestFile, 
   SmartParkingSystemViewGUI.frmSaldo.resources - Embedded, ContainedInManifestFile, 
   SmartParkingSystemViewGUI.frmSuscripcion.resources - Embedded, ContainedInManifestFile, 
+  SmartParkingSystemViewGUI.frmTarifa.resources - Embedded, ContainedInManifestFile, 
   SmartParkingSystemViewGUI.frmTurno.resources - Embedded, ContainedInManifestFile, 
   SmartParkingSystemViewGUI.frmVehiculosAsociados.resources - Embedded, ContainedInManifestFile, 
   SmartParkingSystemViewGUI.frmVerInfo.resources - Embedded, ContainedInManifestFile, 
@@ -27,6 +28,10 @@ ImageRuntimeVersion: v4.0.30319
 Assembly SmartParkingSystemViewGUI, Version=0.0.*, Culture=Invariant Language (Invariant Country): 
 	hash=SHA1, flags=PublicKey
 Assembly mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly SmartParkingSystemController, Version=1.0.*, Culture=Invariant Language (Invariant Country): 
+	hash=None, flags=None
+Assembly SmartParkingSystemModel, Version=1.0.*, Culture=Invariant Language (Invariant Country): 
 	hash=None, flags=None
 Assembly System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
 	hash=None, flags=None
@@ -124,6 +129,9 @@ Class SmartParkingSystemViewGUI.frmRegistrarMulta: AutoLayout, AnsiClass, Class,
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class SmartParkingSystemViewGUI.frmReportar: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class SmartParkingSystemViewGUI.frmTarifa: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class SmartParkingSystemViewGUI.frmPrincipalAdmin: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
