@@ -1,6 +1,6 @@
 #pragma once
 
-namespace ParkingSystemView {
+namespace SmartParkingSystemViewGUI {
 
 	using namespace System;
 	using namespace System::ComponentModel;

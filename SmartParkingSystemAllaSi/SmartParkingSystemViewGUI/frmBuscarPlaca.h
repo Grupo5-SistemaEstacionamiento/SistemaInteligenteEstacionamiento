@@ -2,7 +2,7 @@
 #include "frmVerInfo.h"
 #include "frmEditarInfo.h"
 
-namespace ParkingSystemView {
+namespace SmartParkingSystemViewGUI {
 
 	using namespace System;
 	using namespace System::ComponentModel;

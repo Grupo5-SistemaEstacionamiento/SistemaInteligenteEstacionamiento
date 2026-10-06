@@ -2,7 +2,7 @@
 #include "frmRegistrarMulta.h"
 #include "frmEditarMulta.h"
 
-namespace ParkingSystemView {
+namespace SmartParkingSystemViewGUI {
 
 	using namespace System;
 	using namespace System::ComponentModel;

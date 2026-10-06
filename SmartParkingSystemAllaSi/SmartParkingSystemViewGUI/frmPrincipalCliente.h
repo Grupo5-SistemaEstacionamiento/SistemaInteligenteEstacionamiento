@@ -8,7 +8,7 @@
 #include "frmVehiculosAsociados.h"
 #include "frmOfrecerSuscripcion.h"
 
-namespace ParkingSystemView {
+namespace SmartParkingSystemViewGUI {
 
 	using namespace System;
 	using namespace System::ComponentModel;

@@ -1,7 +1,7 @@
 #pragma once
 #include "frmBalanceTurno.h"
 
-namespace ParkingSystemView {
+namespace SmartParkingSystemViewGUI {
 
 	using namespace System;
 	using namespace System::ComponentModel;

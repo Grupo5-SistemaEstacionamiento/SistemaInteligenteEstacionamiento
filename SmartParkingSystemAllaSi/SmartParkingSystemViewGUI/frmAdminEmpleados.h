@@ -2,7 +2,7 @@
 #include "frmRegistrarEmpleado.h"
 #include "frmEditarEmpleado.h"
 
-namespace ParkingSystemView {
+namespace SmartParkingSystemViewGUI {
 
 	using namespace System;
 	using namespace System::ComponentModel;

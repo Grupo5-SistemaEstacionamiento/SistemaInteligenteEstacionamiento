@@ -31,6 +31,18 @@
     <Filter Include="Header Files\UI_Terminal\SubUI_Terminal">
       <UniqueIdentifier>{11bc0856-7e29-4b44-9fc5-2e0e4ef37fd6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\UI_Admin\SubUI_Admin\Buscar">
+      <UniqueIdentifier>{d521ec34-eb7d-4ecf-9299-2f8915dc0b79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\UI_Admin\SubUI_Admin\Turno">
+      <UniqueIdentifier>{8ae029c5-d48e-40d5-a001-b226106e0b1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\UI_Admin\SubUI_Admin\Reportar Vehiculo">
+      <UniqueIdentifier>{ea026143-9624-4fbb-8ca0-9c2c99432e64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\UI_Admin\SubUI_Admin\Administrar Empleados">
+      <UniqueIdentifier>{25fbf5f8-c2cb-4c2c-9838-58538d8eafb9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -39,15 +51,231 @@
     <ClCompile Include="frmLogin.cpp">
       <Filter>Header Files</Filter>
     </ClCompile>
+    <ClCompile Include="frmPrincipal.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="frmPrincipalAdmin.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="frmModInfo.cpp">
+      <Filter>Header Files\UI_Cliente</Filter>
+    </ClCompile>
+    <ClCompile Include="frmEditarInfo.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="frmVerInfo.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="frmSaldo.cpp">
+      <Filter>Header Files\UI_Cliente</Filter>
+    </ClCompile>
+    <ClCompile Include="frmVehiculosAsociados.cpp">
+      <Filter>Header Files\UI_Cliente</Filter>
+    </ClCompile>
+    <ClCompile Include="frmSuscripcion.cpp">
+      <Filter>Header Files\UI_Cliente</Filter>
+    </ClCompile>
+    <ClCompile Include="frmConsultarTiempo.cpp">
+      <Filter>Header Files\UI_Cliente</Filter>
+    </ClCompile>
+    <ClCompile Include="frmMapa.cpp">
+      <Filter>Header Files\UI_Cliente</Filter>
+    </ClCompile>
+    <ClCompile Include="frmOfrecerSuscripcion.cpp">
+      <Filter>Header Files\UI_Cliente</Filter>
+    </ClCompile>
+    <ClCompile Include="frmTurno.cpp">
+      <Filter>Header Files\UI_Admin</Filter>
+    </ClCompile>
+    <ClCompile Include="frmEmergencia.cpp">
+      <Filter>Header Files\UI_Admin</Filter>
+    </ClCompile>
+    <ClCompile Include="frmBuscar.cpp">
+      <Filter>Header Files\UI_Admin</Filter>
+    </ClCompile>
+    <ClCompile Include="frmMapaAdmin.cpp">
+      <Filter>Header Files\UI_Admin</Filter>
+    </ClCompile>
+    <ClCompile Include="frmReportar.cpp">
+      <Filter>Header Files\UI_Admin</Filter>
+    </ClCompile>
+    <ClCompile Include="frmAdminEmpleados.cpp">
+      <Filter>Header Files\UI_Admin</Filter>
+    </ClCompile>
+    <ClCompile Include="frmBuscarCliente.cpp">
+      <Filter>Header Files\UI_Admin\SubUI_Admin\Buscar</Filter>
+    </ClCompile>
+    <ClCompile Include="frmBuscarPlaca.cpp">
+      <Filter>Header Files\UI_Admin\SubUI_Admin\Buscar</Filter>
+    </ClCompile>
+    <ClCompile Include="frmEditarMulta.cpp">
+      <Filter>Header Files\UI_Admin\SubUI_Admin\Reportar Vehiculo</Filter>
+    </ClCompile>
+    <ClCompile Include="frmRegistrarMulta.cpp">
+      <Filter>Header Files\UI_Admin\SubUI_Admin\Reportar Vehiculo</Filter>
+    </ClCompile>
+    <ClCompile Include="frmEditarEmpleado.cpp">
+      <Filter>Header Files\UI_Admin\SubUI_Admin\Administrar Empleados</Filter>
+    </ClCompile>
+    <ClCompile Include="frmRegistrarEmpleado.cpp">
+      <Filter>Header Files\UI_Admin\SubUI_Admin\Administrar Empleados</Filter>
+    </ClCompile>
+    <ClCompile Include="frmBalanceTurno.cpp">
+      <Filter>Header Files\UI_Admin\SubUI_Admin\Turno</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="frmLogin.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="frmPrincipalAdmin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="frmPrincipalCliente.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="frmModInfo.h">
+      <Filter>Header Files\UI_Cliente</Filter>
+    </ClInclude>
+    <ClInclude Include="frmEditarInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="frmVerInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="frmSaldo.h">
+      <Filter>Header Files\UI_Cliente</Filter>
+    </ClInclude>
+    <ClInclude Include="frmVehiculosAsociados.h">
+      <Filter>Header Files\UI_Cliente</Filter>
+    </ClInclude>
+    <ClInclude Include="frmSuscripcion.h">
+      <Filter>Header Files\UI_Cliente</Filter>
+    </ClInclude>
+    <ClInclude Include="frmConsultarTiempo.h">
+      <Filter>Header Files\UI_Cliente</Filter>
+    </ClInclude>
+    <ClInclude Include="frmMapa.h">
+      <Filter>Header Files\UI_Cliente</Filter>
+    </ClInclude>
+    <ClInclude Include="frmOfrecerSuscripcion.h">
+      <Filter>Header Files\UI_Cliente</Filter>
+    </ClInclude>
+    <ClInclude Include="frmTurno.h">
+      <Filter>Header Files\UI_Admin</Filter>
+    </ClInclude>
+    <ClInclude Include="frmEmergencia.h">
+      <Filter>Header Files\UI_Admin</Filter>
+    </ClInclude>
+    <ClInclude Include="frmBuscar.h">
+      <Filter>Header Files\UI_Admin</Filter>
+    </ClInclude>
+    <ClInclude Include="frmMapaAdmin.h">
+      <Filter>Header Files\UI_Admin</Filter>
+    </ClInclude>
+    <ClInclude Include="frmReportar.h">
+      <Filter>Header Files\UI_Admin</Filter>
+    </ClInclude>
+    <ClInclude Include="frmAdminEmpleados.h">
+      <Filter>Header Files\UI_Admin</Filter>
+    </ClInclude>
+    <ClInclude Include="frmBuscarCliente.h">
+      <Filter>Header Files\UI_Admin\SubUI_Admin\Buscar</Filter>
+    </ClInclude>
+    <ClInclude Include="frmBuscarPlaca.h">
+      <Filter>Header Files\UI_Admin\SubUI_Admin\Buscar</Filter>
+    </ClInclude>
+    <ClInclude Include="frmEditarMulta.h">
+      <Filter>Header Files\UI_Admin\SubUI_Admin\Reportar Vehiculo</Filter>
+    </ClInclude>
+    <ClInclude Include="frmRegistrarMulta.h">
+      <Filter>Header Files\UI_Admin\SubUI_Admin\Reportar Vehiculo</Filter>
+    </ClInclude>
+    <ClInclude Include="frmEditarEmpleado.h">
+      <Filter>Header Files\UI_Admin\SubUI_Admin\Administrar Empleados</Filter>
+    </ClInclude>
+    <ClInclude Include="frmRegistrarEmpleado.h">
+      <Filter>Header Files\UI_Admin\SubUI_Admin\Administrar Empleados</Filter>
+    </ClInclude>
+    <ClInclude Include="frmBalanceTurno.h">
+      <Filter>Header Files\UI_Admin\SubUI_Admin\Turno</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="frmLogin.resx">
       <Filter>Header Files</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrincipalAdmin.resx">
+      <Filter>Header Files</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrincipalCliente.resx">
+      <Filter>Header Files</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmModInfo.resx">
+      <Filter>Header Files\UI_Cliente</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEditarInfo.resx">
+      <Filter>Header Files</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmVerInfo.resx">
+      <Filter>Header Files</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSaldo.resx">
+      <Filter>Header Files\UI_Cliente</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmVehiculosAsociados.resx">
+      <Filter>Header Files\UI_Cliente</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSuscripcion.resx">
+      <Filter>Header Files\UI_Cliente</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConsultarTiempo.resx">
+      <Filter>Header Files\UI_Cliente</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMapa.resx">
+      <Filter>Header Files\UI_Cliente</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmOfrecerSuscripcion.resx">
+      <Filter>Header Files\UI_Cliente</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTurno.resx">
+      <Filter>Header Files\UI_Admin</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEmergencia.resx">
+      <Filter>Header Files\UI_Admin</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBuscar.resx">
+      <Filter>Header Files\UI_Admin</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMapaAdmin.resx">
+      <Filter>Header Files\UI_Admin</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReportar.resx">
+      <Filter>Header Files\UI_Admin</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAdminEmpleados.resx">
+      <Filter>Header Files\UI_Admin</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBuscarCliente.resx">
+      <Filter>Header Files\UI_Admin\SubUI_Admin\Buscar</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBuscarPlaca.resx">
+      <Filter>Header Files\UI_Admin\SubUI_Admin\Buscar</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEditarMulta.resx">
+      <Filter>Header Files\UI_Admin\SubUI_Admin\Reportar Vehiculo</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRegistrarMulta.resx">
+      <Filter>Header Files\UI_Admin\SubUI_Admin\Reportar Vehiculo</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEditarEmpleado.resx">
+      <Filter>Header Files\UI_Admin\SubUI_Admin\Administrar Empleados</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRegistrarEmpleado.resx">
+      <Filter>Header Files\UI_Admin\SubUI_Admin\Administrar Empleados</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBalanceTurno.resx">
+      <Filter>Header Files\UI_Admin\SubUI_Admin\Turno</Filter>
     </EmbeddedResource>
   </ItemGroup>
 </Project>

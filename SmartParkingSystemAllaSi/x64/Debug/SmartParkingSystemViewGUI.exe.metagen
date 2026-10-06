@@ -1,0 +1,134 @@
+  SmartParkingSystemViewGUI.frmAdminEmpleados.resources - Embedded, ContainedInManifestFile, 
+  SmartParkingSystemViewGUI.frmBalanceTurno.resources - Embedded, ContainedInManifestFile, 
+  SmartParkingSystemViewGUI.frmBuscar.resources - Embedded, ContainedInManifestFile, 
+  SmartParkingSystemViewGUI.frmBuscarCliente.resources - Embedded, ContainedInManifestFile, 
+  SmartParkingSystemViewGUI.frmBuscarPlaca.resources - Embedded, ContainedInManifestFile, 
+  SmartParkingSystemViewGUI.frmConsultarTiempo.resources - Embedded, ContainedInManifestFile, 
+  SmartParkingSystemViewGUI.frmEditarEmpleado.resources - Embedded, ContainedInManifestFile, 
+  SmartParkingSystemViewGUI.frmEditarInfo.resources - Embedded, ContainedInManifestFile, 
+  SmartParkingSystemViewGUI.frmEditarMulta.resources - Embedded, ContainedInManifestFile, 
+  SmartParkingSystemViewGUI.frmEmergencia.resources - Embedded, ContainedInManifestFile, 
+  SmartParkingSystemViewGUI.frmLogin.resources - Embedded, ContainedInManifestFile, 
+  SmartParkingSystemViewGUI.frmMapa.resources - Embedded, ContainedInManifestFile, 
+  SmartParkingSystemViewGUI.frmMapaAdmin.resources - Embedded, ContainedInManifestFile, 
+  SmartParkingSystemViewGUI.frmModInfo.resources - Embedded, ContainedInManifestFile, 
+  SmartParkingSystemViewGUI.frmOfrecerSuscripcion.resources - Embedded, ContainedInManifestFile, 
+  SmartParkingSystemViewGUI.frmPrincipalAdmin.resources - Embedded, ContainedInManifestFile, 
+  SmartParkingSystemViewGUI.frmPrincipalCliente.resources - Embedded, ContainedInManifestFile, 
+  SmartParkingSystemViewGUI.frmRegistrarEmpleado.resources - Embedded, ContainedInManifestFile, 
+  SmartParkingSystemViewGUI.frmRegistrarMulta.resources - Embedded, ContainedInManifestFile, 
+  SmartParkingSystemViewGUI.frmReportar.resources - Embedded, ContainedInManifestFile, 
+  SmartParkingSystemViewGUI.frmSaldo.resources - Embedded, ContainedInManifestFile, 
+  SmartParkingSystemViewGUI.frmSuscripcion.resources - Embedded, ContainedInManifestFile, 
+  SmartParkingSystemViewGUI.frmTurno.resources - Embedded, ContainedInManifestFile, 
+  SmartParkingSystemViewGUI.frmVehiculosAsociados.resources - Embedded, ContainedInManifestFile, 
+  SmartParkingSystemViewGUI.frmVerInfo.resources - Embedded, ContainedInManifestFile, 
+ImageRuntimeVersion: v4.0.30319
+Assembly SmartParkingSystemViewGUI, Version=0.0.*, Culture=Invariant Language (Invariant Country): 
+	hash=SHA1, flags=PublicKey
+Assembly mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a: 
+	hash=None, flags=None
+Assembly System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Class SmartParkingSystemViewGUI.frmRegistrarEmpleado: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class SmartParkingSystemViewGUI.frmEditarEmpleado: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class SmartParkingSystemViewGUI.frmAdminEmpleados: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class SmartParkingSystemViewGUI.frmBalanceTurno: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class SmartParkingSystemViewGUI.frmBuscar: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Events:
+    System.EventHandler OnBuscarPlacaClick: SpecialName
+    System.EventHandler OnBuscarClienteClick: SpecialName
+  Methods:
+    add_OnBuscarClienteClick(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_OnBuscarClienteClick(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_OnBuscarPlacaClick(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_OnBuscarPlacaClick(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+Class SmartParkingSystemViewGUI.frmVerInfo: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class SmartParkingSystemViewGUI.frmEditarInfo: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class SmartParkingSystemViewGUI.frmBuscarCliente: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Events:
+    System.EventHandler OnRegresar: SpecialName
+  Methods:
+    add_OnRegresar(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_OnRegresar(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+Class SmartParkingSystemViewGUI.frmBuscarPlaca: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Events:
+    System.EventHandler OnRegresar: SpecialName
+  Methods:
+    add_OnRegresar(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_OnRegresar(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+Class SmartParkingSystemViewGUI.frmConsultarTiempo: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class SmartParkingSystemViewGUI.frmEditarMulta: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class SmartParkingSystemViewGUI.frmEmergencia: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class ParkingSystemView.frmInfoCliente: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class SmartParkingSystemViewGUI.frmModInfo: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class SmartParkingSystemViewGUI.frmSuscripcion: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class SmartParkingSystemViewGUI.frmSaldo: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class SmartParkingSystemViewGUI.frmMapa: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class SmartParkingSystemViewGUI.frmVehiculosAsociados: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class SmartParkingSystemViewGUI.frmOfrecerSuscripcion: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class SmartParkingSystemViewGUI.frmPrincipal: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class SmartParkingSystemViewGUI.frmTurno: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class SmartParkingSystemViewGUI.frmMapaAdmin: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class SmartParkingSystemViewGUI.frmRegistrarMulta: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class SmartParkingSystemViewGUI.frmReportar: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class SmartParkingSystemViewGUI.frmPrincipalAdmin: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class SmartParkingSystemViewGUI.frmLogin: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
