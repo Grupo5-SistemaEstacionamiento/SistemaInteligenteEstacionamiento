@@ -27,6 +27,60 @@
     <ClInclude Include="Tarifa.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="BarreraAcceso.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cliente.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Empleado.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EspacioEstacionamiento.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IndicadorLed.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LectorRFID.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Membresia.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Movimiento.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pago.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Penalizacion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Periferico.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Persona.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RegistroAcceso.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SensorOcupacion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ServoMotor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TarjetaRFID.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TurnoCaja.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vehiculo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SmartParkingSystemModel.cpp">

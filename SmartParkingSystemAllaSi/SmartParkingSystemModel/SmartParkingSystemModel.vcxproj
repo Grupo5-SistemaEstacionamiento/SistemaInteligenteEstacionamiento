@@ -131,10 +131,28 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BarreraAcceso.h" />
+    <ClInclude Include="Cliente.h" />
+    <ClInclude Include="Empleado.h" />
+    <ClInclude Include="EspacioEstacionamiento.h" />
+    <ClInclude Include="IndicadorLed.h" />
+    <ClInclude Include="LectorRFID.h" />
+    <ClInclude Include="Membresia.h" />
+    <ClInclude Include="Movimiento.h" />
+    <ClInclude Include="Pago.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Penalizacion.h" />
+    <ClInclude Include="Periferico.h" />
+    <ClInclude Include="Persona.h" />
+    <ClInclude Include="RegistroAcceso.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="SensorOcupacion.h" />
+    <ClInclude Include="ServoMotor.h" />
     <ClInclude Include="SmartParkingSystemModel.h" />
     <ClInclude Include="Tarifa.h" />
+    <ClInclude Include="TarjetaRFID.h" />
+    <ClInclude Include="TurnoCaja.h" />
+    <ClInclude Include="Vehiculo.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
