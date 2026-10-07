@@ -2,8 +2,50 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/SmartParkingSystemAllaSi/.vs/SmartParkingSystemAllaSi.slnx
-/SmartParkingSystemAllaSi/SmartParkingSystemController/x64/Debug
-/SmartParkingSystemAllaSi/SmartParkingSystemDAO/x64/Debug
-/SmartParkingSystemAllaSi/SmartParkingSystemModel/x64/Debug
-/SmartParkingSystemAllaSi/SmartParkingSystemViewGUI/x64/Debug
+#/SmartParkingSystemAllaSi/.vs/SmartParkingSystemAllaSi.slnx
+#/SmartParkingSystemAllaSi/SmartParkingSystemController/x64/Debug
+#/SmartParkingSystemAllaSi/SmartParkingSystemDAO/x64/Debug
+#/SmartParkingSystemAllaSi/SmartParkingSystemModel/x64/Debug
+#/SmartParkingSystemAllaSi/SmartParkingSystemViewGUI/x64/Debug
+
+#rutas antiguas 
+
+#rutas nuevas: 
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.vcxproj.user
+*.ipch
+*.aps
+*.VC.db
+*.VC.opendb
+
+# Carpetas de salida
+x64/
+x86/
+Debug/
+Release/
+bin/
+obj/
+
+# Archivos compilados
+*.obj
+*.pdb
+*.idb
+*.ilk
+*.exe
+*.dll
+*.lib
+*.exp
+*.tlog
+*.log
+*.pch
+*.res
+*.cache
+*.metagen
+
+# Otros
+*.vsidx
+*.sln.docstates
