@@ -3,7 +3,7 @@
 
 namespace SmartParkingSystemModel {
 
-	public ref class SensorOcupacion : Periferico{
+	public ref class SensorOcupacion : public Periferico{
 
 	private:
 		double umbralDeteccion;

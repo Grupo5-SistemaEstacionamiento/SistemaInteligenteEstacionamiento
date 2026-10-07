@@ -3,7 +3,7 @@
 #include "LectorRFID.h"
 #include "Cliente.h"
 
-using namespace CocheraModel;
+using namespace SmartParkingSystemModel;
 
 TarjetaRFID::TarjetaRFID() {
 

@@ -1,5 +1,4 @@
 #pragma once
-
 namespace SmartParkingSystemModel {
 	using namespace System;
 	using namespace System::Collections::Generic;

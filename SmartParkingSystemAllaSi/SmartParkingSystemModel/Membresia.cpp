@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Membresia.h"
 
-using namespace CocheraModel;
+using namespace SmartParkingSystemModel;
 
 Membresia::Membresia() {
 	this->listaMovimientos = gcnew List<Movimiento^>();

@@ -1,12 +1,12 @@
 #include "pch.h"
 #include "IndicadorLed.h"
 
-using namespace CocheraModel;
+using namespace SmartParkingSystemModel;
 
-IndicdorLed::IndicdorLed() {
+IndicadorLed::IndicadorLed() {
 
 }
-IndicdorLed::IndicdorLed(int idPeriferico,
+IndicadorLed::IndicadorLed(int idPeriferico,
 	String^ ubicacion,
 	DateTime fechaInstalacion,
 	DateTime fechaUltimoMant,
@@ -26,36 +26,36 @@ IndicdorLed::IndicdorLed(int idPeriferico,
 
 }
 
-String^ IndicdorLed::getColor() {
+String^ IndicadorLed::getColor() {
 	return this->color;
 }
-int IndicdorLed::getIntesidad() {
+int IndicadorLed::getIntesidad() {
 	return this->intesidad;
 }
-bool IndicdorLed::getEstaEncendido() {
+bool IndicadorLed::getEstaEncendido() {
 	return this->estaEncendido;
 }
-String^ IndicdorLed::getTipoLuz() {
+String^ IndicadorLed::getTipoLuz() {
 	return this->tipoLuz;
 }
-String^ IndicdorLed::getModoOperacion() {
+String^ IndicadorLed::getModoOperacion() {
 	return this->modoOperacion;
 }
 
 
 
-void IndicdorLed::setColor(String^ color) {
+void IndicadorLed::setColor(String^ color) {
 	this->color = color;
 }
-void IndicdorLed::setIntesidad(int intesidad) {
+void IndicadorLed::setIntesidad(int intesidad) {
 	this->intesidad = intesidad;
 }
-void IndicdorLed::setEstaEncendido(bool estaEncendido) {
+void IndicadorLed::setEstaEncendido(bool estaEncendido) {
 	this->estaEncendido = estaEncendido;
 }
-void IndicdorLed::setTipoLuz(String^ tipoLuz) {
+void IndicadorLed::setTipoLuz(String^ tipoLuz) {
 	this->tipoLuz = tipoLuz;
 }
-void IndicdorLed::setModoOperacion(String^ modoOperacion) {
+void IndicadorLed::setModoOperacion(String^ modoOperacion) {
 	this->modoOperacion = modoOperacion;
 }

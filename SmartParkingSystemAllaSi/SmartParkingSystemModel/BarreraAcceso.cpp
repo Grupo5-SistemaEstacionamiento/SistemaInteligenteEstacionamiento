@@ -5,7 +5,7 @@
 #include "ServoMotor.h"
 #include "RegistroAcceso.h"
 
-namespace CocheraModel {
+namespace SmartParkingSystemModel {
 
 	BarreraAcceso::BarreraAcceso() {
 		this->listaRegistrosAcceso = gcnew List<RegistroAcceso^>();

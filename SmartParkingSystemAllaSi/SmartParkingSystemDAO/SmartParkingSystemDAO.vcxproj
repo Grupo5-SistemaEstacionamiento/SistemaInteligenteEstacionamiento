@@ -131,21 +131,37 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ClienteDAO.h" />
+    <ClInclude Include="CocheraDAO.h" />
+    <ClInclude Include="EmpleadoDAO.h" />
+    <ClInclude Include="MovimientoDAO.h" />
+    <ClInclude Include="PagoDAO.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="PerifericoDAO.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SmartParkingSystemDAO.h" />
     <ClInclude Include="TarifaDAO.h" />
+    <ClInclude Include="TurnoCajaDAO.h" />
+    <ClInclude Include="VehiculoDAO.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="ClienteDAO.cpp" />
+    <ClCompile Include="CocheraDAO.cpp" />
+    <ClCompile Include="EmpleadoDAO.cpp" />
+    <ClCompile Include="MovimientoDAO.cpp" />
+    <ClCompile Include="PagoDAO.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="PerifericoDAO.cpp" />
     <ClCompile Include="SmartParkingSystemDAO.cpp" />
     <ClCompile Include="TarifaDAO.cpp" />
+    <ClCompile Include="TurnoCajaDAO.cpp" />
+    <ClCompile Include="VehiculoDAO.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="app.rc" />

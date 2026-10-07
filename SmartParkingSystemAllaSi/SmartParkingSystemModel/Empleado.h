@@ -2,6 +2,8 @@
 #include "Persona.h"
 #include "RegistroAcceso.h"
 
+
+
 namespace SmartParkingSystemModel {
 
 	ref class TurnoCaja;

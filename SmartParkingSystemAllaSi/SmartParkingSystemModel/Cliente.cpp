@@ -5,14 +5,14 @@
 #include "TarjetaRFID.h"
 
 
-using namespace CocheraModel;
+using namespace SmartParkingSystemModel;
 
 Cliente::Cliente() {
 
 }
 Cliente::Cliente(
 	DateTime fechaAfiliacion,
-	TipoClinete tipo,
+	TipoCliente tipo,
 	String^ observaciones,
 	double saldo,
 	bool requierePreferencial,
@@ -39,7 +39,7 @@ Cliente::Cliente(
 DateTime Cliente::getFechaAfiliacion() {
 	return this->fechaAfiliacion;
 }
-TipoClinete Cliente::getTipo() {
+TipoCliente Cliente::getTipo() {
 	return this->tipo;
 }
 String^ Cliente::getObservaciones() {
@@ -73,7 +73,7 @@ List<Vehiculo^>^ Cliente::getListaVehiculos() {
 void Cliente::setFechaAfiliacion(DateTime fechaAfiliacion) {
 	this->fechaAfiliacion = fechaAfiliacion;
 }
-void Cliente::setTipo(TipoClinete tipo) {
+void Cliente::setTipo(TipoCliente tipo) {
 	this->tipo = tipo;
 }
 void Cliente::setObservaciones(String^ observaciones) {

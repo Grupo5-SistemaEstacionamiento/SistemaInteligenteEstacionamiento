@@ -1,8 +1,7 @@
 #pragma once
 #include"Periferico.h"
-
 namespace SmartParkingSystemModel {
-	public ref class LectorRFID : Periferico {
+	public ref class LectorRFID : public Periferico {
 
 	private:
 

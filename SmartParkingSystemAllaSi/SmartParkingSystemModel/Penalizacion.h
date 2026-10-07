@@ -1,5 +1,6 @@
 #pragma once
 
+
 namespace SmartParkingSystemModel {
 
 	using namespace System;

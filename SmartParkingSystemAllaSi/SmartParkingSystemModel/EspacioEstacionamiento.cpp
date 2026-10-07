@@ -4,7 +4,7 @@
 #include "SensorOcupacion.h"
 #include "Cliente.h"
 
-using namespace CocheraModel;
+using namespace SmartParkingSystemModel;
 
 EspacioEstacionamiento::EspacioEstacionamiento() {
 

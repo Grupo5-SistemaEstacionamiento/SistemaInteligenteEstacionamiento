@@ -40,12 +40,12 @@ namespace SmartParkingSystemModel {
 		EstadoPeriferico getEstado();
 		bool getHayEmergencia();
 
-		void getIdPeriferico(int idPeriferico);
-		void getUbicacion(String^ ubicacion);
-		void getFechaInstalacion(DateTime fechaInstalacion);
-		void getFechaUltimoMant(DateTime fechaUltimoMant);
-		void getEstado(EstadoPeriferico estado);
-		void getHayEmergencia(bool hayEmergencia);
+		void setIdPeriferico(int idPeriferico);
+		void setUbicacion(String^ ubicacion);
+		void setFechaInstalacion(DateTime fechaInstalacion);
+		void setFechaUltimoMant(DateTime fechaUltimoMant);
+		void setEstado(EstadoPeriferico estado);
+		void setHayEmergencia(bool hayEmergencia);
 
 	};
 

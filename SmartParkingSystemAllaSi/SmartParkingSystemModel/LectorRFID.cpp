@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "LectorRFID.h"
 
-using namespace CocheraModel;
+using namespace SmartParkingSystemModel;
 
 LectorRFID::LectorRFID() {
 

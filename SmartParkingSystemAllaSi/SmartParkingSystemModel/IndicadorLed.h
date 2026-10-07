@@ -1,10 +1,10 @@
 #pragma once
 #include "Periferico.h"
 
-namespace SmartParkingSystemModel {
+namespace SmartParkingSystemModel  {
 
 	using namespace System;
-	public ref class IndicdorLed : Periferico {
+	public ref class IndicadorLed : public Periferico {
 
 	private:
 		String^ color;
@@ -14,8 +14,8 @@ namespace SmartParkingSystemModel {
 		String^ modoOperacion;
 
 	public:
-		IndicdorLed();
-		IndicdorLed(int idPeriferico,
+		IndicadorLed();
+		IndicadorLed(int idPeriferico,
 			String^ ubicacion,
 			DateTime fechaInstalacion,
 			DateTime fechaUltimoMant,

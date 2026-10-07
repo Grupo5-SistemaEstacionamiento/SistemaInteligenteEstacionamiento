@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "SensorOcupacion.h"
 
-using namespace CocheraModel;
+using namespace SmartParkingSystemModel;
 
 SensorOcupacion::SensorOcupacion() {
 

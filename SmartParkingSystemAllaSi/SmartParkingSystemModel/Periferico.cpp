@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Periferico.h"
 
-using namespace CocheraModel;
+using namespace SmartParkingSystemModel;
 
 Periferico::Periferico() {
 
@@ -41,21 +41,21 @@ bool Periferico::getHayEmergencia() {
 	return this->hayEmergencia;
 }
 
-void Periferico::getIdPeriferico(int idPeriferico) {
+void Periferico::setIdPeriferico(int idPeriferico) {
 	this->idPeriferico = idPeriferico;
 }
-void Periferico::getUbicacion(String^ ubicacion) {
+void Periferico::setUbicacion(String^ ubicacion) {
 	this->ubicacion = ubicacion;
 }
-void Periferico::getFechaInstalacion(DateTime fechaInstalacion) {
+void Periferico::setFechaInstalacion(DateTime fechaInstalacion) {
 	this->fechaInstalacion = fechaInstalacion;
 }
-void Periferico::getFechaUltimoMant(DateTime fechaUltimoMant) {
+void Periferico::setFechaUltimoMant(DateTime fechaUltimoMant) {
 	this->fechaUltimoMant = fechaUltimoMant;
 }
-void Periferico::getEstado(EstadoPeriferico estado) {
+void Periferico::setEstado(EstadoPeriferico estado) {
 	this->estado = estado;
 }
-void Periferico::getHayEmergencia(bool hayEmergencia) {
+void Periferico::setHayEmergencia(bool hayEmergencia) {
 	this->hayEmergencia = hayEmergencia;
 }

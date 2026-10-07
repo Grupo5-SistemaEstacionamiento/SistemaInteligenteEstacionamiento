@@ -45,6 +45,30 @@
     <ClInclude Include="TarifaDAO.h">
       <Filter>Header Files\Admin</Filter>
     </ClInclude>
+    <ClInclude Include="ClienteDAO.h">
+      <Filter>Header Files\Admin</Filter>
+    </ClInclude>
+    <ClInclude Include="CocheraDAO.h">
+      <Filter>Header Files\Admin</Filter>
+    </ClInclude>
+    <ClInclude Include="EmpleadoDAO.h">
+      <Filter>Header Files\Admin</Filter>
+    </ClInclude>
+    <ClInclude Include="MovimientoDAO.h">
+      <Filter>Header Files\Admin</Filter>
+    </ClInclude>
+    <ClInclude Include="PagoDAO.h">
+      <Filter>Header Files\Admin</Filter>
+    </ClInclude>
+    <ClInclude Include="PerifericoDAO.h">
+      <Filter>Header Files\Admin</Filter>
+    </ClInclude>
+    <ClInclude Include="TurnoCajaDAO.h">
+      <Filter>Header Files\Admin</Filter>
+    </ClInclude>
+    <ClInclude Include="VehiculoDAO.h">
+      <Filter>Header Files\Admin</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SmartParkingSystemDAO.cpp">
@@ -57,6 +81,30 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TarifaDAO.cpp">
+      <Filter>Source Files\Admin</Filter>
+    </ClCompile>
+    <ClCompile Include="VehiculoDAO.cpp">
+      <Filter>Source Files\Admin</Filter>
+    </ClCompile>
+    <ClCompile Include="TurnoCajaDAO.cpp">
+      <Filter>Source Files\Admin</Filter>
+    </ClCompile>
+    <ClCompile Include="PerifericoDAO.cpp">
+      <Filter>Source Files\Admin</Filter>
+    </ClCompile>
+    <ClCompile Include="PagoDAO.cpp">
+      <Filter>Source Files\Admin</Filter>
+    </ClCompile>
+    <ClCompile Include="MovimientoDAO.cpp">
+      <Filter>Source Files\Admin</Filter>
+    </ClCompile>
+    <ClCompile Include="EmpleadoDAO.cpp">
+      <Filter>Source Files\Admin</Filter>
+    </ClCompile>
+    <ClCompile Include="CocheraDAO.cpp">
+      <Filter>Source Files\Admin</Filter>
+    </ClCompile>
+    <ClCompile Include="ClienteDAO.cpp">
       <Filter>Source Files\Admin</Filter>
     </ClCompile>
   </ItemGroup>

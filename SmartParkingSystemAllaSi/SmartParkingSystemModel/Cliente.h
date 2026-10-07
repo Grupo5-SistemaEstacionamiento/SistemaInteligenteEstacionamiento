@@ -1,5 +1,4 @@
 #pragma once
-
 namespace SmartParkingSystemModel {
 
 	using namespace System;
@@ -10,7 +9,7 @@ namespace SmartParkingSystemModel {
 
 	using namespace System::Collections::Generic;
 
-	public enum class TipoClinete {
+	public enum class TipoCliente {
 
 		MIEMBRO,
 		NO_MIEMBRO,
@@ -20,7 +19,7 @@ namespace SmartParkingSystemModel {
 
 	private:
 		DateTime fechaAfiliacion;
-		TipoClinete tipo;
+		TipoCliente tipo;
 		String^ observaciones;
 		double saldo;
 		bool requierePreferencial;
@@ -36,7 +35,7 @@ namespace SmartParkingSystemModel {
 		Cliente();
 		Cliente(
 			DateTime fechaAfiliacion,
-			TipoClinete tipo,
+			TipoCliente tipo,
 			String^ observaciones,
 			double saldo,
 			bool requierePreferencial,
@@ -49,7 +48,7 @@ namespace SmartParkingSystemModel {
 
 
 		DateTime getFechaAfiliacion();
-		TipoClinete getTipo();
+		TipoCliente getTipo();
 		String^ getObservaciones();
 		double getSaldo();
 		bool getRequierePreferencial();
@@ -63,7 +62,7 @@ namespace SmartParkingSystemModel {
 
 
 		void setFechaAfiliacion(DateTime fechaAfiliacion);
-		void setTipo(TipoClinete tipo);
+		void setTipo(TipoCliente tipo);
 		void setObservaciones(String^ observaciones);
 		void setSaldo(double saldo);
 		void setRequierePreferencial(bool requierePreferencial);

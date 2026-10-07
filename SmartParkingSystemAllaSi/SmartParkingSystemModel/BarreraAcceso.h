@@ -1,4 +1,5 @@
 #pragma once
+#include "Periferico.h"
 
 namespace SmartParkingSystemModel {
 
@@ -8,7 +9,7 @@ namespace SmartParkingSystemModel {
 	ref class RegistroAcceso;
 	using namespace System::Collections::Generic;
 
-	public ref class BarreraAcceso {
+	public ref class BarreraAcceso : public Periferico { //creamos la herencia
 
 	private:
 		bool hayImpedimento;
@@ -49,6 +50,8 @@ namespace SmartParkingSystemModel {
 		void setSensorOcupacion(SensorOcupacion^ sensorOcupacion);
 		void setServoMotor(ServoMotor^ servoMotor);
 		void setListaRegistrosAcceso(List<RegistroAcceso^>^ listaRegistrosAcceso);
+
+
 
 	};
 

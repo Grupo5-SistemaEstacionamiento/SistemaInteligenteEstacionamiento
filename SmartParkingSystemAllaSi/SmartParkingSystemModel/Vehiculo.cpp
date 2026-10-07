@@ -4,7 +4,7 @@
 #include "RegistroAcceso.h"
 #include "Penalizacion.h"
 
-using namespace CocheraModel;
+using namespace SmartParkingSystemModel;
 
 Vehiculo::Vehiculo() {
 	this->listaRegistros = gcnew List<RegistroAcceso^>();

@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "RegistroAcceso.h"
 
-using namespace CocheraModel;
+using namespace SmartParkingSystemModel;
 
 RegistroAcceso::RegistroAcceso() {
 	this->listaMoviminetos = gcnew List<Movimiento^>();

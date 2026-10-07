@@ -2,7 +2,7 @@
 #include "TurnoCaja.h"
 #include "Empleado.h"
 
-namespace CocheraModel {
+namespace SmartParkingSystemModel {
 
 	TurnoCaja::TurnoCaja() {
 		this->listaMovimientos = gcnew List<Movimiento^>();

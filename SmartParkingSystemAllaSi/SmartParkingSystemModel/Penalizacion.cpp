@@ -3,7 +3,7 @@
 #include "Vehiculo.h"
 #include "Movimiento.h"
 
-using namespace CocheraModel;
+using namespace SmartParkingSystemModel;
 
 Penalizacion::Penalizacion() {
 

@@ -2,7 +2,7 @@
 #include "Pago.h"
 
 
-using namespace CocheraModel;
+using namespace SmartParkingSystemModel;
 
 
 Pago::Pago(){

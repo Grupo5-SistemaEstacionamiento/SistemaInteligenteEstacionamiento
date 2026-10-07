@@ -1,9 +1,9 @@
 #pragma once
 #include "Periferico.h"
 
-namespace SmartParkingSystemModel {
+namespace SmartParkingSystemModel{
 
-	public ref class ServoMotor : Periferico {
+	public ref class ServoMotor : public Periferico {
 
 	private:
 		double anguloActual;

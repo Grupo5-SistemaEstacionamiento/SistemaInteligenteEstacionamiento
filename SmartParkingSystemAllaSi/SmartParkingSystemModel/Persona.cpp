@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Persona.h"
 
-using namespace CocheraModel;
+using namespace SmartParkingSystemModel;
 
 Persona::Persona() {
 

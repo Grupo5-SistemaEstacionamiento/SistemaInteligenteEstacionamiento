@@ -1,6 +1,5 @@
 #pragma once
-
-namespace SmartParkingSystemModel {
+namespace SmartParkingSystemModel{
 	using namespace System;
 	ref class Movimiento;
 	ref class Cliente;

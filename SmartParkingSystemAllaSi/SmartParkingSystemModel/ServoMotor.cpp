@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "ServoMotor.h"
 
-using namespace CocheraModel;
+using namespace SmartParkingSystemModel;
 
 ServoMotor::ServoMotor() {
 
