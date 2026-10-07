@@ -503,7 +503,7 @@ private: System::Windows::Forms::Button^ btnLimpiar;
 			this->lblPenalizacionTicket->Name = L"lblPenalizacionTicket";
 			this->lblPenalizacionTicket->Size = System::Drawing::Size(487, 34);
 			this->lblPenalizacionTicket->TabIndex = 69;
-			this->lblPenalizacionTicket->Text = L"Penalización por ticket perdido (S/):";
+			this->lblPenalizacionTicket->Text = L"Penalizacion por ticket perdido (S/):";
 			// 
 			// txtDescuentoMembresia
 			// 
@@ -527,7 +527,7 @@ private: System::Windows::Forms::Button^ btnLimpiar;
 			this->lblDescuentoMembresia->Name = L"lblDescuentoMembresia";
 			this->lblDescuentoMembresia->Size = System::Drawing::Size(366, 34);
 			this->lblDescuentoMembresia->TabIndex = 67;
-			this->lblDescuentoMembresia->Text = L"Descuento membresía (%):";
+			this->lblDescuentoMembresia->Text = L"Descuento membresia (%):";
 			// 
 			// txtValorFraccion
 			// 
@@ -551,7 +551,7 @@ private: System::Windows::Forms::Button^ btnLimpiar;
 			this->lblValorFraccion->Name = L"lblValorFraccion";
 			this->lblValorFraccion->Size = System::Drawing::Size(361, 34);
 			this->lblValorFraccion->TabIndex = 65;
-			this->lblValorFraccion->Text = L"Valor fracción 15 min (S/):";
+			this->lblValorFraccion->Text = L"Valor fraccion 15 min (S/):";
 			// 
 			// txtValorHora
 			// 
@@ -792,7 +792,7 @@ private: System::Void btnModificar_Click(
 	if (!Int32::TryParse(txtIdTarifa->Text, idTarifa))
 	{
 		MessageBox::Show(
-			"El ID de la tarifa no es válido.",
+			"El ID de la tarifa no es valido.",
 			"Error",
 			MessageBoxButtons::OK,
 			MessageBoxIcon::Error
@@ -821,10 +821,10 @@ private: System::Void btnModificar_Click(
 		MessageBox::Show(
 			"Verifique los datos ingresados.\n\n"
 			"• El valor por hora debe ser mayor que cero.\n"
-			"• El valor de la fracción debe ser mayor que cero.\n"
+			"• El valor de la fraccion debe ser mayor que cero.\n"
 			"• El descuento debe estar entre 0% y 100%.\n"
-			"• La penalización no puede ser negativa.",
-			"Datos no válidos",
+			"• La penalizacion no puede ser negativa.",
+			"Datos no validos",
 			MessageBoxButtons::OK,
 			MessageBoxIcon::Warning
 		);
@@ -859,7 +859,7 @@ private: System::Void btnModificar_Click(
 	{
 		MessageBox::Show(
 			"Tarifa modificada correctamente.",
-			"Modificación exitosa",
+			"Modificacion exitosa",
 			MessageBoxButtons::OK,
 			MessageBoxIcon::Information
 		);
@@ -903,7 +903,7 @@ private: System::Void btnEliminar_Click(
 	if (!Int32::TryParse(txtIdTarifa->Text, idTarifa))
 	{
 		MessageBox::Show(
-			"El ID de la tarifa no es válido.",
+			"El ID de la tarifa no es valido.",
 			"Error",
 			MessageBoxButtons::OK,
 			MessageBoxIcon::Error
@@ -915,9 +915,9 @@ private: System::Void btnEliminar_Click(
 	// Solicita confirmación antes de eliminar.
 	System::Windows::Forms::DialogResult respuesta =
 		MessageBox::Show(
-			"¿Está seguro de eliminar la tarifa seleccionada?\n\n"
+			"¿Esta seguro de eliminar la tarifa seleccionada?\n\n"
 			"Esta acción no se puede deshacer.",
-			"Confirmar eliminación",
+			"Confirmar eliminacion",
 			MessageBoxButtons::YesNo,
 			MessageBoxIcon::Warning
 		);
@@ -936,7 +936,7 @@ private: System::Void btnEliminar_Click(
 	{
 		MessageBox::Show(
 			"Tarifa eliminada correctamente.",
-			"Eliminación exitosa",
+			"Eliminacion exitosa",
 			MessageBoxButtons::OK,
 			MessageBoxIcon::Information
 		);

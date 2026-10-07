@@ -95,10 +95,10 @@ namespace SmartParkingSystemViewGUI {
 			// textBox1
 			// 
 			this->textBox1->BackColor = System::Drawing::Color::White;
-			this->textBox1->Location = System::Drawing::Point(191, 199);
-			this->textBox1->Margin = System::Windows::Forms::Padding(5);
+			this->textBox1->Location = System::Drawing::Point(255, 245);
+			this->textBox1->Margin = System::Windows::Forms::Padding(7, 6, 7, 6);
 			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(403, 28);
+			this->textBox1->Size = System::Drawing::Size(536, 34);
 			this->textBox1->TabIndex = 9;
 			// 
 			// cmbTipo
@@ -110,99 +110,101 @@ namespace SmartParkingSystemViewGUI {
 				L"Mal Estacionado", L"Uso Indebido de Espacios Exclusivos",
 					L"Conducta Disruptiva", L"Cometio Fraude de Estadía"
 			});
-			this->cmbTipo->Location = System::Drawing::Point(191, 102);
+			this->cmbTipo->Location = System::Drawing::Point(255, 126);
+			this->cmbTipo->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->cmbTipo->Name = L"cmbTipo";
-			this->cmbTipo->Size = System::Drawing::Size(215, 30);
+			this->cmbTipo->Size = System::Drawing::Size(285, 37);
 			this->cmbTipo->TabIndex = 3;
 			this->cmbTipo->SelectedIndexChanged += gcnew System::EventHandler(this, &frmEditarMulta::cmbTipo_SelectedIndexChanged);
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(14, 254);
-			this->label1->Margin = System::Windows::Forms::Padding(5, 0, 5, 0);
+			this->label1->Location = System::Drawing::Point(19, 313);
+			this->label1->Margin = System::Windows::Forms::Padding(7, 0, 7, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(68, 24);
+			this->label1->Size = System::Drawing::Size(86, 29);
 			this->label1->TabIndex = 8;
 			this->label1->Text = L"Monto:";
 			// 
 			// txtUbicacion
 			// 
 			this->txtUbicacion->BackColor = System::Drawing::Color::White;
-			this->txtUbicacion->Location = System::Drawing::Point(191, 250);
-			this->txtUbicacion->Margin = System::Windows::Forms::Padding(5);
+			this->txtUbicacion->Location = System::Drawing::Point(255, 308);
+			this->txtUbicacion->Margin = System::Windows::Forms::Padding(7, 6, 7, 6);
 			this->txtUbicacion->Name = L"txtUbicacion";
-			this->txtUbicacion->Size = System::Drawing::Size(403, 28);
+			this->txtUbicacion->Size = System::Drawing::Size(536, 34);
 			this->txtUbicacion->TabIndex = 5;
 			// 
 			// txtAlias
 			// 
 			this->txtAlias->BackColor = System::Drawing::Color::White;
-			this->txtAlias->Location = System::Drawing::Point(191, 148);
-			this->txtAlias->Margin = System::Windows::Forms::Padding(5);
+			this->txtAlias->Location = System::Drawing::Point(255, 182);
+			this->txtAlias->Margin = System::Windows::Forms::Padding(7, 6, 7, 6);
 			this->txtAlias->Name = L"txtAlias";
-			this->txtAlias->Size = System::Drawing::Size(403, 28);
+			this->txtAlias->Size = System::Drawing::Size(536, 34);
 			this->txtAlias->TabIndex = 2;
 			// 
 			// txtSerialId
 			// 
 			this->txtSerialId->BackColor = System::Drawing::Color::White;
-			this->txtSerialId->Location = System::Drawing::Point(191, 55);
-			this->txtSerialId->Margin = System::Windows::Forms::Padding(5);
+			this->txtSerialId->Location = System::Drawing::Point(255, 68);
+			this->txtSerialId->Margin = System::Windows::Forms::Padding(7, 6, 7, 6);
 			this->txtSerialId->Name = L"txtSerialId";
-			this->txtSerialId->Size = System::Drawing::Size(126, 28);
+			this->txtSerialId->Size = System::Drawing::Size(167, 34);
 			this->txtSerialId->TabIndex = 1;
 			// 
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(14, 199);
-			this->label6->Margin = System::Windows::Forms::Padding(5, 0, 5, 0);
+			this->label6->Location = System::Drawing::Point(19, 245);
+			this->label6->Margin = System::Windows::Forms::Padding(7, 0, 7, 0);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(69, 24);
+			this->label6->Size = System::Drawing::Size(86, 29);
 			this->label6->TabIndex = 5;
 			this->label6->Text = L"Fecha:";
 			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(14, 105);
-			this->label5->Margin = System::Windows::Forms::Padding(5, 0, 5, 0);
+			this->label5->Location = System::Drawing::Point(19, 129);
+			this->label5->Margin = System::Windows::Forms::Padding(7, 0, 7, 0);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(122, 24);
+			this->label5->Size = System::Drawing::Size(156, 29);
 			this->label5->TabIndex = 4;
-			this->label5->Text = L"Penalización:";
+			this->label5->Text = L"Penalizacion:";
 			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(14, 148);
-			this->label4->Margin = System::Windows::Forms::Padding(5, 0, 5, 0);
+			this->label4->Location = System::Drawing::Point(19, 182);
+			this->label4->Margin = System::Windows::Forms::Padding(7, 0, 7, 0);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(100, 24);
+			this->label4->Size = System::Drawing::Size(125, 29);
 			this->label4->TabIndex = 3;
-			this->label4->Text = L"Anotación:";
+			this->label4->Text = L"Anotacion:";
 			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(14, 55);
-			this->label3->Margin = System::Windows::Forms::Padding(5, 0, 5, 0);
+			this->label3->Location = System::Drawing::Point(19, 68);
+			this->label3->Margin = System::Windows::Forms::Padding(7, 0, 7, 0);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(141, 24);
+			this->label3->Size = System::Drawing::Size(178, 29);
 			this->label3->TabIndex = 0;
-			this->label3->Text = L"Placa Vehículo:";
+			this->label3->Text = L"Placa Vehiculo:";
 			// 
 			// label7
 			// 
 			this->label7->AutoSize = true;
 			this->label7->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label7->Location = System::Drawing::Point(20, 14);
+			this->label7->Location = System::Drawing::Point(27, 17);
+			this->label7->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(302, 18);
+			this->label7->Size = System::Drawing::Size(378, 23);
 			this->label7->TabIndex = 2;
-			this->label7->Text = L"Advertencia: No deje ningún espacio vacío";
+			this->label7->Text = L"Advertencia: No deje ningun espacio vacio";
 			// 
 			// btnRegresarEdit
 			// 
@@ -210,10 +212,10 @@ namespace SmartParkingSystemViewGUI {
 			this->btnRegresarEdit->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnRegresarEdit->ForeColor = System::Drawing::Color::White;
-			this->btnRegresarEdit->Location = System::Drawing::Point(343, 415);
-			this->btnRegresarEdit->Margin = System::Windows::Forms::Padding(2);
+			this->btnRegresarEdit->Location = System::Drawing::Point(457, 511);
+			this->btnRegresarEdit->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btnRegresarEdit->Name = L"btnRegresarEdit";
-			this->btnRegresarEdit->Size = System::Drawing::Size(166, 31);
+			this->btnRegresarEdit->Size = System::Drawing::Size(221, 38);
 			this->btnRegresarEdit->TabIndex = 22;
 			this->btnRegresarEdit->Text = L"Cancelar";
 			this->btnRegresarEdit->UseVisualStyleBackColor = false;
@@ -225,10 +227,10 @@ namespace SmartParkingSystemViewGUI {
 			this->btnGuardarEdit->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnGuardarEdit->ForeColor = System::Drawing::Color::White;
-			this->btnGuardarEdit->Location = System::Drawing::Point(129, 415);
-			this->btnGuardarEdit->Margin = System::Windows::Forms::Padding(2);
+			this->btnGuardarEdit->Location = System::Drawing::Point(172, 511);
+			this->btnGuardarEdit->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btnGuardarEdit->Name = L"btnGuardarEdit";
-			this->btnGuardarEdit->Size = System::Drawing::Size(178, 31);
+			this->btnGuardarEdit->Size = System::Drawing::Size(237, 38);
 			this->btnGuardarEdit->TabIndex = 24;
 			this->btnGuardarEdit->Text = L"Guardar Cambios";
 			this->btnGuardarEdit->UseVisualStyleBackColor = false;
@@ -238,10 +240,10 @@ namespace SmartParkingSystemViewGUI {
 			this->panel2->BackColor = System::Drawing::SystemColors::ScrollBar;
 			this->panel2->Controls->Add(this->label7);
 			this->panel2->Dock = System::Windows::Forms::DockStyle::Bottom;
-			this->panel2->Location = System::Drawing::Point(0, 462);
-			this->panel2->Margin = System::Windows::Forms::Padding(2);
+			this->panel2->Location = System::Drawing::Point(0, 568);
+			this->panel2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->panel2->Name = L"panel2";
-			this->panel2->Size = System::Drawing::Size(683, 51);
+			this->panel2->Size = System::Drawing::Size(911, 63);
 			this->panel2->TabIndex = 21;
 			// 
 			// label2
@@ -250,10 +252,9 @@ namespace SmartParkingSystemViewGUI {
 			this->label2->Font = (gcnew System::Drawing::Font(L"Arial", 14, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label2->ForeColor = System::Drawing::Color::White;
-			this->label2->Location = System::Drawing::Point(8, 12);
-			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label2->Location = System::Drawing::Point(11, 15);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(121, 22);
+			this->label2->Size = System::Drawing::Size(152, 29);
 			this->label2->TabIndex = 0;
 			this->label2->Text = L"Editar Multa";
 			// 
@@ -275,14 +276,14 @@ namespace SmartParkingSystemViewGUI {
 			this->grpBoxPrincipal->Controls->Add(this->label3);
 			this->grpBoxPrincipal->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->grpBoxPrincipal->Location = System::Drawing::Point(23, 49);
-			this->grpBoxPrincipal->Margin = System::Windows::Forms::Padding(5);
+			this->grpBoxPrincipal->Location = System::Drawing::Point(31, 60);
+			this->grpBoxPrincipal->Margin = System::Windows::Forms::Padding(7, 6, 7, 6);
 			this->grpBoxPrincipal->Name = L"grpBoxPrincipal";
-			this->grpBoxPrincipal->Padding = System::Windows::Forms::Padding(5);
-			this->grpBoxPrincipal->Size = System::Drawing::Size(619, 348);
+			this->grpBoxPrincipal->Padding = System::Windows::Forms::Padding(7, 6, 7, 6);
+			this->grpBoxPrincipal->Size = System::Drawing::Size(825, 428);
 			this->grpBoxPrincipal->TabIndex = 23;
 			this->grpBoxPrincipal->TabStop = false;
-			this->grpBoxPrincipal->Text = L"Inserte la Información del Nuevo Empleado";
+			this->grpBoxPrincipal->Text = L"Edite la descripcion de la multa";
 			// 
 			// comboBox1
 			// 
@@ -290,18 +291,19 @@ namespace SmartParkingSystemViewGUI {
 			this->comboBox1->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->comboBox1->FormattingEnabled = true;
 			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"Por Pagar", L"Pagada", L"Anulada", L"En Revisión" });
-			this->comboBox1->Location = System::Drawing::Point(191, 299);
+			this->comboBox1->Location = System::Drawing::Point(255, 368);
+			this->comboBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(215, 30);
+			this->comboBox1->Size = System::Drawing::Size(285, 37);
 			this->comboBox1->TabIndex = 11;
 			// 
 			// label8
 			// 
 			this->label8->AutoSize = true;
-			this->label8->Location = System::Drawing::Point(14, 299);
-			this->label8->Margin = System::Windows::Forms::Padding(5, 0, 5, 0);
+			this->label8->Location = System::Drawing::Point(19, 368);
+			this->label8->Margin = System::Windows::Forms::Padding(7, 0, 7, 0);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(73, 24);
+			this->label8->Size = System::Drawing::Size(94, 29);
 			this->label8->TabIndex = 10;
 			this->label8->Text = L"Estado:";
 			// 
@@ -312,21 +314,22 @@ namespace SmartParkingSystemViewGUI {
 			this->panel1->Controls->Add(this->label2);
 			this->panel1->Dock = System::Windows::Forms::DockStyle::Top;
 			this->panel1->Location = System::Drawing::Point(0, 0);
-			this->panel1->Margin = System::Windows::Forms::Padding(2);
+			this->panel1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(683, 42);
+			this->panel1->Size = System::Drawing::Size(911, 52);
 			this->panel1->TabIndex = 20;
 			// 
 			// frmEditarMulta
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(683, 513);
+			this->ClientSize = System::Drawing::Size(911, 631);
 			this->Controls->Add(this->btnRegresarEdit);
 			this->Controls->Add(this->btnGuardarEdit);
 			this->Controls->Add(this->panel2);
 			this->Controls->Add(this->grpBoxPrincipal);
 			this->Controls->Add(this->panel1);
+			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"frmEditarMulta";
 			this->Text = L"Editar Multa";
 			this->panel2->ResumeLayout(false);

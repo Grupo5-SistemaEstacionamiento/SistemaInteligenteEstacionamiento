@@ -71,20 +71,19 @@ namespace SmartParkingSystemViewGUI {
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(66, 92);
-			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label1->Location = System::Drawing::Point(88, 113);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(168, 19);
+			this->label1->Size = System::Drawing::Size(208, 24);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Inserte Nuevo Valor: ";
 			// 
 			// textBox1
 			// 
 			this->textBox1->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->textBox1->Location = System::Drawing::Point(253, 94);
-			this->textBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->textBox1->Location = System::Drawing::Point(337, 116);
+			this->textBox1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(306, 20);
+			this->textBox1->Size = System::Drawing::Size(407, 22);
 			this->textBox1->TabIndex = 1;
 			// 
 			// panel1
@@ -94,9 +93,9 @@ namespace SmartParkingSystemViewGUI {
 			this->panel1->Controls->Add(this->label2);
 			this->panel1->Dock = System::Windows::Forms::DockStyle::Top;
 			this->panel1->Location = System::Drawing::Point(0, 0);
-			this->panel1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->panel1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(683, 42);
+			this->panel1->Size = System::Drawing::Size(911, 52);
 			this->panel1->TabIndex = 2;
 			// 
 			// label2
@@ -105,22 +104,21 @@ namespace SmartParkingSystemViewGUI {
 			this->label2->Font = (gcnew System::Drawing::Font(L"Arial", 14, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label2->ForeColor = System::Drawing::Color::White;
-			this->label2->Location = System::Drawing::Point(8, 12);
-			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label2->Location = System::Drawing::Point(11, 15);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(181, 22);
+			this->label2->Size = System::Drawing::Size(226, 29);
 			this->label2->TabIndex = 0;
-			this->label2->Text = L"Editar Informacíón";
+			this->label2->Text = L"Editar Informacion";
 			this->label2->Click += gcnew System::EventHandler(this, &frmEditarInfo::label2_Click);
 			// 
 			// panel2
 			// 
 			this->panel2->BackColor = System::Drawing::SystemColors::ScrollBar;
 			this->panel2->Dock = System::Windows::Forms::DockStyle::Bottom;
-			this->panel2->Location = System::Drawing::Point(0, 292);
-			this->panel2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->panel2->Location = System::Drawing::Point(0, 359);
+			this->panel2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->panel2->Name = L"panel2";
-			this->panel2->Size = System::Drawing::Size(683, 51);
+			this->panel2->Size = System::Drawing::Size(911, 63);
 			this->panel2->TabIndex = 3;
 			// 
 			// btnRegresarEdit
@@ -129,10 +127,10 @@ namespace SmartParkingSystemViewGUI {
 			this->btnRegresarEdit->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnRegresarEdit->ForeColor = System::Drawing::Color::White;
-			this->btnRegresarEdit->Location = System::Drawing::Point(359, 162);
-			this->btnRegresarEdit->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btnRegresarEdit->Location = System::Drawing::Point(479, 199);
+			this->btnRegresarEdit->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btnRegresarEdit->Name = L"btnRegresarEdit";
-			this->btnRegresarEdit->Size = System::Drawing::Size(166, 31);
+			this->btnRegresarEdit->Size = System::Drawing::Size(221, 38);
 			this->btnRegresarEdit->TabIndex = 12;
 			this->btnRegresarEdit->Text = L"Regresar";
 			this->btnRegresarEdit->UseVisualStyleBackColor = false;
@@ -144,10 +142,10 @@ namespace SmartParkingSystemViewGUI {
 			this->btnGuardarEdit->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnGuardarEdit->ForeColor = System::Drawing::Color::White;
-			this->btnGuardarEdit->Location = System::Drawing::Point(147, 162);
-			this->btnGuardarEdit->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btnGuardarEdit->Location = System::Drawing::Point(196, 199);
+			this->btnGuardarEdit->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btnGuardarEdit->Name = L"btnGuardarEdit";
-			this->btnGuardarEdit->Size = System::Drawing::Size(178, 31);
+			this->btnGuardarEdit->Size = System::Drawing::Size(237, 38);
 			this->btnGuardarEdit->TabIndex = 13;
 			this->btnGuardarEdit->Text = L"Guardar Cambios";
 			this->btnGuardarEdit->UseVisualStyleBackColor = false;
@@ -155,16 +153,16 @@ namespace SmartParkingSystemViewGUI {
 			// 
 			// frmEditarInfo
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(683, 343);
+			this->ClientSize = System::Drawing::Size(911, 422);
 			this->Controls->Add(this->btnGuardarEdit);
 			this->Controls->Add(this->btnRegresarEdit);
 			this->Controls->Add(this->panel2);
 			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->label1);
-			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"frmEditarInfo";
 			this->Text = L"Editar Información";
 			this->panel1->ResumeLayout(false);

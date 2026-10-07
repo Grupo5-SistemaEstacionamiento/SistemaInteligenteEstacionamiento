@@ -1,4 +1,5 @@
 #pragma once
+#include "Persona.h"
 namespace SmartParkingSystemModel {
 
 	using namespace System;
@@ -15,7 +16,7 @@ namespace SmartParkingSystemModel {
 		NO_MIEMBRO,
 
 	};
-	public ref class Cliente {
+	public ref class Cliente : public Persona{
 
 	private:
 		DateTime fechaAfiliacion;

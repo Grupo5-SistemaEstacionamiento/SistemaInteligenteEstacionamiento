@@ -111,10 +111,10 @@ namespace SmartParkingSystemViewGUI {
 			this->panel2->BackColor = System::Drawing::Color::White;
 			this->panel2->Controls->Add(this->groupBox1);
 			this->panel2->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->panel2->Location = System::Drawing::Point(0, 55);
-			this->panel2->Margin = System::Windows::Forms::Padding(2);
+			this->panel2->Location = System::Drawing::Point(0, 68);
+			this->panel2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->panel2->Name = L"panel2";
-			this->panel2->Size = System::Drawing::Size(847, 441);
+			this->panel2->Size = System::Drawing::Size(1129, 542);
 			this->panel2->TabIndex = 19;
 			this->panel2->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &frmTurno::panel2_Paint);
 			// 
@@ -128,9 +128,11 @@ namespace SmartParkingSystemViewGUI {
 			this->groupBox1->Controls->Add(this->label8);
 			this->groupBox1->Font = (gcnew System::Drawing::Font(L"Arial", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->groupBox1->Location = System::Drawing::Point(85, 49);
+			this->groupBox1->Location = System::Drawing::Point(113, 60);
+			this->groupBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(664, 348);
+			this->groupBox1->Padding = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->groupBox1->Size = System::Drawing::Size(885, 428);
 			this->groupBox1->TabIndex = 1;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Hora Actual:";
@@ -143,10 +145,10 @@ namespace SmartParkingSystemViewGUI {
 			this->Balanceturnobtn->Font = (gcnew System::Drawing::Font(L"Arial", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->Balanceturnobtn->ForeColor = System::Drawing::Color::White;
-			this->Balanceturnobtn->Location = System::Drawing::Point(225, 242);
-			this->Balanceturnobtn->Margin = System::Windows::Forms::Padding(2);
+			this->Balanceturnobtn->Location = System::Drawing::Point(300, 298);
+			this->Balanceturnobtn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Balanceturnobtn->Name = L"Balanceturnobtn";
-			this->Balanceturnobtn->Size = System::Drawing::Size(183, 43);
+			this->Balanceturnobtn->Size = System::Drawing::Size(244, 53);
 			this->Balanceturnobtn->TabIndex = 70;
 			this->Balanceturnobtn->Text = L"Balance Turno";
 			this->Balanceturnobtn->UseVisualStyleBackColor = false;
@@ -158,10 +160,10 @@ namespace SmartParkingSystemViewGUI {
 			this->Salidabtn->Font = (gcnew System::Drawing::Font(L"Arial", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->Salidabtn->ForeColor = System::Drawing::Color::White;
-			this->Salidabtn->Location = System::Drawing::Point(361, 159);
-			this->Salidabtn->Margin = System::Windows::Forms::Padding(2);
+			this->Salidabtn->Location = System::Drawing::Point(481, 196);
+			this->Salidabtn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Salidabtn->Name = L"Salidabtn";
-			this->Salidabtn->Size = System::Drawing::Size(183, 43);
+			this->Salidabtn->Size = System::Drawing::Size(244, 53);
 			this->Salidabtn->TabIndex = 69;
 			this->Salidabtn->Text = L"Registrar Salida";
 			this->Salidabtn->UseVisualStyleBackColor = false;
@@ -174,10 +176,10 @@ namespace SmartParkingSystemViewGUI {
 			this->Iniciobtn->Font = (gcnew System::Drawing::Font(L"Arial", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->Iniciobtn->ForeColor = System::Drawing::Color::White;
-			this->Iniciobtn->Location = System::Drawing::Point(109, 159);
-			this->Iniciobtn->Margin = System::Windows::Forms::Padding(2);
+			this->Iniciobtn->Location = System::Drawing::Point(145, 196);
+			this->Iniciobtn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Iniciobtn->Name = L"Iniciobtn";
-			this->Iniciobtn->Size = System::Drawing::Size(183, 43);
+			this->Iniciobtn->Size = System::Drawing::Size(244, 53);
 			this->Iniciobtn->TabIndex = 12;
 			this->Iniciobtn->Text = L"Registrar Inicio";
 			this->Iniciobtn->UseVisualStyleBackColor = false;
@@ -191,10 +193,9 @@ namespace SmartParkingSystemViewGUI {
 			this->label8->Font = (gcnew System::Drawing::Font(L"Arial Black", 40.25F, System::Drawing::FontStyle::Bold));
 			this->label8->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
-			this->label8->Location = System::Drawing::Point(149, 45);
-			this->label8->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label8->Location = System::Drawing::Point(199, 55);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(359, 76);
+			this->label8->Size = System::Drawing::Size(451, 96);
 			this->label8->TabIndex = 68;
 			this->label8->Text = L"3:00.00 AM";
 			this->label8->Click += gcnew System::EventHandler(this, &frmTurno::label8_Click);
@@ -207,12 +208,12 @@ namespace SmartParkingSystemViewGUI {
 			this->textInfoCliente->Font = (gcnew System::Drawing::Font(L"Arial", 20, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textInfoCliente->ForeColor = System::Drawing::Color::White;
-			this->textInfoCliente->Location = System::Drawing::Point(25, 8);
-			this->textInfoCliente->Margin = System::Windows::Forms::Padding(2);
+			this->textInfoCliente->Location = System::Drawing::Point(33, 10);
+			this->textInfoCliente->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->textInfoCliente->Name = L"textInfoCliente";
-			this->textInfoCliente->Size = System::Drawing::Size(541, 31);
+			this->textInfoCliente->Size = System::Drawing::Size(721, 39);
 			this->textInfoCliente->TabIndex = 0;
-			this->textInfoCliente->Text = L"Gestión de Turno";
+			this->textInfoCliente->Text = L"Gestion de Turno";
 			this->textInfoCliente->TextChanged += gcnew System::EventHandler(this, &frmTurno::textInfoCliente_TextChanged);
 			// 
 			// panel1
@@ -222,9 +223,9 @@ namespace SmartParkingSystemViewGUI {
 			this->panel1->Controls->Add(this->textInfoCliente);
 			this->panel1->Dock = System::Windows::Forms::DockStyle::Top;
 			this->panel1->Location = System::Drawing::Point(0, 0);
-			this->panel1->Margin = System::Windows::Forms::Padding(2);
+			this->panel1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(847, 55);
+			this->panel1->Size = System::Drawing::Size(1129, 68);
 			this->panel1->TabIndex = 18;
 			this->panel1->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &frmTurno::panel1_Paint);
 			// 
@@ -234,10 +235,10 @@ namespace SmartParkingSystemViewGUI {
 			this->button1->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button1->ForeColor = System::Drawing::Color::White;
-			this->button1->Location = System::Drawing::Point(325, 19);
-			this->button1->Margin = System::Windows::Forms::Padding(2);
+			this->button1->Location = System::Drawing::Point(433, 23);
+			this->button1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(166, 31);
+			this->button1->Size = System::Drawing::Size(221, 38);
 			this->button1->TabIndex = 11;
 			this->button1->Text = L"Regresar";
 			this->button1->UseVisualStyleBackColor = false;
@@ -248,22 +249,23 @@ namespace SmartParkingSystemViewGUI {
 			this->panel3->BackColor = System::Drawing::SystemColors::ScrollBar;
 			this->panel3->Controls->Add(this->button1);
 			this->panel3->Dock = System::Windows::Forms::DockStyle::Bottom;
-			this->panel3->Location = System::Drawing::Point(0, 496);
-			this->panel3->Margin = System::Windows::Forms::Padding(2);
+			this->panel3->Location = System::Drawing::Point(0, 610);
+			this->panel3->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->panel3->Name = L"panel3";
-			this->panel3->Size = System::Drawing::Size(847, 64);
+			this->panel3->Size = System::Drawing::Size(1129, 79);
 			this->panel3->TabIndex = 20;
 			this->panel3->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &frmTurno::panel3_Paint);
 			// 
 			// frmTurno
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(847, 560);
+			this->ClientSize = System::Drawing::Size(1129, 689);
 			this->Controls->Add(this->panel2);
 			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->panel3);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
+			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"frmTurno";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterParent;
 			this->Text = L"frmTurno";

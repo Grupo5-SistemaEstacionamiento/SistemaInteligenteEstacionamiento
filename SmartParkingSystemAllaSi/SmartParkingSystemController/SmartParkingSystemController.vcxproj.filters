@@ -45,6 +45,36 @@
     <ClInclude Include="TarifaController.h">
       <Filter>Header Files\Admin</Filter>
     </ClInclude>
+    <ClInclude Include="ClienteController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EmpleadoController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MovimientoController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PagoController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TurnoCajaController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VehiculoController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PenalizacionController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TarjetaRFIDController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MembresiaController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RegistroAccesoController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SmartParkingSystemController.cpp">
@@ -58,6 +88,36 @@
     </ClCompile>
     <ClCompile Include="TarifaController.cpp">
       <Filter>Source Files\Admin</Filter>
+    </ClCompile>
+    <ClCompile Include="ClienteController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EmpleadoController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MovimientoController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PagoController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TurnoCajaController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VehiculoController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PenalizacionController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TarjetaRFIDController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MembresiaController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RegistroAccesoController.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -97,9 +97,9 @@ namespace SmartParkingSystemViewGUI {
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->panel3 = (gcnew System::Windows::Forms::Panel());
+			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->pnlContenedor->SuspendLayout();
 			this->groupBox1->SuspendLayout();
 			this->panel3->SuspendLayout();
@@ -115,27 +115,30 @@ namespace SmartParkingSystemViewGUI {
 			this->pnlContenedor->Controls->Add(this->label1);
 			this->pnlContenedor->Controls->Add(this->panel3);
 			this->pnlContenedor->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->pnlContenedor->Location = System::Drawing::Point(0, 52);
+			this->pnlContenedor->Location = System::Drawing::Point(0, 64);
+			this->pnlContenedor->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->pnlContenedor->Name = L"pnlContenedor";
-			this->pnlContenedor->Size = System::Drawing::Size(1058, 560);
+			this->pnlContenedor->Size = System::Drawing::Size(1411, 689);
 			this->pnlContenedor->TabIndex = 11;
 			// 
 			// panel5
 			// 
 			this->panel5->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(180)), static_cast<System::Int32>(static_cast<System::Byte>(190)),
 				static_cast<System::Int32>(static_cast<System::Byte>(255)));
-			this->panel5->Location = System::Drawing::Point(1025, 6);
+			this->panel5->Location = System::Drawing::Point(1367, 7);
+			this->panel5->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->panel5->Name = L"panel5";
-			this->panel5->Size = System::Drawing::Size(10, 467);
+			this->panel5->Size = System::Drawing::Size(13, 575);
 			this->panel5->TabIndex = 61;
 			// 
 			// panel4
 			// 
 			this->panel4->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(180)), static_cast<System::Int32>(static_cast<System::Byte>(190)),
 				static_cast<System::Int32>(static_cast<System::Byte>(255)));
-			this->panel4->Location = System::Drawing::Point(30, 13);
+			this->panel4->Location = System::Drawing::Point(40, 16);
+			this->panel4->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->panel4->Name = L"panel4";
-			this->panel4->Size = System::Drawing::Size(10, 467);
+			this->panel4->Size = System::Drawing::Size(13, 575);
 			this->panel4->TabIndex = 60;
 			// 
 			// groupBox1
@@ -150,12 +153,14 @@ namespace SmartParkingSystemViewGUI {
 			this->groupBox1->Controls->Add(this->label4);
 			this->groupBox1->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->groupBox1->Location = System::Drawing::Point(205, 145);
+			this->groupBox1->Location = System::Drawing::Point(273, 178);
+			this->groupBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(664, 263);
+			this->groupBox1->Padding = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->groupBox1->Size = System::Drawing::Size(885, 324);
 			this->groupBox1->TabIndex = 59;
 			this->groupBox1->TabStop = false;
-			this->groupBox1->Text = L"Ingrese su Información";
+			this->groupBox1->Text = L"Ingrese su Informacion";
 			// 
 			// btnIngresar
 			// 
@@ -164,10 +169,10 @@ namespace SmartParkingSystemViewGUI {
 			this->btnIngresar->Font = (gcnew System::Drawing::Font(L"Arial", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnIngresar->ForeColor = System::Drawing::Color::White;
-			this->btnIngresar->Location = System::Drawing::Point(251, 152);
-			this->btnIngresar->Margin = System::Windows::Forms::Padding(2);
+			this->btnIngresar->Location = System::Drawing::Point(335, 187);
+			this->btnIngresar->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btnIngresar->Name = L"btnIngresar";
-			this->btnIngresar->Size = System::Drawing::Size(166, 45);
+			this->btnIngresar->Size = System::Drawing::Size(221, 55);
 			this->btnIngresar->TabIndex = 70;
 			this->btnIngresar->Text = L"Ingresar";
 			this->btnIngresar->UseVisualStyleBackColor = false;
@@ -177,10 +182,10 @@ namespace SmartParkingSystemViewGUI {
 			// 
 			this->TextBoxCorreo->BackColor = System::Drawing::Color::White;
 			this->TextBoxCorreo->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->TextBoxCorreo->Location = System::Drawing::Point(304, 53);
-			this->TextBoxCorreo->Margin = System::Windows::Forms::Padding(2);
+			this->TextBoxCorreo->Location = System::Drawing::Point(405, 65);
+			this->TextBoxCorreo->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->TextBoxCorreo->Name = L"TextBoxCorreo";
-			this->TextBoxCorreo->Size = System::Drawing::Size(310, 26);
+			this->TextBoxCorreo->Size = System::Drawing::Size(413, 30);
 			this->TextBoxCorreo->TabIndex = 69;
 			this->TextBoxCorreo->UseWaitCursor = true;
 			// 
@@ -193,10 +198,9 @@ namespace SmartParkingSystemViewGUI {
 				static_cast<System::Byte>(0)));
 			this->label7->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
-			this->label7->Location = System::Drawing::Point(223, 218);
-			this->label7->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label7->Location = System::Drawing::Point(297, 268);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(218, 27);
+			this->label7->Size = System::Drawing::Size(277, 33);
 			this->label7->TabIndex = 68;
 			this->label7->Text = L"Alla No pero Alla Si!";
 			// 
@@ -204,11 +208,11 @@ namespace SmartParkingSystemViewGUI {
 			// 
 			this->TextBoxPassword->BackColor = System::Drawing::Color::White;
 			this->TextBoxPassword->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->TextBoxPassword->Location = System::Drawing::Point(304, 99);
-			this->TextBoxPassword->Margin = System::Windows::Forms::Padding(2);
+			this->TextBoxPassword->Location = System::Drawing::Point(405, 122);
+			this->TextBoxPassword->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->TextBoxPassword->Name = L"TextBoxPassword";
 			this->TextBoxPassword->PasswordChar = '*';
-			this->TextBoxPassword->Size = System::Drawing::Size(310, 26);
+			this->TextBoxPassword->Size = System::Drawing::Size(413, 30);
 			this->TextBoxPassword->TabIndex = 62;
 			this->TextBoxPassword->UseSystemPasswordChar = true;
 			this->TextBoxPassword->UseWaitCursor = true;
@@ -221,12 +225,11 @@ namespace SmartParkingSystemViewGUI {
 			this->label2->Font = (gcnew System::Drawing::Font(L"Arial", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label2->ForeColor = System::Drawing::Color::White;
-			this->label2->Location = System::Drawing::Point(117, 96);
-			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label2->Location = System::Drawing::Point(156, 118);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(151, 29);
+			this->label2->Size = System::Drawing::Size(191, 35);
 			this->label2->TabIndex = 57;
-			this->label2->Text = L"Contraseña:";
+			this->label2->Text = L"Contrasena:";
 			// 
 			// label4
 			// 
@@ -236,12 +239,11 @@ namespace SmartParkingSystemViewGUI {
 			this->label4->Font = (gcnew System::Drawing::Font(L"Arial", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label4->ForeColor = System::Drawing::Color::White;
-			this->label4->Location = System::Drawing::Point(43, 50);
-			this->label4->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label4->Location = System::Drawing::Point(57, 62);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(243, 29);
+			this->label4->Size = System::Drawing::Size(303, 35);
 			this->label4->TabIndex = 56;
-			this->label4->Text = L"Correo Electrónico: ";
+			this->label4->Text = L"Correo Electronico: ";
 			// 
 			// label1
 			// 
@@ -250,10 +252,9 @@ namespace SmartParkingSystemViewGUI {
 			this->label1->Font = (gcnew System::Drawing::Font(L"Arial Black", 26.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label1->ForeColor = System::Drawing::SystemColors::WindowText;
-			this->label1->Location = System::Drawing::Point(93, 42);
-			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label1->Location = System::Drawing::Point(124, 52);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(254, 50);
+			this->label1->Size = System::Drawing::Size(320, 62);
 			this->label1->TabIndex = 57;
 			this->label1->Text = L"Bienvenido! ";
 			// 
@@ -262,11 +263,25 @@ namespace SmartParkingSystemViewGUI {
 			this->panel3->BackColor = System::Drawing::SystemColors::ScrollBar;
 			this->panel3->Controls->Add(this->label5);
 			this->panel3->Dock = System::Windows::Forms::DockStyle::Bottom;
-			this->panel3->Location = System::Drawing::Point(0, 485);
-			this->panel3->Margin = System::Windows::Forms::Padding(2);
+			this->panel3->Location = System::Drawing::Point(0, 597);
+			this->panel3->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->panel3->Name = L"panel3";
-			this->panel3->Size = System::Drawing::Size(1058, 75);
+			this->panel3->Size = System::Drawing::Size(1411, 92);
 			this->panel3->TabIndex = 58;
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->BackColor = System::Drawing::SystemColors::ScrollBar;
+			this->label5->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label5->ForeColor = System::Drawing::Color::White;
+			this->label5->Location = System::Drawing::Point(60, 15);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(623, 69);
+			this->label5->TabIndex = 60;
+			this->label5->Text = L"Consejo:\r\nPara entrar como cliente-> U: cliente@estacionamiento.com - p: 1234\r\nPa"
+				L"ra entrar como admin-> U: admin@estacionamiento.com - p: 1234 \r\n";
 			// 
 			// panel1
 			// 
@@ -274,8 +289,9 @@ namespace SmartParkingSystemViewGUI {
 			this->panel1->Controls->Add(this->textBox1);
 			this->panel1->Dock = System::Windows::Forms::DockStyle::Top;
 			this->panel1->Location = System::Drawing::Point(0, 0);
+			this->panel1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(1058, 52);
+			this->panel1->Size = System::Drawing::Size(1411, 64);
 			this->panel1->TabIndex = 12;
 			// 
 			// textBox1
@@ -285,34 +301,22 @@ namespace SmartParkingSystemViewGUI {
 			this->textBox1->Font = (gcnew System::Drawing::Font(L"Arial", 22, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBox1->ForeColor = System::Drawing::Color::White;
-			this->textBox1->Location = System::Drawing::Point(12, 12);
+			this->textBox1->Location = System::Drawing::Point(16, 15);
+			this->textBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(1023, 34);
+			this->textBox1->Size = System::Drawing::Size(1364, 43);
 			this->textBox1->TabIndex = 0;
-			this->textBox1->Text = L"Sistema de Estacionamiento Inteligente Allá-Sí";
-			// 
-			// label5
-			// 
-			this->label5->AutoSize = true;
-			this->label5->BackColor = System::Drawing::SystemColors::ScrollBar;
-			this->label5->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label5->ForeColor = System::Drawing::Color::White;
-			this->label5->Location = System::Drawing::Point(45, 12);
-			this->label5->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
-			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(491, 54);
-			this->label5->TabIndex = 60;
-			this->label5->Text = L"Consejo:\r\nPara entrar como cliente-> U: cliente@estacionamiento.com - p: 1234\r\nPa"
-				L"ra entrar como admin-> U: admin@estacionamiento.com - p: 1234 \r\n";
+			this->textBox1->Text = L"Sistema de Estacionamiento Inteligente Alla-Si";
+			this->textBox1->TextChanged += gcnew System::EventHandler(this, &frmLogin::textBox1_TextChanged);
 			// 
 			// frmLogin
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1058, 612);
+			this->ClientSize = System::Drawing::Size(1411, 753);
 			this->Controls->Add(this->pnlContenedor);
 			this->Controls->Add(this->panel1);
+			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"frmLogin";
 			this->Text = L"Portal Sistema de Estacionamiento Inteligente Alla-Si";
 			this->pnlContenedor->ResumeLayout(false);
@@ -352,5 +356,7 @@ namespace SmartParkingSystemViewGUI {
 			MessageBox::Show("Acceso denegado \n Correo o contraseña inválidos \n Por favor, intente denuevo","Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 	}
+private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }

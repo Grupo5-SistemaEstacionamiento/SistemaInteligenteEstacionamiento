@@ -134,13 +134,17 @@
     <ClInclude Include="ClienteDAO.h" />
     <ClInclude Include="CocheraDAO.h" />
     <ClInclude Include="EmpleadoDAO.h" />
+    <ClInclude Include="MembresiaDAO.h" />
     <ClInclude Include="MovimientoDAO.h" />
     <ClInclude Include="PagoDAO.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="PenalizacionDAO.h" />
     <ClInclude Include="PerifericoDAO.h" />
+    <ClInclude Include="RegistroAccesoDAO.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SmartParkingSystemDAO.h" />
     <ClInclude Include="TarifaDAO.h" />
+    <ClInclude Include="TarjetaRFIDDAO.h" />
     <ClInclude Include="TurnoCajaDAO.h" />
     <ClInclude Include="VehiculoDAO.h" />
   </ItemGroup>
@@ -149,6 +153,7 @@
     <ClCompile Include="ClienteDAO.cpp" />
     <ClCompile Include="CocheraDAO.cpp" />
     <ClCompile Include="EmpleadoDAO.cpp" />
+    <ClCompile Include="MembresiaDAO.cpp" />
     <ClCompile Include="MovimientoDAO.cpp" />
     <ClCompile Include="PagoDAO.cpp" />
     <ClCompile Include="pch.cpp">
@@ -157,9 +162,12 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="PenalizacionDAO.cpp" />
     <ClCompile Include="PerifericoDAO.cpp" />
+    <ClCompile Include="RegistroAccesoDAO.cpp" />
     <ClCompile Include="SmartParkingSystemDAO.cpp" />
     <ClCompile Include="TarifaDAO.cpp" />
+    <ClCompile Include="TarjetaRFIDDAO.cpp" />
     <ClCompile Include="TurnoCajaDAO.cpp" />
     <ClCompile Include="VehiculoDAO.cpp" />
   </ItemGroup>

@@ -220,9 +220,9 @@
     <ClInclude Include="frmSuscripcion.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-	  <ClInclude Include="frmTarifa.h">
-		  <FileType>CppForm</FileType>
-	  </ClInclude>
+    <ClInclude Include="frmTarifa.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="frmTurno.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -300,9 +300,9 @@
     <EmbeddedResource Include="frmSuscripcion.resx">
       <DependentUpon>frmSuscripcion.h</DependentUpon>
     </EmbeddedResource>
-	<EmbeddedResource Include="frmTarifa.resx">
-       <DependentUpon>frmTarifa.h</DependentUpon>
-	</EmbeddedResource>
+    <EmbeddedResource Include="frmTarifa.resx">
+      <DependentUpon>frmTarifa.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmTurno.resx">
       <DependentUpon>frmTurno.h</DependentUpon>
     </EmbeddedResource>
@@ -326,6 +326,15 @@
     <ProjectReference Include="..\SmartParkingSystemModel\SmartParkingSystemModel.vcxproj">
       <Project>{ee4ff2d9-2aa0-c51a-2664-4c02fe3aaa33}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Clientes.txt" />
+    <Text Include="Empleados.txt" />
+    <Text Include="Movimientos.txt" />
+    <Text Include="Pagos.txt" />
+    <Text Include="Tarifas.txt" />
+    <Text Include="TurnosCaja.txt" />
+    <Text Include="Vehiculos.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

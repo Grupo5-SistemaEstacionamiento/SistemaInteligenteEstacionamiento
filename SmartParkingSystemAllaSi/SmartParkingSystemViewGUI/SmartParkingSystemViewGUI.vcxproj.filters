@@ -287,4 +287,13 @@
       <Filter>Header Files\UI_Admin</Filter>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Clientes.txt" />
+    <Text Include="Empleados.txt" />
+    <Text Include="Movimientos.txt" />
+    <Text Include="Pagos.txt" />
+    <Text Include="Tarifas.txt" />
+    <Text Include="TurnosCaja.txt" />
+    <Text Include="Vehiculos.txt" />
+  </ItemGroup>
 </Project>
