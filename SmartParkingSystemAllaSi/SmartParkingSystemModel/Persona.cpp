@@ -60,7 +60,7 @@ void Persona::setIdPersona(int idPersona) {
 void Persona::setNombres(String^ nombres) {
 	this->nombres = nombres;
 }
-void Persona::setNpellidos(String^ apellidos) {
+void Persona::setApellidos(String^ apellidos) {
 	this->apellidos = apellidos;
 }
 void Persona::setDocumento(String^ documento) {

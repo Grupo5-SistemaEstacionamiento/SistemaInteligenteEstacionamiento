@@ -43,7 +43,7 @@ namespace SmartParkingSystemModel {
 		/*seters*/
 		void setIdPersona(int idPersona);
 		void setNombres(String^ nombres);
-		void setNpellidos(String^ apellidos);
+		void setApellidos(String^ apellidos);
 		void setDocumento(String^ documento);
 		void setTelefono(String^ telefono);
 		void setCorreo(String^ correo);

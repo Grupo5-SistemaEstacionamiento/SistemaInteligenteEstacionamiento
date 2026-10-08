@@ -20,6 +20,11 @@ Empleado^ EmpleadoController::buscarxCodigoMemoria(String^ codigo) {
 	return nullptr;
 }
 
+List<Empleado^>^ EmpleadoController::listarEmpleadosArchivo() {
+	EmpleadoDAO^ empleadoDAO = gcnew EmpleadoDAO();
+	return empleadoDAO->buscarTodosArchivo();
+}
+
 void EmpleadoController::registrarMemoria(Empleado^ empleado) {
 	this->listaEmpleados->Add(empleado);
 }
@@ -29,7 +34,7 @@ void EmpleadoController::modificarMemoria(Empleado^ empleado) {
 		if (this->listaEmpleados[i]->getCodigoEmpleado() == empleado->getCodigoEmpleado()) {
 			this->listaEmpleados[i]->setDocumento(empleado->getDocumento());
 			this->listaEmpleados[i]->setNombres(empleado->getNombres());
-			this->listaEmpleados[i]->setNpellidos(empleado->getApellidos());
+			this->listaEmpleados[i]->setApellidos(empleado->getApellidos());
 			this->listaEmpleados[i]->setEstado(empleado->getEstado());
 			break;
 		}
@@ -70,3 +75,4 @@ void EmpleadoController::eliminarArchivo(String^ codigo) {
 	EmpleadoDAO^ empleadoDAO = gcnew EmpleadoDAO();
 	empleadoDAO->eliminarEmpleadoArchivos(codigo);
 }
+

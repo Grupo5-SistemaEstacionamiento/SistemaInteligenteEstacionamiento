@@ -2,13 +2,13 @@
 
 namespace SmartParkingSystemController {
 
-	using namespace System::Collections::Generic;
-	using namespace SmartParkingSystemModel;
-	using namespace System;
+	using namespace System::Collections::Generic; //para usar la lista
+	using namespace SmartParkingSystemModel; //para usar las propiedades de la clase Empleado
+	using namespace System; //Para usar el string
 
 	public ref class EmpleadoController {
 	private:
-		List<Empleado^>^ listaEmpleados;
+		List<Empleado^>^ listaEmpleados; //Lista para trabajar con memoria
 
 	public:
 		/*Memoria*/
@@ -21,6 +21,7 @@ namespace SmartParkingSystemController {
 
 		/*Archivos*/
 		List<Empleado^>^ buscarTodosArchivo();
+		List<Empleado^>^ listarEmpleadosArchivo();
 		Empleado^ buscarxCodigoArchivo(String^ codigo);
 		void registrarArchivo(Empleado^ empleado);
 		void modificarArchivo(Empleado^ empleado);

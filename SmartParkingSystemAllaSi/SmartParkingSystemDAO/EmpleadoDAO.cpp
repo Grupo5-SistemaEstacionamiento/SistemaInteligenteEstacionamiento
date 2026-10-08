@@ -2,7 +2,7 @@
 #include "EmpleadoDAO.h"
 
 using namespace SmartParkingSystemDAO;
-using namespace System::IO;
+using namespace System::IO; //Tiene las clases de manejo de archivos
 
 EmpleadoDAO::EmpleadoDAO() {
 
@@ -10,12 +10,20 @@ EmpleadoDAO::EmpleadoDAO() {
 
 List<Empleado^>^ EmpleadoDAO::buscarTodosArchivo() {
 	List<Empleado^>^ listaEmpleados = gcnew List<Empleado^>();
-	if (!File::Exists("Empleados.txt")) return listaEmpleados;
+	if (!File::Exists("Empleados.txt")) {  //Si no existe el archivo entrega la lista vacia
+		return listaEmpleados;
+	}
 
-	array<String^>^ lineas = File::ReadAllLines("Empleados.txt");
-	for each (String ^ linea in lineas) {
-		if (String::IsNullOrWhiteSpace(linea)) continue;
-		array<String^>^ datos = linea->Split(';');
+	array<String^>^ lineas = File::ReadAllLines("Empleados.txt"); //Genera un array que contiene las lineas del archivo
+
+	for each (String ^ linea in lineas) { //Abstraemos los datos de cada linea tomando en cuenta los separadores
+
+		if (String::IsNullOrWhiteSpace(linea)) {
+			continue; //Si hay un espcio en blanco , se salta esa linea
+		}
+		String^ separador = ";"; //Separador de datos
+
+		array<String^>^ datos = linea->Split(separador->ToCharArray()); //Conseguimos los datos a partir de los separadores
 
 		int idPersona = datos->Length > 0 ? Convert::ToInt32(datos[0]) : 0;
 		String^ nombres = datos->Length > 1 ? datos[1] : String::Empty;
@@ -39,71 +47,74 @@ List<Empleado^>^ EmpleadoDAO::buscarTodosArchivo() {
 		bool estado = (estadoStr->Equals("1") || estadoStr->ToLower()->Equals("true"));
 		bool enTurno = (enTurnoStr->Equals("1") || enTurnoStr->ToLower()->Equals("true"));
 
-		Empleado^ empleado = gcnew Empleado(
-			idPersona,
-			nombres,
-			apellidos,
-			documento,
-			telefono,
-			correo,
-			fechaRegistro,
-			estado,
-			codigoEmpleado,
-			cargo,
-			turno,
-			fechaContratacion,
-			enTurno,
-			nullptr,
-			nullptr
-		);
+		// CORRECCIÓN: Instanciamos vacío y seteamos manualmente para evitar el constructor roto
+		Empleado^ empleado = gcnew Empleado();
 
-		listaEmpleados->Add(empleado);
+		// Atributos de Persona
+		empleado->setNombres(nombres);
+		empleado->setApellidos(apellidos);
+		empleado->setDocumento(documento);
+		empleado->setEstado(estado);
+
+		// Atributos de Empleado
+		empleado->setCodigoEmpleado(codigoEmpleado);
+		empleado->setCargo(cargo);
+		empleado->setTurno(turno);
+		empleado->setFechaContratacion(fechaContratacion);
+		empleado->setEnTurno(enTurno);
+
+		listaEmpleados->Add(empleado); //Agregamos el empleado a la lista de empleados cada iteracion del for each
 	}
 
-	return listaEmpleados;
+	return listaEmpleados; //Retorna la lista de empleados que se obtuvo del archivo
 }
 
 Empleado^ EmpleadoDAO::buscarxCodigoArchivo(String^ codigo) {
-	List<Empleado^>^ listaEmpleadosTodos = buscarTodosArchivo();
-	for (int i = 0; i < listaEmpleadosTodos->Count; i++) {
-		if (listaEmpleadosTodos[i]->getCodigoEmpleado() == codigo) {
-			return listaEmpleadosTodos[i];
+	List<Empleado^>^ listaEmpleadosTodos = buscarTodosArchivo(); //Obtener todos los empleados del archivo (llamado de función)
+
+	for (int i = 0; i < listaEmpleadosTodos->Count; i++) { //Revisamos toda la lista de completa
+		
+		if (listaEmpleadosTodos[i]->getCodigoEmpleado() == codigo) { //De lo que dentro de la lista contenga el codigo que se ha buscado 
+			return listaEmpleadosTodos[i]; //si encuentra el codigo, retorna el empleado encontrado
 		}
 	}
-	return nullptr;
+	return nullptr; //Si no encuentra al empleado, retorna un puntero nulo
 }
 
 void EmpleadoDAO::registrarEmpleadoArchivo(Empleado^ empleado) {
-	List<Empleado^>^ listaEmpleadosTodos = buscarTodosArchivo(); /*Recupero a todos los empleados del archivo*/
-	listaEmpleadosTodos->Add(empleado); /*Agrego al nuevo a lista*/
-	escribirArchivo(listaEmpleadosTodos);
+	List<Empleado^>^ listaEmpleadosTodos = buscarTodosArchivo(); // Recupero a todos los empleados del archivo para colocar al nuevo al final de la lista
+	listaEmpleadosTodos->Add(empleado); //Agrego al nuevo empleado a la lista
+	escribirArchivo(listaEmpleadosTodos); //Escribimos la nueva lista de empleados en el archivo, incluyendo al nuevo empleado
 }
 
 void EmpleadoDAO::modificarEmpleadoArchivo(Empleado^ empleado) {
-	List<Empleado^>^ listaEmpleadosTodos = buscarTodosArchivo(); /*Recupero a todos los empleados del archivo*/
+	List<Empleado^>^ listaEmpleadosTodos = buscarTodosArchivo(); //Recupero a todos los empleados del archivo
+
 	for (int i = 0; i < listaEmpleadosTodos->Count; i++) {
-		if (listaEmpleadosTodos[i]->getCodigoEmpleado() == empleado->getCodigoEmpleado()) {
+		if (listaEmpleadosTodos[i]->getCodigoEmpleado() == empleado->getCodigoEmpleado()) { //Si los codigos coiciden se modifica el empleado encontrado por el nuevo
 			// Reemplazar todo el objeto empleado encontrado por el nuevo
 			listaEmpleadosTodos[i] = empleado;
 			break;
 		}
 	}
-	escribirArchivo(listaEmpleadosTodos);
+	escribirArchivo(listaEmpleadosTodos); //reescribimos la lista actualizada
 }
 
 void EmpleadoDAO::eliminarEmpleadoArchivos(String^ codigo) {
-	List<Empleado^>^ listaEmpleadosTodos = buscarTodosArchivo(); /*Recupero a todos los empleados del archivo*/
+	List<Empleado^>^ listaEmpleadosTodos = buscarTodosArchivo(); //Recupero a todos los empleados del archivo
+
 	for (int i = 0; i < listaEmpleadosTodos->Count; i++) {
-		if (listaEmpleadosTodos[i]->getCodigoEmpleado() == codigo) {
-			listaEmpleadosTodos->RemoveAt(i);
+		if (listaEmpleadosTodos[i]->getCodigoEmpleado() == codigo) { //Si el codigo del empleado coincide con el codigo que se quiere eliminar se elimina de la lista
+			listaEmpleadosTodos->RemoveAt(i); //Eliminamos de la lista
 			break;
 		}
 	}
-	escribirArchivo(listaEmpleadosTodos);
+	escribirArchivo(listaEmpleadosTodos); //reescribimos la lista actualizada
 }
 
 void EmpleadoDAO::escribirArchivo(List<Empleado^>^ listaEmpleados) {
-	array<String^>^ lineasArchivo = gcnew array<String^>(listaEmpleados->Count);
+	array<String^>^ lineasArchivo = gcnew array<String^>(listaEmpleados->Count); ///Contamos la cantidad de lineas en el archivo .txt
+
 	for (int i = 0; i < listaEmpleados->Count; i++) {
 		Empleado^ empleado = listaEmpleados[i];
 		String^ fechaRegistroStr = empleado->getFechaRegistro().ToString("o");
@@ -115,7 +126,7 @@ void EmpleadoDAO::escribirArchivo(List<Empleado^>^ listaEmpleados) {
 			empleado->getNombres() + ";" +
 			empleado->getApellidos() + ";" +
 			empleado->getDocumento() + ";" +
-			/*telefono*/ String::Empty + ";" +
+			/*telefono*/ String::Empty + ";" + //Colocamos String::Empty para los campos que no se usan en la clase Empleado
 			/*correo*/ String::Empty + ";" +
 			fechaRegistroStr + ";" +
 			estadoStr + ";" +
@@ -125,5 +136,5 @@ void EmpleadoDAO::escribirArchivo(List<Empleado^>^ listaEmpleados) {
 			fechaContratacionStr + ";" +
 			enTurnoStr;
 	}
-	File::WriteAllLines("Empleados.txt", lineasArchivo);
+	File::WriteAllLines("Empleados.txt", lineasArchivo); //Escribimos todas las lineas en el archivo, reemplazando el contenido anterior (reescribiendo)
 }

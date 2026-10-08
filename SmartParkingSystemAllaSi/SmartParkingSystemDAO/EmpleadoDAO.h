@@ -10,7 +10,7 @@ namespace SmartParkingSystemDAO {
 
 	public:
 		EmpleadoDAO();
-		List<Empleado^>^ buscarTodosArchivo();
+		List<Empleado^>^ buscarTodosArchivo(); //Busca a todos los empleados en el archivo, y devuelve una lista de ellos
 		Empleado^ buscarxCodigoArchivo(String^ codigo);
 		void registrarEmpleadoArchivo(Empleado^ empleado);
 		void modificarEmpleadoArchivo(Empleado^ empleado);
