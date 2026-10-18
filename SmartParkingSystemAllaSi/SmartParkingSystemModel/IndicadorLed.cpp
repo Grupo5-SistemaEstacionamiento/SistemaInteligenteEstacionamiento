@@ -16,7 +16,7 @@ IndicadorLed::IndicadorLed(int idPeriferico,
 	int intesidad,
 	bool estaEncendido,
 	String^ tipoLuz,
-	String^ modoOperacion) {
+	String^ modoOperacion):Periferico(idPeriferico, ubicacion, fechaInstalacion, fechaUltimoMant, estado, hayEmergencia) {
 
 	this->color = color;
 	this->intesidad = intesidad;

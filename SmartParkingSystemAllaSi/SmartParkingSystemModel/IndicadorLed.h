@@ -39,6 +39,14 @@ namespace SmartParkingSystemModel  {
 		void setTipoLuz(String^ tipoLuz);
 		void setModoOperacion(String^ modoOperacion);
 
+		virtual String^ getTipoString() override {
+			return "LED";
+		}
+
+		virtual String^ getDetallesResumen() override {
+			return "Color: " + this->color + "| Tipo Luz: " + this->tipoLuz + "| Modo de operación: " + this->modoOperacion + "| Intensidad: " + this->intesidad.ToString() + "%";
+		}
+
 	};
 
 

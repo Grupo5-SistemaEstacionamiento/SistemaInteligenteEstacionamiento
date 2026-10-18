@@ -138,6 +138,9 @@
     <ClCompile Include="frmNuevoPeriferico.cpp">
       <Filter>Header Files\UI_Admin\SubUI_Admin\Perifericos</Filter>
     </ClCompile>
+    <ClCompile Include="frmEditarPeriferico.cpp">
+      <Filter>Header Files\UI_Admin\SubUI_Admin\Perifericos</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="frmLogin.h">
@@ -222,6 +225,9 @@
       <Filter>Header Files\UI_Admin</Filter>
     </ClInclude>
     <ClInclude Include="frmNuevoPeriferico.h">
+      <Filter>Header Files\UI_Admin\SubUI_Admin\Perifericos</Filter>
+    </ClInclude>
+    <ClInclude Include="frmEditarPeriferico.h">
       <Filter>Header Files\UI_Admin\SubUI_Admin\Perifericos</Filter>
     </ClInclude>
   </ItemGroup>

@@ -37,6 +37,14 @@ namespace SmartParkingSystemModel {
 		void setDetectaVehiculo(bool detectaVehiculo);
 		void setFechaUltimaLectura(DateTime fechaUltimaLectura);
 
+		virtual String^ getTipoString() override {
+			return "Sensor IR";
+		}
+
+		virtual String^ getDetallesResumen() override {
+			return "Umbral: " + this->umbralDeteccion;
+		}
+		
 	};
 
 

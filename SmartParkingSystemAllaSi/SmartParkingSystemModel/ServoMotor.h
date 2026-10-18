@@ -30,8 +30,13 @@ namespace SmartParkingSystemModel{
 		void setAnguloMaxApertura(double anguloMaxApertura);
 		void setTorque(double torque);
 
+		virtual String^ getTipoString() override {
+			return "Servomotor";
+		}
 
-
+		virtual String^ getDetallesResumen() override {
+			return "Ángulo: " + this->anguloMaxApertura.ToString() + "° | Torque: " + this->torque.ToString() + "N*cm";
+		}
 	};
 
 }

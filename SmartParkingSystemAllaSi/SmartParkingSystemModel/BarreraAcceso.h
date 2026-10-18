@@ -51,7 +51,9 @@ namespace SmartParkingSystemModel {
 		void setServoMotor(ServoMotor^ servoMotor);
 		void setListaRegistrosAcceso(List<RegistroAcceso^>^ listaRegistrosAcceso);
 
-
+		virtual String^ getTipoString() override {
+			return "Barrera de Acceso";
+		}
 
 	};
 

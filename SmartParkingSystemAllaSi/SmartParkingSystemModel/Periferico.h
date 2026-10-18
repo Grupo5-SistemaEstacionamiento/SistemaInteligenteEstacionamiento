@@ -47,6 +47,13 @@ namespace SmartParkingSystemModel {
 		void setEstado(EstadoPeriferico estado);
 		void setHayEmergencia(bool hayEmergencia);
 
+		virtual String^ getTipoString() { //Para poder ver los tipos de periféricos en el data grid view
+			return "Periférico General";
+		}
+
+		virtual String^ getDetallesResumen() {
+			return "Sin detalles específicos";
+		}
 	};
 
 

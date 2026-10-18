@@ -40,6 +40,14 @@ namespace SmartParkingSystemModel {
 		void setProtocoloComunicacion(String^ protocoloComunicacion);
 		void setEsLecturaEntrada(bool esLecturaEntrada);
 		void setPotenciaTransmicion(double potenciaTransmicion);
+
+		virtual String^ getTipoString() override {
+			return "Lector RFID";
+		}
+
+		virtual String^ getDetallesResumen() override {
+			return "Frecuencia de Operación: " + this->frecOperacion.ToString() + "Hz | Dist. Máx.: " + this->distanciaLecturaMax.ToString() + "cm | Protocolo: " + this->protocoloComunicacion + " | Potencia: " + this->potenciaTransmicion + "W | Rol: " + (this->esLecturaEntrada ? "Entrada" : "Salida");
+		}
 	};
 
 }
