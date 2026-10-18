@@ -1,0 +1,2 @@
+#include "frmNuevoPeriferico.h"
+

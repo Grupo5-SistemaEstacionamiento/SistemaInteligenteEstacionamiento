@@ -138,6 +138,7 @@
     <ClInclude Include="PagoController.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="PenalizacionController.h" />
+    <ClInclude Include="PerifericosController.h" />
     <ClInclude Include="RegistroAccesoController.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SmartParkingSystemController.h" />
@@ -160,6 +161,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="PenalizacionController.cpp" />
+    <ClCompile Include="PerifericosController.cpp" />
     <ClCompile Include="RegistroAccesoController.cpp" />
     <ClCompile Include="SmartParkingSystemController.cpp" />
     <ClCompile Include="TarifaController.cpp" />

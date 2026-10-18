@@ -139,7 +139,9 @@
     <ClCompile Include="frmMapa.cpp" />
     <ClCompile Include="frmMapaAdmin.cpp" />
     <ClCompile Include="frmModInfo.cpp" />
+    <ClCompile Include="frmNuevoPeriferico.cpp" />
     <ClCompile Include="frmOfrecerSuscripcion.cpp" />
+    <ClCompile Include="frmPerifericos.cpp" />
     <ClCompile Include="frmPrincipal.cpp" />
     <ClCompile Include="frmPrincipalAdmin.cpp" />
     <ClCompile Include="frmRegistrarEmpleado.cpp" />
@@ -196,7 +198,13 @@
     <ClInclude Include="frmModInfo.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="frmNuevoPeriferico.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="frmOfrecerSuscripcion.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmPerifericos.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmPrincipalAdmin.h">
@@ -276,8 +284,14 @@
     <EmbeddedResource Include="frmModInfo.resx">
       <DependentUpon>frmModInfo.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmNuevoPeriferico.resx">
+      <DependentUpon>frmNuevoPeriferico.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmOfrecerSuscripcion.resx">
       <DependentUpon>frmOfrecerSuscripcion.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPerifericos.resx">
+      <DependentUpon>frmPerifericos.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipalAdmin.resx">
       <DependentUpon>frmPrincipalAdmin.h</DependentUpon>
@@ -318,6 +332,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SmartParkingSystemController\SmartParkingSystemController.vcxproj">

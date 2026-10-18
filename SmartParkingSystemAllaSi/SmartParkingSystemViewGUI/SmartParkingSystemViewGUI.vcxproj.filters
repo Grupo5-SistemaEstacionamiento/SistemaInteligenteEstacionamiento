@@ -43,6 +43,12 @@
     <Filter Include="Header Files\UI_Admin\SubUI_Admin\Administrar Empleados">
       <UniqueIdentifier>{25fbf5f8-c2cb-4c2c-9838-58538d8eafb9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de Texto">
+      <UniqueIdentifier>{8b010106-badf-4a17-8f23-f9d642f59794}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\UI_Admin\SubUI_Admin\Perifericos">
+      <UniqueIdentifier>{ec5cb8da-a7c6-432c-bc37-f964a04203c2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -126,6 +132,12 @@
     <ClCompile Include="frmTarifa.cpp">
       <Filter>Header Files\UI_Admin</Filter>
     </ClCompile>
+    <ClCompile Include="frmPerifericos.cpp">
+      <Filter>Header Files\UI_Admin</Filter>
+    </ClCompile>
+    <ClCompile Include="frmNuevoPeriferico.cpp">
+      <Filter>Header Files\UI_Admin\SubUI_Admin\Perifericos</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="frmLogin.h">
@@ -205,6 +217,12 @@
     </ClInclude>
     <ClInclude Include="frmTarifa.h">
       <Filter>Header Files\UI_Admin</Filter>
+    </ClInclude>
+    <ClInclude Include="frmPerifericos.h">
+      <Filter>Header Files\UI_Admin</Filter>
+    </ClInclude>
+    <ClInclude Include="frmNuevoPeriferico.h">
+      <Filter>Header Files\UI_Admin\SubUI_Admin\Perifericos</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -288,12 +306,26 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Clientes.txt" />
-    <Text Include="Empleados.txt" />
-    <Text Include="Movimientos.txt" />
-    <Text Include="Pagos.txt" />
-    <Text Include="Tarifas.txt" />
-    <Text Include="TurnosCaja.txt" />
-    <Text Include="Vehiculos.txt" />
+    <Text Include="TurnosCaja.txt">
+      <Filter>Archivos de Texto</Filter>
+    </Text>
+    <Text Include="Clientes.txt">
+      <Filter>Archivos de Texto</Filter>
+    </Text>
+    <Text Include="Empleados.txt">
+      <Filter>Archivos de Texto</Filter>
+    </Text>
+    <Text Include="Movimientos.txt">
+      <Filter>Archivos de Texto</Filter>
+    </Text>
+    <Text Include="Pagos.txt">
+      <Filter>Archivos de Texto</Filter>
+    </Text>
+    <Text Include="Tarifas.txt">
+      <Filter>Archivos de Texto</Filter>
+    </Text>
+    <Text Include="Vehiculos.txt">
+      <Filter>Archivos de Texto</Filter>
+    </Text>
   </ItemGroup>
 </Project>
