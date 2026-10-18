@@ -17,7 +17,7 @@ LectorRFID::LectorRFID(int idPeriferico,
 	String^ idUltimaTarjeta,
 	String^ protocoloComunicacion,
 	bool esLecturaEntrada,
-	double potenciaTransmicion) {
+	double potenciaTransmicion) : Periferico(idPeriferico, ubicacion, fechaInstalacion, fechaUltimoMant, estado, hayEmergencia) {
 
 	this->frecOperacion = frecOperacion;
 	this->distanciaLecturaMax = distanciaLecturaMax;

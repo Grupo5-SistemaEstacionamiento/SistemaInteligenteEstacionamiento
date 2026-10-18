@@ -35,7 +35,7 @@ namespace SmartParkingSystemModel{
 		}
 
 		virtual String^ getDetallesResumen() override {
-			return "Ángulo: " + this->anguloMaxApertura.ToString() + "° | Torque: " + this->torque.ToString() + "N*cm";
+			return "Ángulo: " + this->anguloMaxApertura.ToString() + " ° | Torque: " + this->torque.ToString() + " N*cm";
 		}
 	};
 

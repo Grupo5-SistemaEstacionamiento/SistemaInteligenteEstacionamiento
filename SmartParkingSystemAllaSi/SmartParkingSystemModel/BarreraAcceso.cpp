@@ -5,31 +5,44 @@
 #include "ServoMotor.h"
 #include "RegistroAcceso.h"
 
+//NOTA: todo lo comentado se hizo para q funcione con la pantalla de perifericos
+
 namespace SmartParkingSystemModel {
 
 	BarreraAcceso::BarreraAcceso() {
-		this->listaRegistrosAcceso = gcnew List<RegistroAcceso^>();
+		//this->listaRegistrosAcceso = gcnew List<RegistroAcceso^>(); //?? xq coño esta eso aqui???? 
 	}
 	BarreraAcceso::BarreraAcceso(
+
+		//adicion para q funcione la pantalla de perifericos
+
+		int idPeriferico,
+		String^ ubicacion,
+		DateTime fechaInstalacion,
+		DateTime fechaUltimoMant,
+		EstadoPeriferico estado,
+		bool hayEmergencia,
+		//----------------------------------------
+
 		bool hayImpedimento,
 		bool esEntrada,
-		bool estaAbierto,
-
+		bool estaAbierto
+		/*
 		LectorRFID^ lectorRFID,
 		SensorOcupacion^ sensorOcupacion,
 		ServoMotor^ servoMotor,
 		List<RegistroAcceso^>^ listaRegistrosAcceso
-
-	) {
+		*/
+	) : Periferico(idPeriferico, ubicacion, fechaInstalacion, fechaUltimoMant, estado, hayEmergencia) {
 		this->hayImpedimento = hayImpedimento;
 		this->esEntrada = esEntrada;
 		this->estaAbierto = estaAbierto;
-
+		/*
 		this->lectorRFID = lectorRFID;
 		this->sensorOcupacion = sensorOcupacion;
 		this->servoMotor = servoMotor;
 		this->listaRegistrosAcceso = listaRegistrosAcceso;
-
+		*/
 	}
 
 	bool BarreraAcceso::getHayImpedimento() {
@@ -41,7 +54,7 @@ namespace SmartParkingSystemModel {
 	bool BarreraAcceso::getEstaAbierto() {
 		return this->estaAbierto;
 	}
-
+	/*
 	LectorRFID^ BarreraAcceso::getLectorRFID() {
 		return this->lectorRFID;
 	}
@@ -54,7 +67,7 @@ namespace SmartParkingSystemModel {
 	List<RegistroAcceso^>^ BarreraAcceso::getListaRegistrosAcceso() {
 		return this->listaRegistrosAcceso;
 	}
-
+	*/
 
 	void BarreraAcceso::setHayImpedimento(bool hayImpedimento) {
 		this->hayImpedimento = hayImpedimento;
@@ -65,6 +78,8 @@ namespace SmartParkingSystemModel {
 	void BarreraAcceso::setEstaAbierto(bool estaAbierto) {
 		this->estaAbierto = estaAbierto;
 	}
+
+	/*
 	void BarreraAcceso::setLectorRFID(LectorRFID^ lectorRFID) {
 		this->lectorRFID = lectorRFID;
 	}
@@ -77,4 +92,5 @@ namespace SmartParkingSystemModel {
 	void BarreraAcceso::setListaRegistrosAcceso(List<RegistroAcceso^>^ listaRegistrosAcceso) {
 		this->listaRegistrosAcceso = listaRegistrosAcceso;
 	}
+	*/
 }

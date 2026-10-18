@@ -14,7 +14,7 @@ ServoMotor::ServoMotor(int idPeriferico,
 	bool hayEmergencia,
 	double anguloActual,
 	double anguloMaxApertura,
-	double torque) {
+	double torque) : Periferico(idPeriferico, ubicacion, fechaInstalacion, fechaUltimoMant, estado, hayEmergencia) {
 
 	this->anguloActual = anguloActual;
 	this->anguloMaxApertura = anguloMaxApertura;

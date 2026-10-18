@@ -6,7 +6,7 @@ namespace SmartParkingSystemModel {
 
 	public enum class EstadoPeriferico {
 		Activo,
-		Desactivo,
+		Inactivo, //habian puesto "desactivo" ps no seas malo 
 		Averiado,
 		Mantenimiento,
 	};

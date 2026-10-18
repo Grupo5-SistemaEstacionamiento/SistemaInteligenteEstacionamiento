@@ -3,7 +3,7 @@
 
 namespace SmartParkingSystemModel {
 
-	public ref class SensorOcupacion : public Periferico{
+	public ref class SensorOcupacion : public Periferico {
 
 	private:
 		double umbralDeteccion;
@@ -42,7 +42,7 @@ namespace SmartParkingSystemModel {
 		}
 
 		virtual String^ getDetallesResumen() override {
-			return "Umbral: " + this->umbralDeteccion;
+			return "Umbral: " + this->umbralDeteccion + " cm";
 		}
 		
 	};

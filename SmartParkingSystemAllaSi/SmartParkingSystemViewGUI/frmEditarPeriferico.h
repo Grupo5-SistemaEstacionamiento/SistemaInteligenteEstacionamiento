@@ -36,7 +36,7 @@ namespace SmartParkingSystemViewGUI {
 				this->textID->Text = Convert::ToString(PerifericoEdit->getIdPeriferico());
 				//this->textID->Enabled = false; //esto ya se hace en Properties del frm con el ReadOnly
 				this->textUbicacion->Text = PerifericoEdit->getUbicacion();
-				this->dateTimePickerInstalacion->Value = PerifericoEdit->getFechaInstalacion();
+				this->dateTimePickerInstalacion->Value = PerifericoEdit->getFechaUltimoMant();
 				this->textEstado->Text = Convert::ToString(PerifericoEdit->getEstado());
 
 				groupLED->Visible = false;
@@ -85,7 +85,7 @@ namespace SmartParkingSystemViewGUI {
 					this->txtLRFIDDistancia->Text = Convert::ToString(lector->getDistanciaLecturaMax());
 					this->txtLRFIDProtocolo->Text = lector->getProtocoloComunicacion();
 					this->txtLRFIDPotencia->Text = Convert::ToString(lector->getPotenciaTransmicion());
-					this->cboLRFIDUbicacion->Text = lector->getUbicacion();
+					this->cboLRFIDUbicacion->Text = lector->getEsLecturaEntrada() ? "Entrada" : "Salida";
 				}
 
 				else if (dynamic_cast<BarreraAcceso^>(PerifericoEdit) != nullptr) { // ¿Es una Tranquera?
@@ -144,7 +144,7 @@ namespace SmartParkingSystemViewGUI {
 	private: System::Windows::Forms::Panel^ panel2;
 	private: System::Windows::Forms::Label^ label7;
 	private: System::Windows::Forms::GroupBox^ grpBoxPrincipal;
-	private: System::Windows::Forms::DateTimePicker^ dateTimePickerInstalacion;
+
 	private: System::Windows::Forms::ComboBox^ cboTipo;
 	private: System::Windows::Forms::TextBox^ textID;
 	private: System::Windows::Forms::TextBox^ textUbicacion;
@@ -160,6 +160,7 @@ namespace SmartParkingSystemViewGUI {
 	private: System::Windows::Forms::Label^ label11;
 	private: System::Windows::Forms::Panel^ pnlColorMuestra;
 	private: System::Windows::Forms::GroupBox^ groupLED;
+private: System::Windows::Forms::DateTimePicker^ dateTimePickerInstalacion;
 
 	private:
 		/// <summary>
@@ -338,9 +339,9 @@ namespace SmartParkingSystemViewGUI {
 			this->label9->Location = System::Drawing::Point(21, 382);
 			this->label9->Margin = System::Windows::Forms::Padding(8, 0, 8, 0);
 			this->label9->Name = L"label9";
-			this->label9->Size = System::Drawing::Size(148, 32);
+			this->label9->Size = System::Drawing::Size(65, 32);
 			this->label9->TabIndex = 5;
-			this->label9->Text = L"Ubicación:";
+			this->label9->Text = L"Rol:";
 			// 
 			// txtLEDModo
 			// 
@@ -615,17 +616,16 @@ namespace SmartParkingSystemViewGUI {
 			// 
 			// dateTimePickerInstalacion
 			// 
-			this->dateTimePickerInstalacion->CalendarMonthBackground = System::Drawing::Color::Gray;
+			this->dateTimePickerInstalacion->CalendarMonthBackground = System::Drawing::Color::White;
 			this->dateTimePickerInstalacion->CustomFormat = L"dd/MM/yyyy";
-			this->dateTimePickerInstalacion->Enabled = false;
 			this->dateTimePickerInstalacion->Format = System::Windows::Forms::DateTimePickerFormat::Custom;
-			this->dateTimePickerInstalacion->Location = System::Drawing::Point(309, 228);
+			this->dateTimePickerInstalacion->Location = System::Drawing::Point(465, 228);
 			this->dateTimePickerInstalacion->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->dateTimePickerInstalacion->MinDate = System::DateTime(2000, 1, 1, 0, 0, 0, 0);
 			this->dateTimePickerInstalacion->Name = L"dateTimePickerInstalacion";
 			this->dateTimePickerInstalacion->Size = System::Drawing::Size(320, 39);
 			this->dateTimePickerInstalacion->TabIndex = 15;
-			this->dateTimePickerInstalacion->Value = System::DateTime(2005, 11, 24, 0, 0, 0, 0);
+			this->dateTimePickerInstalacion->Value = System::DateTime(2026, 10, 18, 0, 0, 0, 0);
 			// 
 			// cboTipo
 			// 
@@ -638,7 +638,7 @@ namespace SmartParkingSystemViewGUI {
 				L"Barrera de Acceso", L"Servomotor", L"Sensor IR",
 					L"Lector RFID", L"LED"
 			});
-			this->cboTipo->Location = System::Drawing::Point(309, 306);
+			this->cboTipo->Location = System::Drawing::Point(465, 306);
 			this->cboTipo->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->cboTipo->Name = L"cboTipo";
 			this->cboTipo->Size = System::Drawing::Size(320, 40);
@@ -647,20 +647,20 @@ namespace SmartParkingSystemViewGUI {
 			// textID
 			// 
 			this->textID->BackColor = System::Drawing::Color::Silver;
-			this->textID->Location = System::Drawing::Point(309, 80);
+			this->textID->Location = System::Drawing::Point(462, 80);
 			this->textID->Margin = System::Windows::Forms::Padding(8);
 			this->textID->Name = L"textID";
 			this->textID->ReadOnly = true;
-			this->textID->Size = System::Drawing::Size(580, 39);
+			this->textID->Size = System::Drawing::Size(427, 39);
 			this->textID->TabIndex = 13;
 			// 
 			// textUbicacion
 			// 
 			this->textUbicacion->BackColor = System::Drawing::Color::White;
-			this->textUbicacion->Location = System::Drawing::Point(309, 155);
+			this->textUbicacion->Location = System::Drawing::Point(462, 155);
 			this->textUbicacion->Margin = System::Windows::Forms::Padding(8);
 			this->textUbicacion->Name = L"textUbicacion";
-			this->textUbicacion->Size = System::Drawing::Size(580, 39);
+			this->textUbicacion->Size = System::Drawing::Size(427, 39);
 			this->textUbicacion->TabIndex = 12;
 			// 
 			// textEstado
@@ -669,7 +669,7 @@ namespace SmartParkingSystemViewGUI {
 			this->textEstado->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->textEstado->FormattingEnabled = true;
 			this->textEstado->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"Activo", L"Inactivo", L"Averiado", L"Mantenimiento" });
-			this->textEstado->Location = System::Drawing::Point(309, 394);
+			this->textEstado->Location = System::Drawing::Point(465, 394);
 			this->textEstado->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->textEstado->Name = L"textEstado";
 			this->textEstado->Size = System::Drawing::Size(320, 40);
@@ -711,9 +711,9 @@ namespace SmartParkingSystemViewGUI {
 			this->label4->Location = System::Drawing::Point(21, 228);
 			this->label4->Margin = System::Windows::Forms::Padding(8, 0, 8, 0);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(291, 32);
+			this->label4->Size = System::Drawing::Size(430, 32);
 			this->label4->TabIndex = 3;
-			this->label4->Text = L"Fecha de Instalación: ";
+			this->label4->Text = L"Fecha de Último Mantenimiento: ";
 			// 
 			// label3
 			// 
@@ -860,7 +860,7 @@ public:
 private: System::Void btnGuardarEdit_Click(System::Object^ sender, System::EventArgs^ e) { //Guardar
 
 	try {
-	SmartParkingSystemController:PerifericoController^ Controller = gcnew PerifericoController();
+	SmartParkingSystemController::PerifericoController^ Controller = gcnew PerifericoController();
 
 		Periferico^ PerifericoEdit = Controller->BuscarPerifericoxID(idPerifericoEditar);
 
@@ -868,6 +868,7 @@ private: System::Void btnGuardarEdit_Click(System::Object^ sender, System::Event
 
 			PerifericoEdit->setUbicacion(this->textUbicacion->Text);
 			PerifericoEdit->setEstado((EstadoPeriferico)Enum::Parse(EstadoPeriferico::typeid, this->textEstado->Text));
+			PerifericoEdit->setFechaUltimoMant(this->dateTimePickerInstalacion->Value);
 
 			String^ tipoSeleccionado = this->cboTipo->Text;
 
@@ -899,7 +900,7 @@ private: System::Void btnGuardarEdit_Click(System::Object^ sender, System::Event
 					lector->setDistanciaLecturaMax(Convert::ToDouble(this->txtLRFIDDistancia->Text));
 					lector->setProtocoloComunicacion(this->txtLRFIDProtocolo->Text);
 					lector->setPotenciaTransmicion(Convert::ToDouble(this->txtLRFIDPotencia->Text));
-					lector->setUbicacion(this->cboLRFIDUbicacion->Text);
+					lector->setEsLecturaEntrada(this->cboLRFIDUbicacion->Text == "Entrada");
 				}
 			}
 

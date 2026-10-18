@@ -15,46 +15,57 @@ namespace SmartParkingSystemModel {
 		bool hayImpedimento;
 		bool esEntrada;
 		bool estaAbierto;
-
+		/*
 		LectorRFID^ lectorRFID;
 		SensorOcupacion^ sensorOcupacion;
 		ServoMotor^ servoMotor;
 		List<RegistroAcceso^>^ listaRegistrosAcceso;
-
+		*/ 
 	public:
 		BarreraAcceso();
 		BarreraAcceso(
+			int idPeriferico,
+			String^ ubicacion,
+			DateTime fechaInstalacion,
+			DateTime fechaUltimoMant,
+			EstadoPeriferico estado,
+			bool hayEmergencia,
 			bool hayImpedimento,
 			bool esEntrada,
-			bool estaAbierto,
+			bool estaAbierto
+			/*
 			LectorRFID^ lectorRFID,
 			SensorOcupacion^ sensorOcupacion,
 			ServoMotor^ servoMotor,
 			List<RegistroAcceso^>^ listaRegistrosAcceso
+			*/	
 		);
 
 		bool getHayImpedimento();
 		bool getEsEntrada();
 		bool getEstaAbierto();
-
+		/*
 		LectorRFID^ getLectorRFID();
 		SensorOcupacion^ getSensorOcupacion();
 		ServoMotor^ getServoMotor();
 		List<RegistroAcceso^>^ getListaRegistrosAcceso();
-
+		*/
 		void setHayImpedimento(bool hayImpedimento);
 		void setEsEntrada(bool esEntrada);
 		void setEstaAbierto(bool estaAbierto);
 
+		/*
 		void setLectorRFID(LectorRFID^ lectorRFID);
 		void setSensorOcupacion(SensorOcupacion^ sensorOcupacion);
 		void setServoMotor(ServoMotor^ servoMotor);
 		void setListaRegistrosAcceso(List<RegistroAcceso^>^ listaRegistrosAcceso);
-
+		*/
 		virtual String^ getTipoString() override {
 			return "Barrera de Acceso";
 		}
-
+		virtual String^ getDetallesResumen() override {
+			return "Rol: " + (this->esEntrada ? "Entrada" : "Salida");
+		}
 	};
 
 }

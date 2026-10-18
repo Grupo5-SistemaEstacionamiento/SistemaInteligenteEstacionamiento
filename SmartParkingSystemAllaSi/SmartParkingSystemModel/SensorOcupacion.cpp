@@ -17,7 +17,7 @@ SensorOcupacion::SensorOcupacion(
 	double valorLectura,
 	bool detectaVehiculo,
 	DateTime fechaUltimaLectura
-) {
+) : Periferico(idPeriferico, ubicacion, fechaInstalacion, fechaUltimoMant, estado, hayEmergencia) {
 
 	this->umbralDeteccion = umbralDeteccion;
 	this->valorLectura = valorLectura;

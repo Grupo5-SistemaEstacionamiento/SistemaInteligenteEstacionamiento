@@ -46,7 +46,7 @@ namespace SmartParkingSystemModel {
 		}
 
 		virtual String^ getDetallesResumen() override {
-			return "Frecuencia de Operación: " + this->frecOperacion.ToString() + "Hz | Dist. Máx.: " + this->distanciaLecturaMax.ToString() + "cm | Protocolo: " + this->protocoloComunicacion + " | Potencia: " + this->potenciaTransmicion + "W | Rol: " + (this->esLecturaEntrada ? "Entrada" : "Salida");
+			return "Frecuencia de Operación: " + this->frecOperacion.ToString() + " Hz | Dist. Máx.: " + this->distanciaLecturaMax.ToString() + " cm | Protocolo: " + this->protocoloComunicacion + " | Potencia: " + this->potenciaTransmicion + " W | Rol: " + (this->esLecturaEntrada ? "Entrada" : "Salida");
 		}
 	};
 

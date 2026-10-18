@@ -20,7 +20,8 @@ TarjetaRFID::TarjetaRFID(
 	List<LectorRFID^>^ listaLecturas,
 	Cliente^ cliente
 
-) {
+)
+{
 	this->idTarjeta = idTarjeta;
 	this->codigoUID = codigoUID;
 	this->fechaEmision = fechaEmision;

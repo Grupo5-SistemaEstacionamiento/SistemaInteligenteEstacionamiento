@@ -415,9 +415,9 @@ List<BarreraAcceso^>^ PerifericoDAO::buscarTodasBarrerasAccesoArchivo() {
 		bool esEntrada = Boolean::Parse(d[7]);
 		bool estaAb = Boolean::Parse(d[8]);
 
-		/*BarreraAcceso^ b = gcnew BarreraAcceso(id, ubi, finst, fult, estado, emergencia, imped, esEntrada, estaAb);
-		lista->Add(b); //Esta huevada estaba buggeando todo*/
-
+		BarreraAcceso^ b = gcnew BarreraAcceso(id, ubi, finst, fult, estado, emergencia, imped, esEntrada, estaAb);
+		lista->Add(b); //Esta huevada estaba buggeando todo | ahora es el otro el q buggea todo jajaj
+		/*
 		BarreraAcceso^ b = gcnew BarreraAcceso(imped, esEntrada, estaAb, nullptr, nullptr, nullptr, nullptr);
 		// Inyectamos los datos base usando los métodos heredados
 		b->setUbicacion(ubi);
@@ -426,6 +426,7 @@ List<BarreraAcceso^>^ PerifericoDAO::buscarTodasBarrerasAccesoArchivo() {
 		b->setEstado(estado);
 		b->setHayEmergencia(emergencia);
 		b->setIdPeriferico(id);
+	*/
 	}
 	return lista;
 }
