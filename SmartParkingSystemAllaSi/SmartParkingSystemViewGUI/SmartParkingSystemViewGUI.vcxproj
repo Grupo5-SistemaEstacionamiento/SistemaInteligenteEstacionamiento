@@ -137,6 +137,7 @@
     <ClCompile Include="frmEditarPeriferico.cpp" />
     <ClCompile Include="frmEmergencia.cpp" />
     <ClCompile Include="frmLogin.cpp" />
+    <ClCompile Include="frmLoginConTarjeta.cpp" />
     <ClCompile Include="frmMapa.cpp" />
     <ClCompile Include="frmMapaAdmin.cpp" />
     <ClCompile Include="frmModInfo.cpp" />
@@ -191,6 +192,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmLogin.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmLoginConTarjeta.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmMapa.h">
@@ -281,6 +285,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLoginConTarjeta.resx">
+      <DependentUpon>frmLoginConTarjeta.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMapa.resx">
       <DependentUpon>frmMapa.h</DependentUpon>
