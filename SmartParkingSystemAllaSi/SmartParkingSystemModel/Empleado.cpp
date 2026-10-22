@@ -17,6 +17,7 @@ namespace SmartParkingSystemModel {
 		String^ correo,
 		DateTime fechaRegistro,
 		bool estado,
+		String^ claveHash,
 
 		String^ codigoEmpleado,
 		String^ cargo,
@@ -26,7 +27,7 @@ namespace SmartParkingSystemModel {
 
 		RegistroAcceso^ registroAcceso,
 		List<TurnoCaja^>^ listaTurnosCaja
-	) {
+	) : Persona (idPersona, nombres, apellidos, documento, telefono, correo, fechaRegistro, estado, claveHash) {
 
 
 	}

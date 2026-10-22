@@ -9,74 +9,114 @@ ClienteDAO::ClienteDAO() {
 }
 
 List<Cliente^>^ ClienteDAO::buscarTodosArchivo() {
-	List<Cliente^>^ lista = gcnew List<Cliente^>();
-	if (!File::Exists("Clientes.txt")) return lista;
+    List<Cliente^>^ lista = gcnew List<Cliente^>();
+    if (!File::Exists("Clientes.txt")) return lista;
 
-	array<String^>^ lineas = File::ReadAllLines("Clientes.txt");
-	for each (String ^ linea in lineas) {
-		if (String::IsNullOrWhiteSpace(linea)) continue;
-		array<String^>^ datos = linea->Split(';');
+    array<String^>^ lineas = File::ReadAllLines("Clientes.txt");
+    for each (String ^ linea in lineas) {
+        if (String::IsNullOrWhiteSpace(linea)) continue;
+        array<String^>^ datos = linea->Split(';');
 
-		String^ fechaStr = datos->Length > 0 ? datos[0] : String::Empty;
-		String^ tipoStr = datos->Length > 1 ? datos[1] : "0";
-		String^ observaciones = datos->Length > 2 ? datos[2] : String::Empty;
-		String^ saldoStr = datos->Length > 3 ? datos[3] : "0";
-		String^ requierePrefStr = datos->Length > 4 ? datos[4] : "0";
-		String^ discapacidad = datos->Length > 5 ? datos[5] : String::Empty;
+        // Validamos que la línea tenga los 14 datos mínimos completos antes de leer
+        if (datos->Length < 15) continue;
 
-		DateTime fecha = DateTime::MinValue;
-		try { fecha = DateTime::Parse(fechaStr); } catch (...) { fecha = DateTime::MinValue; }
-		TipoCliente tipo = static_cast<TipoCliente>(Convert::ToInt32(tipoStr));
-		double saldo = 0.0;
-		try { saldo = Convert::ToDouble(saldoStr); } catch (...) { saldo = 0.0; }
-		bool requiere = (requierePrefStr->Equals("1") || requierePrefStr->ToLower()->Equals("true"));
+        // 1. Parseo de datos heredados de Persona
+        int idPersona = 0; try { idPersona = Convert::ToInt32(datos[0]); }
+        catch (...) {}
+        String^ nombres = datos[1];
+        String^ apellidos = datos[2];
+        String^ documento = datos[3];
+        String^ telefono = datos[4];
+        String^ correo = datos[5];
+        String^ claveHash = datos[6];
+        DateTime fechaRegistro = DateTime::MinValue; try { fechaRegistro = DateTime::Parse(datos[7]); }
+        catch (...) {}
+        bool estado = (datos[8]->Equals("1") || datos[8]->ToLower()->Equals("true"));
 
-		Cliente^ c = gcnew Cliente(fecha, tipo, observaciones, saldo, requiere, discapacidad, nullptr, nullptr, nullptr, nullptr);
-		lista->Add(c);
-	}
+        // 2. Parseo de datos propios de Cliente
+        DateTime fechaAfiliacion = DateTime::MinValue; try { fechaAfiliacion = DateTime::Parse(datos[9]); }
+        catch (...) {}
+        TipoCliente tipo = static_cast<TipoCliente>(Convert::ToInt32(datos[10]));
+        String^ observaciones = datos[11];
+        double saldo = 0.0; try { saldo = Convert::ToDouble(datos[12]); }
+        catch (...) {}
+        bool requierePref = (datos[13]->Equals("1") || datos[13]->ToLower()->Equals("true"));
+        String^ discapacidad = datos[14];
 
-	return lista;
+        // 3. Creación del objeto usando el constructor de 19 parámetros
+        Cliente^ c = gcnew Cliente(
+            idPersona, nombres, apellidos, documento, telefono, correo, fechaRegistro, estado, claveHash,
+            fechaAfiliacion, tipo, observaciones, saldo, requierePref, discapacidad,
+            nullptr, nullptr, nullptr, nullptr
+        );
+        lista->Add(c);
+    }
+
+    return lista;
 }
 
-Cliente^ ClienteDAO::buscarxIndiceArchivo(int indice) {
-	List<Cliente^>^ lista = buscarTodosArchivo();
-	if (indice >= 0 && indice < lista->Count) return lista[indice];
-	return nullptr;
+Cliente^ ClienteDAO::buscarxIdArchivo(int idPersona) {
+    List<Cliente^>^ lista = buscarTodosArchivo();
+    for (int i = 0; i < lista->Count; i++) {
+        if (lista[i]->getIdPersona() == idPersona) {
+            return lista[i];
+        }
+    }
+    return nullptr;
 }
 
 void ClienteDAO::registrarClienteArchivo(Cliente^ cliente) {
-	List<Cliente^>^ lista = buscarTodosArchivo();
-	lista->Add(cliente);
-	escribirArchivo(lista);
+    List<Cliente^>^ lista = buscarTodosArchivo();
+    lista->Add(cliente);
+    escribirArchivo(lista);
 }
 
-void ClienteDAO::modificarClienteArchivo(int indice, Cliente^ cliente) {
-	List<Cliente^>^ lista = buscarTodosArchivo();
-	if (indice >= 0 && indice < lista->Count) {
-		lista[indice] = cliente;
-		escribirArchivo(lista);
-	}
+void ClienteDAO::modificarClienteArchivo(int idPersona, Cliente^ clienteActualizado) {
+    List<Cliente^>^ lista = buscarTodosArchivo();
+    for (int i = 0; i < lista->Count; i++) {
+        if (lista[i]->getIdPersona() == idPersona) {
+            lista[i] = clienteActualizado;
+            escribirArchivo(lista);
+            return;
+        }
+    }
 }
 
-void ClienteDAO::eliminarClienteArchivos(int indice) {
-	List<Cliente^>^ lista = buscarTodosArchivo();
-	if (indice >= 0 && indice < lista->Count) {
-		lista->RemoveAt(indice);
-		escribirArchivo(lista);
-	}
+void ClienteDAO::eliminarClienteArchivos(int idPersona) {
+    List<Cliente^>^ lista = buscarTodosArchivo();
+    for (int i = 0; i < lista->Count; i++) {
+        if (lista[i]->getIdPersona() == idPersona) {
+            lista->RemoveAt(i);
+            escribirArchivo(lista);
+            return;
+        }
+    }
 }
 
 void ClienteDAO::escribirArchivo(List<Cliente^>^ listaClientes) {
-	array<String^>^ lineas = gcnew array<String^>(listaClientes->Count);
-	for (int i = 0; i < listaClientes->Count; i++) {
-		Cliente^ c = listaClientes[i];
-		String^ fechaStr = c->getFechaAfiliacion().ToString("o");
-		String^ tipoStr = Convert::ToString((int)c->getTipo());
-		String^ observ = c->getObservaciones();
-		String^ saldoStr = Convert::ToString(c->getSaldo());
-		String^ reqStr = c->getRequierePreferencial() ? "1" : "0";
-		String^ disc = c->getDiscapacidad();
-		lineas[i] = fechaStr + ";" + tipoStr + ";" + observ + ";" + saldoStr + ";" + reqStr + ";" + disc;
-	}
-	File::WriteAllLines("Clientes.txt", lineas);
+    array<String^>^ lineas = gcnew array<String^>(listaClientes->Count);
+    for (int i = 0; i < listaClientes->Count; i++) {
+        Cliente^ c = listaClientes[i];
+
+        // Empaquetado completo de los 14 atributos en una sola línea
+        String^ lineaFormateada =
+            c->getIdPersona() + ";" +
+            c->getNombres() + ";" +
+            c->getApellidos() + ";" +
+            c->getDocumento() + ";" +
+            c->getTelefono() + ";" +
+            c->getCorreo() + ";" +
+            c->getClaveHash() + ";" + 
+            c->getFechaRegistro().ToString("o") + ";" +
+            (c->getEstado() ? "1" : "0") + ";" +
+            c->getFechaAfiliacion().ToString("o") + ";" +
+            Convert::ToString((int)c->getTipo()) + ";" +
+            c->getObservaciones() + ";" +
+            Convert::ToString(c->getSaldo()) + ";" +
+            (c->getRequierePreferencial() ? "1" : "0") + ";" +
+            c->getDiscapacidad();
+
+        lineas[i] = lineaFormateada;
+    }
+    File::WriteAllLines("Clientes.txt", lineas);
 }

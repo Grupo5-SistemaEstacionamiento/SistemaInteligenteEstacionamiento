@@ -11,6 +11,18 @@ Cliente::Cliente() {
 
 }
 Cliente::Cliente(
+	//Padre:
+	int idPersona,
+	String^ nombres, 
+	String^ apellidos,
+	String^ documento, 
+	String^ telefono, 
+	String^ correo, 
+	DateTime fechaRegistro,
+	bool estado,
+	String^ claveHash, 
+
+	//Hijo
 	DateTime fechaAfiliacion,
 	TipoCliente tipo,
 	String^ observaciones,
@@ -21,7 +33,8 @@ Cliente::Cliente(
 	List<Membresia^>^ listasMembresias,
 	List<TarjetaRFID^>^ listaTarjetasRFID,
 	List<Vehiculo^>^ listaVehiculos
-) {
+) : Persona(idPersona, nombres, apellidos, documento, telefono, correo, fechaRegistro, estado, claveHash) {
+
 	this->fechaAfiliacion = fechaAfiliacion;
 	this->tipo = tipo;
 	this->observaciones = observaciones;

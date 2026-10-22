@@ -15,6 +15,8 @@ namespace SmartParkingSystemModel {
 		DateTime fechaRegistro;
 		bool estado;
 
+		String^ claveHash; //de momento sera un simple string aunque seria bueno hablar con el profe para ver si hacemos la encriptacion
+
 
 	public:
 
@@ -27,7 +29,8 @@ namespace SmartParkingSystemModel {
 		    String^ telefono,
 		    String^ correo,
 		    DateTime fechaRegistro,
-		    bool estado
+		    bool estado,
+			String^ claveHash //Clave
 		);
 
 		/*geters*/
@@ -39,6 +42,7 @@ namespace SmartParkingSystemModel {
 		String^ getCorreo();
 		DateTime getFechaRegistro();
 		bool getEstado();
+		String^ getClaveHash(); //Clave
 
 		/*seters*/
 		void setIdPersona(int idPersona);
@@ -49,6 +53,7 @@ namespace SmartParkingSystemModel {
 		void setCorreo(String^ correo);
 		void setFechaRegistro(DateTime fechaRegistro);
 		void setEstado(bool estado);
+		void setClaveHash(String^ claveHash); //Clave 
 
 	};
 

@@ -14,9 +14,11 @@
 #include "frmBalance"
 */ 
 
-//Las pantallas q se abren dentro del panel tmb debe ser incluidas 
+//Las pantallas q se abren dentro del panel tmb debe ser incluidas (Callbacks) 
 #include "frmBuscarPlaca.h"
 #include "frmBuscarCliente.h"
+#include "frmMoreCliente.h"
+#include "frmMorePlaca.h"
 
 namespace SmartParkingSystemViewGUI {
 
@@ -438,20 +440,31 @@ private: System::Void Emergenciabtn_Click(System::Object^ sender, System::EventA
 	this->AbrirFormulario(gcnew frmEmergencia());
 
 }
+
+//------------------------------------------------------------------------------------------------------------------
+
 private: System::Void Searchbtn_Click(System::Object^ sender, System::EventArgs^ e) { //Buscar
 
-	frmBuscar^ Buscador = gcnew frmBuscar(); //Creamos el objeto form del buscador
-	Buscador->OnBuscarClienteClick += gcnew System::EventHandler(this, &frmPrincipalAdmin::AbrirBusquedaCliente);
-	Buscador->OnBuscarPlacaClick += gcnew System::EventHandler(this, &frmPrincipalAdmin::AbrirBusquedaPlaca);
-
-	this->AbrirFormulario(Buscador); //abrimos al buscador
+	AbrirMenuBuscador();
 
 }
 
-//Funciones Callback
+private: System::Void AbrirMenuBuscador() {
+	frmBuscar^ Buscador = gcnew frmBuscar();
+
+	Buscador->OnBuscarClienteClick += gcnew System::EventHandler(this, &frmPrincipalAdmin::AbrirBusquedaCliente);
+	Buscador->OnBuscarPlacaClick += gcnew System::EventHandler(this, &frmPrincipalAdmin::AbrirBusquedaPlaca);
+
+	Buscador->OnMoreClienteClick += gcnew System::EventHandler(this, &frmPrincipalAdmin::AbrirMoreCliente);
+	Buscador->OnMorePlacaClick += gcnew System::EventHandler(this, &frmPrincipalAdmin::AbrirMorePlaca);
+
+	this->AbrirFormulario(Buscador);
+}
+
+//Funciones Callback --------------------------------------------------------------------------------------------
 private: System::Void AbrirBusquedaCliente(System::Object^ sender, System::EventArgs^ e) {
 	frmBuscarCliente^ BuscaClientes = gcnew frmBuscarCliente();
-	BuscaClientes->OnRegresar += gcnew System::EventHandler(this, &frmPrincipalAdmin::RegresarBuscador);
+	BuscaClientes->OnRegresar += gcnew System::EventHandler(this, &frmPrincipalAdmin::RegresarBuscador); //Evento para el regresar
 
 	this->AbrirFormulario(BuscaClientes);
 }
@@ -464,9 +477,26 @@ private: System::Void AbrirBusquedaPlaca(System::Object^ sender, System::EventAr
 	this->AbrirFormulario(BuscaPlacas);
 }
 
+private: System::Void AbrirMorePlaca(System::Object^ sender, System::EventArgs^ e) {
+
+	frmMorePlaca^ MorePlacas = gcnew frmMorePlaca();
+	MorePlacas->OnRegresar += gcnew System::EventHandler(this, &frmPrincipalAdmin::RegresarBuscador);
+
+	this->AbrirFormulario(MorePlacas);
+}
+
+private: System::Void AbrirMoreCliente(System::Object^ sender, System::EventArgs^ e) {
+
+	frmMoreCliente^ MoreCliente = gcnew frmMoreCliente();
+	MoreCliente->OnRegresar += gcnew System::EventHandler(this, &frmPrincipalAdmin::RegresarBuscador);
+
+	this->AbrirFormulario(MoreCliente);
+}
+
+
 private: System::Void RegresarBuscador(System::Object^ sender, System::EventArgs^ e) {
 
-	this->AbrirFormulario(gcnew frmBuscar());
+	AbrirMenuBuscador();
 }
 
 //Piedad al revisar profe me tomo una eternidad aprender a hacer esto

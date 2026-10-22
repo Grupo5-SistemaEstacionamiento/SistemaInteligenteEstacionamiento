@@ -45,8 +45,9 @@ namespace SmartParkingSystemViewGUI {
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
-	private: System::Windows::Forms::PictureBox^ pictureBox2;
+
 	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::PictureBox^ pictureBox2;
 
 	protected:
 
@@ -66,17 +67,17 @@ namespace SmartParkingSystemViewGUI {
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(frmLoginConTarjeta::typeid));
 			this->pnlContenedor = (gcnew System::Windows::Forms::Panel());
 			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->TextBoxRFID = (gcnew System::Windows::Forms::TextBox());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
 			this->pnlContenedor->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->panel1->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// pnlContenedor
@@ -109,17 +110,6 @@ namespace SmartParkingSystemViewGUI {
 			this->button1->Text = L"Regresar";
 			this->button1->UseVisualStyleBackColor = false;
 			this->button1->Click += gcnew System::EventHandler(this, &frmLoginConTarjeta::button1_Click);
-			// 
-			// pictureBox2
-			// 
-			this->pictureBox2->Anchor = System::Windows::Forms::AnchorStyles::None;
-			this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.Image")));
-			this->pictureBox2->Location = System::Drawing::Point(401, 101);
-			this->pictureBox2->Name = L"pictureBox2";
-			this->pictureBox2->Size = System::Drawing::Size(264, 242);
-			this->pictureBox2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
-			this->pictureBox2->TabIndex = 61;
-			this->pictureBox2->TabStop = false;
 			// 
 			// pictureBox1
 			// 
@@ -203,6 +193,17 @@ namespace SmartParkingSystemViewGUI {
 			this->textBox1->TabStop = false;
 			this->textBox1->Text = L"Sistema de Estacionamiento Inteligente Alla-Si";
 			// 
+			// pictureBox2
+			// 
+			this->pictureBox2->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.Image")));
+			this->pictureBox2->Location = System::Drawing::Point(311, 86);
+			this->pictureBox2->Name = L"pictureBox2";
+			this->pictureBox2->Size = System::Drawing::Size(468, 266);
+			this->pictureBox2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->pictureBox2->TabIndex = 61;
+			this->pictureBox2->TabStop = false;
+			// 
 			// frmLoginConTarjeta
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -215,10 +216,10 @@ namespace SmartParkingSystemViewGUI {
 			this->WindowState = System::Windows::Forms::FormWindowState::Maximized;
 			this->pnlContenedor->ResumeLayout(false);
 			this->pnlContenedor->PerformLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->panel1->ResumeLayout(false);
 			this->panel1->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			this->ResumeLayout(false);
 
 		}

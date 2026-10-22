@@ -14,7 +14,8 @@ Persona::Persona(
 	String^ telefono,
 	String^ correo,
 	DateTime fechaRegistro,
-	bool estado
+	bool estado,
+	String^ claveHash
 ) {
 	this->idPersona = idPersona;
 	this->nombres = nombres;
@@ -24,6 +25,7 @@ Persona::Persona(
 	this->correo = correo;
 	this->fechaRegistro = fechaRegistro;
 	this->estado = estado;
+	this->claveHash = claveHash;
 
 }
 
@@ -52,6 +54,9 @@ DateTime Persona::getFechaRegistro() {
 bool Persona::getEstado() {
 	return this->estado;
 }
+String^ Persona::getClaveHash() {
+	return this->claveHash;
+}
 
 /*seters*/
 void Persona::setIdPersona(int idPersona) {
@@ -77,4 +82,7 @@ void Persona::setFechaRegistro(DateTime fechaRegistro) {
 }
 void Persona::setEstado(bool estado) {
 	this->estado = estado;
+}
+void Persona::setClaveHash(String^ claveHash) {
+	this->claveHash = claveHash;
 }

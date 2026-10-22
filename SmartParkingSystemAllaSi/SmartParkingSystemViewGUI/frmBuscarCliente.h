@@ -678,7 +678,7 @@ namespace SmartParkingSystemViewGUI {
 
 		}
 #pragma endregion
-
+//Para regresar con eventos------------------------------------------------------------------------------------
 public: 
 
 	event System::EventHandler^ OnRegresar;
@@ -686,6 +686,10 @@ public:
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) { //Regresar
 	OnRegresar(this, e);
 }
+
+//--------------------------------------------------------------------------------------------------------------
+
+
 private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e) { //More Ids tarjetas
 
 	frmVerInfo^ ventanaEdicion = gcnew frmVerInfo(); //Abrimos una ventana

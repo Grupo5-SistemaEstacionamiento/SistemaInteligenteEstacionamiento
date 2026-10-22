@@ -11,10 +11,12 @@ namespace SmartParkingSystemDAO {
 	public:
 		ClienteDAO();
 		List<Cliente^>^ buscarTodosArchivo();
-		Cliente^ buscarxIndiceArchivo(int indice);
+		Cliente^ buscarxIdArchivo(int idPersona);
+
+		//Cliente^ buscarxIndiceArchivo(int indice);
 		void registrarClienteArchivo(Cliente^ cliente);
-		void modificarClienteArchivo(int indice, Cliente^ cliente);
-		void eliminarClienteArchivos(int indice);
+		void modificarClienteArchivo(int idPersona, Cliente^ cliente);
+		void eliminarClienteArchivos(int idPersona);
 		void escribirArchivo(List<Cliente^>^ listaClientes);
 	};
 

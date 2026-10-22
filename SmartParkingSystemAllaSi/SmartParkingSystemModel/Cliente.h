@@ -12,8 +12,8 @@ namespace SmartParkingSystemModel {
 
 	public enum class TipoCliente {
 
-		MIEMBRO,
-		NO_MIEMBRO,
+		Miembro, //Diego: Lo cambie de MIEMBRO
+		Normal, //Diego: Lo cambie de NO_MIEMBRO
 
 	};
 	public ref class Cliente : public Persona{
@@ -35,6 +35,18 @@ namespace SmartParkingSystemModel {
 	public:
 		Cliente();
 		Cliente(
+			//Atributos Padre
+			int idPersona,
+			String^ nombres, 
+			String^ apellidos,
+			String^ documento, 
+			String^ telefono, 
+			String^ correo, 
+			DateTime fechaRegistro,
+			bool estado,
+			String^ claveHash,
+
+			//Atributos Hijo
 			DateTime fechaAfiliacion,
 			TipoCliente tipo,
 			String^ observaciones,

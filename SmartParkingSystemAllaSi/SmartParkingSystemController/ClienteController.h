@@ -13,17 +13,24 @@ namespace SmartParkingSystemController {
 	public:
 		ClienteController();
 		List<Cliente^>^ buscarTodosMemoria();
-		Cliente^ buscarxIndiceMemoria(int indice);
+
+		// CORRECCIÓN: Se agregó la 'r' faltante (buscarx...)
+		Cliente^ buscarxIdMemoria(int idPersona);
 		void registrarMemoria(Cliente^ cliente);
-		void modificarMemoria(int indice, Cliente^ cliente);
-		void eliminarMemoria(int indice);
+		void modificarMemoria(int idPersona, Cliente^ cliente);
+		void eliminarMemoria(int idPersona);
 
 		/*Archivos*/
 		List<Cliente^>^ buscarTodosArchivo();
-		Cliente^ buscarxIndiceArchivo(int indice);
+
+		// CORRECCIÓN: Se agregó la 'r' faltante (buscarx...)
+		Cliente^ buscarxIdArchivo(int idPersona);
 		void registrarArchivo(Cliente^ cliente);
-		void modificarArchivo(int indice, Cliente^ cliente);
-		void eliminarArchivo(int indice);
+		void modificarArchivo(int idPersona, Cliente^ cliente);
+		void eliminarArchivo(int idPersona);
+
+		//Para la interfaz añadi esto (para el filtro de miembro/no miembro
+		List<Cliente^>^ FiltrarPorTipo(String^ tipoBuscado);
 	};
 
 }

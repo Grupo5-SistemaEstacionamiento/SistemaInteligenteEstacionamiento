@@ -374,7 +374,7 @@ namespace SmartParkingSystemViewGUI {
 
 		}
 		else if(TextBoxCorreo->Text == "admin@estacionamiento.com" && TextBoxPassword->Text == "1234"){
-			frmPrincipalAdmin^ UIAdmin = gcnew frmPrincipalAdmin(); //Deberia llamarse fmrPrincipalCliente pero me equivoque al crear el archivo originalmente :(
+			frmPrincipalAdmin^ UIAdmin = gcnew frmPrincipalAdmin(); 
 
 			this->Hide();
 

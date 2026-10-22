@@ -131,6 +131,7 @@
     <ClCompile Include="frmBuscarCliente.cpp" />
     <ClCompile Include="frmBuscarPlaca.cpp" />
     <ClCompile Include="frmConsultarTiempo.cpp" />
+    <ClCompile Include="frmEditarCliente.cpp" />
     <ClCompile Include="frmEditarEmpleado.cpp" />
     <ClCompile Include="frmEditarInfo.cpp" />
     <ClCompile Include="frmEditarMulta.cpp" />
@@ -141,6 +142,9 @@
     <ClCompile Include="frmMapa.cpp" />
     <ClCompile Include="frmMapaAdmin.cpp" />
     <ClCompile Include="frmModInfo.cpp" />
+    <ClCompile Include="frmMoreCliente.cpp" />
+    <ClCompile Include="frmMorePlaca.cpp" />
+    <ClCompile Include="frmNuevoCliente.cpp" />
     <ClCompile Include="frmNuevoPeriferico.cpp" />
     <ClCompile Include="frmOfrecerSuscripcion.cpp" />
     <ClCompile Include="frmPerifericos.cpp" />
@@ -176,6 +180,9 @@
     <ClInclude Include="frmConsultarTiempo.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="frmEditarCliente.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="frmEditarEmpleado.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -204,6 +211,15 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmModInfo.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmMoreCliente.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmMorePlaca.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmNuevoCliente.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmNuevoPeriferico.h">
@@ -268,6 +284,9 @@
     <EmbeddedResource Include="frmConsultarTiempo.resx">
       <DependentUpon>frmConsultarTiempo.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmEditarCliente.resx">
+      <DependentUpon>frmEditarCliente.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmEditarEmpleado.resx">
       <DependentUpon>frmEditarEmpleado.h</DependentUpon>
     </EmbeddedResource>
@@ -297,6 +316,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmModInfo.resx">
       <DependentUpon>frmModInfo.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMoreCliente.resx">
+      <DependentUpon>frmMoreCliente.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMorePlaca.resx">
+      <DependentUpon>frmMorePlaca.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNuevoCliente.resx">
+      <DependentUpon>frmNuevoCliente.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmNuevoPeriferico.resx">
       <DependentUpon>frmNuevoPeriferico.h</DependentUpon>

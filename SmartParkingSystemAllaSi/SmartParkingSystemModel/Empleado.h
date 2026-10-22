@@ -34,6 +34,7 @@ namespace SmartParkingSystemModel {
 			String^ correo,
 			DateTime fechaRegistro,
 			bool estado,
+			String^ claveHash,
 
 			String^ codigoEmpleado,
 			String^ cargo,

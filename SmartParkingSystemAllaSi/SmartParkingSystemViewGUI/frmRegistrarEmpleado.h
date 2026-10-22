@@ -308,7 +308,7 @@ namespace SmartParkingSystemViewGUI {
 			this->Controls->Add(this->grpBoxPrincipal);
 			this->Controls->Add(this->panel1);
 			this->Name = L"frmRegistrarEmpleado";
-			this->Text = L"Añadir Nuevo Empleado";
+			this->Text = L"Registrar Nuevo Empleado";
 			this->panel2->ResumeLayout(false);
 			this->panel2->PerformLayout();
 			this->grpBoxPrincipal->ResumeLayout(false);
