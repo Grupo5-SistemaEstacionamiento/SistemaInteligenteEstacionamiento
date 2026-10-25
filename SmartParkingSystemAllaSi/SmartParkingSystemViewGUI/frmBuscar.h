@@ -9,12 +9,20 @@ namespace SmartParkingSystemViewGUI {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
+	using namespace System::Collections::Generic;
+	using namespace SmartParkingSystemController;
+	using namespace SmartParkingSystemModel;
+
+
 	/// <summary>
 	/// Summary for frmBuscar
 	/// </summary>
 	public ref class frmBuscar : public System::Windows::Forms::Form
 	{
 	public:
+
+		int idSeleccionado; 
+
 		frmBuscar(void)
 		{
 			InitializeComponent();
@@ -361,9 +369,27 @@ private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArg
 
 
 	if (!System::String::IsNullOrWhiteSpace(TextBuscarCliente->Text)) {//Veficamos que no este vacio el textbox
-		MessageBox::Show("Búsqueda realizada con éxito", "Éxito", MessageBoxButtons::OK, MessageBoxIcon::Information); //para debuggin en realidad
+		//MessageBox::Show("Búsqueda realizada con éxito", "Éxito", MessageBoxButtons::OK, MessageBoxIcon::Information); //para debuggin en realidad
 		
-		OnBuscarClienteClick(this, e); //Activamos el evento si se da click y hay algo de texto en la textbox
+		int idBuscado = 0;
+		try {
+			idBuscado = Convert::ToInt32(this->TextBuscarCliente->Text->Trim());
+		}
+		catch (Exception^) {
+			MessageBox::Show("El ID debe contener exclusivamente números.", "Formato inválido", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			return;
+		}
+		SmartParkingSystemController::ClienteController^ Controller = gcnew ClienteController();
+		Cliente^ clienteEncontrado = Controller->buscarxIdArchivo(idBuscado);
+
+		if (clienteEncontrado != nullptr) {
+			this->idSeleccionado = idBuscado;
+			OnBuscarClienteClick(this, e); //Activamos el evento si se da click y hay algo de texto en la textbox
+		}
+		else {
+			MessageBox::Show("El ID ingresado no se encuentra registrado en el sistema.", "Cliente no encontrado", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		}
+
 	}
 	else {
 		MessageBox::Show("Por favor, complete la casilla para buscar", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
