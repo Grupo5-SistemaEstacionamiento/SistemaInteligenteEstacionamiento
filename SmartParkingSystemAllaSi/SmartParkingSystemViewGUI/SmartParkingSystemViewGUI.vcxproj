@@ -126,11 +126,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="frmAdminEmpleados.cpp" />
+    <ClCompile Include="frmAdministracionRFID.cpp" />
     <ClCompile Include="frmBalances.cpp" />
     <ClCompile Include="frmBalanceTurno.cpp" />
     <ClCompile Include="frmBuscar.cpp" />
     <ClCompile Include="frmBuscarCliente.cpp" />
     <ClCompile Include="frmBuscarPlaca.cpp" />
+    <ClCompile Include="frmClientesSuscritos.cpp" />
     <ClCompile Include="frmConsultarTiempo.cpp" />
     <ClCompile Include="frmEditarCliente.cpp" />
     <ClCompile Include="frmEditarEmpleado.cpp" />
@@ -138,6 +140,8 @@
     <ClCompile Include="frmEditarMulta.cpp" />
     <ClCompile Include="frmEditarPeriferico.cpp" />
     <ClCompile Include="frmEmergencia.cpp" />
+    <ClCompile Include="frmGestionRFID.cpp" />
+    <ClCompile Include="frmGestionSuscripcion.cpp" />
     <ClCompile Include="frmLogin.cpp" />
     <ClCompile Include="frmLoginConTarjeta.cpp" />
     <ClCompile Include="frmMapa.cpp" />
@@ -166,6 +170,9 @@
     <ClInclude Include="frmAdminEmpleados.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="frmAdministracionRFID.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="frmBalances.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -179,6 +186,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmBuscarPlaca.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmClientesSuscritos.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmConsultarTiempo.h">
@@ -200,6 +210,12 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmEmergencia.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmGestionRFID.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmGestionSuscripcion.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmLogin.h">
@@ -274,6 +290,9 @@
       <DependentUpon>frmAdminEmpleados.h</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAdministracionRFID.resx">
+      <DependentUpon>frmAdministracionRFID.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmBalances.resx">
       <DependentUpon>frmBalances.h</DependentUpon>
     </EmbeddedResource>
@@ -288,6 +307,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmBuscarPlaca.resx">
       <DependentUpon>frmBuscarPlaca.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmClientesSuscritos.resx">
+      <DependentUpon>frmClientesSuscritos.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmConsultarTiempo.resx">
       <DependentUpon>frmConsultarTiempo.h</DependentUpon>
@@ -309,6 +331,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmEmergencia.resx">
       <DependentUpon>frmEmergencia.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGestionRFID.resx">
+      <DependentUpon>frmGestionRFID.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGestionSuscripcion.resx">
+      <DependentUpon>frmGestionSuscripcion.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.h</DependentUpon>

@@ -2,8 +2,9 @@
 
 namespace SmartParkingSystemDAO {
 
-	using namespace System::Collections::Generic;
 	using namespace System;
+	using namespace System::Collections::Generic;
+	
 	using namespace SmartParkingSystemModel;
 
 	public ref class ClienteDAO {
