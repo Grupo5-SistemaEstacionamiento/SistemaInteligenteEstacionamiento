@@ -162,6 +162,9 @@
     <ClCompile Include="frmEditarCliente.cpp">
       <Filter>Header Files\UI_Admin\SubUI_Admin\Buscar\More Cliente</Filter>
     </ClCompile>
+    <ClCompile Include="frmBalances.cpp">
+      <Filter>Header Files\UI_Admin</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="frmLogin.h">
@@ -265,6 +268,9 @@
     </ClInclude>
     <ClInclude Include="frmEditarCliente.h">
       <Filter>Header Files\UI_Admin\SubUI_Admin\Buscar\More Cliente</Filter>
+    </ClInclude>
+    <ClInclude Include="frmBalances.h">
+      <Filter>Header Files\UI_Admin</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

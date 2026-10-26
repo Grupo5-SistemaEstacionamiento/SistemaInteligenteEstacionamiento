@@ -211,9 +211,9 @@ namespace SmartParkingSystemViewGUI {
 	private: System::Windows::Forms::Label^ lblValorHora;
 	private: System::Windows::Forms::TextBox^ txtIdTarifa;
 	private: System::Windows::Forms::DataGridView^ dgvTarifas;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ colIdTarifa;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ colValorHora;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ colValorFraccion;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ colIdTurno;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ colSaldoInicial;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ colCodigoEmpleado;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ colDescuento;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ colPenalizacion;
 private: System::Windows::Forms::Button^ btnLimpiar;
@@ -288,9 +288,9 @@ private: System::Windows::Forms::Button^ btnLimpiar;
 			this->pnlInfo = (gcnew System::Windows::Forms::Panel());
 			this->gbDatosTarifa = (gcnew System::Windows::Forms::GroupBox());
 			this->dgvTarifas = (gcnew System::Windows::Forms::DataGridView());
-			this->colIdTarifa = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->colValorHora = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->colValorFraccion = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->colIdTurno = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->colSaldoInicial = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->colCodigoEmpleado = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->colDescuento = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->colPenalizacion = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->btnLimpiar = (gcnew System::Windows::Forms::Button());
@@ -361,8 +361,8 @@ private: System::Windows::Forms::Button^ btnLimpiar;
 			this->dgvTarifas->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
 			this->dgvTarifas->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dgvTarifas->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
-				this->colIdTarifa,
-					this->colValorHora, this->colValorFraccion, this->colDescuento, this->colPenalizacion
+				this->colIdTurno,
+					this->colSaldoInicial, this->colCodigoEmpleado, this->colDescuento, this->colPenalizacion
 			});
 			this->dgvTarifas->Location = System::Drawing::Point(82, 382);
 			this->dgvTarifas->Margin = System::Windows::Forms::Padding(4);
@@ -377,29 +377,29 @@ private: System::Windows::Forms::Button^ btnLimpiar;
 			this->dgvTarifas->TabIndex = 76;
 			this->dgvTarifas->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &frmTarifa::dgvTarifas_CellClick);
 			// 
-			// colIdTarifa
+			// colIdTurno
 			// 
-			this->colIdTarifa->FillWeight = 40.10694F;
-			this->colIdTarifa->HeaderText = L"ID";
-			this->colIdTarifa->MinimumWidth = 6;
-			this->colIdTarifa->Name = L"colIdTarifa";
-			this->colIdTarifa->ReadOnly = true;
+			this->colIdTurno->FillWeight = 40.10694F;
+			this->colIdTurno->HeaderText = L"ID";
+			this->colIdTurno->MinimumWidth = 6;
+			this->colIdTurno->Name = L"colIdTurno";
+			this->colIdTurno->ReadOnly = true;
 			// 
-			// colValorHora
+			// colSaldoInicial
 			// 
-			this->colValorHora->FillWeight = 114.9732F;
-			this->colValorHora->HeaderText = L"Valor hora (S/)";
-			this->colValorHora->MinimumWidth = 6;
-			this->colValorHora->Name = L"colValorHora";
-			this->colValorHora->ReadOnly = true;
+			this->colSaldoInicial->FillWeight = 114.9732F;
+			this->colSaldoInicial->HeaderText = L"Valor hora (S/)";
+			this->colSaldoInicial->MinimumWidth = 6;
+			this->colSaldoInicial->Name = L"colSaldoInicial";
+			this->colSaldoInicial->ReadOnly = true;
 			// 
-			// colValorFraccion
+			// colCodigoEmpleado
 			// 
-			this->colValorFraccion->FillWeight = 114.9732F;
-			this->colValorFraccion->HeaderText = L"Fracción 15 min (S/)";
-			this->colValorFraccion->MinimumWidth = 6;
-			this->colValorFraccion->Name = L"colValorFraccion";
-			this->colValorFraccion->ReadOnly = true;
+			this->colCodigoEmpleado->FillWeight = 114.9732F;
+			this->colCodigoEmpleado->HeaderText = L"Fracción 15 min (S/)";
+			this->colCodigoEmpleado->MinimumWidth = 6;
+			this->colCodigoEmpleado->Name = L"colCodigoEmpleado";
+			this->colCodigoEmpleado->ReadOnly = true;
 			// 
 			// colDescuento
 			// 
@@ -751,13 +751,13 @@ private: System::Void dgvTarifas_CellClick(
 
 	// Carga los datos seleccionados en los cuadros de texto.
 	txtIdTarifa->Text =
-		fila->Cells["colIdTarifa"]->Value->ToString();
+		fila->Cells["colIdTurno"]->Value->ToString();
 
 	txtValorHora->Text =
-		fila->Cells["colValorHora"]->Value->ToString();
+		fila->Cells["colSaldoInicial"]->Value->ToString();
 
 	txtValorFraccion->Text =
-		fila->Cells["colValorFraccion"]->Value->ToString();
+		fila->Cells["colCodigoEmpleado"]->Value->ToString();
 
 	txtDescuentoMembresia->Text =
 		fila->Cells["colDescuento"]->Value->ToString();

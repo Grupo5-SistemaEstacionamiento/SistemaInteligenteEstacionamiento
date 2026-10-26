@@ -81,6 +81,9 @@
     <ClInclude Include="Vehiculo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="BalanceDiario.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SmartParkingSystemModel.cpp">
@@ -147,6 +150,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Vehiculo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BalanceDiario.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

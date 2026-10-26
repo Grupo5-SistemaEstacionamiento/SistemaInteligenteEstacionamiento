@@ -126,6 +126,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="frmAdminEmpleados.cpp" />
+    <ClCompile Include="frmBalances.cpp" />
     <ClCompile Include="frmBalanceTurno.cpp" />
     <ClCompile Include="frmBuscar.cpp" />
     <ClCompile Include="frmBuscarCliente.cpp" />
@@ -163,6 +164,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="frmAdminEmpleados.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmBalances.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmBalanceTurno.h">
@@ -268,6 +272,10 @@
   <ItemGroup>
     <EmbeddedResource Include="frmAdminEmpleados.resx">
       <DependentUpon>frmAdminEmpleados.h</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBalances.resx">
+      <DependentUpon>frmBalances.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmBalanceTurno.resx">
       <DependentUpon>frmBalanceTurno.h</DependentUpon>
@@ -379,6 +387,9 @@
   <ItemGroup>
     <ProjectReference Include="..\SmartParkingSystemController\SmartParkingSystemController.vcxproj">
       <Project>{414e1b8e-7367-1876-ebdb-d5fc2c313e13}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\SmartParkingSystemDAO\SmartParkingSystemDAO.vcxproj">
+      <Project>{0efe9d3f-3c0f-d4a2-bc92-e402684712d2}</Project>
     </ProjectReference>
     <ProjectReference Include="..\SmartParkingSystemModel\SmartParkingSystemModel.vcxproj">
       <Project>{ee4ff2d9-2aa0-c51a-2664-4c02fe3aaa33}</Project>

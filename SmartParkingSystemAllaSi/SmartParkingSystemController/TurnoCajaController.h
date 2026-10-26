@@ -12,12 +12,6 @@ namespace SmartParkingSystemController {
 
 	public:
 		TurnoCajaController();
-		List<TurnoCaja^>^ buscarTodosMemoria();
-		TurnoCaja^ buscarxIdMemoria(int idTurno);
-		void registrarMemoria(TurnoCaja^ turno);
-		void modificarMemoria(TurnoCaja^ turno);
-		void eliminarMemoria(int idTurno);
-
 		/*Archivos*/
 		List<TurnoCaja^>^ buscarTodosArchivo();
 		TurnoCaja^ buscarxIdArchivo(int idTurno);

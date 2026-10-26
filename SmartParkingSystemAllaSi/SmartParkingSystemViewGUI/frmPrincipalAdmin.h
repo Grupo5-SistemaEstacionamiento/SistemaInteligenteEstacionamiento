@@ -6,6 +6,7 @@
 #include "frmReportar.h"
 #include "frmAdminEmpleados.h"
 #include "frmTarifa.h"
+#include "frmBalances.h"
 #include "frmPerifericos.h"
 
 /*
@@ -525,6 +526,7 @@ private: System::Void AdminTarifasbtn_Click(System::Object^ sender, System::Even
 	this->AbrirFormulario(gcnew frmTarifa());
 }
 private: System::Void Balancebtn_Click(System::Object^ sender, System::EventArgs^ e) { //Balance
+	this->AbrirFormulario(gcnew frmBalances());
 }
 private: System::Void btnPerifericos_Click(System::Object^ sender, System::EventArgs^ e) { //Perifericos
 
