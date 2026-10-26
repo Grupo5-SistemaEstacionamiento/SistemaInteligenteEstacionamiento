@@ -140,6 +140,7 @@
     <ClCompile Include="frmEditarMulta.cpp" />
     <ClCompile Include="frmEditarPeriferico.cpp" />
     <ClCompile Include="frmEmergencia.cpp" />
+    <ClCompile Include="frmGestionarMovimientos.cpp" />
     <ClCompile Include="frmGestionRFID.cpp" />
     <ClCompile Include="frmGestionSuscripcion.cpp" />
     <ClCompile Include="frmLogin.cpp" />
@@ -210,16 +211,19 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmEmergencia.h">
-      <FileType>CppForm</FileType>
+    <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmGestionarMovimientos.h">
+        <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmGestionRFID.h">
-      <FileType>CppForm</FileType>
+        <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmGestionSuscripcion.h">
-      <FileType>CppForm</FileType>
+        <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmLogin.h">
-      <FileType>CppForm</FileType>
+        <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmLoginConTarjeta.h">
       <FileType>CppForm</FileType>
@@ -330,16 +334,19 @@
       <DependentUpon>frmEditarPeriferico.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEmergencia.resx">
-      <DependentUpon>frmEmergencia.h</DependentUpon>
+    <DependentUpon>frmEmergencia.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGestionarMovimientos.resx">
+        <DependentUpon>frmGestionarMovimientos.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmGestionRFID.resx">
-      <DependentUpon>frmGestionRFID.h</DependentUpon>
+        <DependentUpon>frmGestionRFID.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmGestionSuscripcion.resx">
-      <DependentUpon>frmGestionSuscripcion.h</DependentUpon>
+        <DependentUpon>frmGestionSuscripcion.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
-      <DependentUpon>frmLogin.h</DependentUpon>
+        <DependentUpon>frmLogin.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLoginConTarjeta.resx">
       <DependentUpon>frmLoginConTarjeta.h</DependentUpon>

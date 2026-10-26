@@ -177,6 +177,9 @@
     <ClCompile Include="frmGestionSuscripcion.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="frmGestionarMovimientos.cpp">
+      <Filter>Header Files\UI_Admin</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="frmLogin.h">
@@ -295,6 +298,9 @@
     </ClInclude>
     <ClInclude Include="frmGestionSuscripcion.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="frmGestionarMovimientos.h">
+      <Filter>Header Files\UI_Admin</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

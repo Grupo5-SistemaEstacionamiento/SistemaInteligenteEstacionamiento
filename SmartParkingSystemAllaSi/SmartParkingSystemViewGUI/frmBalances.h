@@ -1,5 +1,7 @@
 #pragma once
 
+#include "frmGestionarMovimientos.h"
+
 using namespace SmartParkingSystemController;
 using namespace SmartParkingSystemModel;
 using namespace SmartParkingSystemDAO;
@@ -25,7 +27,7 @@ namespace SmartParkingSystemViewGUI {
 			InitializeComponent();
 
 			balanceController = gcnew BalancesController();
-			turnoCajaController = gcnew TurnoCajaController(); // O instanciación directa del DAO si usas arquitectura limpia
+			turnoCajaController = gcnew TurnoCajaController(); 
 
 			ultimoIdTurnoInscritoEnBalance = 0;
 			cajaCerrada = false;
@@ -47,13 +49,11 @@ namespace SmartParkingSystemViewGUI {
 
 		   bool cajaCerrada;
 
-		// Sincroniza el punto de corte basándose en los balances ya registrados
 		void sincronizarPuntoDeCorte() {
 			try {
 				BalanceDiarioDAO^ balanceDao = gcnew BalanceDiarioDAO();
 				List<BalanceDiario^>^ listaBalances = balanceDao->buscarTodosArchivo();
 				if (listaBalances != nullptr && listaBalances->Count > 0) {
-					// Lógica opcional para contar cuántos turnos totales ya fueron abarcados
 					int turnosAbarcadosTotales = 0;
 					for each (BalanceDiario ^ b in listaBalances) {
 						turnosAbarcadosTotales += b->getCantidadTurnos();
@@ -64,38 +64,64 @@ namespace SmartParkingSystemViewGUI {
 			catch (Exception^) {}
 		}
 
-		// Rellena el ID autoincrementable y el saldo inicial heredado
 		void prepararCamposNuevoTurno() {
 			try {
 				TurnoCajaDAO^ turnoDao = gcnew TurnoCajaDAO();
 				List<TurnoCaja^>^ lista = turnoDao->buscarTodosArchivo();
-				int siguienteId = 1;
-				double saldoInicialSugerido = 0.0;
 
-				if (lista != nullptr && lista->Count > 0) {
-					TurnoCaja^ ultimoTurno = lista[lista->Count - 1];
-					siguienteId = ultimoTurno->getIdTurno() + 1;
-
-					// Si el último turno cerró correctamente, hereda su saldo final
-					if (ultimoTurno->getEstado() == "Cerrado") {
-						saldoInicialSugerido = ultimoTurno->getSaldoFinal();
-					}
-					else {
-						saldoInicialSugerido = ultimoTurno->getSaldoInicial();
+				TurnoCaja^ turnoActivo = nullptr;
+				if (lista != nullptr) {
+					for each (TurnoCaja ^ t in lista) {
+						if (t->getEstado() != "Cerrado") {
+							turnoActivo = t;
+							break;
+						}
 					}
 				}
 
-				txtIdTurno->Text = siguienteId.ToString();
-				txtSaldoInicial->Text = saldoInicialSugerido.ToString("F2");
-				txtCodEmpleado->Clear();
-				txtCodEmpleado->Focus();
+				if (turnoActivo != nullptr) {
+
+					txtIdTurno->Text = turnoActivo->getIdTurno().ToString();
+					txtSaldoInicial->Text = turnoActivo->getSaldoInicial().ToString("F2");
+
+					if (turnoActivo->getEmpleado() != nullptr) {
+						txtCodEmpleado->Text = turnoActivo->getEmpleado()->getCodigoEmpleado();
+					}
+					else {
+						txtCodEmpleado->Text = "N/A";
+					}
+
+					txtCodEmpleado->ReadOnly = true;
+				}
+				else {
+
+					txtCodEmpleado->ReadOnly = false;
+					int siguienteId = 1;
+					double saldoInicialSugerido = 0.0;
+
+					if (lista != nullptr && lista->Count > 0) {
+						TurnoCaja^ ultimoTurno = lista[lista->Count - 1];
+						siguienteId = ultimoTurno->getIdTurno() + 1;
+
+						if (ultimoTurno->getEstado() == "Cerrado") {
+							saldoInicialSugerido = ultimoTurno->getSaldoFinal();
+						}
+						else {
+							saldoInicialSugerido = ultimoTurno->getSaldoInicial();
+						}
+					}
+
+					txtIdTurno->Text = siguienteId.ToString();
+					txtSaldoInicial->Text = saldoInicialSugerido.ToString("F2");
+					txtCodEmpleado->Clear();
+					txtCodEmpleado->Focus();
+				}
 			}
 			catch (Exception^) {
 				txtIdTurno->Text = "1";
 				txtSaldoInicial->Text = "0.00";
 			}
 		}
-
 		void cargarTurnos() {
 			dgvTurnos->Rows->Clear();
 			try {
@@ -106,15 +132,13 @@ namespace SmartParkingSystemViewGUI {
 						String^ strSaldoFinal;
 						String^ strHoraFinal;
 
-						// Si el turno ya finalizó, muestra los valores reales
 						if (turno->getEstado() == "Cerrado") {
 							strSaldoFinal = turno->getSaldoFinal().ToString("F2");
 							strHoraFinal = turno->getFechaHoraSalida().ToString("yyyy-MM-dd HH:mm");
 						}
 						else {
-							// Si sigue abierto/activo, muestra el texto solicitado
-							strSaldoFinal = "Turno en operación";
-							strHoraFinal = "Turno en operación";
+							strSaldoFinal = "Turno activo";
+							strHoraFinal = "Turno activo";
 						}
 
 						String^ codigoEmp = "N/A";
@@ -141,6 +165,16 @@ namespace SmartParkingSystemViewGUI {
 
 		void cargarBalances() {
 			dgvBalances->Rows->Clear();
+
+			if (dgvBalances->Columns->Count < 5) {
+				DataGridViewTextBoxColumn^ colResultado = gcnew DataGridViewTextBoxColumn();
+				colResultado->Name = "colResultado";
+				colResultado->HeaderText = "Monto Neto (S/)";
+				colResultado->FillWeight = 80.0F;
+				colResultado->ReadOnly = true;
+				dgvBalances->Columns->Add(colResultado);
+			}
+
 			try {
 				BalanceDiarioDAO^ balanceDao = gcnew BalanceDiarioDAO();
 				List<BalanceDiario^>^ listaBalances = balanceDao->buscarTodosArchivo();
@@ -148,32 +182,23 @@ namespace SmartParkingSystemViewGUI {
 					for each (BalanceDiario ^ b in listaBalances) {
 						double saldoInicial = b->getTotalSaldoInicialTurnos();
 						double saldoFinal = b->getTotalSaldoFinalTurnos();
-						String^ estadoTexto = "Neutro";
+						double diferencia = saldoFinal - saldoInicial; 
 
-						if (saldoFinal > saldoInicial) {
-							estadoTexto = "Ganancia";
-						}
-						else if (saldoFinal < saldoInicial) {
-							estadoTexto = "Pérdida";
-						}
-
-						// Agregamos los 5 valores (Fecha, Turnos, Saldo Inicial, Saldo Final, Resultado)
 						int rowIndex = dgvBalances->Rows->Add(
 							b->getFecha().ToString("dd/MM/yyyy"),
 							b->getCantidadTurnos(),
 							saldoInicial.ToString("F2"),
 							saldoFinal.ToString("F2"),
-							estadoTexto
+							diferencia.ToString("F2")
 						);
 
-						// Estilizar la celda de resultado con colores
 						DataGridViewRow^ row = dgvBalances->Rows[rowIndex];
-						if (estadoTexto == "Pérdida") {
+						if (diferencia < 0) {
 							row->Cells[4]->Style->BackColor = System::Drawing::Color::MistyRose;
 							row->Cells[4]->Style->ForeColor = System::Drawing::Color::DarkRed;
 							row->Cells[4]->ToolTipText = "Pérdida en el día";
 						}
-						else if (estadoTexto == "Ganancia") {
+						else if (diferencia > 0) {
 							row->Cells[4]->Style->BackColor = System::Drawing::Color::Honeydew;
 							row->Cells[4]->Style->ForeColor = System::Drawing::Color::DarkGreen;
 							row->Cells[4]->ToolTipText = "Ganancia en el día";
@@ -213,7 +238,6 @@ namespace SmartParkingSystemViewGUI {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ colHoraFinal;
 	private: System::Windows::Forms::Button^ btnLimpiar1;
 
-	private: System::Windows::Forms::Button^ btnModificar;
 	private: System::Windows::Forms::Button^ btnIniciarTurno;
 
 	private: System::Windows::Forms::GroupBox^ gbTurnosCaja;
@@ -235,15 +259,15 @@ namespace SmartParkingSystemViewGUI {
 
 
 	private: System::Windows::Forms::Panel^ pnlInfo;
-private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::Label^ label1;
 
 
 	private: System::Windows::Forms::Button^ btnTerminarTurno;
-private: System::Windows::Forms::TextBox^ txtObs;
+	private: System::Windows::Forms::TextBox^ txtObs;
 
 
 	private: System::Windows::Forms::Label^ labelObs;
-private: System::Windows::Forms::TextBox^ txtSaldoFinal;
+	private: System::Windows::Forms::TextBox^ txtSaldoFinal;
 
 	private: System::Windows::Forms::Button^ btnCerrarCaja;
 
@@ -307,7 +331,6 @@ private: System::Windows::Forms::TextBox^ txtSaldoFinal;
 			this->colSaldoFinal = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->colHoraFinal = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->btnLimpiar1 = (gcnew System::Windows::Forms::Button());
-			this->btnModificar = (gcnew System::Windows::Forms::Button());
 			this->btnIniciarTurno = (gcnew System::Windows::Forms::Button());
 			this->gbTurnosCaja = (gcnew System::Windows::Forms::GroupBox());
 			this->btnGestionarMov = (gcnew System::Windows::Forms::Button());
@@ -432,7 +455,7 @@ private: System::Windows::Forms::TextBox^ txtSaldoFinal;
 			// 
 			// colSaldoInicial
 			// 
-			this->colSaldoInicial->FillWeight = 110.9732F;
+			this->colSaldoInicial->FillWeight = 85.9732F;
 			this->colSaldoInicial->HeaderText = L"Saldo Inicial (S/)";
 			this->colSaldoInicial->MinimumWidth = 6;
 			this->colSaldoInicial->Name = L"colSaldoInicial";
@@ -448,7 +471,7 @@ private: System::Windows::Forms::TextBox^ txtSaldoFinal;
 			// 
 			// colSaldoFinal
 			// 
-			this->colSaldoFinal->FillWeight = 110.9732F;
+			this->colSaldoFinal->FillWeight = 85.9732F;
 			this->colSaldoFinal->HeaderText = L"Saldo Final (S/)";
 			this->colSaldoFinal->MinimumWidth = 6;
 			this->colSaldoFinal->Name = L"colSaldoFinal";
@@ -477,21 +500,6 @@ private: System::Windows::Forms::TextBox^ txtSaldoFinal;
 			this->btnLimpiar1->Text = L"Limpiar";
 			this->btnLimpiar1->UseVisualStyleBackColor = false;
 			this->btnLimpiar1->Click += gcnew System::EventHandler(this, &frmBalances::btnLimpiar1_Click);
-			// 
-			// btnModificar
-			// 
-			this->btnModificar->AutoSize = true;
-			this->btnModificar->BackColor = System::Drawing::Color::MediumSlateBlue;
-			this->btnModificar->Font = (gcnew System::Drawing::Font(L"Arial", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->btnModificar->ForeColor = System::Drawing::Color::White;
-			this->btnModificar->Location = System::Drawing::Point(85, 569);
-			this->btnModificar->Margin = System::Windows::Forms::Padding(4);
-			this->btnModificar->Name = L"btnModificar";
-			this->btnModificar->Size = System::Drawing::Size(152, 43);
-			this->btnModificar->TabIndex = 73;
-			this->btnModificar->Text = L"Modificar";
-			this->btnModificar->UseVisualStyleBackColor = false;
 			// 
 			// btnIniciarTurno
 			// 
@@ -522,7 +530,6 @@ private: System::Windows::Forms::TextBox^ txtSaldoFinal;
 			this->gbTurnosCaja->Controls->Add(this->btnTerminarTurno);
 			this->gbTurnosCaja->Controls->Add(this->dgvTurnos);
 			this->gbTurnosCaja->Controls->Add(this->btnLimpiar1);
-			this->gbTurnosCaja->Controls->Add(this->btnModificar);
 			this->gbTurnosCaja->Controls->Add(this->btnIniciarTurno);
 			this->gbTurnosCaja->Controls->Add(this->lblDescuentoMembresia);
 			this->gbTurnosCaja->Controls->Add(this->txtCodEmpleado);
@@ -554,6 +561,7 @@ private: System::Windows::Forms::TextBox^ txtSaldoFinal;
 			this->btnGestionarMov->TabIndex = 85;
 			this->btnGestionarMov->Text = L"Gestionar Movimientos";
 			this->btnGestionarMov->UseVisualStyleBackColor = false;
+			this->btnGestionarMov->Click += gcnew System::EventHandler(this, &frmBalances::btnGestionarMov_Click);
 			// 
 			// btnLimpiar2
 			// 
@@ -578,7 +586,7 @@ private: System::Windows::Forms::TextBox^ txtSaldoFinal;
 			this->btnCerrarCaja->Font = (gcnew System::Drawing::Font(L"Arial", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnCerrarCaja->ForeColor = System::Drawing::Color::White;
-			this->btnCerrarCaja->Location = System::Drawing::Point(314, 569);
+			this->btnCerrarCaja->Location = System::Drawing::Point(170, 569);
 			this->btnCerrarCaja->Margin = System::Windows::Forms::Padding(4);
 			this->btnCerrarCaja->Name = L"btnCerrarCaja";
 			this->btnCerrarCaja->Size = System::Drawing::Size(225, 43);
@@ -594,7 +602,7 @@ private: System::Windows::Forms::TextBox^ txtSaldoFinal;
 			this->btnCalBalance->Font = (gcnew System::Drawing::Font(L"Arial", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnCalBalance->ForeColor = System::Drawing::Color::White;
-			this->btnCalBalance->Location = System::Drawing::Point(618, 569);
+			this->btnCalBalance->Location = System::Drawing::Point(517, 569);
 			this->btnCalBalance->Margin = System::Windows::Forms::Padding(4);
 			this->btnCalBalance->Name = L"btnCalBalance";
 			this->btnCalBalance->Size = System::Drawing::Size(251, 43);
@@ -1187,13 +1195,12 @@ private: System::Windows::Forms::TextBox^ txtSaldoFinal;
 	
 	private: System::Void btnIniciarTurno_Click(System::Object^ sender, System::EventArgs^ e) {
 		try {
-			// REGLA: No se puede crear turno nuevo si la caja está cerrada esperando balance
+
 			if (cajaCerrada) {
 				MessageBox::Show("La caja se encuentra CERRADA. Debe calcular el balance diario antes de iniciar nuevos turnos.", "Acción denegada", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 				return;
 			}
 
-			// VALIDACIÓN DE DATOS SUFICIENTES: El código de empleado es obligatorio
 			String^ codEmpleado = txtCodEmpleado->Text->Trim();
 			if (String::IsNullOrWhiteSpace(codEmpleado)) {
 				MessageBox::Show("Debe ingresar el código del empleado para iniciar el turno.", "Datos insuficientes", MessageBoxButtons::OK, MessageBoxIcon::Warning);
@@ -1201,7 +1208,6 @@ private: System::Windows::Forms::TextBox^ txtSaldoFinal;
 				return;
 			}
 
-			// REGLA: No se puede iniciar un nuevo turno si hay uno activo
 			TurnoCajaDAO^ turnoDao = gcnew TurnoCajaDAO();
 			List<TurnoCaja^>^ lista = turnoDao->buscarTodosArchivo();
 			if (lista != nullptr) {
@@ -1216,7 +1222,6 @@ private: System::Windows::Forms::TextBox^ txtSaldoFinal;
 			int idTurno = Convert::ToInt32(txtIdTurno->Text);
 			double saldoInicial = Convert::ToDouble(txtSaldoInicial->Text);
 
-			// Buscar objeto Empleado por su código usando EmpleadoDAO
 			Empleado^ empleadoAsignado = nullptr;
 			try {
 				EmpleadoDAO^ empDao = gcnew EmpleadoDAO();
@@ -1230,7 +1235,6 @@ private: System::Windows::Forms::TextBox^ txtSaldoFinal;
 				return;
 			}
 
-			// Crear nuevo objeto TurnoCaja
 			TurnoCaja^ nuevoTurno = gcnew TurnoCaja();
 			nuevoTurno->setIdTurno(idTurno);
 			nuevoTurno->setFechaHoraIngreso(DateTime::Now);
@@ -1267,7 +1271,6 @@ private: System::Windows::Forms::TextBox^ txtSaldoFinal;
 				}
 			}
 
-			// REGLA: No se puede terminar turno si no hay uno activo con datos suficientes en curso
 			if (turnoActivo == nullptr) {
 				MessageBox::Show("No hay ningún turno activo para terminar.", "Datos insuficientes", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 				return;
@@ -1275,30 +1278,38 @@ private: System::Windows::Forms::TextBox^ txtSaldoFinal;
 
 			DateTime horaSalida = DateTime::Now;
 
-			// Partimos del saldo inicial con el que abrió el turno
 			double saldoFinalCalculado = turnoActivo->getSaldoInicial();
 
-			// Sumamos o restamos los movimientos registrados en este turno
-			List<Movimiento^>^ movimientos = turnoActivo->getListaMovimientos();
-			if (movimientos != nullptr) {
-				for each (Movimiento ^ mov in movimientos) {
-					saldoFinalCalculado += mov->getMonto();
+			MovimientoDAO^ movDao = gcnew MovimientoDAO();
+			List<Movimiento^>^ todosLosMovimientos = movDao->buscarTodosArchivo();
+
+			if (todosLosMovimientos != nullptr) {
+				for each (Movimiento ^ mov in todosLosMovimientos) {
+					if (!mov->getAnulada() && mov->getFechaHoraMovimento() >= turnoActivo->getFechaHoraIngreso() && mov->getFechaHoraMovimento() <= horaSalida) {
+
+						double montoMov = mov->getMonto();
+						String^ tipo = mov->getTipoMovimiento();
+
+						if (tipo != nullptr && (tipo->Equals("Reparación", StringComparison::OrdinalIgnoreCase) || tipo->Equals("Reembolso", StringComparison::OrdinalIgnoreCase))) {
+							saldoFinalCalculado -= Math::Abs(montoMov); 
+						}
+						else {
+							saldoFinalCalculado += montoMov; 
+						}
+					}
 				}
 			}
 
-			// Guardamos los datos de cierre en el objeto
 			turnoActivo->setFechaHoraSalida(horaSalida);
 			turnoActivo->setSaldoFinal(saldoFinalCalculado);
 			turnoActivo->setEstado("Cerrado");
 
-			// Si tienes observaciones opcionales en txtObs, puedes asignarlas aquí de forma segura:
 			if (txtObs != nullptr && !String::IsNullOrEmpty(txtObs->Text)) {
 				turnoActivo->setObservacion(txtObs->Text->Trim());
 			}
 
 			turnoDao->modificarTurnoArchivo(turnoActivo);
 
-			// Mostrar el saldo final calculado en la caja de texto correspondiente de la interfaz
 			if (txtSaldoFinal != nullptr) {
 				txtSaldoFinal->Text = saldoFinalCalculado.ToString("F2");
 			}
@@ -1318,7 +1329,6 @@ private: System::Windows::Forms::TextBox^ txtSaldoFinal;
 			TurnoCajaDAO^ turnoDao = gcnew TurnoCajaDAO();
 			List<TurnoCaja^>^ lista = turnoDao->buscarTodosArchivo();
 
-			// 1. NUEVA REGLA: Verificar si existe algún turno activo (que no esté cerrado)
 			if (lista != nullptr) {
 				for each (TurnoCaja ^ t in lista) {
 					if (t->getEstado() != "Cerrado") {
@@ -1328,12 +1338,10 @@ private: System::Windows::Forms::TextBox^ txtSaldoFinal;
 				}
 			}
 
-			// 2. Verificar que existan turnos cerrados pendientes de balance
 			bool existenTurnosCerradosPendientes = false;
 
 			if (lista != nullptr) {
 				for each (TurnoCaja ^ t in lista) {
-					// Turnos con ID superior al punto de corte y que estén cerrados
 					if (t->getIdTurno() > ultimoIdTurnoInscritoEnBalance && t->getEstado() == "Cerrado") {
 						existenTurnosCerradosPendientes = true;
 						break;
@@ -1356,7 +1364,7 @@ private: System::Windows::Forms::TextBox^ txtSaldoFinal;
 
 	private: System::Void btnCalBalance_Click(System::Object^ sender, System::EventArgs^ e) {
 		try {
-			// REGLA: Solo cuando se ha cerrado caja se puede crear el balance
+
 			if (!cajaCerrada) {
 				MessageBox::Show("Debe ejecutar el 'Cierre de caja' antes de calcular el balance diario.", "Acción Requerida", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 				return;
@@ -1368,29 +1376,25 @@ private: System::Windows::Forms::TextBox^ txtSaldoFinal;
 
 			if (todosLosTurnos != nullptr) {
 				for each (TurnoCaja ^ t in todosLosTurnos) {
-					// Filtrar solo los turnos posteriores al último corte y que estén cerrados
 					if (t->getIdTurno() > ultimoIdTurnoInscritoEnBalance && t->getEstado() == "Cerrado") {
 						turnosParaBalance->Add(t);
 					}
 				}
 			}
 
-			// REGLA: Evitar hacer más de un balance con los mismos turnos
 			if (turnosParaBalance->Count == 0) {
 				MessageBox::Show("No hay turnos disponibles para este balance.", "Atención", MessageBoxButtons::OK, MessageBoxIcon::Information);
 				return;
 			}
 
-			// El saldo inicial del primer turno y el saldo final del último turno del grupo
 			TurnoCaja^ primerTurno = turnosParaBalance[0];
 			TurnoCaja^ ultimoTurno = turnosParaBalance[turnosParaBalance->Count - 1];
 
 			double saldoInicialDia = primerTurno->getSaldoInicial();
 			double saldoFinalDia = ultimoTurno->getSaldoFinal();
 			int cantidadTurnos = turnosParaBalance->Count;
-			DateTime fechaBalance = DateTime::Now.Date; // Fecha de cuando se seleccionó calcular balance
+			DateTime fechaBalance = DateTime::Now.Date; 
 
-			// Registrar el Balance Diario
 			BalanceDiario^ nuevoBalance = gcnew BalanceDiario();
 			nuevoBalance->setFecha(fechaBalance);
 			nuevoBalance->setCantidadTurnos(cantidadTurnos);
@@ -1400,9 +1404,8 @@ private: System::Windows::Forms::TextBox^ txtSaldoFinal;
 			BalanceDiarioDAO^ balanceDao = gcnew BalanceDiarioDAO();
 			balanceDao->registrarBalanceArchivo(nuevoBalance);
 
-			// Actualizar el índice de corte para que no se vuelvan a usar
 			ultimoIdTurnoInscritoEnBalance = ultimoTurno->getIdTurno();
-			cajaCerrada = false; // Se reabre la caja para permitir nuevos turnos
+			cajaCerrada = false;
 
 			MessageBox::Show("¡Balance diario calculado y registrado exitosamente!", "Éxito", MessageBoxButtons::OK, MessageBoxIcon::Information);
 
@@ -1414,13 +1417,11 @@ private: System::Windows::Forms::TextBox^ txtSaldoFinal;
 		}
 	}
 	private: System::Void btnLimpiar1_Click(System::Object^ sender, System::EventArgs^ e) {
-		// Limpia únicamente la caja de texto del código de empleado
 		txtCodEmpleado->Clear();
 		txtCodEmpleado->Focus();
 	}
 
 	private: System::Void btnLimpiar2_Click(System::Object^ sender, System::EventArgs^ e) {
-		// Limpia la caja de observaciones (o el campo de texto de observaciones/saldo final si aplica)
 		if (txtObs != nullptr) txtObs->Clear();
 		if (txtSaldoFinal != nullptr) txtSaldoFinal->Clear();
 		txtCodEmpleado->Focus();
@@ -1454,29 +1455,31 @@ private: System::Windows::Forms::TextBox^ txtSaldoFinal;
 			if (b != nullptr) {
 				double saldoInicial = b->getTotalSaldoInicialTurnos();
 				double saldoFinal = b->getTotalSaldoFinalTurnos();
-				String^ estadoTexto = "Neutro";
-
-				if (saldoFinal > saldoInicial) estadoTexto = "Ganancia";
-				else if (saldoFinal < saldoInicial) estadoTexto = "Pérdida";
+				double diferencia = saldoFinal - saldoInicial;
 
 				int rowIndex = dgvBalances->Rows->Add(
 					b->getFecha().ToString("dd/MM/yyyy"),
 					b->getCantidadTurnos(),
 					saldoInicial.ToString("F2"),
 					saldoFinal.ToString("F2"),
-					estadoTexto
+					diferencia.ToString("F2")
 				);
 
 				DataGridViewRow^ row = dgvBalances->Rows[rowIndex];
-				if (estadoTexto == "Pérdida") {
+				if (diferencia < 0) {
 					row->Cells[4]->Style->BackColor = System::Drawing::Color::MistyRose;
 					row->Cells[4]->Style->ForeColor = System::Drawing::Color::DarkRed;
 					row->Cells[4]->ToolTipText = "Pérdida en el día";
 				}
-				else if (estadoTexto == "Ganancia") {
+				else if (diferencia > 0) {
 					row->Cells[4]->Style->BackColor = System::Drawing::Color::Honeydew;
 					row->Cells[4]->Style->ForeColor = System::Drawing::Color::DarkGreen;
 					row->Cells[4]->ToolTipText = "Ganancia en el día";
+				}
+				else {
+					row->Cells[4]->Style->BackColor = System::Drawing::Color::White;
+					row->Cells[4]->Style->ForeColor = System::Drawing::Color::Black;
+					row->Cells[4]->ToolTipText = "Sin variación";
 				}
 			}
 			else {
@@ -1488,6 +1491,36 @@ private: System::Windows::Forms::TextBox^ txtSaldoFinal;
 			MessageBox::Show("Error al buscar el balance: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 		dgvBalances->ClearSelection();
+	}
+	private: System::Void btnGestionarMov_Click(System::Object^ sender, System::EventArgs^ e) {
+		try {
+			TurnoCajaDAO^ turnoDao = gcnew TurnoCajaDAO();
+			List<TurnoCaja^>^ lista = turnoDao->buscarTodosArchivo();
+			TurnoCaja^ turnoActivo = nullptr;
+
+			if (lista != nullptr) {
+				for each (TurnoCaja ^ t in lista) {
+					if (t->getEstado() != "Cerrado") {
+						turnoActivo = t;
+						break;
+					}
+				}
+			}
+
+			if (turnoActivo == nullptr) {
+				MessageBox::Show("Debe iniciar un turno activo antes de gestionar o registrar movimientos de caja.", "Turno requerido", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+				return;
+			}
+
+			frmGestionarMovimientos^ ventanaMovimientos = gcnew frmGestionarMovimientos();
+			ventanaMovimientos->ShowDialog(); 
+
+			cargarTurnos();
+			prepararCamposNuevoTurno();
+		}
+		catch (Exception^ ex) {
+			MessageBox::Show("Error al abrir la gestión de movimientos: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
 	}
 };
 }
