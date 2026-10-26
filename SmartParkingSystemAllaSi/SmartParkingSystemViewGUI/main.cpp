@@ -1,16 +1,19 @@
 #include "frmLogin.h"
 
-using namespace SmartParkingSystemViewGUI;
-using namespace System::Windows::Forms;
 using namespace System;
+using namespace System::Windows::Forms;
 
-void main(array<String^>^ args)
+using namespace SmartParkingSystemViewGUI;
+
+[STAThreadAttribute]
+int main(array<String^>^ args)
 {
-
+    // Configuración inicial de Windows Forms.
     Application::EnableVisualStyles();
-    Application::SetCompatibleTextRenderingDefault(false);
+    Application::SetCompatibleTextRenderingDefault(false);    
 
-    frmLogin ventana;
+    // Inicia temporalmente el formulario de incio de sesión.
+    Application::Run(gcnew frmLogin());
 
-    Application::Run(% ventana);
+    return 0;
 }

@@ -1,5 +1,7 @@
 #pragma once
+
 #include "Persona.h"
+
 namespace SmartParkingSystemModel {
 
 	using namespace System;
@@ -59,7 +61,6 @@ namespace SmartParkingSystemModel {
 			List<Vehiculo^>^ listaVehiculos
 		);
 
-
 		DateTime getFechaAfiliacion();
 		TipoCliente getTipo();
 		String^ getObservaciones();
@@ -72,7 +73,9 @@ namespace SmartParkingSystemModel {
 		List<TarjetaRFID^>^ getListaTarjetasRFID();
 		List<Vehiculo^>^ getListaVehiculos();
 
-
+		// Compatibilidad con los formularios integrados.
+		String^ getTipoCliente();
+		void setTipoCliente(String^ tipoCliente);
 
 		void setFechaAfiliacion(DateTime fechaAfiliacion);
 		void setTipo(TipoCliente tipo);
@@ -85,6 +88,9 @@ namespace SmartParkingSystemModel {
 		void setListasMembresias(List<Membresia^>^ listasMembresias);
 		void setListaTarjetasRFID(List<TarjetaRFID^>^ listaTarjetasRFID);
 		void setListaVehiculos(List<Vehiculo^>^ listaVehiculos);
+
+		// Incrementa el saldo disponible.
+		void recargarSaldo(double monto);
 	};
 
 }

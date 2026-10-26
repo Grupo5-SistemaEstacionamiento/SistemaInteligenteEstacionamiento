@@ -1,4 +1,5 @@
 #pragma once
+
 #include "frmTurno.h"
 #include "frmEmergencia.h"
 #include "frmBuscar.h"
@@ -9,9 +10,11 @@
 #include "frmBalances.h"
 #include "frmPerifericos.h"
 
+// Formularios integrados desde el proyecto original.
+#include "frmAdministracionRFID.h"
+#include "frmClientesSuscritos.h"
+
 /*
-#include "frmAdminTarjetas.h"
-#include "frmAdminSuscripciones.h"
 #include "frmBalance"
 */ 
 
@@ -547,8 +550,16 @@ private: System::Void Empleadobtn_Click(System::Object^ sender, System::EventArg
 
 }
 private: System::Void AdminRFIDbtn_Click(System::Object^ sender, System::EventArgs^ e) { //Admin Tarjetas RFID
+	
+	// Abre el formulario de Administración RFID.
+	this->AbrirFormulario(gcnew frmAdministracionRFID());
+
 }
 private: System::Void AdminSubsbtn_Click(System::Object^ sender, System::EventArgs^ e) { //Admin Membresia
+	
+	// Abre el formulario de Clientes Suscritos.
+	this->AbrirFormulario(gcnew frmClientesSuscritos());
+
 }
 private: System::Void AdminTarifasbtn_Click(System::Object^ sender, System::EventArgs^ e) { //Admin Tarifas
 

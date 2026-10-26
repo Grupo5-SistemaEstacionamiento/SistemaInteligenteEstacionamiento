@@ -1,55 +1,81 @@
 #pragma once
 
-namespace SmartParkingSystemModel {
-	using namespace System;
-	using namespace System::Collections::Generic;
-	ref class LectorRFID;
-	ref class Cliente;
-	public ref class TarjetaRFID{
+namespace SmartParkingSystemModel
+{
+    using namespace System;
+    using namespace System::Collections::Generic;
 
-	private:
+    ref class Cliente;
+    ref class LectorRFID;
 
-		int idTarjeta;
-		String^ codigoUID;
-		DateTime fechaEmision;
-		DateTime fechaVencimiento;
-		bool activa;
+    public ref class TarjetaRFID
+    {
+    private:
+        int idTarjeta;
+        int idCliente;
 
-		List<LectorRFID^>^ listaLecturas;
-		Cliente^ cliente;
+        String^ codigoUID;
+        DateTime fechaEmision;
+        DateTime fechaVencimiento;
+        DateTime ultimoUso;
+        bool activa;
 
-	public:
-		TarjetaRFID();
-		TarjetaRFID(
-			int idTarjeta,
-			String^ codigoUID,
-			DateTime fechaEmision,
-			DateTime fechaVencimiento,
-			bool activa,
+        // Relaciones originales del repositorio clonado.
+        List<LectorRFID^>^ listaLecturas;
+        Cliente^ cliente;
 
-			List<LectorRFID^>^ listaLecturas,
-			Cliente^ cliente
+    public:
+        // Constructor por defecto.
+        TarjetaRFID();
 
-		);
+        // Constructor original del repositorio clonado.
+        TarjetaRFID(
+            int idTarjeta,
+            String^ codigoUID,
+            DateTime fechaEmision,
+            DateTime fechaVencimiento,
+            bool activa,
+            List<LectorRFID^>^ listaLecturas,
+            Cliente^ cliente
+        );
 
-		int getIdTarjeta();
-		String^ getCodigoUID();
-		DateTime getFechaEmision();
-		DateTime getFechaVencimiento();
-		bool getActiva();
+        // Constructor del módulo integrado.
+        TarjetaRFID(
+            String^ codigoUID,
+            DateTime fechaVencimiento
+        );
 
-		List<LectorRFID^>^ getListaLecturas();
-		Cliente^ getCliente();
+        // Getters.
+        int getIdTarjeta();
+        int getIdCliente();
+        String^ getCodigoUID();
+        DateTime getFechaEmision();
+        DateTime getFechaVencimiento();
+        DateTime getUltimoUso();
+        bool getActiva();
 
+        List<LectorRFID^>^ getListaLecturas();
+        Cliente^ getCliente();
 
-		void setIdTarjeta(int idTarjeta);
-		void setCodigoUID(String^ codigoUID);
-		void setFechaEmision(DateTime fechaEmision);
-		void setFechaVencimiento(DateTime fechaVencimiento);
-		void setActiva(bool activa);
+        // Setters.
+        void setIdTarjeta(int idTarjeta);
+        void setIdCliente(int idCliente);
+        void setCodigoUID(String^ codigoUID);
+        void setFechaEmision(DateTime fechaEmision);
+        void setFechaVencimiento(DateTime fechaVencimiento);
+        void setUltimoUso(DateTime ultimoUso);
+        void setActiva(bool activa);
 
-		void setListaLecturas(List<LectorRFID^>^ listaLecturas);
-		void setCliente(Cliente^ cliente);
+        void setListaLecturas(
+            List<LectorRFID^>^ listaLecturas
+        );
+
+        void setCliente(Cliente^ cliente);
+
+        // Operaciones adicionales.
+        bool estaActiva();
+        bool estaVigente();
+        void registrarUso();
+        void desactivar();
     };
-
 }

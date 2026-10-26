@@ -2,10 +2,11 @@
 
 namespace SmartParkingSystemController {
 
-	using namespace System::Collections::Generic;
-	using namespace SmartParkingSystemModel;
 	using namespace System;
+	using namespace System::Collections::Generic;
 
+	using namespace SmartParkingSystemModel;
+	
 	public ref class ClienteController {
 	private:
 		List<Cliente^>^ listaClientes;
@@ -29,8 +30,15 @@ namespace SmartParkingSystemController {
 		void modificarArchivo(int idPersona, Cliente^ cliente);
 		void eliminarArchivo(int idPersona);
 
+		// Métodos de compatibilidad con los formularios integrados.
+		List<Cliente^>^ listarClientes();
+		Cliente^ buscarClientePorId(int idPersona);
+
 		//Para la interfaz añadi esto (para el filtro de miembro/no miembro
 		List<Cliente^>^ FiltrarPorTipo(String^ tipoBuscado);
+
+		// Busca clientes por prefijo de nombre, apellido o documento.
+		List<Cliente^>^ buscarClientes(String^ criterio);
 	};
 
 }
