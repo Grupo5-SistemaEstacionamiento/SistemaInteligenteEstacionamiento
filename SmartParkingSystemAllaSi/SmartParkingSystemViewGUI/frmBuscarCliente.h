@@ -10,7 +10,6 @@ namespace SmartParkingSystemViewGUI {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
-
 	using namespace System::Collections::Generic;
 	using namespace SmartParkingSystemController;
 	using namespace SmartParkingSystemModel;

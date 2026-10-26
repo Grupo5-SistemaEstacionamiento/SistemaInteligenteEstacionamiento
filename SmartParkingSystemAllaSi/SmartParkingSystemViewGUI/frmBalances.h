@@ -27,7 +27,7 @@ namespace SmartParkingSystemViewGUI {
 			InitializeComponent();
 
 			balanceController = gcnew BalancesController();
-			turnoCajaController = gcnew TurnoCajaController(); // O instanciación directa del DAO si usas arquitectura limpia
+			turnoCajaController = gcnew TurnoCajaController(); 
 
 			ultimoIdTurnoInscritoEnBalance = 0;
 			cajaCerrada = false;
@@ -49,13 +49,11 @@ namespace SmartParkingSystemViewGUI {
 
 		   bool cajaCerrada;
 
-		// Sincroniza el punto de corte basándose en los balances ya registrados
 		void sincronizarPuntoDeCorte() {
 			try {
 				BalanceDiarioDAO^ balanceDao = gcnew BalanceDiarioDAO();
 				List<BalanceDiario^>^ listaBalances = balanceDao->buscarTodosArchivo();
 				if (listaBalances != nullptr && listaBalances->Count > 0) {
-					// Lógica opcional para contar cuántos turnos totales ya fueron abarcados
 					int turnosAbarcadosTotales = 0;
 					for each (BalanceDiario ^ b in listaBalances) {
 						turnosAbarcadosTotales += b->getCantidadTurnos();
@@ -134,13 +132,11 @@ namespace SmartParkingSystemViewGUI {
 						String^ strSaldoFinal;
 						String^ strHoraFinal;
 
-						// Si el turno ya finalizó, muestra los valores reales
 						if (turno->getEstado() == "Cerrado") {
 							strSaldoFinal = turno->getSaldoFinal().ToString("F2");
 							strHoraFinal = turno->getFechaHoraSalida().ToString("yyyy-MM-dd HH:mm");
 						}
 						else {
-							// Si sigue abierto/activo, muestra el texto solicitado
 							strSaldoFinal = "Turno activo";
 							strHoraFinal = "Turno activo";
 						}
@@ -263,15 +259,15 @@ namespace SmartParkingSystemViewGUI {
 
 
 	private: System::Windows::Forms::Panel^ pnlInfo;
-private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::Label^ label1;
 
 
 	private: System::Windows::Forms::Button^ btnTerminarTurno;
-private: System::Windows::Forms::TextBox^ txtObs;
+	private: System::Windows::Forms::TextBox^ txtObs;
 
 
 	private: System::Windows::Forms::Label^ labelObs;
-private: System::Windows::Forms::TextBox^ txtSaldoFinal;
+	private: System::Windows::Forms::TextBox^ txtSaldoFinal;
 
 	private: System::Windows::Forms::Button^ btnCerrarCaja;
 
@@ -459,7 +455,7 @@ private: System::Windows::Forms::TextBox^ txtSaldoFinal;
 			// 
 			// colSaldoInicial
 			// 
-			this->colSaldoInicial->FillWeight = 110.9732F;
+			this->colSaldoInicial->FillWeight = 85.9732F;
 			this->colSaldoInicial->HeaderText = L"Saldo Inicial (S/)";
 			this->colSaldoInicial->MinimumWidth = 6;
 			this->colSaldoInicial->Name = L"colSaldoInicial";
@@ -475,7 +471,7 @@ private: System::Windows::Forms::TextBox^ txtSaldoFinal;
 			// 
 			// colSaldoFinal
 			// 
-			this->colSaldoFinal->FillWeight = 110.9732F;
+			this->colSaldoFinal->FillWeight = 85.9732F;
 			this->colSaldoFinal->HeaderText = L"Saldo Final (S/)";
 			this->colSaldoFinal->MinimumWidth = 6;
 			this->colSaldoFinal->Name = L"colSaldoFinal";

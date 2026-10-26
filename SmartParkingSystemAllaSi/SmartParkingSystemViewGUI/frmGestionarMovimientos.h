@@ -208,7 +208,7 @@ namespace SmartParkingSystemViewGUI {
 			this->pnlTitulo->Dock = System::Windows::Forms::DockStyle::Top;
 			this->pnlTitulo->Location = System::Drawing::Point(0, 0);
 			this->pnlTitulo->Name = L"pnlTitulo";
-			this->pnlTitulo->Size = System::Drawing::Size(1293, 65);
+			this->pnlTitulo->Size = System::Drawing::Size(1164, 65);
 			this->pnlTitulo->TabIndex = 56;
 			// 
 			// dgvMovimientos
@@ -231,12 +231,12 @@ namespace SmartParkingSystemViewGUI {
 			this->dgvMovimientos->RowHeadersWidth = 51;
 			this->dgvMovimientos->RowTemplate->Height = 24;
 			this->dgvMovimientos->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->dgvMovimientos->Size = System::Drawing::Size(985, 289);
+			this->dgvMovimientos->Size = System::Drawing::Size(985, 275);
 			this->dgvMovimientos->TabIndex = 76;
 			// 
 			// colIdMov
 			// 
-			this->colIdMov->FillWeight = 40.10694F;
+			this->colIdMov->FillWeight = 35.10694F;
 			this->colIdMov->HeaderText = L"ID";
 			this->colIdMov->MinimumWidth = 6;
 			this->colIdMov->Name = L"colIdMov";
@@ -244,7 +244,7 @@ namespace SmartParkingSystemViewGUI {
 			// 
 			// colMonto
 			// 
-			this->colMonto->FillWeight = 114.9732F;
+			this->colMonto->FillWeight = 100.9732F;
 			this->colMonto->HeaderText = L"Monto (S/)";
 			this->colMonto->MinimumWidth = 6;
 			this->colMonto->Name = L"colMonto";
@@ -252,7 +252,7 @@ namespace SmartParkingSystemViewGUI {
 			// 
 			// colTipoMov
 			// 
-			this->colTipoMov->FillWeight = 114.9732F;
+			this->colTipoMov->FillWeight = 75.9732F;
 			this->colTipoMov->HeaderText = L"Tipo";
 			this->colTipoMov->MinimumWidth = 6;
 			this->colTipoMov->Name = L"colTipoMov";
@@ -260,7 +260,7 @@ namespace SmartParkingSystemViewGUI {
 			// 
 			// colEstado
 			// 
-			this->colEstado->FillWeight = 114.9732F;
+			this->colEstado->FillWeight = 62.9732F;
 			this->colEstado->HeaderText = L"Estado";
 			this->colEstado->MinimumWidth = 6;
 			this->colEstado->Name = L"colEstado";
@@ -268,7 +268,7 @@ namespace SmartParkingSystemViewGUI {
 			// 
 			// colFecha
 			// 
-			this->colFecha->FillWeight = 114.9732F;
+			this->colFecha->FillWeight = 112.9732F;
 			this->colFecha->HeaderText = L"Fecha";
 			this->colFecha->MinimumWidth = 6;
 			this->colFecha->Name = L"colFecha";
@@ -276,7 +276,7 @@ namespace SmartParkingSystemViewGUI {
 			// 
 			// colDescripcion
 			// 
-			this->colDescripcion->FillWeight = 114.9732F;
+			this->colDescripcion->FillWeight = 152.9732F;
 			this->colDescripcion->HeaderText = L"Descripcion";
 			this->colDescripcion->MinimumWidth = 6;
 			this->colDescripcion->Name = L"colDescripcion";
@@ -353,7 +353,7 @@ namespace SmartParkingSystemViewGUI {
 				static_cast<System::Byte>(0)));
 			this->gbDatosMovimiento->Location = System::Drawing::Point(12, 71);
 			this->gbDatosMovimiento->Name = L"gbDatosMovimiento";
-			this->gbDatosMovimiento->Size = System::Drawing::Size(1141, 782);
+			this->gbDatosMovimiento->Size = System::Drawing::Size(1141, 752);
 			this->gbDatosMovimiento->TabIndex = 57;
 			this->gbDatosMovimiento->TabStop = false;
 			this->gbDatosMovimiento->Text = L"Datos del movimiento";
@@ -525,14 +525,14 @@ namespace SmartParkingSystemViewGUI {
 			this->pnlInfo->Location = System::Drawing::Point(0, 0);
 			this->pnlInfo->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pnlInfo->Name = L"pnlInfo";
-			this->pnlInfo->Size = System::Drawing::Size(1293, 957);
+			this->pnlInfo->Size = System::Drawing::Size(1164, 850);
 			this->pnlInfo->TabIndex = 15;
 			// 
 			// frmGestionarMovimientos
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1293, 957);
+			this->ClientSize = System::Drawing::Size(1164, 850);
 			this->Controls->Add(this->pnlInfo);
 			this->Name = L"frmGestionarMovimientos";
 			this->Text = L"Gestionar Movimientos";
@@ -687,14 +687,14 @@ namespace SmartParkingSystemViewGUI {
 					movReembolso->setMonto(movExistente->getMonto());
 					movReembolso->setTipoMovimiento("Reembolso");
 					movReembolso->setAnulada(false);
-					movReembolso->setDescripcion("Reembolso automático por anulación de Mov. ID " + movExistente->getIdMovimiento());
+					movReembolso->setDescripcion("Reembolso automático" + movExistente->getIdMovimiento());
 					movReembolso->setFechaHoraMovimento(DateTime::Now);
 					movReembolso->setListaPagos(gcnew List<Pago^>());
 
 					movimientoController->registrarArchivo(movReembolso);
 				}
 
-				MessageBox::Show("Movimiento modificado correctamente y reembolso generado (si aplicó).", "Éxito", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				MessageBox::Show("Movimiento modificado correctamente.", "Éxito", MessageBoxButtons::OK, MessageBoxIcon::Information);
 				cargarMovimientos();
 				limpiarCampos();
 			}
