@@ -85,10 +85,6 @@ namespace SmartParkingSystemViewGUI {
 	private: System::Windows::Forms::Button^ btnPerifericos;
 
 
-
-
-
-
 	private:
 		/// <summary>
 		/// Required designer variable.
@@ -464,10 +460,37 @@ private: System::Void AbrirMenuBuscador() {
 
 //Funciones Callback --------------------------------------------------------------------------------------------
 private: System::Void AbrirBusquedaCliente(System::Object^ sender, System::EventArgs^ e) {
-	frmBuscarCliente^ BuscaClientes = gcnew frmBuscarCliente();
-	BuscaClientes->OnRegresar += gcnew System::EventHandler(this, &frmPrincipalAdmin::RegresarBuscador); //Evento para el regresar
 
-	this->AbrirFormulario(BuscaClientes);
+	int idCapturado = 0;
+	frmBuscarCliente^ BuscaClientes = nullptr; // vacio
+
+	// 1. Preguntamos si el evento viene de la pantalla del Buscador (Lupita)
+	frmBuscar^ BuscadorOrigen = dynamic_cast<frmBuscar^>(sender);
+	
+
+	if (BuscadorOrigen != nullptr) {
+		idCapturado = BuscadorOrigen->idSeleccionado;
+
+		BuscaClientes = gcnew frmBuscarCliente(idCapturado);
+
+		// Como vino de la lupa, al presionar regresar, volveremos al menú buscador
+		BuscaClientes->OnRegresar += gcnew System::EventHandler(this, &frmPrincipalAdmin::RegresarBuscador);
+	}
+	else {
+		// 2. Si no es el buscador, preguntamos si viene de la tabla (DataGrid)
+		frmMoreCliente^ GrillaOrigen = dynamic_cast<frmMoreCliente^>(sender);
+		if (GrillaOrigen != nullptr) {
+			idCapturado = GrillaOrigen->idSelect; 
+
+			BuscaClientes = gcnew frmBuscarCliente(idCapturado);
+
+			// Como vino de la tabla, al presionar regresar, conectamos a la otra funcion
+			BuscaClientes->OnRegresar += gcnew System::EventHandler(this, &frmPrincipalAdmin::RegresarTablaClientes);
+		}
+	}
+	if (BuscaClientes != nullptr) {
+		this->AbrirFormulario(BuscaClientes);
+	}
 }
 
 private: System::Void AbrirBusquedaPlaca(System::Object^ sender, System::EventArgs^ e) {
@@ -490,6 +513,7 @@ private: System::Void AbrirMoreCliente(System::Object^ sender, System::EventArgs
 
 	frmMoreCliente^ MoreCliente = gcnew frmMoreCliente();
 	MoreCliente->OnRegresar += gcnew System::EventHandler(this, &frmPrincipalAdmin::RegresarBuscador);
+	MoreCliente->OnVerMas += gcnew System::EventHandler(this, &frmPrincipalAdmin::AbrirBusquedaCliente);
 
 	this->AbrirFormulario(MoreCliente);
 }
@@ -498,6 +522,11 @@ private: System::Void AbrirMoreCliente(System::Object^ sender, System::EventArgs
 private: System::Void RegresarBuscador(System::Object^ sender, System::EventArgs^ e) {
 
 	AbrirMenuBuscador();
+}
+
+private: System::Void RegresarTablaClientes(System::Object^ sender, System::EventArgs^ e) {
+
+	AbrirMoreCliente(nullptr, nullptr); //nullptr xq no se necesitan a los senders
 }
 
 //Piedad al revisar profe me tomo una eternidad aprender a hacer esto
