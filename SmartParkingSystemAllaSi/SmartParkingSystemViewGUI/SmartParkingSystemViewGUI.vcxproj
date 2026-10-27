@@ -139,6 +139,7 @@
     <ClCompile Include="frmEditarInfo.cpp" />
     <ClCompile Include="frmEditarMulta.cpp" />
     <ClCompile Include="frmEditarPeriferico.cpp" />
+    <ClCompile Include="frmEditarVehiculo.cpp" />
     <ClCompile Include="frmEmergencia.cpp" />
     <ClCompile Include="frmGestionarMovimientos.cpp" />
     <ClCompile Include="frmGestionRFID.cpp" />
@@ -152,6 +153,7 @@
     <ClCompile Include="frmMorePlaca.cpp" />
     <ClCompile Include="frmNuevoCliente.cpp" />
     <ClCompile Include="frmNuevoPeriferico.cpp" />
+    <ClCompile Include="frmNuevoVehiculo.cpp" />
     <ClCompile Include="frmOfrecerSuscripcion.cpp" />
     <ClCompile Include="frmPerifericos.cpp" />
     <ClCompile Include="frmPrincipal.cpp" />
@@ -210,6 +212,9 @@
     <ClInclude Include="frmEditarPeriferico.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="frmEditarVehiculo.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="frmEmergencia.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -247,6 +252,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmNuevoPeriferico.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmNuevoVehiculo.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmOfrecerSuscripcion.h">
@@ -333,6 +341,9 @@
     <EmbeddedResource Include="frmEditarPeriferico.resx">
       <DependentUpon>frmEditarPeriferico.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmEditarVehiculo.resx">
+      <DependentUpon>frmEditarVehiculo.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmEmergencia.resx">
       <DependentUpon>frmEmergencia.h</DependentUpon>
     </EmbeddedResource>
@@ -371,6 +382,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmNuevoPeriferico.resx">
       <DependentUpon>frmNuevoPeriferico.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNuevoVehiculo.resx">
+      <DependentUpon>frmNuevoVehiculo.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmOfrecerSuscripcion.resx">
       <DependentUpon>frmOfrecerSuscripcion.h</DependentUpon>
@@ -433,6 +447,7 @@
   <ItemGroup>
     <Text Include="Clientes.txt" />
     <Text Include="Empleados.txt" />
+    <Text Include="espacios.txt" />
     <Text Include="Movimientos.txt" />
     <Text Include="Pagos.txt" />
     <Text Include="Tarifas.txt" />

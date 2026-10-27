@@ -102,9 +102,7 @@ List<Cliente^>^ ClienteController::FiltrarPorTipo(String^ tipoBuscado) {
 
 // Busca clientes por nombre, apellido o documento.
 // La búsqueda no distingue mayúsculas de minúsculas.
-List<Cliente^>^ ClienteController::buscarClientes(
-	String^ criterio)
-{
+List<Cliente^>^ ClienteController::buscarClientes(String^ criterio) {
 	List<Cliente^>^ clientes = buscarTodosArchivo();
 
 	if (String::IsNullOrWhiteSpace(criterio))

@@ -48,9 +48,6 @@
     <ClInclude Include="ClienteDAO.h">
       <Filter>Header Files\Admin</Filter>
     </ClInclude>
-    <ClInclude Include="CocheraDAO.h">
-      <Filter>Header Files\Admin</Filter>
-    </ClInclude>
     <ClInclude Include="EmpleadoDAO.h">
       <Filter>Header Files\Admin</Filter>
     </ClInclude>
@@ -84,6 +81,9 @@
     <ClInclude Include="BalanceDiarioDAO.h">
       <Filter>Header Files\Admin</Filter>
     </ClInclude>
+    <ClInclude Include="EspacioEstacionamientoDAO.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SmartParkingSystemDAO.cpp">
@@ -116,9 +116,6 @@
     <ClCompile Include="EmpleadoDAO.cpp">
       <Filter>Source Files\Admin</Filter>
     </ClCompile>
-    <ClCompile Include="CocheraDAO.cpp">
-      <Filter>Source Files\Admin</Filter>
-    </ClCompile>
     <ClCompile Include="ClienteDAO.cpp">
       <Filter>Source Files\Admin</Filter>
     </ClCompile>
@@ -136,6 +133,9 @@
     </ClCompile>
     <ClCompile Include="BalanceDiarioDAO.cpp">
       <Filter>Source Files\Admin</Filter>
+    </ClCompile>
+    <ClCompile Include="EspacioEstacionamientoDAO.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -549,12 +549,20 @@ namespace SmartParkingSystemViewGUI {
 
 	private: System::Void btnRegistrar_Click(System::Object^ sender, System::EventArgs^ e) {
 		try {
-
 			if (String::IsNullOrWhiteSpace(txtMonto->Text) ||
 				cmbBxTipoMov->SelectedIndex == -1 ||
 				cmbBxEstado->SelectedIndex == -1 ||
 				String::IsNullOrWhiteSpace(txtDescripcion->Text)) {
 				MessageBox::Show("Debe completar todos los campos obligatorios para registrar el movimiento.", "Campos incompletos", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+				return;
+			}
+
+			int idIngresado = Convert::ToInt32(txtIdMov->Text);
+			Movimiento^ movimientoExistente = movimientoController->buscarxIdArchivo(idIngresado);
+
+			if (movimientoExistente != nullptr) {
+				MessageBox::Show("Está intentando registrar un movimiento con un ID que ya existe (ha seleccionado un registro de la tabla). Utilice el botón 'Modificar' o haga clic en 'Limpiar' para registrar uno nuevo.",
+					"Acción no permitida", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 				return;
 			}
 
@@ -566,7 +574,6 @@ namespace SmartParkingSystemViewGUI {
 				return;
 			}
 
-			int id = Convert::ToInt32(txtIdMov->Text);
 			String^ tipo = cmbBxTipoMov->SelectedItem->ToString();
 			String^ estadoTexto = cmbBxEstado->SelectedItem->ToString();
 			bool anulada = (estadoTexto->Trim() == "Anulada");
@@ -575,7 +582,7 @@ namespace SmartParkingSystemViewGUI {
 			DateTime fechaHoraActual = DateTime::Now;
 
 			Movimiento^ nuevoMov = gcnew Movimiento();
-			nuevoMov->setIdMovimiento(id);
+			nuevoMov->setIdMovimiento(idIngresado);
 			nuevoMov->setMonto(monto);
 			nuevoMov->setTipoMovimiento(tipo);
 			nuevoMov->setAnulada(anulada);
@@ -671,7 +678,8 @@ namespace SmartParkingSystemViewGUI {
 
 				movimientoController->modificarArchivo(movExistente);
 
-				if (eraActivoAntes && seVaAAnularAhora && movExistente->getTipoMovimiento() != "Reembolso") {
+				//Condicional para crear automaticamnte un reembolso al anular un mov (Se retiró para simplificar el código)
+				/*if (eraActivoAntes && seVaAAnularAhora && movExistente->getTipoMovimiento() != "Reembolso") {
 					List<Movimiento^>^ lista = movimientoController->buscarTodosArchivo();
 					int siguienteId = 1;
 					if (lista != nullptr && lista->Count > 0) {
@@ -681,18 +689,16 @@ namespace SmartParkingSystemViewGUI {
 						}
 						siguienteId = maxId + 1;
 					}
-
 					Movimiento^ movReembolso = gcnew Movimiento();
 					movReembolso->setIdMovimiento(siguienteId);
 					movReembolso->setMonto(movExistente->getMonto());
 					movReembolso->setTipoMovimiento("Reembolso");
 					movReembolso->setAnulada(false);
-					movReembolso->setDescripcion("Reembolso automático" + movExistente->getIdMovimiento());
+					movReembolso->setDescripcion("Reembolso automático (ID: " + movExistente->getIdMovimiento() + ")");
 					movReembolso->setFechaHoraMovimento(DateTime::Now);
 					movReembolso->setListaPagos(gcnew List<Pago^>());
-
 					movimientoController->registrarArchivo(movReembolso);
-				}
+				}*/
 
 				MessageBox::Show("Movimiento modificado correctamente.", "Éxito", MessageBoxButtons::OK, MessageBoxIcon::Information);
 				cargarMovimientos();

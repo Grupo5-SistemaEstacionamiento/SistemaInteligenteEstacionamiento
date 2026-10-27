@@ -15,6 +15,10 @@ namespace SmartParkingSystemDAO {
 		void modificarVehiculoArchivo(Vehiculo^ veh);
 		void eliminarVehiculoArchivo(int idVehiculo);
 		void escribirArchivo(List<Vehiculo^>^ listaVeh);
+
+		//para la UI:
+		Vehiculo^ buscarxPlacaArchivo(String^ placa);
+
 	};
 
 }
