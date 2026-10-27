@@ -10,6 +10,7 @@ using namespace SmartParkingSystemDAO;
 
 namespace SmartParkingSystemViewGUI {
 
+	ref class frmGraficasBalances;
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
@@ -323,6 +324,25 @@ namespace SmartParkingSystemViewGUI {
 		/// Método necesario para admitir el Diseñador. No se puede modificar
 		/// el contenido de este método con el editor de código.
 		/// </summary>
+		private: System::Windows::Forms::Form^ actual = nullptr;
+		/*private: System::Void AbrirFormulario(System::Windows::Forms::Form^ hijo) {
+			//Cerramos la ventana ya abierta si es q se desea abrir otra
+			if (this->actual != nullptr) {
+				this->actual->Close();
+			}
+
+			this->actual = hijo; //Actualizamos a la ventana actualmente abierta
+
+			hijo->TopLevel = false; //Evitamos que se abra sobre el dashboard
+
+			hijo->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None; //Quitamos bordes a todas las ventanas emergentes
+
+			hijo->Dock = System::Windows::Forms::DockStyle::Fill;
+
+			this->pnlContenedor->Controls->Add(hijo); //Agnadimos en el panel contenedor la ventana emergente
+			hijo->Show();
+		}*/
+		
 		void InitializeComponent(void)
 		{
 			this->lblTitulo = (gcnew System::Windows::Forms::Label());
@@ -1542,29 +1562,23 @@ namespace SmartParkingSystemViewGUI {
 			MessageBox::Show("Error al abrir la gestión de movimientos: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 	}
-    public:
-			   // Guardamos una referencia al panel contenedor
-			   System::Windows::Forms::Panel^ panelContenedorPadre;
 
-			   // Modificas tu constructor para que reciba el panel:
-			   frmBalances(System::Windows::Forms::Panel^ panelDestino) {
-				   InitializeComponent();
-				   panelContenedorPadre = panelDestino;
-	}
 	private: System::Void btnGraficas_Click(System::Object^ sender, System::EventArgs^ e) {
+		
+		//this->AbrirFormulario(gcnew frmGraficasBalances);
+	    
+		// Crea el formulario para registrar una nueva suscripción.
+		frmGraficasBalances^ formularioGraficas =
+			gcnew frmGraficasBalances();
 
-		frmGraficasBalances^ formGraficas = gcnew frmGraficasBalances(panelContenedorPadre);
+		// Abre el formulario como ventana modal.
+		System::Windows::Forms::DialogResult resultado =
+			formularioGraficas->ShowDialog();
 
-		// Si en 'frmBalance' también tienen la misma función 'AbrirFormulario', 
-		// pueden llamarla directamente pasándole el panel padre, o configurar las propiedades a mano:
-
-		formGraficas->TopLevel = false;
-		formGraficas->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
-		formGraficas->Dock = System::Windows::Forms::DockStyle::Fill;
-
-		panelContenedorPadre->Controls->Clear();
-		panelContenedorPadre->Controls->Add(formGraficas);
-		formGraficas->Show();
+		
+	
 	}
+
+	
 };
 }

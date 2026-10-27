@@ -1,5 +1,7 @@
 #pragma once
-ref class frmBalances;
+//#include "frmBalances.h"
+
+
 
 namespace SmartParkingSystemViewGUI {
 
@@ -19,6 +21,7 @@ namespace SmartParkingSystemViewGUI {
 	public ref class frmGraficasBalances : public System::Windows::Forms::Form
 	{
 
+	
 	public:
 		// Variable para guardar el panel que viene desde afuera
 		System::Windows::Forms::Panel^ panelContenedorPadre;
@@ -139,18 +142,35 @@ namespace SmartParkingSystemViewGUI {
 			this->ClientSize = System::Drawing::Size(757, 422);
 			this->Controls->Add(this->panel3);
 			this->Controls->Add(this->pnlTitulo);
-			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::Fixed3D;
 			this->Name = L"frmGraficasBalances";
-			this->Text = L"frmGraficasBalances";
+			this->Text = L"Graficas Balances";
 			this->pnlTitulo->ResumeLayout(false);
 			this->pnlTitulo->PerformLayout();
 			this->panel3->ResumeLayout(false);
 			this->ResumeLayout(false);
 
 		}
-#pragma endregion
-		private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 
+	
+#pragma endregion
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		try {
+			// Si guardamos el panel contenedor padre, lo usamos para limpiar o volver
+			if (panelContenedorPadre != nullptr) {
+				// Opción A: Limpiamos el panel para dejar libre el menú lateral
+				panelContenedorPadre->Controls->Clear();
+
+
+			}
+			else {
+				// Respaldo por si se abrió de otra forma
+				this->Close();
+			}
 		}
+		catch (Exception^ ex) {
+			MessageBox::Show("Error al regresar: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+	}
 };
 }
