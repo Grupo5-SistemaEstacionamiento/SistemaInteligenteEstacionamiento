@@ -34,9 +34,16 @@ namespace SmartParkingSystemViewGUI {
 			imgAuto = Image::FromFile("autos.png");
 
 			// Activar Double Buffering para evitar parpadeos al repintar
-			this->SetStyle(ControlStyles::OptimizedDoubleBuffer |
-				ControlStyles::AllPaintingInWmPaint |
-				ControlStyles::UserPaint, true);
+			//this->SetStyle(ControlStyles::OptimizedDoubleBuffer |
+			//	ControlStyles::AllPaintingInWmPaint |
+			//	ControlStyles::UserPaint, true);
+
+			// ACTIVAR DOUBLE BUFFERING ESPECÍFICAMENTE EN EL PANEL
+			System::Reflection::PropertyInfo^ prop = panel1->GetType()->GetProperty(
+				"DoubleBuffered",
+				System::Reflection::BindingFlags::Instance | System::Reflection::BindingFlags::NonPublic
+			);
+			prop->SetValue(panel1, true, nullptr);
 
 			panel1->Invalidate();
 		}
@@ -149,17 +156,28 @@ namespace SmartParkingSystemViewGUI {
 				g->DrawImage(imgAuto, areaDestino, recorteAuto, GraphicsUnit::Pixel);
 			}
 		}
+		// CÓDIGO TEMPORAL DE DIAGNÓSTICO: Dibujar los bordes de todos los espacios en rojo
+		//for each (EspacioEstacionamiento ^ espacio in listaEspacios) {
+		//	g->DrawRectangle(Pens::Red, espacio->getArea());
+		//}
 
 		// Restablecer la transformación al finalizar
 		g->ResetTransform();
 		
-		// CÓDIGO TEMPORAL DE DIAGNÓSTICO: Dibujar los bordes de todos los espacios en rojo
-		for each (EspacioEstacionamiento ^ espacio in listaEspacios) {
-			g->DrawRectangle(Pens::Red, espacio->getArea());
-		}
 	}
 	private: System::Void panel1_MouseClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
-		bool huboCambio = controlador->ProcesarClic(e->X, e->Y, listaEspacios);
+		// 1. Calcular el mismo offset usado al dibujar
+		int offsetX = (panel1->Width - imgFondo->Width) / 2;
+		int offsetY = (panel1->Height - imgFondo->Height) / 2;
+		if (offsetX < 0) offsetX = 0;
+		if (offsetY < 0) offsetY = 0;
+
+		// 2. Ajustar las coordenadas del clic restando el offset para que coincidan con la cuadrícula nativa
+		int xRelativo = e->X - offsetX;
+		int yRelativo = e->Y - offsetY;
+
+		// 3. Enviar las coordenadas relativas corregidas al controlador
+		bool huboCambio = controlador->ProcesarClic(xRelativo, yRelativo, listaEspacios);
 
 		if (huboCambio) {
 			panel1->Invalidate();
