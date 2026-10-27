@@ -87,41 +87,6 @@ namespace SmartParkingSystemViewGUI {
 	protected:
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	private:
 		/// <summary>
 		/// Required designer variable.
@@ -135,8 +100,8 @@ namespace SmartParkingSystemViewGUI {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle5 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle6 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(frmMoreCliente::typeid));
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->textInfoCliente = (gcnew System::Windows::Forms::TextBox());
@@ -144,6 +109,7 @@ namespace SmartParkingSystemViewGUI {
 			this->btnEliminar = (gcnew System::Windows::Forms::Button());
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->panel3 = (gcnew System::Windows::Forms::Panel());
+			this->btnMas = (gcnew System::Windows::Forms::Button());
 			this->btnEditar = (gcnew System::Windows::Forms::Button());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -161,7 +127,6 @@ namespace SmartParkingSystemViewGUI {
 			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
 			this->TextBuscar = (gcnew System::Windows::Forms::TextBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->btnMas = (gcnew System::Windows::Forms::Button());
 			this->panel1->SuspendLayout();
 			this->panel3->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
@@ -260,6 +225,22 @@ namespace SmartParkingSystemViewGUI {
 			this->panel3->Size = System::Drawing::Size(847, 64);
 			this->panel3->TabIndex = 35;
 			// 
+			// btnMas
+			// 
+			this->btnMas->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->btnMas->BackColor = System::Drawing::Color::Teal;
+			this->btnMas->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->btnMas->ForeColor = System::Drawing::Color::White;
+			this->btnMas->Location = System::Drawing::Point(498, 22);
+			this->btnMas->Margin = System::Windows::Forms::Padding(2);
+			this->btnMas->Name = L"btnMas";
+			this->btnMas->Size = System::Drawing::Size(125, 31);
+			this->btnMas->TabIndex = 16;
+			this->btnMas->Text = L"Más";
+			this->btnMas->UseVisualStyleBackColor = false;
+			this->btnMas->Click += gcnew System::EventHandler(this, &frmMoreCliente::btnMas_Click);
+			// 
 			// btnEditar
 			// 
 			this->btnEditar->Anchor = System::Windows::Forms::AnchorStyles::None;
@@ -285,15 +266,15 @@ namespace SmartParkingSystemViewGUI {
 			this->dataGridView1->AllowUserToResizeColumns = false;
 			this->dataGridView1->AllowUserToResizeRows = false;
 			this->dataGridView1->Anchor = System::Windows::Forms::AnchorStyles::None;
-			dataGridViewCellStyle5->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			dataGridViewCellStyle5->BackColor = System::Drawing::Color::MediumSlateBlue;
-			dataGridViewCellStyle5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle1->BackColor = System::Drawing::Color::MediumSlateBlue;
+			dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle5->ForeColor = System::Drawing::SystemColors::WindowText;
-			dataGridViewCellStyle5->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle5->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle5->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->dataGridView1->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+			dataGridViewCellStyle1->ForeColor = System::Drawing::SystemColors::WindowText;
+			dataGridViewCellStyle1->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle1->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle1->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dataGridView1->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(7) {
 				this->Column1,
@@ -303,16 +284,16 @@ namespace SmartParkingSystemViewGUI {
 			this->dataGridView1->Location = System::Drawing::Point(25, 216);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->ReadOnly = true;
-			dataGridViewCellStyle6->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			dataGridViewCellStyle6->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(128)),
+			dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(128)),
 				static_cast<System::Int32>(static_cast<System::Byte>(128)), static_cast<System::Int32>(static_cast<System::Byte>(255)));
-			dataGridViewCellStyle6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle6->ForeColor = System::Drawing::SystemColors::WindowText;
-			dataGridViewCellStyle6->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle6->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle6->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->dataGridView1->RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+			dataGridViewCellStyle2->ForeColor = System::Drawing::SystemColors::WindowText;
+			dataGridViewCellStyle2->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dataGridView1->RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
 			this->dataGridView1->RowHeadersWidth = 62;
 			this->dataGridView1->Size = System::Drawing::Size(792, 270);
 			this->dataGridView1->TabIndex = 41;
@@ -402,11 +383,12 @@ namespace SmartParkingSystemViewGUI {
 			this->groupBox2->Size = System::Drawing::Size(792, 136);
 			this->groupBox2->TabIndex = 40;
 			this->groupBox2->TabStop = false;
-			this->groupBox2->Text = L"Buscar Empleado";
+			this->groupBox2->Text = L"Buscar Cliente";
 			// 
 			// cboFiltro
 			// 
 			this->cboFiltro->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->cboFiltro->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->cboFiltro->Font = (gcnew System::Drawing::Font(L"Arial", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->cboFiltro->FormattingEnabled = true;
@@ -487,22 +469,6 @@ namespace SmartParkingSystemViewGUI {
 			this->label2->Size = System::Drawing::Size(119, 22);
 			this->label2->TabIndex = 29;
 			this->label2->Text = L"ID Persona:";
-			// 
-			// btnMas
-			// 
-			this->btnMas->Anchor = System::Windows::Forms::AnchorStyles::None;
-			this->btnMas->BackColor = System::Drawing::Color::Teal;
-			this->btnMas->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->btnMas->ForeColor = System::Drawing::Color::White;
-			this->btnMas->Location = System::Drawing::Point(498, 22);
-			this->btnMas->Margin = System::Windows::Forms::Padding(2);
-			this->btnMas->Name = L"btnMas";
-			this->btnMas->Size = System::Drawing::Size(125, 31);
-			this->btnMas->TabIndex = 16;
-			this->btnMas->Text = L"Más";
-			this->btnMas->UseVisualStyleBackColor = false;
-			this->btnMas->Click += gcnew System::EventHandler(this, &frmMoreCliente::btnMas_Click);
 			// 
 			// frmMoreCliente
 			// 

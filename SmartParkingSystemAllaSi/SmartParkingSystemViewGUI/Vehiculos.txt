@@ -1,1 +1,7 @@
-1;ABC-123;Toyota;Corolla;Blanco;0;Sin anotaciones 2;XYZ-987;Honda;CBR600;Rojo;1;Sin anotaciones 3;DEF-456;Nissan;Sentra;Plata;0;Empresa 4;GHI-789;Kawasaki;Ninja;Verde;1;Motocicleta de prueba 5;JKL-321;Hyundai;Accent;Azul;0;Sin anotaciones 6;MNO-654;Chevrolet;Onix;Negro;0;Uso particular 7;PQR-852;Yamaha;MT07;Gris;1;Suscrito 8;STU-963;Ford;Focus;Blanco;0;Sin anotaciones 9;VWX-741;Suzuki;Swift;Rojo;0;Sin anotaciones 10;YZA-159;Ducati;Monster;Rojo;1;Motocicleta visitante
+1;ABC-123;Toyota;Yaris;Rojo;0;Sin observaciones;1
+2;BKT-482;Hyundai;Accent;Blanco;0;Rayón en la puerta derecha;2
+3;C7P-905;Kia;Rio;Negro;0;Vidrios Polarizados (posible choro);5
+4;D2F-318;Nissan;Sentra;Plata;0;Vehículo Familiar;3
+5;7305-LK;Yamaha;FZ150;Azul;1;Rayón en tanque;6
+6;1596-PR;Bajaj;Pulsar 200;Verde;1;;4
+7;6642-ZX;Susuki;Gixxer;Naranja;1;Placa antigua, en proceso de nueva placa;1

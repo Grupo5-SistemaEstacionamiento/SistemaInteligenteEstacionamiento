@@ -180,6 +180,12 @@
     <ClCompile Include="frmGestionarMovimientos.cpp">
       <Filter>Header Files\UI_Admin</Filter>
     </ClCompile>
+    <ClCompile Include="frmNuevoVehiculo.cpp">
+      <Filter>Header Files\UI_Admin\SubUI_Admin\Buscar\More Placa</Filter>
+    </ClCompile>
+    <ClCompile Include="frmEditarVehiculo.cpp">
+      <Filter>Header Files\UI_Admin\SubUI_Admin\Buscar\More Placa</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="frmLogin.h">
@@ -301,6 +307,12 @@
     </ClInclude>
     <ClInclude Include="frmGestionarMovimientos.h">
       <Filter>Header Files\UI_Admin</Filter>
+    </ClInclude>
+    <ClInclude Include="frmNuevoVehiculo.h">
+      <Filter>Header Files\UI_Admin\SubUI_Admin\Buscar\More Placa</Filter>
+    </ClInclude>
+    <ClInclude Include="frmEditarVehiculo.h">
+      <Filter>Header Files\UI_Admin\SubUI_Admin\Buscar\More Placa</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

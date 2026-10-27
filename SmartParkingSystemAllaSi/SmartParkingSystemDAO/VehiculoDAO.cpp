@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "VehiculoDAO.h"
+#include "ClienteDAO.h"
 
 using namespace SmartParkingSystemDAO;
 using namespace System::IO;
@@ -9,10 +10,13 @@ VehiculoDAO::VehiculoDAO() {
 }
 
 List<Vehiculo^>^ VehiculoDAO::buscarTodosArchivo() {
+	List<Cliente^>^ clientes = (gcnew ClienteDAO())->buscarTodosArchivo();
 	List<Vehiculo^>^ lista = gcnew List<Vehiculo^>();
 	String^ path = "Vehiculos.txt";
+
 	if (!File::Exists(path)) return lista;
-	for each (String^ line in File::ReadAllLines(path)) {
+
+	for each (String ^ line in File::ReadAllLines(path)) {
 		if (String::IsNullOrWhiteSpace(line)) continue;
 		array<String^>^ p = line->Split(';');
 		int id = p->Length > 0 && !String::IsNullOrWhiteSpace(p[0]) ? Convert::ToInt32(p[0]) : 0;
@@ -23,7 +27,10 @@ List<Vehiculo^>^ VehiculoDAO::buscarTodosArchivo() {
 		int tipoIdx = p->Length > 5 && !String::IsNullOrWhiteSpace(p[5]) ? Convert::ToInt32(p[5]) : 0;
 		String^ anot = p->Length > 6 ? p[6] : String::Empty;
 
+		int idCliente = p->Length > 7 && !String::IsNullOrWhiteSpace(p[7]) ? Convert::ToInt32(p[7]) : 0; //Extraemos el ID del cliente
+
 		Vehiculo^ v = gcnew Vehiculo();
+
 		v->setIdVehiculo(id);
 		v->setPlaca(placa);
 		v->setMarca(marca);
@@ -31,6 +38,14 @@ List<Vehiculo^>^ VehiculoDAO::buscarTodosArchivo() {
 		v->setColor(color);
 		v->setTipo(static_cast<TipoVehiculo>(tipoIdx));
 		v->setAnotaciones(anot);
+
+		for each (Cliente ^ c in clientes) {
+			if (c->getIdPersona() == idCliente) {
+				v->setCliente(c);
+				break;
+			}
+		}
+
 		lista->Add(v);
 	}
 	return lista;
@@ -66,10 +81,33 @@ void VehiculoDAO::eliminarVehiculoArchivo(int idVehiculo) {
 
 void VehiculoDAO::escribirArchivo(List<Vehiculo^>^ listaVeh) {
 	List<String^>^ lines = gcnew List<String^>();
-	for each (Vehiculo^ v in listaVeh) {
-		String^ l = String::Format("{0};{1};{2};{3};{4};{5};{6}",
-			v->getIdVehiculo(), v->getPlaca(), v->getMarca(), v->getModelo(), v->getColor(), Convert::ToString((int)v->getTipo()), v->getAnotaciones());
+	for each (Vehiculo ^ v in listaVeh) {
+		int idCliente = (v->getCliente() != nullptr) ? v->getCliente()->getIdPersona() : 0; //Si el cliente no es nulo asigna correctamente, si es nulo asigna 0
+		String^ l = String::Format("{0};{1};{2};{3};{4};{5};{6};{7}",
+			v->getIdVehiculo(), v->getPlaca(), v->getMarca(), v->getModelo(), v->getColor(),
+			Convert::ToString((int)v->getTipo()), v->getAnotaciones(), idCliente);
 		lines->Add(l);
 	}
 	File::WriteAllLines("Vehiculos.txt", lines->ToArray());
+}
+
+//Para la UI
+
+Vehiculo^ VehiculoDAO::buscarxPlacaArchivo(String^ placa) {
+	List<Vehiculo^>^ listaVehiculos = buscarTodosArchivo();
+
+	if (String::IsNullOrWhiteSpace(placa)) {
+		return nullptr;
+	}
+	
+	String^ placaLimpia = placa->Trim();
+
+	for each (Vehiculo ^ v in listaVehiculos) {
+		if (v != nullptr && v->getPlaca() != nullptr) {
+			if (v->getPlaca()->Trim()->Equals(placaLimpia, StringComparison::OrdinalIgnoreCase)) {
+				return v;
+			}
+		}
+	}
+	return nullptr;
 }
