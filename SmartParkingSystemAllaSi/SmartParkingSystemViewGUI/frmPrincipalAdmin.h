@@ -38,14 +38,25 @@ namespace SmartParkingSystemViewGUI {
 	/// </summary>
 	public ref class frmPrincipalAdmin : public System::Windows::Forms::Form
 	{
+	private:
+		SmartParkingSystemModel::Empleado^ empleadoAutenticado;
+
 	public:
 		frmPrincipalAdmin(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: Add the constructor code here
-			//
+
+			empleadoAutenticado = nullptr;
 		}
+
+	public:
+		frmPrincipalAdmin(
+			SmartParkingSystemModel::Empleado^ empleado)
+		{
+			InitializeComponent();
+
+			empleadoAutenticado = empleado;
+		}	
 
 	protected:
 		/// <summary>
@@ -425,15 +436,24 @@ private: System::Void btnCerrarSesion_Click(System::Object^ sender, System::Even
 
 }
 private: System::Void Turnobtn_Click(System::Object^ sender, System::EventArgs^ e) { //Turno
+	try
+	{
+		// Abrir el formulario de turnos.
+		frmTurno^ ventana =
+			gcnew frmTurno(empleadoAutenticado);
 
-	frmTurno^ ventana = gcnew frmTurno();
-
-	ventana->TopLevel = false;
-	ventana->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
-
-	ventana->Dock = System::Windows::Forms::DockStyle::Fill;
-
-	this->AbrirFormulario(ventana);
+		// Mostrarlo en el contenedor principal.
+		AbrirFormulario(ventana);
+	}
+	catch (Exception^ ex)
+	{
+		MessageBox::Show(
+			L"No se pudo abrir el formulario Turno:\n" +
+			ex->Message,
+			L"Error",
+			MessageBoxButtons::OK,
+			MessageBoxIcon::Error);
+	}
 }
 private: System::Void Emergenciabtn_Click(System::Object^ sender, System::EventArgs^ e) { //Emergencia
 

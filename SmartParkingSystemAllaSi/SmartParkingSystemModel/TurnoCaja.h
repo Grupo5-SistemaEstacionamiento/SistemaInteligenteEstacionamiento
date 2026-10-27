@@ -1,6 +1,6 @@
 #pragma once
-#include "Movimiento.h"
 
+#include "Movimiento.h"
 
 namespace SmartParkingSystemModel {
 
@@ -21,7 +21,6 @@ namespace SmartParkingSystemModel {
 		String^ estado;
 		List<Movimiento^>^ listaMovimientos;
 		Empleado^ empleado;
-
 
 	public:
 		TurnoCaja();
@@ -51,7 +50,6 @@ namespace SmartParkingSystemModel {
 		List<Movimiento^>^ getListaMovimientos();
 		Empleado^ getEmpleado();
 
-
 		void setIdTurno(int idTurno);
 		void setFechaHoraIngreso(DateTime fechaHoraIngreso);
 		void setFechaHoraSalida(DateTime fechaHoraSalida);
@@ -61,8 +59,5 @@ namespace SmartParkingSystemModel {
 		void setEstado(String^ estado);
 		void setListaMovimientos(List<Movimiento^>^ listaMovimientos);
 		void setEmpleado(Empleado^ Empleado);
-			
-
 	};
-
 }
