@@ -1,9 +1,9 @@
 #include "pch.h"
+
 #include "Cliente.h"
 #include "Membresia.h"
 #include "Vehiculo.h"
 #include "TarjetaRFID.h"
-
 
 using namespace SmartParkingSystemModel;
 
@@ -82,7 +82,6 @@ List<Vehiculo^>^ Cliente::getListaVehiculos() {
 }
 
 
-
 void Cliente::setFechaAfiliacion(DateTime fechaAfiliacion) {
 	this->fechaAfiliacion = fechaAfiliacion;
 }
@@ -112,4 +111,60 @@ void Cliente::setListaTarjetasRFID(List<TarjetaRFID^>^ listaTarjetasRFID) {
 }
 void Cliente::setListaVehiculos(List<Vehiculo^>^ listaVehiculos) {
 	this->listaVehiculos = listaVehiculos;
+}
+
+
+// Devuelve el tipo de cliente como texto.
+String^ Cliente::getTipoCliente()
+{
+	return this->tipo == TipoCliente::Miembro
+		? "Miembro"
+		: "Normal";
+}
+
+// Establece el tipo de cliente mediante texto.
+void Cliente::setTipoCliente(String^ tipoCliente)
+{
+	if (String::IsNullOrWhiteSpace(tipoCliente))
+	{
+		throw gcnew ArgumentException(
+			"Debe indicar el tipo de cliente."
+		);
+	}
+
+	String^ valor = tipoCliente->Trim();
+
+	if (String::Equals(
+		valor, "Miembro",
+		StringComparison::OrdinalIgnoreCase))
+	{
+		this->tipo = TipoCliente::Miembro;
+	}
+	else if (String::Equals(
+		valor, "Normal",
+		StringComparison::OrdinalIgnoreCase))
+	{
+		this->tipo = TipoCliente::Normal;
+	}
+	else
+	{
+		throw gcnew ArgumentException(
+			"El tipo de cliente debe ser Miembro o Normal."
+		);
+	}
+}
+
+// Incrementa el saldo del cliente en memoria.
+void Cliente::recargarSaldo(double monto)
+{
+	if (Double::IsNaN(monto) ||
+		Double::IsInfinity(monto) ||
+		monto <= 0)
+	{
+		throw gcnew ArgumentException(
+			"El monto debe ser mayor que cero."
+		);
+	}
+
+	this->saldo += monto;
 }

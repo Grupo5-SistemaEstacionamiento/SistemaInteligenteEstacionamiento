@@ -119,7 +119,9 @@ namespace SmartParkingSystemViewGUI {
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Panel^ panel2;
 	private: System::Windows::Forms::Label^ label7;
-	private: System::Windows::Forms::Button^ btnGuardarEdit;
+private: System::Windows::Forms::Button^ btnGuardarEdit;
+private: System::Windows::Forms::PictureBox^ pictureBox2;
+
 
 	private:
 		/// <summary>
@@ -134,6 +136,7 @@ namespace SmartParkingSystemViewGUI {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(frmEditarCliente::typeid));
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->txtObservaciones = (gcnew System::Windows::Forms::TextBox());
@@ -168,9 +171,11 @@ namespace SmartParkingSystemViewGUI {
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
 			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->btnGuardarEdit = (gcnew System::Windows::Forms::Button());
+			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
 			this->panel1->SuspendLayout();
 			this->grpBoxPrincipal->SuspendLayout();
 			this->panel2->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// label2
@@ -204,7 +209,7 @@ namespace SmartParkingSystemViewGUI {
 			this->txtObservaciones->Location = System::Drawing::Point(719, 170);
 			this->txtObservaciones->Margin = System::Windows::Forms::Padding(5);
 			this->txtObservaciones->Name = L"txtObservaciones";
-			this->txtObservaciones->Size = System::Drawing::Size(343, 28);
+			this->txtObservaciones->Size = System::Drawing::Size(293, 28);
 			this->txtObservaciones->TabIndex = 33;
 			// 
 			// label15
@@ -223,7 +228,7 @@ namespace SmartParkingSystemViewGUI {
 			this->txtDiscapacidad->Location = System::Drawing::Point(719, 400);
 			this->txtDiscapacidad->Margin = System::Windows::Forms::Padding(5);
 			this->txtDiscapacidad->Name = L"txtDiscapacidad";
-			this->txtDiscapacidad->Size = System::Drawing::Size(343, 28);
+			this->txtDiscapacidad->Size = System::Drawing::Size(293, 28);
 			this->txtDiscapacidad->TabIndex = 31;
 			// 
 			// lblDiscapacidad
@@ -263,7 +268,7 @@ namespace SmartParkingSystemViewGUI {
 			this->txtDocumento->Location = System::Drawing::Point(177, 231);
 			this->txtDocumento->Margin = System::Windows::Forms::Padding(5);
 			this->txtDocumento->Name = L"txtDocumento";
-			this->txtDocumento->Size = System::Drawing::Size(343, 28);
+			this->txtDocumento->Size = System::Drawing::Size(293, 28);
 			this->txtDocumento->TabIndex = 27;
 			// 
 			// label12
@@ -282,7 +287,7 @@ namespace SmartParkingSystemViewGUI {
 			this->txtSaldo->Location = System::Drawing::Point(177, 343);
 			this->txtSaldo->Margin = System::Windows::Forms::Padding(5);
 			this->txtSaldo->Name = L"txtSaldo";
-			this->txtSaldo->Size = System::Drawing::Size(343, 28);
+			this->txtSaldo->Size = System::Drawing::Size(293, 28);
 			this->txtSaldo->TabIndex = 25;
 			// 
 			// label11
@@ -312,7 +317,7 @@ namespace SmartParkingSystemViewGUI {
 			this->txtTelefono->Location = System::Drawing::Point(177, 289);
 			this->txtTelefono->Margin = System::Windows::Forms::Padding(5);
 			this->txtTelefono->Name = L"txtTelefono";
-			this->txtTelefono->Size = System::Drawing::Size(343, 28);
+			this->txtTelefono->Size = System::Drawing::Size(293, 28);
 			this->txtTelefono->TabIndex = 22;
 			// 
 			// btnRegresarEdit
@@ -334,6 +339,7 @@ namespace SmartParkingSystemViewGUI {
 			// 
 			this->grpBoxPrincipal->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(110)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
 				static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			this->grpBoxPrincipal->Controls->Add(this->pictureBox2);
 			this->grpBoxPrincipal->Controls->Add(this->txtObservaciones);
 			this->grpBoxPrincipal->Controls->Add(this->label15);
 			this->grpBoxPrincipal->Controls->Add(this->txtDiscapacidad);
@@ -388,7 +394,7 @@ namespace SmartParkingSystemViewGUI {
 			this->txtPassword->Location = System::Drawing::Point(719, 109);
 			this->txtPassword->Margin = System::Windows::Forms::Padding(5);
 			this->txtPassword->Name = L"txtPassword";
-			this->txtPassword->Size = System::Drawing::Size(343, 28);
+			this->txtPassword->Size = System::Drawing::Size(293, 28);
 			this->txtPassword->TabIndex = 20;
 			// 
 			// label9
@@ -407,7 +413,7 @@ namespace SmartParkingSystemViewGUI {
 			this->txtCorreo->Location = System::Drawing::Point(719, 51);
 			this->txtCorreo->Margin = System::Windows::Forms::Padding(5);
 			this->txtCorreo->Name = L"txtCorreo";
-			this->txtCorreo->Size = System::Drawing::Size(343, 28);
+			this->txtCorreo->Size = System::Drawing::Size(293, 28);
 			this->txtCorreo->TabIndex = 18;
 			// 
 			// label1
@@ -438,7 +444,7 @@ namespace SmartParkingSystemViewGUI {
 			this->txtID->Margin = System::Windows::Forms::Padding(5);
 			this->txtID->Name = L"txtID";
 			this->txtID->ReadOnly = true;
-			this->txtID->Size = System::Drawing::Size(343, 28);
+			this->txtID->Size = System::Drawing::Size(293, 28);
 			this->txtID->TabIndex = 13;
 			// 
 			// txtNombres
@@ -447,7 +453,7 @@ namespace SmartParkingSystemViewGUI {
 			this->txtNombres->Location = System::Drawing::Point(177, 107);
 			this->txtNombres->Margin = System::Windows::Forms::Padding(5);
 			this->txtNombres->Name = L"txtNombres";
-			this->txtNombres->Size = System::Drawing::Size(343, 28);
+			this->txtNombres->Size = System::Drawing::Size(293, 28);
 			this->txtNombres->TabIndex = 12;
 			// 
 			// cboEstado
@@ -477,7 +483,7 @@ namespace SmartParkingSystemViewGUI {
 			this->txtApellidos->Location = System::Drawing::Point(177, 170);
 			this->txtApellidos->Margin = System::Windows::Forms::Padding(5);
 			this->txtApellidos->Name = L"txtApellidos";
-			this->txtApellidos->Size = System::Drawing::Size(343, 28);
+			this->txtApellidos->Size = System::Drawing::Size(293, 28);
 			this->txtApellidos->TabIndex = 2;
 			// 
 			// label6
@@ -557,6 +563,19 @@ namespace SmartParkingSystemViewGUI {
 			this->btnGuardarEdit->UseVisualStyleBackColor = false;
 			this->btnGuardarEdit->Click += gcnew System::EventHandler(this, &frmEditarCliente::btnGuardarEdit_Click);
 			// 
+			// pictureBox2
+			// 
+			this->pictureBox2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->pictureBox2->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.Image")));
+			this->pictureBox2->Location = System::Drawing::Point(481, 53);
+			this->pictureBox2->Margin = System::Windows::Forms::Padding(2);
+			this->pictureBox2->Name = L"pictureBox2";
+			this->pictureBox2->Size = System::Drawing::Size(29, 26);
+			this->pictureBox2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->pictureBox2->TabIndex = 97;
+			this->pictureBox2->TabStop = false;
+			// 
 			// frmEditarCliente
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -575,6 +594,7 @@ namespace SmartParkingSystemViewGUI {
 			this->grpBoxPrincipal->PerformLayout();
 			this->panel2->ResumeLayout(false);
 			this->panel2->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			this->ResumeLayout(false);
 
 		}

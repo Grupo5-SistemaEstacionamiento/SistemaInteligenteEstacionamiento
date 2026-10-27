@@ -1,8 +1,47 @@
 #include "pch.h"
+
 #include "ClienteDAO.h"
 
-using namespace SmartParkingSystemDAO;
 using namespace System::IO;
+using namespace SmartParkingSystemDAO;
+
+// Obtiene la ruta común de persistencia de Clientes.
+static String^ ObtenerRutaClientes()
+{
+    String^ directorio =
+        AppDomain::CurrentDomain->BaseDirectory;
+
+    while (true)
+    {
+        if (Directory::Exists(
+            Path::Combine(
+                directorio,
+                "SmartParkingSystemModel")))
+        {
+            String^ carpetaDatos = Path::Combine(
+                directorio, "Data", "TXT"
+            );
+
+            Directory::CreateDirectory(carpetaDatos);
+
+            return Path::Combine(
+                carpetaDatos, "clientes.txt"
+            );
+        }
+
+        DirectoryInfo^ padre =
+            Directory::GetParent(directorio);
+
+        if (padre == nullptr)
+        {
+            throw gcnew DirectoryNotFoundException(
+                "No se encontró la raíz de SmartParkingSystem."
+            );
+        }
+
+        directorio = padre->FullName;
+    }
+}
 
 ClienteDAO::ClienteDAO() {
 
@@ -10,9 +49,9 @@ ClienteDAO::ClienteDAO() {
 
 List<Cliente^>^ ClienteDAO::buscarTodosArchivo() {
     List<Cliente^>^ lista = gcnew List<Cliente^>();
-    if (!File::Exists("Clientes.txt")) return lista;
+    if (!File::Exists(ObtenerRutaClientes())) return lista;
 
-    array<String^>^ lineas = File::ReadAllLines("Clientes.txt");
+    array<String^>^ lineas = File::ReadAllLines(ObtenerRutaClientes());
     for each (String ^ linea in lineas) {
         if (String::IsNullOrWhiteSpace(linea)) continue;
         array<String^>^ datos = linea->Split(';');
@@ -118,5 +157,5 @@ void ClienteDAO::escribirArchivo(List<Cliente^>^ listaClientes) {
 
         lineas[i] = lineaFormateada;
     }
-    File::WriteAllLines("Clientes.txt", lineas);
+    File::WriteAllLines(ObtenerRutaClientes(), lineas);
 }

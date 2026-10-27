@@ -213,7 +213,7 @@ namespace SmartParkingSystemViewGUI {
 	private: System::Windows::Forms::DataGridView^ dgvTarifas;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ colIdTarifa;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ colValorHora;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ colValorFraccion;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ colFraccion;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ colDescuento;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ colPenalizacion;
 private: System::Windows::Forms::Button^ btnLimpiar;
@@ -290,7 +290,7 @@ private: System::Windows::Forms::Button^ btnLimpiar;
 			this->dgvTarifas = (gcnew System::Windows::Forms::DataGridView());
 			this->colIdTarifa = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->colValorHora = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->colValorFraccion = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->colFraccion = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->colDescuento = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->colPenalizacion = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->btnLimpiar = (gcnew System::Windows::Forms::Button());
@@ -362,7 +362,7 @@ private: System::Windows::Forms::Button^ btnLimpiar;
 			this->dgvTarifas->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dgvTarifas->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
 				this->colIdTarifa,
-					this->colValorHora, this->colValorFraccion, this->colDescuento, this->colPenalizacion
+					this->colValorHora, this->colFraccion, this->colDescuento, this->colPenalizacion
 			});
 			this->dgvTarifas->Location = System::Drawing::Point(82, 382);
 			this->dgvTarifas->Margin = System::Windows::Forms::Padding(4);
@@ -393,13 +393,13 @@ private: System::Windows::Forms::Button^ btnLimpiar;
 			this->colValorHora->Name = L"colValorHora";
 			this->colValorHora->ReadOnly = true;
 			// 
-			// colValorFraccion
+			// colFraccion
 			// 
-			this->colValorFraccion->FillWeight = 114.9732F;
-			this->colValorFraccion->HeaderText = L"Fracción 15 min (S/)";
-			this->colValorFraccion->MinimumWidth = 6;
-			this->colValorFraccion->Name = L"colValorFraccion";
-			this->colValorFraccion->ReadOnly = true;
+			this->colFraccion->FillWeight = 114.9732F;
+			this->colFraccion->HeaderText = L"Fracción 15 min (S/)";
+			this->colFraccion->MinimumWidth = 6;
+			this->colFraccion->Name = L"colFraccion";
+			this->colFraccion->ReadOnly = true;
 			// 
 			// colDescuento
 			// 
@@ -757,7 +757,7 @@ private: System::Void dgvTarifas_CellClick(
 		fila->Cells["colValorHora"]->Value->ToString();
 
 	txtValorFraccion->Text =
-		fila->Cells["colValorFraccion"]->Value->ToString();
+		fila->Cells["colFraccion"]->Value->ToString();
 
 	txtDescuentoMembresia->Text =
 		fila->Cells["colDescuento"]->Value->ToString();

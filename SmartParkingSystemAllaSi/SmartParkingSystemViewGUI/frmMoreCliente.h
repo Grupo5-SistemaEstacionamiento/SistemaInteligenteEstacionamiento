@@ -21,6 +21,9 @@ namespace SmartParkingSystemViewGUI {
 	public ref class frmMoreCliente : public System::Windows::Forms::Form
 	{
 	public:
+
+		int idSelect;
+
 		frmMoreCliente(void)
 		{
 			InitializeComponent();
@@ -79,43 +82,9 @@ namespace SmartParkingSystemViewGUI {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column6;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column7;
+	private: System::Windows::Forms::Button^ btnMas;
 
 	protected:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 	private:
@@ -140,6 +109,7 @@ namespace SmartParkingSystemViewGUI {
 			this->btnEliminar = (gcnew System::Windows::Forms::Button());
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->panel3 = (gcnew System::Windows::Forms::Panel());
+			this->btnMas = (gcnew System::Windows::Forms::Button());
 			this->btnEditar = (gcnew System::Windows::Forms::Button());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -199,7 +169,7 @@ namespace SmartParkingSystemViewGUI {
 			this->button1->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button1->ForeColor = System::Drawing::Color::White;
-			this->button1->Location = System::Drawing::Point(559, 22);
+			this->button1->Location = System::Drawing::Point(636, 22);
 			this->button1->Margin = System::Windows::Forms::Padding(2);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(125, 31);
@@ -215,7 +185,7 @@ namespace SmartParkingSystemViewGUI {
 			this->btnEliminar->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnEliminar->ForeColor = System::Drawing::Color::White;
-			this->btnEliminar->Location = System::Drawing::Point(411, 22);
+			this->btnEliminar->Location = System::Drawing::Point(359, 22);
 			this->btnEliminar->Margin = System::Windows::Forms::Padding(2);
 			this->btnEliminar->Name = L"btnEliminar";
 			this->btnEliminar->Size = System::Drawing::Size(125, 31);
@@ -231,7 +201,7 @@ namespace SmartParkingSystemViewGUI {
 			this->button3->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button3->ForeColor = System::Drawing::Color::White;
-			this->button3->Location = System::Drawing::Point(109, 22);
+			this->button3->Location = System::Drawing::Point(74, 22);
 			this->button3->Margin = System::Windows::Forms::Padding(2);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(125, 31);
@@ -243,6 +213,7 @@ namespace SmartParkingSystemViewGUI {
 			// panel3
 			// 
 			this->panel3->BackColor = System::Drawing::SystemColors::ScrollBar;
+			this->panel3->Controls->Add(this->btnMas);
 			this->panel3->Controls->Add(this->button1);
 			this->panel3->Controls->Add(this->btnEliminar);
 			this->panel3->Controls->Add(this->btnEditar);
@@ -254,6 +225,22 @@ namespace SmartParkingSystemViewGUI {
 			this->panel3->Size = System::Drawing::Size(847, 64);
 			this->panel3->TabIndex = 35;
 			// 
+			// btnMas
+			// 
+			this->btnMas->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->btnMas->BackColor = System::Drawing::Color::Teal;
+			this->btnMas->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->btnMas->ForeColor = System::Drawing::Color::White;
+			this->btnMas->Location = System::Drawing::Point(498, 22);
+			this->btnMas->Margin = System::Windows::Forms::Padding(2);
+			this->btnMas->Name = L"btnMas";
+			this->btnMas->Size = System::Drawing::Size(125, 31);
+			this->btnMas->TabIndex = 16;
+			this->btnMas->Text = L"Más";
+			this->btnMas->UseVisualStyleBackColor = false;
+			this->btnMas->Click += gcnew System::EventHandler(this, &frmMoreCliente::btnMas_Click);
+			// 
 			// btnEditar
 			// 
 			this->btnEditar->Anchor = System::Windows::Forms::AnchorStyles::None;
@@ -262,7 +249,7 @@ namespace SmartParkingSystemViewGUI {
 			this->btnEditar->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnEditar->ForeColor = System::Drawing::Color::White;
-			this->btnEditar->Location = System::Drawing::Point(259, 22);
+			this->btnEditar->Location = System::Drawing::Point(215, 22);
 			this->btnEditar->Margin = System::Windows::Forms::Padding(2);
 			this->btnEditar->Name = L"btnEditar";
 			this->btnEditar->Size = System::Drawing::Size(125, 31);
@@ -396,11 +383,12 @@ namespace SmartParkingSystemViewGUI {
 			this->groupBox2->Size = System::Drawing::Size(792, 136);
 			this->groupBox2->TabIndex = 40;
 			this->groupBox2->TabStop = false;
-			this->groupBox2->Text = L"Buscar Empleado";
+			this->groupBox2->Text = L"Buscar Cliente";
 			// 
 			// cboFiltro
 			// 
 			this->cboFiltro->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->cboFiltro->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->cboFiltro->Font = (gcnew System::Drawing::Font(L"Arial", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->cboFiltro->FormattingEnabled = true;
@@ -512,6 +500,7 @@ namespace SmartParkingSystemViewGUI {
 	public:
 
 		event System::EventHandler^ OnRegresar;
+		event System::EventHandler^ OnVerMas;
 
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) { //Regresar
 		OnRegresar(this, e);
@@ -656,7 +645,7 @@ private: void mostrarGrilla(List<Cliente^>^ clientes) {
 
 		//Usamos formato diferente para 5 xq para estado vamos a pintar la casilla de un color particular
 
-		String^ estadoStr = cliente->getEstado().ToString();
+		String^ estadoStr = cliente->getEstado() ? "Activo" : "Inactivo";
 		filaGrilla[5] = estadoStr;
 
 		filaGrilla[6] = cliente->getObservaciones();
@@ -698,9 +687,11 @@ private: System::Void dataGridView1_CellDoubleClick(System::Object^ sender, Syst
 		frmEditarCliente^ ventanaEditar = gcnew frmEditarCliente(idSeleccionado);
 		ventanaEditar->ShowDialog(); // ShowDialog pausa esta ventana hasta que se cierre la de edición
 
-		// OPCIONAL: Aquí puedes volver a llamar a tu función que llena el DataGridView
-		// para que se refresque automáticamente al cerrar la ventana de edición.
-		// ej: llenarGrilla();
+		SmartParkingSystemController::ClienteController^ Controller = gcnew ClienteController();
+		List<Cliente^>^ ListaClientes = gcnew List<Cliente^>();
+		ListaClientes = Controller->buscarTodosArchivo();
+
+		mostrarGrilla(ListaClientes);
 	}
 }
 private: System::Void cboFiltro_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) { //Filtro
@@ -725,6 +716,26 @@ private: System::Void cboFiltro_SelectedIndexChanged(System::Object^ sender, Sys
 
 	mostrarGrilla(ListaFiltrada);
 
+}
+private: System::Void btnMas_Click(System::Object^ sender, System::EventArgs^ e) { //Mas
+
+	if (this->dataGridView1->SelectedRows->Count > 0) {
+		try {
+
+			int idCapturado = Convert::ToInt32(this->dataGridView1->SelectedRows[0]->Cells[0]->Value);
+
+			this->idSelect = idCapturado;
+
+			OnVerMas(this, e);
+		}
+		catch (Exception^ ex) {
+			MessageBox::Show("No se pudo extraer el ID del cliente de la tabla.", "Error de Lectura", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+		
+	}
+	else {
+		MessageBox::Show("Por favor, seleccione un cliente para ver su información.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+	}
 }
 };
 }

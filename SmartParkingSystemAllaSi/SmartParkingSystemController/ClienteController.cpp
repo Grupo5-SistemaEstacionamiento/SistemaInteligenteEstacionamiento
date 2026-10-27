@@ -1,4 +1,5 @@
 #include "pch.h"
+
 #include "ClienteController.h"
 
 using namespace SmartParkingSystemController;
@@ -68,6 +69,20 @@ void ClienteController::eliminarArchivo(int idPersona) {
 	clientDao->eliminarClienteArchivos(idPersona);
 }
 
+// Lista todos los clientes registrados.
+// Reutiliza el método existente del controlador.
+List<Cliente^>^ ClienteController::listarClientes()
+{
+	return this->buscarTodosArchivo();
+}
+
+// Busca un cliente mediante su identificador.
+// Reutiliza el método existente del controlador.
+Cliente^ ClienteController::buscarClientePorId(int idPersona)
+{
+	return this->buscarxIdArchivo(idPersona);
+}
+
 List<Cliente^>^ ClienteController::FiltrarPorTipo(String^ tipoBuscado) {
 	List<Cliente^>^ listaCompleta = this->buscarTodosArchivo();
 	List<Cliente^>^ listaFiltrada = gcnew List<Cliente^>();
@@ -82,4 +97,48 @@ List<Cliente^>^ ClienteController::FiltrarPorTipo(String^ tipoBuscado) {
 		}
 	}
 	return listaFiltrada;
+}
+
+
+// Busca clientes por nombre, apellido o documento.
+// La búsqueda no distingue mayúsculas de minúsculas.
+List<Cliente^>^ ClienteController::buscarClientes(String^ criterio) {
+	List<Cliente^>^ clientes = buscarTodosArchivo();
+
+	if (String::IsNullOrWhiteSpace(criterio))
+		return clientes;
+
+	List<Cliente^>^ resultados =
+		gcnew List<Cliente^>();
+
+	String^ texto = criterio->Trim();
+
+	for each (Cliente ^ cliente in clientes)
+	{
+		if (cliente == nullptr)
+			continue;
+
+		String^ nombres = cliente->getNombres();
+		String^ apellidos = cliente->getApellidos();
+		String^ documento = cliente->getDocumento();
+
+		bool coincide =
+			(!String::IsNullOrEmpty(nombres) &&
+				nombres->StartsWith(
+					texto,
+					StringComparison::OrdinalIgnoreCase)) ||
+			(!String::IsNullOrEmpty(apellidos) &&
+				apellidos->StartsWith(
+					texto,
+					StringComparison::OrdinalIgnoreCase)) ||
+			(!String::IsNullOrEmpty(documento) &&
+				documento->StartsWith(
+					texto,
+					StringComparison::OrdinalIgnoreCase));
+
+		if (coincide)
+			resultados->Add(cliente);
+	}
+
+	return resultados;
 }

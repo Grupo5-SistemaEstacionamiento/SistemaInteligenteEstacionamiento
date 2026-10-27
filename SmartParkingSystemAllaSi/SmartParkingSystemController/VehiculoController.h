@@ -22,6 +22,12 @@ namespace SmartParkingSystemController {
 		void registrarArchivo(Vehiculo^ veh);
 		void modificarArchivo(Vehiculo^ veh);
 		void eliminarArchivo(int idVehiculo);
+
+		// Hvdas adicionales requeridas por la UI de MorePlaca:
+
+		Vehiculo^ buscarxPlacaArchivo(String^ placa);
+		List<Vehiculo^>^ FiltrarPorTipoArchivo(String^ tipo);
+
 	};
 
 }

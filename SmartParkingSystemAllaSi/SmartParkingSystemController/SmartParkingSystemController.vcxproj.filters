@@ -78,6 +78,9 @@
     <ClInclude Include="PerifericosController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="BalancesController.h">
+      <Filter>Header Files\Admin</Filter>
+    </ClInclude>
     <ClInclude Include="EspacioEstacionamientoController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -127,6 +130,9 @@
     </ClCompile>
     <ClCompile Include="PerifericosController.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BalancesController.cpp">
+      <Filter>Source Files\Admin</Filter>
     </ClCompile>
     <ClCompile Include="EspacioEstacionamientoController.cpp">
       <Filter>Source Files</Filter>

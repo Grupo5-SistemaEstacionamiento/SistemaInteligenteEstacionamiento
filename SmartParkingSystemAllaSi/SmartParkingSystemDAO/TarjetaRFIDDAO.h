@@ -2,25 +2,39 @@
 
 using namespace System;
 using namespace System::Collections::Generic;
+
 using namespace SmartParkingSystemModel;
 
-namespace SmartParkingSystemDAO {
+namespace SmartParkingSystemDAO
+{
+    public ref class TarjetaRFIDDAO
+    {
+    private:
+        String^ rutaArchivo;
 
-	public ref class TarjetaRFIDDAO {
+        // Verifica el directorio de persistencia.
+        void verificarDirectorio();
 
-	private:
-		String^ rutaArchivo;
-		void verificarDirectorio();
-		bool guardarTarjetas(List<TarjetaRFID^>^ tarjetas);
+        // Reescribe las tarjetas registradas.
+        bool guardarTarjetas(
+            List<TarjetaRFID^>^ tarjetas
+        );
 
-	public:
-		TarjetaRFIDDAO();
+    public:
+        // Constructor.
+        TarjetaRFIDDAO();
 
-		List<TarjetaRFID^>^ listarTarjetas();
-		TarjetaRFID^ buscarTarjeta(int idTarjeta);
-		bool registrarTarjeta(TarjetaRFID^ tarjeta);
-		bool modificarTarjeta(TarjetaRFID^ tarjeta);
-		bool eliminarTarjeta(int idTarjeta);
-		int obtenerSiguienteId();
-	};
+        // Métodos del repositorio clonado.
+        List<TarjetaRFID^>^ listarTarjetas();
+        TarjetaRFID^ buscarTarjeta(int idTarjeta);
+        bool registrarTarjeta(TarjetaRFID^ tarjeta);
+        bool modificarTarjeta(TarjetaRFID^ tarjeta);
+        bool eliminarTarjeta(int idTarjeta);
+        int obtenerSiguienteId();
+
+        // Métodos compatibles con el proyecto original.
+        TarjetaRFID^ buscarPorId(int idTarjeta);
+        TarjetaRFID^ buscarPorUID(String^ codigoUID);
+        bool desactivarTarjeta(int idTarjeta);
+    };
 }

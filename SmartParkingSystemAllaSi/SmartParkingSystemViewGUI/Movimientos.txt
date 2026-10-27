@@ -1,1 +1,20 @@
-1;Ingreso por salida;12.50;0;2026-10-01T08:15:00.0000000Z;Ingreso;1 2;Venta suscripcion;25.00;0;2026-10-01T09:30:00.0000000Z;Ingreso;2 3;Pequeño consumo;7.75;0;2026-10-02T11:45:00.0000000Z;Ingreso;3 4;Pago multa;50.00;0;2026-10-03T14:00:00.0000000Z;Penalizacion;4 5;Recarga saldo;100.00;0;2026-10-04T15:20:00.0000000Z;Ingreso;5 6;Pago express;5.00;0;2026-10-04T16:10:00.0000000Z;Ingreso;6 7;Cobro servicio;18.25;0;2026-10-05T10:05:00.0000000Z;Ingreso;7 8;Pago tarjeta;30.00;0;2026-10-05T12:40:00.0000000Z;Ingreso;8 9;Cobro extra;9.50;0;2026-10-06T13:55:00.0000000Z;Ingreso;9 10;Pago acumulado;45.00;0;2026-10-06T17:30:00.0000000Z;Ingreso;10
+1;Ingreso por salida;12.5;0;2026-10-01T03:15:00.0000000-05:00;Ingreso;
+2;N/A;15;1;2026-10-25T23:18:26.5220350-05:00;Servicio;
+3;Pago por adelantado;8000.01;1;2026-10-25T23:19:08.7929795-05:00;Membresia;
+4;No sabe estacionar en //;200;0;2026-10-25T23:19:49.8550691-05:00;Multa;
+5;N/A;80;0;2026-10-25T23:26:11.4840817-05:00;Servicio;
+6;Nada;8000.01;0;2026-10-25T23:26:54.1283334-05:00;Membresia;
+7;Error;10000000000;1;2026-10-25T23:27:09.6715604-05:00;Multa;
+8;N/A;10.5;1;2026-10-25T23:27:25.5214385-05:00;Servicio;
+9;Me toco devolver;-5000;0;2026-10-25T23:28:19.9711411-05:00;Multa;
+3;Pago por adelantado;8000.01;1;2026-10-25T23:40:28.8889609-05:00;Membresia;
+10;Reembolso automático ID 4;200;0;2026-10-25T23:44:52.0456622-05:00;Reembolso;
+11;Reembolso automático ID 2;15;0;2026-10-25T23:45:14.5231868-05:00;Reembolso;
+12;Reembolso automático ID 3;8000.01;0;2026-10-25T23:46:10.2281276-05:00;Reembolso;
+13;Reembolso automático ID 8;10.5;0;2026-10-26T12:57:11.7067077-05:00;Reembolso;
+14;No sabe diferenciar freno de acelerador;15;1;2026-10-26T13:06:39.6791092-05:00;Multa;
+15;N/A;8500;0;2026-10-26T13:07:00.4454537-05:00;Membresia;
+16;Reembolso automático (ID: 14);15;0;2026-10-26T13:07:09.7940768-05:00;Reembolso;
+11;Reembolso automático ID 2;15;0;2026-10-26T13:09:58.8134077-05:00;Reembolso;
+17;Reembolso automático ID 3;8000.01;0;2026-10-26T13:14:32.1433852-05:00;Reembolso;
+18;Reembolso automático ID 3;8000.01;0;2026-10-26T13:14:40.0070022-05:00;Reembolso;

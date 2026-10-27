@@ -2,25 +2,41 @@
 
 using namespace System;
 using namespace System::Collections::Generic;
+
 using namespace SmartParkingSystemModel;
 
-namespace SmartParkingSystemDAO {
+namespace SmartParkingSystemDAO
+{
+    public ref class MembresiaDAO
+    {
+    private:
+        String^ rutaArchivo;
 
-	public ref class MembresiaDAO {
+        // Verifica la existencia del directorio.
+        void verificarDirectorio();
 
-	private:
-		String^ rutaArchivo;
-		void verificarDirectorio();
-		bool guardarMembresias(List<Membresia^>^ membresias);
+        // Guarda todas las membresías.
+        bool guardarMembresias(
+            List<Membresia^>^ membresias
+        );
 
-	public:
-		MembresiaDAO();
+    public:
+        // Constructor.
+        MembresiaDAO();
 
-		List<Membresia^>^ listarMembresias();
-		Membresia^ buscarMembresia(int idMembresia);
-		bool registrarMembresia(Membresia^ membresia);
-		bool modificarMembresia(Membresia^ membresia);
-		bool eliminarMembresia(int idMembresia);
-		int obtenerSiguienteId();
-	};
+        // Métodos existentes del repositorio.
+        List<Membresia^>^ listarMembresias();
+        Membresia^ buscarMembresia(int idMembresia);
+        bool registrarMembresia(Membresia^ membresia);
+        bool modificarMembresia(Membresia^ membresia);
+        bool eliminarMembresia(int idMembresia);
+        int obtenerSiguienteId();
+
+        // Métodos compatibles con los formularios.
+        List<Membresia^>^ listarPorCliente(int idCliente);
+        Membresia^ buscarPorId(int idMembresia);
+
+        // Cancelación lógica: conserva el historial.
+        bool cancelarMembresia(int idMembresia);
+    };
 }

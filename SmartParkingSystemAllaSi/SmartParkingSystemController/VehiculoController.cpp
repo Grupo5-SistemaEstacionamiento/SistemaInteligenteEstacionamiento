@@ -57,3 +57,27 @@ void VehiculoController::eliminarArchivo(int idVehiculo) {
 	VehiculoDAO^ vehiculoDao = gcnew VehiculoDAO();
 	vehiculoDao->eliminarVehiculoArchivo(idVehiculo);
 }
+
+//Adiciones por la UI aaaaaaa:
+
+Vehiculo^ VehiculoController::buscarxPlacaArchivo(String^ placaBusqueda) {
+	VehiculoDAO^ vehDao = gcnew VehiculoDAO();
+	return vehDao->buscarxPlacaArchivo(placaBusqueda);
+}
+
+List<Vehiculo^>^ VehiculoController::FiltrarPorTipoArchivo(String^ tipoBuscado) {
+	List<Vehiculo^>^ listaCompleta = this->buscarTodosArchivo();
+	List<Vehiculo^>^ listaFiltrada = gcnew List<Vehiculo^>();
+
+	for each (Vehiculo ^ c in listaCompleta) {
+		if (c == nullptr) continue;
+
+		if (tipoBuscado == "Automovil" && c->getTipo() == TipoVehiculo::automovil) {
+			listaFiltrada->Add(c);
+		}
+		else if (tipoBuscado == "Motocicleta" && c->getTipo() == TipoVehiculo::motocicleta) {
+			listaFiltrada->Add(c);
+		}
+	}
+	return listaFiltrada;
+}

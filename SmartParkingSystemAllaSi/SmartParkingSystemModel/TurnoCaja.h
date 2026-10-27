@@ -36,6 +36,10 @@ namespace SmartParkingSystemModel {
 			List<Movimiento^>^ listaMovimientos,
 			Empleado^ empleado
 		);
+
+		TurnoCaja(int idTurno, double saldoInicial, Empleado^ empleado);
+
+		void CerrarTurno(double saldoFinal, String^ observacion);
 		
 		int getIdTurno();
 		DateTime getFechaHoraIngreso();

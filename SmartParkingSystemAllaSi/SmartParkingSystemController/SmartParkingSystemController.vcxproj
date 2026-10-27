@@ -131,6 +131,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BalancesController.h" />
     <ClInclude Include="ClienteController.h" />
     <ClInclude Include="EmpleadoController.h" />
     <ClInclude Include="EspacioEstacionamientoController.h" />
@@ -150,6 +151,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="BalancesController.cpp" />
     <ClCompile Include="ClienteController.cpp" />
     <ClCompile Include="EmpleadoController.cpp" />
     <ClCompile Include="EspacioEstacionamientoController.cpp" />

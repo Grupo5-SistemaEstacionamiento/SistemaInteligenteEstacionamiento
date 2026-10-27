@@ -4,6 +4,8 @@
 using namespace SmartParkingSystemController;
 using namespace SmartParkingSystemDAO;
 
+using namespace System::Windows;
+
 // Constructor
 PerifericoController::PerifericoController() {
     dao = gcnew PerifericoDAO();
@@ -118,7 +120,7 @@ void PerifericoController::AddPeriferico(Periferico^ NuevoPeriferico) {
     }
 }
 
-// 1. El método "buscador" que revisa los 5 archivos de tu compañero
+// 1. El método "buscador" que revisa los 5 archivos 
 Periferico^ PerifericoController::BuscarPerifericoxID(int idPeriferico) {
     Periferico^ PerifericoBuscado = nullptr;
 
@@ -175,3 +177,75 @@ void PerifericoController::EliminarPeriferico(int idPeriferico) {
         dao->eliminarBarreraAccesoArchivo(idPeriferico);
     }
 }
+
+// Hvdas del ESP32S3: ------------------------------------------------------------------------------------------------------------
+
+void PerifericoController::SolicitarEstadoHardware() { //preguntamos por el estado inicial al abrir la pantalla 
+    if (puertoESP32 != nullptr && puertoESP32->IsOpen) {
+        try {
+            puertoESP32->Write("2\n");
+        }
+        catch (Exception^) {}
+    }
+}
+
+void PerifericoController::InicializarPuerto(String^ portName) {
+    if (puertoESP32 == nullptr) {
+        puertoESP32 = gcnew System::IO::Ports::SerialPort(); // lo creamos si aun no esta en memoria
+    }
+
+    if (!puertoESP32->IsOpen) {
+        puertoESP32->PortName = portName; // es para los COM
+        puertoESP32->BaudRate = 115200;   // Debe coincidir con el microcontrolador
+        puertoESP32->DtrEnable = true;    // CRÍTICO para ESP32-S3
+        puertoESP32->RtsEnable = true;    // CAMBIADO A TRUE: El USB nativo del S3 necesita ambos activos
+        puertoESP32->Handshake = Handshake::None;
+        puertoESP32->ReadTimeout = 500;
+        puertoESP32->WriteTimeout = 500;
+
+        puertoESP32->Open();
+    }
+}
+
+void PerifericoController::CerrarPuerto() {
+    // Añadido el blindaje != nullptr por seguridad
+    if (puertoESP32 != nullptr && puertoESP32->IsOpen) {
+        puertoESP32->Close();
+    }
+}
+
+void PerifericoController::ActivarHardwareEmergencia() {
+    if (puertoESP32 != nullptr && puertoESP32->IsOpen) {
+        try {
+            puertoESP32->Write("1\n"); // Añadido el salto de línea para forzar la lectura en el buffer del S3
+        }
+        catch (Exception^) {
+            // El catch vacío absorbe el "semaphore timeout" sin que la aplicación explote ni se congele
+        }
+    }
+}
+
+void PerifericoController::DesactivarHardwareEmergencia() {
+    if (puertoESP32 != nullptr && puertoESP32->IsOpen) {
+        try {
+            puertoESP32->Write("0\n"); // Añadido el salto de línea
+        }
+        catch (Exception^) {
+            // Absorbe el error silenciosamente
+        }
+    }
+}
+
+String^ PerifericoController::LeerMensajeESP32S3() {
+    if (puertoESP32 != nullptr && puertoESP32->IsOpen) {
+        if (puertoESP32->BytesToRead > 0) {
+            try { 
+                return puertoESP32->ReadLine()->Trim(); // Leemos el mensaje que mandó el ESP32
+            }
+            catch (Exception^) {
+            }
+        }
+    }
+    return ""; // Retornamos vacío si no hay mensajes nuevos
+}
+

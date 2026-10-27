@@ -126,17 +126,24 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="frmAdminEmpleados.cpp" />
+    <ClCompile Include="frmAdministracionRFID.cpp" />
+    <ClCompile Include="frmBalances.cpp" />
     <ClCompile Include="frmBalanceTurno.cpp" />
     <ClCompile Include="frmBuscar.cpp" />
     <ClCompile Include="frmBuscarCliente.cpp" />
     <ClCompile Include="frmBuscarPlaca.cpp" />
+    <ClCompile Include="frmClientesSuscritos.cpp" />
     <ClCompile Include="frmConsultarTiempo.cpp" />
     <ClCompile Include="frmEditarCliente.cpp" />
     <ClCompile Include="frmEditarEmpleado.cpp" />
     <ClCompile Include="frmEditarInfo.cpp" />
     <ClCompile Include="frmEditarMulta.cpp" />
     <ClCompile Include="frmEditarPeriferico.cpp" />
+    <ClCompile Include="frmEditarVehiculo.cpp" />
     <ClCompile Include="frmEmergencia.cpp" />
+    <ClCompile Include="frmGestionarMovimientos.cpp" />
+    <ClCompile Include="frmGestionRFID.cpp" />
+    <ClCompile Include="frmGestionSuscripcion.cpp" />
     <ClCompile Include="frmLogin.cpp" />
     <ClCompile Include="frmLoginConTarjeta.cpp" />
     <ClCompile Include="frmMapa.cpp" />
@@ -146,6 +153,7 @@
     <ClCompile Include="frmMorePlaca.cpp" />
     <ClCompile Include="frmNuevoCliente.cpp" />
     <ClCompile Include="frmNuevoPeriferico.cpp" />
+    <ClCompile Include="frmNuevoVehiculo.cpp" />
     <ClCompile Include="frmOfrecerSuscripcion.cpp" />
     <ClCompile Include="frmPerifericos.cpp" />
     <ClCompile Include="frmPrincipal.cpp" />
@@ -165,6 +173,12 @@
     <ClInclude Include="frmAdminEmpleados.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="frmAdministracionRFID.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmBalances.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="frmBalanceTurno.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -175,6 +189,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmBuscarPlaca.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmClientesSuscritos.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmConsultarTiempo.h">
@@ -195,7 +212,19 @@
     <ClInclude Include="frmEditarPeriferico.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="frmEditarVehiculo.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="frmEmergencia.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmGestionarMovimientos.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmGestionRFID.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmGestionSuscripcion.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmLogin.h">
@@ -223,6 +252,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmNuevoPeriferico.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmNuevoVehiculo.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmOfrecerSuscripcion.h">
@@ -268,6 +300,13 @@
   <ItemGroup>
     <EmbeddedResource Include="frmAdminEmpleados.resx">
       <DependentUpon>frmAdminEmpleados.h</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAdministracionRFID.resx">
+      <DependentUpon>frmAdministracionRFID.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBalances.resx">
+      <DependentUpon>frmBalances.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmBalanceTurno.resx">
       <DependentUpon>frmBalanceTurno.h</DependentUpon>
@@ -280,6 +319,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmBuscarPlaca.resx">
       <DependentUpon>frmBuscarPlaca.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmClientesSuscritos.resx">
+      <DependentUpon>frmClientesSuscritos.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmConsultarTiempo.resx">
       <DependentUpon>frmConsultarTiempo.h</DependentUpon>
@@ -299,8 +341,20 @@
     <EmbeddedResource Include="frmEditarPeriferico.resx">
       <DependentUpon>frmEditarPeriferico.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmEditarVehiculo.resx">
+      <DependentUpon>frmEditarVehiculo.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmEmergencia.resx">
       <DependentUpon>frmEmergencia.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGestionarMovimientos.resx">
+      <DependentUpon>frmGestionarMovimientos.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGestionRFID.resx">
+      <DependentUpon>frmGestionRFID.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGestionSuscripcion.resx">
+      <DependentUpon>frmGestionSuscripcion.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.h</DependentUpon>
@@ -328,6 +382,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmNuevoPeriferico.resx">
       <DependentUpon>frmNuevoPeriferico.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNuevoVehiculo.resx">
+      <DependentUpon>frmNuevoVehiculo.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmOfrecerSuscripcion.resx">
       <DependentUpon>frmOfrecerSuscripcion.h</DependentUpon>
@@ -379,6 +436,9 @@
   <ItemGroup>
     <ProjectReference Include="..\SmartParkingSystemController\SmartParkingSystemController.vcxproj">
       <Project>{414e1b8e-7367-1876-ebdb-d5fc2c313e13}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\SmartParkingSystemDAO\SmartParkingSystemDAO.vcxproj">
+      <Project>{0efe9d3f-3c0f-d4a2-bc92-e402684712d2}</Project>
     </ProjectReference>
     <ProjectReference Include="..\SmartParkingSystemModel\SmartParkingSystemModel.vcxproj">
       <Project>{ee4ff2d9-2aa0-c51a-2664-4c02fe3aaa33}</Project>

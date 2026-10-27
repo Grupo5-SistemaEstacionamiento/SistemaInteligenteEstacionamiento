@@ -162,6 +162,30 @@
     <ClCompile Include="frmEditarCliente.cpp">
       <Filter>Header Files\UI_Admin\SubUI_Admin\Buscar\More Cliente</Filter>
     </ClCompile>
+    <ClCompile Include="frmBalances.cpp">
+      <Filter>Header Files\UI_Admin</Filter>
+    </ClCompile>
+    <ClCompile Include="frmAdministracionRFID.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="frmClientesSuscritos.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="frmGestionRFID.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="frmGestionSuscripcion.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="frmGestionarMovimientos.cpp">
+      <Filter>Header Files\UI_Admin</Filter>
+    </ClCompile>
+    <ClCompile Include="frmNuevoVehiculo.cpp">
+      <Filter>Header Files\UI_Admin\SubUI_Admin\Buscar\More Placa</Filter>
+    </ClCompile>
+    <ClCompile Include="frmEditarVehiculo.cpp">
+      <Filter>Header Files\UI_Admin\SubUI_Admin\Buscar\More Placa</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="frmLogin.h">
@@ -265,6 +289,30 @@
     </ClInclude>
     <ClInclude Include="frmEditarCliente.h">
       <Filter>Header Files\UI_Admin\SubUI_Admin\Buscar\More Cliente</Filter>
+    </ClInclude>
+    <ClInclude Include="frmBalances.h">
+      <Filter>Header Files\UI_Admin</Filter>
+    </ClInclude>
+    <ClInclude Include="frmAdministracionRFID.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="frmClientesSuscritos.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="frmGestionRFID.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="frmGestionSuscripcion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="frmGestionarMovimientos.h">
+      <Filter>Header Files\UI_Admin</Filter>
+    </ClInclude>
+    <ClInclude Include="frmNuevoVehiculo.h">
+      <Filter>Header Files\UI_Admin\SubUI_Admin\Buscar\More Placa</Filter>
+    </ClInclude>
+    <ClInclude Include="frmEditarVehiculo.h">
+      <Filter>Header Files\UI_Admin\SubUI_Admin\Buscar\More Placa</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

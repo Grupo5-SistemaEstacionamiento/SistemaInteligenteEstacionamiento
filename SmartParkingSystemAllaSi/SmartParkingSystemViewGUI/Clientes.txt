@@ -1,4 +1,0 @@
-1;Pedro;Hernandez;12345678;111222333;PedroH@estacionamiento.com;1234;2026-10-22T12:48:11.5638154-05:00;1;2026-10-22T12:48:11.5638154-05:00;1;Se estacionó en el espacio reservado para discapacitados;83;0;
-2;Maria;Jurgens;87654321;+49 000 111 222;MariaJ@estacionamiento.com;1234;2026-10-22T12:49:58.5072074-05:00;1;2026-10-22T12:49:58.5072074-05:00;0;Bloqueo las líneas de parqueo afectando al vehiculo vecino;26;0;
-3;Robert;Alvarez;13245768;+51 399 002 392;RobertA@estacionamiento.com;1234;2026-10-22T13:01:22.5090385-05:00;1;2026-10-22T13:01:22.5090385-05:00;1;;13;0;
-5;Esteban;Durand;932 324 534;+51 999 999 999 ;EstebanD@estacionamiento.com;1234;2026-10-22T13:04:33.4338039-05:00;1;2026-10-22T13:04:33.4338039-05:00;0;;0.01;0;

@@ -32,6 +32,26 @@ namespace SmartParkingSystemModel {
 
 	}
 
+
+	TurnoCaja::TurnoCaja(int idTurno, double saldoInicial, Empleado^ empleado) {
+		this->idTurno = idTurno;
+		this->fechaHoraIngreso = DateTime::Now;
+		this->saldoInicial = saldoInicial;
+		this->saldoFinal = 0.0;
+		this->observacion = "";
+		this->estado = "Abierto";
+		this->listaMovimientos = gcnew List<Movimiento^>();
+		this->empleado = empleado;
+	}
+
+	void TurnoCaja::CerrarTurno(double saldoFinal, String^ observacion) {
+		this->fechaHoraSalida = DateTime::Now; 
+		this->saldoFinal = saldoFinal;
+		this->observacion = observacion;
+		this->estado = "Cerrado";
+	}
+
+
 	int TurnoCaja::getIdTurno() {
 		return this->idTurno;
 	}
