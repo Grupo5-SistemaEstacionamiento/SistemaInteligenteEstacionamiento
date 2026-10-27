@@ -248,6 +248,7 @@ namespace SmartParkingSystemViewGUI {
 			this->TextBoxCorreo->Name = L"TextBoxCorreo";
 			this->TextBoxCorreo->Size = System::Drawing::Size(310, 26);
 			this->TextBoxCorreo->TabIndex = 0;
+			this->TextBoxCorreo->Text = L"admin@estacionamiento.com";
 			this->TextBoxCorreo->UseWaitCursor = true;
 			// 
 			// label7
@@ -278,6 +279,7 @@ namespace SmartParkingSystemViewGUI {
 			this->TextBoxPassword->PasswordChar = '*';
 			this->TextBoxPassword->Size = System::Drawing::Size(310, 26);
 			this->TextBoxPassword->TabIndex = 1;
+			this->TextBoxPassword->Text = L"1234";
 			this->TextBoxPassword->UseSystemPasswordChar = true;
 			this->TextBoxPassword->UseWaitCursor = true;
 			// 
