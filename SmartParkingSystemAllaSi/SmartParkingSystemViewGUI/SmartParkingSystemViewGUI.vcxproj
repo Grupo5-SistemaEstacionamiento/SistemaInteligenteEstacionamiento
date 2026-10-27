@@ -387,6 +387,7 @@
   <ItemGroup>
     <Text Include="Clientes.txt" />
     <Text Include="Empleados.txt" />
+    <Text Include="espacios.txt" />
     <Text Include="Movimientos.txt" />
     <Text Include="Pagos.txt" />
     <Text Include="Tarifas.txt" />

@@ -78,6 +78,9 @@
     <ClInclude Include="PerifericosController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="EspacioEstacionamientoController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SmartParkingSystemController.cpp">
@@ -123,6 +126,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PerifericosController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EspacioEstacionamientoController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

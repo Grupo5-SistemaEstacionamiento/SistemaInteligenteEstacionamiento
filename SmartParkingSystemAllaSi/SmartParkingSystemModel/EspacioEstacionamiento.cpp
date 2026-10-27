@@ -18,6 +18,7 @@ EspacioEstacionamiento::EspacioEstacionamiento(
 	double largo,
 	double ancho,
 	bool estaOcupado,
+	Rectangle area,
 
 	SensorOcupacion^ sensorOcupacion,
 	IndicadorLed^ indicadorLed,
@@ -30,6 +31,7 @@ EspacioEstacionamiento::EspacioEstacionamiento(
 	this->largo = largo;
 	this->ancho = ancho;
 	this->estaOcupado = estaOcupado;
+	this->area = area;
 
 	this->sensorOcupacion = sensorOcupacion;
 	this->indicadorLed = indicadorLed;
@@ -54,6 +56,9 @@ double EspacioEstacionamiento::getAncho() {
 }
 bool EspacioEstacionamiento::getEstaOcupado() {
 	return this->estaOcupado;
+}
+Rectangle EspacioEstacionamiento::getArea() {
+	return this->area;
 }
 SensorOcupacion^ EspacioEstacionamiento::getSensorOcupacion() {
 	return this->sensorOcupacion;
@@ -84,6 +89,9 @@ void EspacioEstacionamiento::setAncho(double ancho) {
 }
 void EspacioEstacionamiento::setEstaOcupado(bool estaOcupado) {
 	this->estaOcupado = estaOcupado;
+}
+void EspacioEstacionamiento::setArea(Rectangle area) {
+	this->area = area;
 }
 void EspacioEstacionamiento::setSensorOcupacion(SensorOcupacion^ sensorOcupacion) {
 	this->sensorOcupacion = sensorOcupacion;

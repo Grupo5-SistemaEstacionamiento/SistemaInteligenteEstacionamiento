@@ -961,7 +961,7 @@ private: System::Windows::Forms::Panel^ pnlColorMuestra;
 				this->Close();
 			}
 		}
-		catch (Exception^ ex) {
+		catch (Exception^) {
 			// Si el usuario dejó un TextBox numérico en blanco, atrapamos el error para que el programa no colapse
 			MessageBox::Show("Por favor, asegúrese de llenar todos los campos numéricos correctamente y no dejar espacios vacíos.", "Error de Formato", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}

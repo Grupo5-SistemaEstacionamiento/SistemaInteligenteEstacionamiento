@@ -132,8 +132,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="ClienteDAO.h" />
-    <ClInclude Include="CocheraDAO.h" />
     <ClInclude Include="EmpleadoDAO.h" />
+    <ClInclude Include="EspacioEstacionamientoDAO.h" />
     <ClInclude Include="MembresiaDAO.h" />
     <ClInclude Include="MovimientoDAO.h" />
     <ClInclude Include="PagoDAO.h" />
@@ -151,8 +151,8 @@
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="ClienteDAO.cpp" />
-    <ClCompile Include="CocheraDAO.cpp" />
     <ClCompile Include="EmpleadoDAO.cpp" />
+    <ClCompile Include="EspacioEstacionamientoDAO.cpp" />
     <ClCompile Include="MembresiaDAO.cpp" />
     <ClCompile Include="MovimientoDAO.cpp" />
     <ClCompile Include="PagoDAO.cpp" />

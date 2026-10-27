@@ -369,5 +369,8 @@
     <Text Include="Vehiculos.txt">
       <Filter>Archivos de Texto</Filter>
     </Text>
+    <Text Include="espacios.txt">
+      <Filter>Archivos de Texto</Filter>
+    </Text>
   </ItemGroup>
 </Project>

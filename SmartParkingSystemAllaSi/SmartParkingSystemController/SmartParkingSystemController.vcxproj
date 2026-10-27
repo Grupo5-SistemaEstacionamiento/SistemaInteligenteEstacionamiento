@@ -133,6 +133,7 @@
   <ItemGroup>
     <ClInclude Include="ClienteController.h" />
     <ClInclude Include="EmpleadoController.h" />
+    <ClInclude Include="EspacioEstacionamientoController.h" />
     <ClInclude Include="MembresiaController.h" />
     <ClInclude Include="MovimientoController.h" />
     <ClInclude Include="PagoController.h" />
@@ -151,6 +152,7 @@
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="ClienteController.cpp" />
     <ClCompile Include="EmpleadoController.cpp" />
+    <ClCompile Include="EspacioEstacionamientoController.cpp" />
     <ClCompile Include="MembresiaController.cpp" />
     <ClCompile Include="MovimientoController.cpp" />
     <ClCompile Include="PagoController.cpp" />
@@ -178,6 +180,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>

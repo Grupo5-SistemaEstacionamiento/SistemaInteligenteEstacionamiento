@@ -4,6 +4,8 @@ namespace SmartParkingSystemModel {
 
 	using namespace System;
 	using namespace System::Collections::Generic;
+	using namespace System::Drawing;
+
 	ref class IndicadorLed;
 	ref class SensorOcupacion;
 	ref class Cliente;
@@ -26,6 +28,7 @@ namespace SmartParkingSystemModel {
 		double largo;
 		double ancho;
 		bool estaOcupado;
+		Rectangle area;
 
 		SensorOcupacion^ sensorOcupacion;
 		IndicadorLed^ indicadorLed;
@@ -42,6 +45,7 @@ namespace SmartParkingSystemModel {
 			double largo,
 			double ancho,
 			bool estaOcupado,
+			Rectangle area,
 
 			SensorOcupacion^ sensorOcupacion,
 			IndicadorLed^ indicadorLed,
@@ -54,6 +58,7 @@ namespace SmartParkingSystemModel {
 		double getLargo();
 		double getAncho();
 		bool getEstaOcupado();
+		Rectangle getArea();
 
 		SensorOcupacion^ getSensorOcupacion();
 		IndicadorLed^ getIndicadorLed();
@@ -68,6 +73,7 @@ namespace SmartParkingSystemModel {
 		void setLargo(double largo);
 		void setAncho(double ancho);
 		void setEstaOcupado(bool estaOcupado);
+		void setArea(Rectangle area);
 
 		void setSensorOcupacion(SensorOcupacion^ sensorOcupacion);
 		void setIndicadorLed(IndicadorLed^ indicadorLed);
