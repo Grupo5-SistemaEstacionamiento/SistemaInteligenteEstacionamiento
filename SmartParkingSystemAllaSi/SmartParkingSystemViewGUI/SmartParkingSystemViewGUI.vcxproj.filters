@@ -55,6 +55,9 @@
     <Filter Include="Header Files\UI_Admin\SubUI_Admin\Buscar\More Placa">
       <UniqueIdentifier>{9cc2fe9d-4ed5-40f6-971c-fe755483854e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\UI_Admin\Graficas Balances">
+      <UniqueIdentifier>{845574c4-5e29-4327-9778-0c91af9ad25e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -180,11 +183,8 @@
     <ClCompile Include="frmGestionarMovimientos.cpp">
       <Filter>Header Files\UI_Admin</Filter>
     </ClCompile>
-    <ClCompile Include="frmNuevoVehiculo.cpp">
-      <Filter>Header Files\UI_Admin\SubUI_Admin\Buscar\More Placa</Filter>
-    </ClCompile>
-    <ClCompile Include="frmEditarVehiculo.cpp">
-      <Filter>Header Files\UI_Admin\SubUI_Admin\Buscar\More Placa</Filter>
+    <ClCompile Include="frmGraficasBalances.cpp">
+      <Filter>Header Files\UI_Admin\Graficas Balances</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -308,11 +308,8 @@
     <ClInclude Include="frmGestionarMovimientos.h">
       <Filter>Header Files\UI_Admin</Filter>
     </ClInclude>
-    <ClInclude Include="frmNuevoVehiculo.h">
-      <Filter>Header Files\UI_Admin\SubUI_Admin\Buscar\More Placa</Filter>
-    </ClInclude>
-    <ClInclude Include="frmEditarVehiculo.h">
-      <Filter>Header Files\UI_Admin\SubUI_Admin\Buscar\More Placa</Filter>
+    <ClInclude Include="frmGraficasBalances.h">
+      <Filter>Header Files\UI_Admin\Graficas Balances</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

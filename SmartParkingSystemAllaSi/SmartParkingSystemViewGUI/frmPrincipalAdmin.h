@@ -121,13 +121,13 @@ namespace SmartParkingSystemViewGUI {
 			this->AdminTarifasbtn = (gcnew System::Windows::Forms::Button());
 			this->AdminSubsbtn = (gcnew System::Windows::Forms::Button());
 			this->AdminRFIDbtn = (gcnew System::Windows::Forms::Button());
+			this->btnPerifericos = (gcnew System::Windows::Forms::Button());
 			this->Empleadobtn = (gcnew System::Windows::Forms::Button());
 			this->Rerportarbtn = (gcnew System::Windows::Forms::Button());
 			this->Mapbtn = (gcnew System::Windows::Forms::Button());
 			this->Searchbtn = (gcnew System::Windows::Forms::Button());
 			this->Emergenciabtn = (gcnew System::Windows::Forms::Button());
 			this->Turnobtn = (gcnew System::Windows::Forms::Button());
-			this->btnPerifericos = (gcnew System::Windows::Forms::Button());
 			this->panel1->SuspendLayout();
 			this->pnlMenu->SuspendLayout();
 			this->SuspendLayout();
@@ -137,10 +137,9 @@ namespace SmartParkingSystemViewGUI {
 			this->pnlContenedor->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(224)), static_cast<System::Int32>(static_cast<System::Byte>(224)),
 				static_cast<System::Int32>(static_cast<System::Byte>(224)));
 			this->pnlContenedor->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->pnlContenedor->Location = System::Drawing::Point(316, 80);
-			this->pnlContenedor->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->pnlContenedor->Location = System::Drawing::Point(211, 52);
 			this->pnlContenedor->Name = L"pnlContenedor";
-			this->pnlContenedor->Size = System::Drawing::Size(1271, 861);
+			this->pnlContenedor->Size = System::Drawing::Size(847, 560);
 			this->pnlContenedor->TabIndex = 11;
 			// 
 			// panel1
@@ -150,9 +149,8 @@ namespace SmartParkingSystemViewGUI {
 			this->panel1->Controls->Add(this->textBox1);
 			this->panel1->Dock = System::Windows::Forms::DockStyle::Top;
 			this->panel1->Location = System::Drawing::Point(0, 0);
-			this->panel1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(1587, 80);
+			this->panel1->Size = System::Drawing::Size(1058, 52);
 			this->panel1->TabIndex = 12;
 			// 
 			// textBox1
@@ -163,10 +161,9 @@ namespace SmartParkingSystemViewGUI {
 			this->textBox1->Font = (gcnew System::Drawing::Font(L"Arial", 22, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBox1->ForeColor = System::Drawing::Color::White;
-			this->textBox1->Location = System::Drawing::Point(18, 19);
-			this->textBox1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->textBox1->Location = System::Drawing::Point(12, 12);
 			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(1124, 51);
+			this->textBox1->Size = System::Drawing::Size(749, 34);
 			this->textBox1->TabIndex = 0;
 			this->textBox1->Text = L"Administracion Estacionamiento Inteligente Alla-Si";
 			this->textBox1->TextChanged += gcnew System::EventHandler(this, &frmPrincipalAdmin::textBox1_TextChanged);
@@ -179,10 +176,9 @@ namespace SmartParkingSystemViewGUI {
 			this->btnCerrarSesion->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnCerrarSesion->ForeColor = System::Drawing::Color::White;
-			this->btnCerrarSesion->Location = System::Drawing::Point(0, 880);
-			this->btnCerrarSesion->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->btnCerrarSesion->Location = System::Drawing::Point(0, 572);
 			this->btnCerrarSesion->Name = L"btnCerrarSesion";
-			this->btnCerrarSesion->Size = System::Drawing::Size(290, 62);
+			this->btnCerrarSesion->Size = System::Drawing::Size(194, 40);
 			this->btnCerrarSesion->TabIndex = 6;
 			this->btnCerrarSesion->Text = L"Cerrar Sesion";
 			this->btnCerrarSesion->UseVisualStyleBackColor = false;
@@ -206,10 +202,9 @@ namespace SmartParkingSystemViewGUI {
 			this->pnlMenu->Controls->Add(this->Emergenciabtn);
 			this->pnlMenu->Controls->Add(this->Turnobtn);
 			this->pnlMenu->Dock = System::Windows::Forms::DockStyle::Left;
-			this->pnlMenu->Location = System::Drawing::Point(0, 80);
-			this->pnlMenu->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->pnlMenu->Location = System::Drawing::Point(0, 52);
 			this->pnlMenu->Name = L"pnlMenu";
-			this->pnlMenu->Size = System::Drawing::Size(316, 861);
+			this->pnlMenu->Size = System::Drawing::Size(211, 560);
 			this->pnlMenu->TabIndex = 10;
 			// 
 			// Balancebtn
@@ -219,10 +214,9 @@ namespace SmartParkingSystemViewGUI {
 			this->Balancebtn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->Balancebtn->ForeColor = System::Drawing::Color::White;
-			this->Balancebtn->Location = System::Drawing::Point(0, 800);
-			this->Balancebtn->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->Balancebtn->Location = System::Drawing::Point(0, 520);
 			this->Balancebtn->Name = L"Balancebtn";
-			this->Balancebtn->Size = System::Drawing::Size(290, 80);
+			this->Balancebtn->Size = System::Drawing::Size(194, 52);
 			this->Balancebtn->TabIndex = 17;
 			this->Balancebtn->Text = L"Balance";
 			this->Balancebtn->UseVisualStyleBackColor = false;
@@ -235,10 +229,9 @@ namespace SmartParkingSystemViewGUI {
 			this->AdminTarifasbtn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->AdminTarifasbtn->ForeColor = System::Drawing::Color::White;
-			this->AdminTarifasbtn->Location = System::Drawing::Point(0, 720);
-			this->AdminTarifasbtn->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->AdminTarifasbtn->Location = System::Drawing::Point(0, 468);
 			this->AdminTarifasbtn->Name = L"AdminTarifasbtn";
-			this->AdminTarifasbtn->Size = System::Drawing::Size(290, 80);
+			this->AdminTarifasbtn->Size = System::Drawing::Size(194, 52);
 			this->AdminTarifasbtn->TabIndex = 16;
 			this->AdminTarifasbtn->Text = L"Administrar Tarifas";
 			this->AdminTarifasbtn->UseVisualStyleBackColor = false;
@@ -251,10 +244,9 @@ namespace SmartParkingSystemViewGUI {
 			this->AdminSubsbtn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->AdminSubsbtn->ForeColor = System::Drawing::Color::White;
-			this->AdminSubsbtn->Location = System::Drawing::Point(0, 640);
-			this->AdminSubsbtn->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->AdminSubsbtn->Location = System::Drawing::Point(0, 416);
 			this->AdminSubsbtn->Name = L"AdminSubsbtn";
-			this->AdminSubsbtn->Size = System::Drawing::Size(290, 80);
+			this->AdminSubsbtn->Size = System::Drawing::Size(194, 52);
 			this->AdminSubsbtn->TabIndex = 15;
 			this->AdminSubsbtn->Text = L"Administrar Membresias";
 			this->AdminSubsbtn->UseVisualStyleBackColor = false;
@@ -267,14 +259,28 @@ namespace SmartParkingSystemViewGUI {
 			this->AdminRFIDbtn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->AdminRFIDbtn->ForeColor = System::Drawing::Color::White;
-			this->AdminRFIDbtn->Location = System::Drawing::Point(0, 560);
-			this->AdminRFIDbtn->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->AdminRFIDbtn->Location = System::Drawing::Point(0, 364);
 			this->AdminRFIDbtn->Name = L"AdminRFIDbtn";
-			this->AdminRFIDbtn->Size = System::Drawing::Size(290, 80);
+			this->AdminRFIDbtn->Size = System::Drawing::Size(194, 52);
 			this->AdminRFIDbtn->TabIndex = 14;
 			this->AdminRFIDbtn->Text = L"Administrar Tarjetas";
 			this->AdminRFIDbtn->UseVisualStyleBackColor = false;
 			this->AdminRFIDbtn->Click += gcnew System::EventHandler(this, &frmPrincipalAdmin::AdminRFIDbtn_Click);
+			// 
+			// btnPerifericos
+			// 
+			this->btnPerifericos->BackColor = System::Drawing::Color::MediumSlateBlue;
+			this->btnPerifericos->Dock = System::Windows::Forms::DockStyle::Top;
+			this->btnPerifericos->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->btnPerifericos->ForeColor = System::Drawing::Color::White;
+			this->btnPerifericos->Location = System::Drawing::Point(0, 312);
+			this->btnPerifericos->Name = L"btnPerifericos";
+			this->btnPerifericos->Size = System::Drawing::Size(194, 52);
+			this->btnPerifericos->TabIndex = 18;
+			this->btnPerifericos->Text = L"Administrar Perifericos";
+			this->btnPerifericos->UseVisualStyleBackColor = false;
+			this->btnPerifericos->Click += gcnew System::EventHandler(this, &frmPrincipalAdmin::btnPerifericos_Click);
 			// 
 			// Empleadobtn
 			// 
@@ -283,10 +289,9 @@ namespace SmartParkingSystemViewGUI {
 			this->Empleadobtn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->Empleadobtn->ForeColor = System::Drawing::Color::White;
-			this->Empleadobtn->Location = System::Drawing::Point(0, 400);
-			this->Empleadobtn->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->Empleadobtn->Location = System::Drawing::Point(0, 260);
 			this->Empleadobtn->Name = L"Empleadobtn";
-			this->Empleadobtn->Size = System::Drawing::Size(290, 80);
+			this->Empleadobtn->Size = System::Drawing::Size(194, 52);
 			this->Empleadobtn->TabIndex = 13;
 			this->Empleadobtn->Text = L"Administrar Empleados";
 			this->Empleadobtn->UseVisualStyleBackColor = false;
@@ -299,10 +304,9 @@ namespace SmartParkingSystemViewGUI {
 			this->Rerportarbtn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->Rerportarbtn->ForeColor = System::Drawing::Color::White;
-			this->Rerportarbtn->Location = System::Drawing::Point(0, 320);
-			this->Rerportarbtn->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->Rerportarbtn->Location = System::Drawing::Point(0, 208);
 			this->Rerportarbtn->Name = L"Rerportarbtn";
-			this->Rerportarbtn->Size = System::Drawing::Size(290, 80);
+			this->Rerportarbtn->Size = System::Drawing::Size(194, 52);
 			this->Rerportarbtn->TabIndex = 12;
 			this->Rerportarbtn->Text = L"Reportar Vehiculo";
 			this->Rerportarbtn->UseVisualStyleBackColor = false;
@@ -315,10 +319,9 @@ namespace SmartParkingSystemViewGUI {
 			this->Mapbtn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->Mapbtn->ForeColor = System::Drawing::Color::White;
-			this->Mapbtn->Location = System::Drawing::Point(0, 240);
-			this->Mapbtn->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->Mapbtn->Location = System::Drawing::Point(0, 156);
 			this->Mapbtn->Name = L"Mapbtn";
-			this->Mapbtn->Size = System::Drawing::Size(290, 80);
+			this->Mapbtn->Size = System::Drawing::Size(194, 52);
 			this->Mapbtn->TabIndex = 11;
 			this->Mapbtn->Text = L"Mapa 2D";
 			this->Mapbtn->UseVisualStyleBackColor = false;
@@ -331,12 +334,11 @@ namespace SmartParkingSystemViewGUI {
 			this->Searchbtn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->Searchbtn->ForeColor = System::Drawing::Color::White;
-			this->Searchbtn->Location = System::Drawing::Point(0, 160);
-			this->Searchbtn->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->Searchbtn->Location = System::Drawing::Point(0, 104);
 			this->Searchbtn->Name = L"Searchbtn";
-			this->Searchbtn->Size = System::Drawing::Size(290, 80);
+			this->Searchbtn->Size = System::Drawing::Size(194, 52);
 			this->Searchbtn->TabIndex = 10;
-			this->Searchbtn->Text = L"Buscar";
+			this->Searchbtn->Text = L"Administrar Clientes y Vehiculos";
 			this->Searchbtn->UseVisualStyleBackColor = false;
 			this->Searchbtn->Click += gcnew System::EventHandler(this, &frmPrincipalAdmin::Searchbtn_Click);
 			// 
@@ -347,10 +349,9 @@ namespace SmartParkingSystemViewGUI {
 			this->Emergenciabtn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->Emergenciabtn->ForeColor = System::Drawing::Color::White;
-			this->Emergenciabtn->Location = System::Drawing::Point(0, 80);
-			this->Emergenciabtn->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->Emergenciabtn->Location = System::Drawing::Point(0, 52);
 			this->Emergenciabtn->Name = L"Emergenciabtn";
-			this->Emergenciabtn->Size = System::Drawing::Size(290, 80);
+			this->Emergenciabtn->Size = System::Drawing::Size(194, 52);
 			this->Emergenciabtn->TabIndex = 9;
 			this->Emergenciabtn->Text = L"Activar Emergencia";
 			this->Emergenciabtn->UseVisualStyleBackColor = false;
@@ -364,39 +365,21 @@ namespace SmartParkingSystemViewGUI {
 				static_cast<System::Byte>(0)));
 			this->Turnobtn->ForeColor = System::Drawing::Color::White;
 			this->Turnobtn->Location = System::Drawing::Point(0, 0);
-			this->Turnobtn->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->Turnobtn->Name = L"Turnobtn";
-			this->Turnobtn->Size = System::Drawing::Size(290, 80);
+			this->Turnobtn->Size = System::Drawing::Size(194, 52);
 			this->Turnobtn->TabIndex = 8;
 			this->Turnobtn->Text = L"Turno";
 			this->Turnobtn->UseVisualStyleBackColor = false;
 			this->Turnobtn->Click += gcnew System::EventHandler(this, &frmPrincipalAdmin::Turnobtn_Click);
 			// 
-			// btnPerifericos
-			// 
-			this->btnPerifericos->BackColor = System::Drawing::Color::MediumSlateBlue;
-			this->btnPerifericos->Dock = System::Windows::Forms::DockStyle::Top;
-			this->btnPerifericos->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->btnPerifericos->ForeColor = System::Drawing::Color::White;
-			this->btnPerifericos->Location = System::Drawing::Point(0, 480);
-			this->btnPerifericos->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
-			this->btnPerifericos->Name = L"btnPerifericos";
-			this->btnPerifericos->Size = System::Drawing::Size(290, 80);
-			this->btnPerifericos->TabIndex = 18;
-			this->btnPerifericos->Text = L"Administrar Perifericos";
-			this->btnPerifericos->UseVisualStyleBackColor = false;
-			this->btnPerifericos->Click += gcnew System::EventHandler(this, &frmPrincipalAdmin::btnPerifericos_Click);
-			// 
 			// frmPrincipalAdmin
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1587, 941);
+			this->ClientSize = System::Drawing::Size(1058, 612);
 			this->Controls->Add(this->pnlContenedor);
 			this->Controls->Add(this->pnlMenu);
 			this->Controls->Add(this->panel1);
-			this->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->Name = L"frmPrincipalAdmin";
 			this->Text = L"Gestión de Estacionamiento Alla-Si";
 			this->WindowState = System::Windows::Forms::FormWindowState::Maximized;
@@ -586,12 +569,13 @@ private: System::Void AdminTarifasbtn_Click(System::Object^ sender, System::Even
 	this->AbrirFormulario(gcnew frmTarifa());
 }
 private: System::Void Balancebtn_Click(System::Object^ sender, System::EventArgs^ e) { //Balance
-	this->AbrirFormulario(gcnew frmBalances());
+	this->AbrirFormulario(gcnew frmBalances(pnlContenedor));
 }
 private: System::Void btnPerifericos_Click(System::Object^ sender, System::EventArgs^ e) { //Perifericos
 
 	this->AbrirFormulario(gcnew frmPerifericos());
 
 }
+
 };
 }

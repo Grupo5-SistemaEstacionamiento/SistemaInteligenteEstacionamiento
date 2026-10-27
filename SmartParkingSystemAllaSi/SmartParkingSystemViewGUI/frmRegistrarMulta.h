@@ -337,148 +337,35 @@ namespace SmartParkingSystemViewGUI {
 
 		}
 #pragma endregion
-	private: System::Void btnGuardarEdit_Click(System::Object^ sender, System::EventArgs^ e) { //Guardar Cambios
-		// 1. Obtener los datos del formulario.
-		String^ placa = txtSerialId->Text->Trim()->ToUpperInvariant();
-		String^ anotacion = txtAlias->Text->Trim();
-		String^ fechaTexto = textBox1->Text->Trim();
-		String^ montoTexto = txtUbicacion->Text->Trim();
-
-		// 2. Validar la placa.
-		if (String::IsNullOrWhiteSpace(placa))
-		{
-			MessageBox::Show(
-				"Debe ingresar la placa del vehículo.",
-				"Campo obligatorio",
-				MessageBoxButtons::OK,
-				MessageBoxIcon::Warning);
-
-			txtSerialId->Focus();
-			return;
-		}
-
-		if (placa->Contains("|"))
-		{
-			MessageBox::Show(
-				"La placa contiene caracteres no permitidos.",
-				"Placa inválida",
-				MessageBoxButtons::OK,
-				MessageBoxIcon::Warning);
-			return;
-		}
-
-		// 3. Validar el tipo de penalización.
-		if (cmbTipo->SelectedIndex < 0)
-		{
-			MessageBox::Show(
-				"Debe seleccionar un tipo de penalización.",
-				"Campo obligatorio",
-				MessageBoxButtons::OK,
-				MessageBoxIcon::Warning);
-
-			cmbTipo->Focus();
-			return;
-		}
-
-		// 4. Validar la anotación.
-		if (String::IsNullOrWhiteSpace(anotacion) ||
-			anotacion->Contains("|"))
-		{
-			MessageBox::Show(
-				"Ingrese una anotación válida.",
-				"Anotación inválida",
-				MessageBoxButtons::OK,
-				MessageBoxIcon::Warning);
-
-			txtAlias->Focus();
-			return;
-		}
-
-		// 5. Validar la fecha.
-		DateTime fecha;
-
-		if (!DateTime::TryParseExact(
-			fechaTexto,
-			"dd/MM/yyyy",
-			CultureInfo::InvariantCulture,
-			DateTimeStyles::None,
-			fecha))
-		{
-			MessageBox::Show(
-				"Ingrese una fecha válida con formato dd/MM/yyyy.",
-				"Fecha inválida",
-				MessageBoxButtons::OK,
-				MessageBoxIcon::Warning);
-
-			textBox1->Focus();
-			return;
-		}
-
-		if (fecha.Date > DateTime::Today)
-		{
-			MessageBox::Show(
-				"La fecha no puede ser futura.",
-				"Fecha inválida",
-				MessageBoxButtons::OK,
-				MessageBoxIcon::Warning);
-			return;
-		}
-
-		// 6. Validar el monto.
-		double monto;
-
-		if (!Double::TryParse(
-			montoTexto,
-			NumberStyles::Number,
-			CultureInfo::InvariantCulture,
-			monto) ||
-			Double::IsNaN(monto) ||
-			Double::IsInfinity(monto) ||
-			monto <= 0)
-		{
-			MessageBox::Show(
-				"Ingrese un monto válido mayor que cero.\n"
-				"Utilice el punto como separador decimal.",
-				"Monto inválido",
-				MessageBoxButtons::OK,
-				MessageBoxIcon::Warning);
-
-			txtUbicacion->Focus();
-			return;
-		}
-
-		// 7. Registrar mediante el Controller.
-		PenalizacionController^ controller =
-			gcnew PenalizacionController();
-
-		bool registrado = controller->registrarPenalizacion(
-			placa,
-			cmbTipo->SelectedIndex,
-			fecha,
-			anotacion,
-			monto);
-
-		if (!registrado)
-		{
-			MessageBox::Show(
-				"No se pudo registrar la penalización.",
-				"Error",
-				MessageBoxButtons::OK,
-				MessageBoxIcon::Error);
-			return;
-		}
-
-		MessageBox::Show(
-			"Penalización registrada correctamente.",
-			"Registro exitoso",
-			MessageBoxButtons::OK,
-			MessageBoxIcon::Information);
-
-		this->DialogResult =
-			System::Windows::Forms::DialogResult::OK;
-
-		this->Close();
+private: System::Void btnGuardarEdit_Click(System::Object^ sender, System::EventArgs^ e) { //Guardar Cambios
+	//Todo esto es del solucionario del lab 5 porsiaca
+	
+	/*String^ placa = txtSerialId->Text; //Pilla los datos escritos y los covierte a una variable string
+	String^ tipoPenalizacion = cmbTipo->Text;
+	String^ anotacion = txtAlias->Text;
+	String^ fecha = textBox1->Text;
+	String^ monto = txtUbicacion->Text;
+	// Validar los campos antes de guardar
+	if (String::IsNullOrWhiteSpace(placa) || String::IsNullOrWhiteSpace(tipoPenalizacion) || String::IsNullOrWhiteSpace(anotacion) || String::IsNullOrWhiteSpace(fecha) || String::IsNullOrWhiteSpace(monto)) {
+		MessageBox::Show("Por favor, complete todos los campos.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		return;
 	}
+
+	//Creando nueva multa
+	Penalizacion^ nuevaEstacionClasificadora = gcnew Penalizacion(placa, tipoPenalizacion, anotacion, fecha, monto);
+	// Llamando al controlador para registrar la nueva estación
+	EstacionController^ estacionController = gcnew EstacionController();
+	bool resultado = estacionController->RegistrarEstacionTxt(nuevaEstacionClasificadora);
+	if (resultado) {
+		MessageBox::Show("Estación Clasificadora agregada exitosamente.", "Éxito", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		this->Close(); // Cierra el formulario actual
+	}
+	else {
+		MessageBox::Show("El valor de ID ingresado ya está asociado a otra estación!", "Duplicidad de Datos", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		return;
+	}*/
+	
+}
 
 	private: System::Void btnRegresarEdit_Click(System::Object^ sender, System::EventArgs^ e) { //Cancelar
 		this->DialogResult =
