@@ -1,10 +1,16 @@
 #pragma once
 
+using namespace System::Globalization;
+
+using namespace SmartParkingSystemController;
+using namespace SmartParkingSystemModel;
+
 namespace SmartParkingSystemViewGUI {
 
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
+	using namespace System::Collections::Generic;
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
@@ -15,13 +21,37 @@ namespace SmartParkingSystemViewGUI {
 	public ref class frmEditarMulta : public System::Windows::Forms::Form
 	{
 	public:
-		frmEditarMulta(void)
+		frmEditarMulta(int idPenalizacion)
 		{
 			InitializeComponent();
-			//
-			//TODO: Add the constructor code here
-			//
+
+			this->Text = "Editar Penalización";
+
+			idPenalizacionSeleccionada = idPenalizacion;
+
+			penalizacionController =
+				gcnew PenalizacionController();
+
+			cmbTipo->DropDownStyle = ComboBoxStyle::DropDownList;
+
+			// El modelo solo representa Pagado o Pendiente.
+			comboBox1->Items->Clear();
+			comboBox1->Items->Add("Por Pagar");
+			comboBox1->Items->Add("Pagada");
+			comboBox1->DropDownStyle = ComboBoxStyle::DropDownList;
+
+			txtSerialId->MaxLength = 15;
+
+			this->AcceptButton = btnGuardarEdit;
+			this->CancelButton = btnRegresarEdit;
+
+			// Carga los datos del registro seleccionado.
+			cargarPenalizacion();
 		}
+
+	private:
+		int idPenalizacionSeleccionada;
+		PenalizacionController^ penalizacionController;
 
 	protected:
 		/// <summary>
@@ -111,11 +141,10 @@ namespace SmartParkingSystemViewGUI {
 					L"Conducta Disruptiva", L"Cometio Fraude de Estadía"
 			});
 			this->cmbTipo->Location = System::Drawing::Point(255, 126);
-			this->cmbTipo->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->cmbTipo->Margin = System::Windows::Forms::Padding(4);
 			this->cmbTipo->Name = L"cmbTipo";
 			this->cmbTipo->Size = System::Drawing::Size(285, 37);
 			this->cmbTipo->TabIndex = 3;
-			this->cmbTipo->SelectedIndexChanged += gcnew System::EventHandler(this, &frmEditarMulta::cmbTipo_SelectedIndexChanged);
 			// 
 			// label1
 			// 
@@ -234,6 +263,7 @@ namespace SmartParkingSystemViewGUI {
 			this->btnGuardarEdit->TabIndex = 24;
 			this->btnGuardarEdit->Text = L"Guardar Cambios";
 			this->btnGuardarEdit->UseVisualStyleBackColor = false;
+			this->btnGuardarEdit->Click += gcnew System::EventHandler(this, &frmEditarMulta::btnGuardarEdit_Click);
 			// 
 			// panel2
 			// 
@@ -292,7 +322,7 @@ namespace SmartParkingSystemViewGUI {
 			this->comboBox1->FormattingEnabled = true;
 			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"Por Pagar", L"Pagada", L"Anulada", L"En Revisión" });
 			this->comboBox1->Location = System::Drawing::Point(255, 368);
-			this->comboBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->comboBox1->Margin = System::Windows::Forms::Padding(4);
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(285, 37);
 			this->comboBox1->TabIndex = 11;
@@ -329,7 +359,7 @@ namespace SmartParkingSystemViewGUI {
 			this->Controls->Add(this->panel2);
 			this->Controls->Add(this->grpBoxPrincipal);
 			this->Controls->Add(this->panel1);
-			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"frmEditarMulta";
 			this->Text = L"Editar Multa";
 			this->panel2->ResumeLayout(false);
@@ -342,11 +372,166 @@ namespace SmartParkingSystemViewGUI {
 
 		}
 #pragma endregion
-	private: System::Void btnRegresarEdit_Click(System::Object^ sender, System::EventArgs^ e) { //Cancelar
+	private: void cargarPenalizacion()
+	{
+		Penalizacion^ p =
+			penalizacionController->buscarPenalizacion(
+				idPenalizacionSeleccionada);
+
+		if (p == nullptr)
+		{
+			MessageBox::Show(
+				"No se encontró la penalización seleccionada.",
+				"Registro no encontrado",
+				MessageBoxButtons::OK,
+				MessageBoxIcon::Warning);
+
+			btnGuardarEdit->Enabled = false;
+			return;
+		}
+
+		txtSerialId->Text = p->getPlacaVehiculo();
+
+		cmbTipo->SelectedIndex = (int)p->getTipo();
+
+		txtAlias->Text = p->getMotivo();
+
+		textBox1->Text =
+			p->getFechaHora().ToString("dd/MM/yyyy");
+
+		txtUbicacion->Text =
+			p->getMonto().ToString(
+				"F2", CultureInfo::InvariantCulture);
+
+		comboBox1->SelectedIndex =
+			p->getPagado() ? 1 : 0;
+	}
+
+	private: System::Void btnGuardarEdit_Click(System::Object^ sender, System::EventArgs^ e) { //Guardar Cambios
+		String^ placa =
+			txtSerialId->Text->Trim()->ToUpperInvariant();
+
+		String^ anotacion = txtAlias->Text->Trim();
+
+		if (String::IsNullOrWhiteSpace(placa) ||
+			placa->Contains("|"))
+		{
+			MessageBox::Show(
+				"Ingrese una placa válida.",
+				"Validación",
+				MessageBoxButtons::OK,
+				MessageBoxIcon::Warning);
+			return;
+		}
+
+		if (cmbTipo->SelectedIndex < 0)
+		{
+			MessageBox::Show(
+				"Seleccione el tipo de penalización.",
+				"Validación",
+				MessageBoxButtons::OK,
+				MessageBoxIcon::Warning);
+			return;
+		}
+
+		if (String::IsNullOrWhiteSpace(anotacion) ||
+			anotacion->Contains("|"))
+		{
+			MessageBox::Show(
+				"Ingrese una anotación válida.",
+				"Validación",
+				MessageBoxButtons::OK,
+				MessageBoxIcon::Warning);
+			return;
+		}
+
+		DateTime fecha;
+
+		if (!DateTime::TryParseExact(
+			textBox1->Text->Trim(),
+			"dd/MM/yyyy",
+			CultureInfo::InvariantCulture,
+			DateTimeStyles::None,
+			fecha) ||
+			fecha.Date > DateTime::Today)
+		{
+			MessageBox::Show(
+				"Ingrese una fecha válida (dd/MM/yyyy) "
+				"que no sea futura.",
+				"Validación",
+				MessageBoxButtons::OK,
+				MessageBoxIcon::Warning);
+			return;
+		}
+
+		double monto;
+
+		if (!Double::TryParse(
+			txtUbicacion->Text->Trim(),
+			NumberStyles::Number,
+			CultureInfo::InvariantCulture,
+			monto) ||
+			Double::IsNaN(monto) ||
+			Double::IsInfinity(monto) ||
+			monto <= 0)
+		{
+			MessageBox::Show(
+				"Ingrese un monto válido mayor que cero.",
+				"Validación",
+				MessageBoxButtons::OK,
+				MessageBoxIcon::Warning);
+			return;
+		}
+
+		if (comboBox1->SelectedIndex < 0)
+		{
+			MessageBox::Show(
+				"Seleccione el estado de la penalización.",
+				"Validación",
+				MessageBoxButtons::OK,
+				MessageBoxIcon::Warning);
+			return;
+		}
+
+		bool pagado = comboBox1->SelectedIndex == 1;
+
+		bool modificado =
+			penalizacionController->modificarPenalizacion(
+				idPenalizacionSeleccionada,
+				placa,
+				cmbTipo->SelectedIndex,
+				fecha,
+				anotacion,
+				monto,
+				pagado);
+
+		if (!modificado)
+		{
+			MessageBox::Show(
+				"No se pudo modificar la penalización.",
+				"Error",
+				MessageBoxButtons::OK,
+				MessageBoxIcon::Error);
+			return;
+		}
+
+		MessageBox::Show(
+			"Penalización modificada correctamente.",
+			"Modificación exitosa",
+			MessageBoxButtons::OK,
+			MessageBoxIcon::Information);
+
+		this->DialogResult =
+			System::Windows::Forms::DialogResult::OK;
 
 		this->Close();
 	}
-private: System::Void cmbTipo_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-}
+			
+	private: System::Void btnRegresarEdit_Click(System::Object^ sender, System::EventArgs^ e) { //Cancelar
+		this->DialogResult =
+			System::Windows::Forms::DialogResult::Cancel;
+
+		this->Close();
+	}
 };
 }

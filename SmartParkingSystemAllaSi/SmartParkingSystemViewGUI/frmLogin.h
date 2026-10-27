@@ -1,7 +1,11 @@
 #pragma once
+
 #include "frmPrincipalCliente.h"
 #include "frmPrincipalAdmin.h"
 #include "frmLoginConTarjeta.h"
+
+using namespace SmartParkingSystemModel;
+using namespace SmartParkingSystemController;
 
 namespace SmartParkingSystemViewGUI {
 
@@ -17,6 +21,43 @@ namespace SmartParkingSystemViewGUI {
 	/// </summary>
 	public ref class frmLogin : public System::Windows::Forms::Form
 	{
+	private:
+		Empleado^ buscarEmpleadoPorCorreo(String^ correo)
+		{
+			if (String::IsNullOrWhiteSpace(correo))
+				return nullptr;
+
+			EmpleadoController^ controller =
+				gcnew EmpleadoController();
+
+			auto empleados = controller->buscarTodosArchivo();
+
+			Empleado^ encontrado = nullptr;
+
+			for each (Empleado ^ empleado in empleados)
+			{
+				if (empleado == nullptr)
+					continue;
+
+				if (String::Equals(
+					empleado->getCorreo(),
+					correo->Trim(),
+					StringComparison::OrdinalIgnoreCase))
+				{
+					// Rechazar correos duplicados.
+					if (encontrado != nullptr)
+					{
+						throw gcnew InvalidOperationException(
+							L"Existen empleados con el mismo correo.");
+					}
+
+					encontrado = empleado;
+				}
+			}
+
+			return encontrado;
+		}
+
 	public:
 		frmLogin(void)
 		{
@@ -336,7 +377,6 @@ namespace SmartParkingSystemViewGUI {
 			this->textBox1->TabIndex = 0;
 			this->textBox1->TabStop = false;
 			this->textBox1->Text = L"Sistema de Estacionamiento Inteligente Alla-Si";
-			this->textBox1->TextChanged += gcnew System::EventHandler(this, &frmLogin::textBox1_TextChanged);
 			// 
 			// frmLogin
 			// 
@@ -373,30 +413,50 @@ namespace SmartParkingSystemViewGUI {
 			this->Close();
 
 		}
-		else if(TextBoxCorreo->Text == "admin@estacionamiento.com" && TextBoxPassword->Text == "1234"){
-			frmPrincipalAdmin^ UIAdmin = gcnew frmPrincipalAdmin(); 
 
-			this->Hide();
+		else if (TextBoxCorreo->Text ==
+			"admin@estacionamiento.com" &&
+			TextBoxPassword->Text == "1234")
+		{
+			try
+			{
+				// Buscar el empleado correspondiente al correo.
+				Empleado^ empleado =
+					buscarEmpleadoPorCorreo(TextBoxCorreo->Text);
 
-			UIAdmin->ShowDialog();
+				// Abrir el panel y transmitir el empleado.
+				frmPrincipalAdmin^ UIAdmin =
+					gcnew frmPrincipalAdmin(empleado);
 
-			this->Close();
+				this->Hide();
+				UIAdmin->ShowDialog();
+				this->Close();
+			}
+			catch (Exception^ ex)
+			{
+				MessageBox::Show(
+					L"No se pudo abrir el panel administrativo:\n" +
+					ex->Message,
+					L"Error",
+					MessageBoxButtons::OK,
+					MessageBoxIcon::Error);
+			}
 		}
+
 		else {
 			MessageBox::Show("Acceso denegado \n Correo o contraseña inválidos \n Por favor, intente denuevo","Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 	}
-private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void bntIngresoXTarjeta_Click(System::Object^ sender, System::EventArgs^ e) { //Ingresar con tarjeta
-	frmLoginConTarjeta^ LoginTarjeta = gcnew frmLoginConTarjeta();
 
-	this->Hide();
+	private: System::Void bntIngresoXTarjeta_Click(System::Object^ sender, System::EventArgs^ e) { //Ingresar con tarjeta
+		frmLoginConTarjeta^ LoginTarjeta = gcnew frmLoginConTarjeta();
 
-	LoginTarjeta->ShowDialog();
+		this->Hide();
 
-	this->Close();
+		LoginTarjeta->ShowDialog();
 
-}
+		this->Close();
+
+	}
 };
 }

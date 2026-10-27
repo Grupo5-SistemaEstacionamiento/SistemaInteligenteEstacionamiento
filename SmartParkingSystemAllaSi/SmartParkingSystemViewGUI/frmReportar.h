@@ -1,12 +1,19 @@
 #pragma once
+
 #include "frmRegistrarMulta.h"
 #include "frmEditarMulta.h"
+
+using namespace System::Globalization;
+
+using namespace SmartParkingSystemController;
+using namespace SmartParkingSystemModel;
 
 namespace SmartParkingSystemViewGUI {
 
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
+	using namespace System::Collections::Generic;
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
@@ -16,13 +23,76 @@ namespace SmartParkingSystemViewGUI {
 	/// </summary>
 	public ref class frmReportar : public System::Windows::Forms::Form
 	{
+	private:
+		PenalizacionController^ penalizacionController;
+
+		void mostrarGrilla(
+			System::Collections::Generic::List<Penalizacion^>^ lista)
+		{
+			dataGridView1->Rows->Clear();
+
+			for each (Penalizacion ^ p in lista)
+			{
+				int fila = dataGridView1->Rows->Add(
+					p->getPlacaVehiculo(),
+					p->getTipo().ToString()->Replace("_", " "),
+					p->getMotivo(),
+					p->getFechaHora().ToString("dd/MM/yyyy"),
+					p->getMonto().ToString(
+						"F2", CultureInfo::InvariantCulture),
+					p->getPagado() ? "Pagada" : "Por Pagar"
+				);
+
+				// Guardamos el ID sin agregar otra columna visible.
+				dataGridView1->Rows[fila]->Tag =
+					p->getIdPenalizacion();
+			}
+
+			dataGridView1->ClearSelection();
+		}
+
+		void actualizarGrilla()
+		{
+			mostrarGrilla(
+				penalizacionController->listarPenalizaciones());
+		}
+
+		int obtenerIdSeleccionado()
+		{
+			if (dataGridView1->SelectedRows->Count == 0)
+				return -1;
+
+			DataGridViewRow^ fila =
+				dataGridView1->SelectedRows[0];
+
+			if (fila->IsNewRow || fila->Tag == nullptr)
+				return -1;
+
+			return safe_cast<int>(fila->Tag);
+		}
+
 	public:
 		frmReportar(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: Add the constructor code here
-			//
+
+			this->Text = "Gestionar Penalizaciones";
+
+			penalizacionController =
+				gcnew PenalizacionController();
+
+			dataGridView1->ReadOnly = true;
+			dataGridView1->AllowUserToAddRows = false;
+			dataGridView1->AllowUserToDeleteRows = false;
+			dataGridView1->MultiSelect = false;
+
+			dataGridView1->SelectionMode =
+				DataGridViewSelectionMode::FullRowSelect;
+
+			dataGridView1->AutoSizeColumnsMode =
+				DataGridViewAutoSizeColumnsMode::Fill;
+
+			actualizarGrilla();
 		}
 
 	protected:
@@ -53,12 +123,30 @@ namespace SmartParkingSystemViewGUI {
 	private: System::Windows::Forms::Button^ button5;
 	private: System::Windows::Forms::Button^ button4;
 	private: System::Windows::Forms::Button^ button3;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column6;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column5;
+private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
+private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
+private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
+private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
+private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column6;
+private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column5;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 	private:
@@ -82,12 +170,6 @@ namespace SmartParkingSystemViewGUI {
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
-			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column6 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->textInfoCliente = (gcnew System::Windows::Forms::TextBox());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->panel3 = (gcnew System::Windows::Forms::Panel());
@@ -95,6 +177,12 @@ namespace SmartParkingSystemViewGUI {
 			this->button5 = (gcnew System::Windows::Forms::Button());
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column6 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->groupBox2->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			this->panel2->SuspendLayout();
@@ -113,9 +201,9 @@ namespace SmartParkingSystemViewGUI {
 			this->groupBox2->Controls->Add(this->label2);
 			this->groupBox2->Font = (gcnew System::Drawing::Font(L"Arial", 14, System::Drawing::FontStyle::Bold));
 			this->groupBox2->Location = System::Drawing::Point(33, 22);
-			this->groupBox2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->groupBox2->Margin = System::Windows::Forms::Padding(4);
 			this->groupBox2->Name = L"groupBox2";
-			this->groupBox2->Padding = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->groupBox2->Padding = System::Windows::Forms::Padding(4);
 			this->groupBox2->Size = System::Drawing::Size(1056, 116);
 			this->groupBox2->TabIndex = 40;
 			this->groupBox2->TabStop = false;
@@ -127,7 +215,7 @@ namespace SmartParkingSystemViewGUI {
 			this->button2->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button2->ForeColor = System::Drawing::Color::White;
-			this->button2->Location = System::Drawing::Point(732, 59);
+			this->button2->Location = System::Drawing::Point(796, 59);
 			this->button2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(147, 38);
@@ -139,7 +227,7 @@ namespace SmartParkingSystemViewGUI {
 			// pictureBox2
 			// 
 			this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.Image")));
-			this->pictureBox2->Location = System::Drawing::Point(691, 59);
+			this->pictureBox2->Location = System::Drawing::Point(742, 59);
 			this->pictureBox2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pictureBox2->Name = L"pictureBox2";
 			this->pictureBox2->Size = System::Drawing::Size(37, 38);
@@ -151,7 +239,7 @@ namespace SmartParkingSystemViewGUI {
 			// TextBuscarPlaca
 			// 
 			this->TextBuscarPlaca->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->TextBuscarPlaca->Location = System::Drawing::Point(253, 62);
+			this->TextBuscarPlaca->Location = System::Drawing::Point(288, 62);
 			this->TextBuscarPlaca->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->TextBuscarPlaca->Name = L"TextBuscarPlaca";
 			this->TextBuscarPlaca->Size = System::Drawing::Size(433, 34);
@@ -167,9 +255,9 @@ namespace SmartParkingSystemViewGUI {
 				static_cast<System::Byte>(0)));
 			this->label2->Location = System::Drawing::Point(28, 63);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(189, 29);
+			this->label2->Size = System::Drawing::Size(229, 29);
 			this->label2->TabIndex = 29;
-			this->label2->Text = L"Placa Vehiculo:";
+			this->label2->Text = L"Placa del vehiculo:";
 			// 
 			// panel2
 			// 
@@ -192,56 +280,13 @@ namespace SmartParkingSystemViewGUI {
 					this->Column2, this->Column3, this->Column4, this->Column6, this->Column5
 			});
 			this->dataGridView1->Location = System::Drawing::Point(33, 145);
-			this->dataGridView1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->dataGridView1->Margin = System::Windows::Forms::Padding(4);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->ReadOnly = true;
 			this->dataGridView1->RowHeadersWidth = 51;
 			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 			this->dataGridView1->Size = System::Drawing::Size(1056, 384);
 			this->dataGridView1->TabIndex = 41;
-			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &frmReportar::dataGridView1_CellContentClick);
-			// 
-			// Column1
-			// 
-			this->Column1->HeaderText = L"Placa Vehiculo";
-			this->Column1->MinimumWidth = 6;
-			this->Column1->Name = L"Column1";
-			this->Column1->ReadOnly = true;
-			// 
-			// Column2
-			// 
-			this->Column2->HeaderText = L"Penalizacion";
-			this->Column2->MinimumWidth = 6;
-			this->Column2->Name = L"Column2";
-			this->Column2->ReadOnly = true;
-			// 
-			// Column3
-			// 
-			this->Column3->HeaderText = L"Anotacion";
-			this->Column3->MinimumWidth = 6;
-			this->Column3->Name = L"Column3";
-			this->Column3->ReadOnly = true;
-			// 
-			// Column4
-			// 
-			this->Column4->HeaderText = L"Fecha";
-			this->Column4->MinimumWidth = 6;
-			this->Column4->Name = L"Column4";
-			this->Column4->ReadOnly = true;
-			// 
-			// Column6
-			// 
-			this->Column6->HeaderText = L"Monto";
-			this->Column6->MinimumWidth = 6;
-			this->Column6->Name = L"Column6";
-			this->Column6->ReadOnly = true;
-			// 
-			// Column5
-			// 
-			this->Column5->HeaderText = L"Estado";
-			this->Column5->MinimumWidth = 6;
-			this->Column5->Name = L"Column5";
-			this->Column5->ReadOnly = true;
 			// 
 			// textInfoCliente
 			// 
@@ -251,12 +296,12 @@ namespace SmartParkingSystemViewGUI {
 			this->textInfoCliente->Font = (gcnew System::Drawing::Font(L"Arial", 20, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textInfoCliente->ForeColor = System::Drawing::Color::White;
-			this->textInfoCliente->Location = System::Drawing::Point(33, 10);
+			this->textInfoCliente->Location = System::Drawing::Point(33, 14);
 			this->textInfoCliente->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->textInfoCliente->Name = L"textInfoCliente";
 			this->textInfoCliente->Size = System::Drawing::Size(721, 39);
 			this->textInfoCliente->TabIndex = 0;
-			this->textInfoCliente->Text = L"Gestionar Reportes";
+			this->textInfoCliente->Text = L"Gestionar Penalizaciones";
 			// 
 			// panel1
 			// 
@@ -345,6 +390,48 @@ namespace SmartParkingSystemViewGUI {
 			this->button3->UseVisualStyleBackColor = false;
 			this->button3->Click += gcnew System::EventHandler(this, &frmReportar::button3_Click);
 			// 
+			// Column1
+			// 
+			this->Column1->HeaderText = L"Placa del vehiculo";
+			this->Column1->MinimumWidth = 6;
+			this->Column1->Name = L"Column1";
+			this->Column1->ReadOnly = true;
+			// 
+			// Column2
+			// 
+			this->Column2->HeaderText = L"Tipo de penalizacion";
+			this->Column2->MinimumWidth = 6;
+			this->Column2->Name = L"Column2";
+			this->Column2->ReadOnly = true;
+			// 
+			// Column3
+			// 
+			this->Column3->HeaderText = L"Anotaciones";
+			this->Column3->MinimumWidth = 6;
+			this->Column3->Name = L"Column3";
+			this->Column3->ReadOnly = true;
+			// 
+			// Column4
+			// 
+			this->Column4->HeaderText = L"Fecha";
+			this->Column4->MinimumWidth = 6;
+			this->Column4->Name = L"Column4";
+			this->Column4->ReadOnly = true;
+			// 
+			// Column6
+			// 
+			this->Column6->HeaderText = L"Monto";
+			this->Column6->MinimumWidth = 6;
+			this->Column6->Name = L"Column6";
+			this->Column6->ReadOnly = true;
+			// 
+			// Column5
+			// 
+			this->Column5->HeaderText = L"Estado";
+			this->Column5->MinimumWidth = 6;
+			this->Column5->Name = L"Column5";
+			this->Column5->ReadOnly = true;
+			// 
 			// frmReportar
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -354,7 +441,7 @@ namespace SmartParkingSystemViewGUI {
 			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->panel3);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
-			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"frmReportar";
 			this->Text = L"frmReportar";
 			this->groupBox2->ResumeLayout(false);
@@ -369,93 +456,131 @@ namespace SmartParkingSystemViewGUI {
 
 		}
 #pragma endregion
-	private: System::Void pictureBox2_Click(System::Object^ sender, System::EventArgs^ e) { // Lupita (Buscar)
-		/*
-		String^ placaBuscada = this->txtBuscarPlaca->Text;
+	private: System::Void pictureBox2_Click(System::Object^ sender, System::EventArgs^ e) { // Buscar (Lupa)
+		String^ placa = TextBuscarPlaca->Text->Trim();
 
-		if (String::IsNullOrEmpty(placaBuscada) || String::IsNullOrWhiteSpace(placaBuscada)) {
-			MessageBox::Show("Por favor, ingrese una Placa para buscar.", "Error de búsqueda", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		if (String::IsNullOrWhiteSpace(placa))
+		{
+			MessageBox::Show(
+				"Ingrese una placa para realizar la búsqueda.",
+				"Búsqueda",
+				MessageBoxButtons::OK,
+				MessageBoxIcon::Warning);
 			return;
 		}
-		*/
-		//this->tuController->BuscarMultasPorPlaca(placaBuscada);
 
-		MessageBox::Show("Búsqueda simulada exitosa (Falta capa Controller).", "Éxito", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		auto resultados =
+			penalizacionController->buscarPorPlaca(placa);
+
+		mostrarGrilla(resultados);
+
+		if (resultados->Count == 0)
+		{
+			MessageBox::Show(
+				"No se encontraron penalizaciones para la placa ingresada.",
+				"Sin resultados",
+				MessageBoxButtons::OK,
+				MessageBoxIcon::Information);
+		}
 	}
 
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) { // Limpiar
-		
-		this->TextBuscarPlaca->Text = "";
-		/*
-		this->dataGridView1->Rows->Clear(); // Limpia la grilla
-
-		//mostrarGrilla()
-
-		*/
+		TextBuscarPlaca->Clear();
+		actualizarGrilla();
+		TextBuscarPlaca->Focus();
 	}
 
-	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) { // Nuevo / Registrar
-		// Extraído de LC6: btnNuevo_Click[cite: 47]
-		// Asegúrate de tener #include "frmRegistrarMulta.h" arriba
-		/*
-		frmRegistrarMulta^ nuevaMultaForm = gcnew frmRegistrarMulta();
-		nuevaMultaForm->ShowDialog(this);
-		*/
+	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) { // Registrar
+		frmRegistrarMulta^ ventana =
+			gcnew frmRegistrarMulta();
 
-		frmRegistrarMulta^ ventana = gcnew frmRegistrarMulta();
-		ventana->ShowDialog();
-		//mostrarGrilla() //(para actualizar visualmente)
+		if (ventana->ShowDialog(this) ==
+			System::Windows::Forms::DialogResult::OK)
+		{
+			TextBuscarPlaca->Clear();
+			actualizarGrilla();
+		}
 	}
 
 	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) { // Editar
-		/*
-		if (this->dataGridView1->SelectedRows->Count > 0) {
-			// Obtenemos el ID de la fila seleccionada (asumiendo que el ID está en la columna 0)
-			String^ idSeleccionado = this->dataGridView1->Rows[this->dataGridView1->SelectedRows[0]->Index]->Cells[0]->Value->ToString();
+		int id = obtenerIdSeleccionado();
 
-			// Aquí pasas el ID al constructor del form de edición
-
-			frmEditarInfo^ editarForm = gcnew frmEditarInfo(idSeleccionado);
-			editarForm->ShowDialog(this);
-			*/
-
-			//}
-			/*else {
-				MessageBox::Show("Por favor, seleccione un reporte para editar.\n(Subraye una línea entera)", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
-			}*/
-
-		frmEditarMulta^ ventana = gcnew frmEditarMulta();
-		ventana->ShowDialog();
-	}
-
-	private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) { // Eliminar / Anular
-		/*
-		if (this->dataGridView1->SelectedRows->Count > 0) {
-			System::Windows::Forms::DialogResult respuesta = MessageBox::Show("¿Está seguro de que desea anular la multa seleccionada?", "Confirmación de anulación", MessageBoxButtons::YesNo, MessageBoxIcon::Question);
-
-			if (respuesta == System::Windows::Forms::DialogResult::No) {
-				return; // Salir si cancela[cite: 48]
-			}
-
-			// Aquí a futuro llamarás a tu Controller para eliminar[cite: 48]
-			// bool resultado = this->tuController->AnularMulta(idSeleccionado);
-
-			// Simulación visual por ahora: borramos la fila seleccionada de la grilla
-			int indiceFila = this->dataGridView1->SelectedRows[0]->Index;
-			this->dataGridView1->Rows->RemoveAt(indiceFila);
-
-			MessageBox::Show("Multa anulada exitosamente.", "Éxito", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		if (id <= 0)
+		{
+			MessageBox::Show(
+				"Debe seleccionar una penalización de la tabla "
+				"para poder editarla.",
+				"Selección requerida",
+				MessageBoxButtons::OK,
+				MessageBoxIcon::Warning);
+			return;
 		}
-		else {
-			MessageBox::Show("Por favor, seleccione una multa para anular.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
-		}*/
+
+		frmEditarMulta^ ventana =
+			gcnew frmEditarMulta(id);
+
+		if (ventana->ShowDialog(this) ==
+			System::Windows::Forms::DialogResult::OK)
+		{
+			TextBuscarPlaca->Clear();
+			actualizarGrilla();
+		}
 	}
 
+	private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) { // Eliminar
+		int id = obtenerIdSeleccionado();
+
+		if (id <= 0)
+		{
+			MessageBox::Show(
+				"Debe seleccionar una penalización de la tabla "
+				"para poder eliminarla.",
+				"Selección requerida",
+				MessageBoxButtons::OK,
+				MessageBoxIcon::Warning);
+			return;
+		}
+
+		System::Windows::Forms::DialogResult respuesta =
+			MessageBox::Show(
+				"¿Está seguro de que desea eliminar "
+				"la penalización seleccionada?",
+				"Confirmar eliminación",
+				MessageBoxButtons::YesNo,
+				MessageBoxIcon::Question);
+
+		if (respuesta !=
+			System::Windows::Forms::DialogResult::Yes)
+			return;
+
+		bool eliminado =
+			penalizacionController->eliminarPenalizacion(id);
+
+		if (!eliminado)
+		{
+			MessageBox::Show(
+				"No se pudo eliminar la penalización.",
+				"Error",
+				MessageBoxButtons::OK,
+				MessageBoxIcon::Error);
+			return;
+		}
+
+		MessageBox::Show(
+			"Penalización eliminada correctamente.",
+			"Eliminación exitosa",
+			MessageBoxButtons::OK,
+			MessageBoxIcon::Information);
+
+		TextBuscarPlaca->Clear();
+		actualizarGrilla();
+	}
 
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) { // Regresar
+		this->DialogResult =
+			System::Windows::Forms::DialogResult::Cancel;
+
 		this->Close();
-	}
-	private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 	}
 };
 }

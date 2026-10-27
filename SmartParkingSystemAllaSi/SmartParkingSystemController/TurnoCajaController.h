@@ -1,23 +1,40 @@
 #pragma once
 
+using namespace System;
+using namespace System::Collections::Generic;
+
+using namespace SmartParkingSystemModel;
+using namespace SmartParkingSystemDAO;
+
 namespace SmartParkingSystemController {
 
-	using namespace System::Collections::Generic;
-	using namespace SmartParkingSystemModel;
-	using namespace System;
+    public ref class TurnoCajaController {
 
-	public ref class TurnoCajaController {
-	private:
-		List<TurnoCaja^>^ listaTurnos;
+    private:
+        List<TurnoCaja^>^ listaTurnos;
+        TurnoCajaDAO^ turnoDAO;
 
-	public:
-		TurnoCajaController();
-		/*Archivos*/
-		List<TurnoCaja^>^ buscarTodosArchivo();
-		TurnoCaja^ buscarxIdArchivo(int idTurno);
-		void registrarArchivo(TurnoCaja^ turno);
-		void modificarArchivo(TurnoCaja^ turno);
-		void eliminarArchivo(int idTurno);
-	};
+    public:
+        TurnoCajaController();
 
+        // Métodos originales.
+        List<TurnoCaja^>^ buscarTodosArchivo();
+        TurnoCaja^ buscarxIdArchivo(int idTurno);
+        void registrarArchivo(TurnoCaja^ turno);
+        void modificarArchivo(TurnoCaja^ turno);
+        void eliminarArchivo(int idTurno);
+
+        // Métodos adicionales.
+        int obtenerSiguienteId();
+        TurnoCaja^ buscarTurnoAbierto();
+
+        bool iniciarTurno(
+            Empleado^ empleado,
+            double saldoInicial);
+
+        bool cerrarTurno(
+            String^ codigoEmpleado,
+            double saldoFinal,
+            String^ observacion);
+    };
 }

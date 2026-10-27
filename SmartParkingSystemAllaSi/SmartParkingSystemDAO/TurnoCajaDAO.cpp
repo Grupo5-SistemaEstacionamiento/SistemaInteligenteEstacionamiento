@@ -1,135 +1,355 @@
 #include "pch.h"
+
 #include "TurnoCajaDAO.h"
 #include "EmpleadoDAO.h"
 
 using namespace SmartParkingSystemDAO;
+using namespace SmartParkingSystemModel;
+
+using namespace System;
 using namespace System::IO;
+using namespace System::Text;
+using namespace System::Globalization;
+using namespace System::Collections::Generic;
 
-TurnoCajaDAO::TurnoCajaDAO() {
+// Constructor.
+TurnoCajaDAO::TurnoCajaDAO()
+{
+    DirectoryInfo^ carpeta = gcnew DirectoryInfo(
+        AppDomain::CurrentDomain->BaseDirectory);
 
+    // Buscar la raíz que contiene los proyectos de la solución.
+    while (carpeta != nullptr)
+    {
+        if (Directory::Exists(Path::Combine(
+            carpeta->FullName,
+            "SmartParkingSystemViewGUI")))
+        {
+            break;
+        }
+
+        carpeta = carpeta->Parent;
+    }
+
+    if (carpeta == nullptr)
+    {
+        throw gcnew DirectoryNotFoundException(
+            "No se encontró la carpeta de SmartParkingSystem.");
+    }
+
+    rutaArchivo = Path::Combine(
+        carpeta->FullName,
+        "Data",
+        "TXT",
+        "turnosCaja.txt");
+
+    verificarDirectorio();
 }
 
-List<TurnoCaja^>^ TurnoCajaDAO::buscarTodosArchivo() {
+// Crear carpeta y archivo cuando no existan.
+void TurnoCajaDAO::verificarDirectorio()
+{
+    String^ directorio =
+        Path::GetDirectoryName(rutaArchivo);
+
+    Directory::CreateDirectory(directorio);
+
+    if (!File::Exists(rutaArchivo))
+    {
+        File::WriteAllText(
+            rutaArchivo,
+            String::Empty,
+            gcnew UTF8Encoding(false));
+    }
+}
+
+// Recuperar todos los turnos.
+List<TurnoCaja^>^ TurnoCajaDAO::buscarTodosArchivo()
+{
     List<TurnoCaja^>^ lista = gcnew List<TurnoCaja^>();
-    if (!File::Exists("TurnosCaja.txt")) return lista;
 
-    array<String^>^ lineas = File::ReadAllLines("TurnosCaja.txt");
-    for each (String ^ linea in lineas) {
-        if (String::IsNullOrWhiteSpace(linea)) continue;
-        array<String^>^ datos = linea->Split(';');
+    verificarDirectorio();
 
-        int id = datos->Length > 0 ? Convert::ToInt32(datos[0]) : 0;
-        String^ fechaIngresoStr = datos->Length > 1 ? datos[1] : String::Empty;
-        String^ fechaSalidaStr = datos->Length > 2 ? datos[2] : String::Empty;
-        String^ saldoIniStr = datos->Length > 3 ? datos[3] : "0";
-        String^ saldoFinStr = datos->Length > 4 ? datos[4] : "0";
-        String^ observacion = datos->Length > 5 ? datos[5] : String::Empty;
-        String^ estado = datos->Length > 6 ? datos[6] : String::Empty;
-        String^ empleadoCodigo = datos->Length > 7 ? datos[7] : String::Empty;
+    array<String^>^ lineas = File::ReadAllLines(
+        rutaArchivo, Encoding::UTF8);
 
-        DateTime fechaIngreso = DateTime::MinValue;
-        DateTime fechaSalida = DateTime::MinValue;
+    array<String^>^ formatos = gcnew array<String^>
+    {
+        "dd/MM/yyyy HH:mm:ss",
+            "o"
+    };
 
-        try { fechaIngreso = DateTime::Parse(fechaIngresoStr); }
-        catch (...) { fechaIngreso = DateTime::MinValue; }
+    for each (String ^ linea in lineas)
+    {
+        if (String::IsNullOrWhiteSpace(linea))
+            continue;
 
-        // Evaluamos si el turno tiene fecha de salida o sigue abierto
-        if (fechaSalidaStr != "SIN_CIERRE" && !String::IsNullOrEmpty(fechaSalidaStr)) {
-            try { fechaSalida = DateTime::Parse(fechaSalidaStr); }
-            catch (...) { fechaSalida = DateTime::MinValue; }
+        // Compatibilidad con archivos antiguos y nuevos.
+        wchar_t separador = linea->Contains("|") ? '|' : ';';
+
+        array<String^>^ datos = linea->Split(separador);
+
+        if (datos->Length != 8)
+        {
+            throw gcnew FormatException(
+                "Registro de turno con número de campos incorrecto.");
         }
 
-        double saldoIni = 0.0; double saldoFin = 0.0;
-        try { saldoIni = Convert::ToDouble(saldoIniStr); }
-        catch (...) { saldoIni = 0.0; }
-        try { saldoFin = Convert::ToDouble(saldoFinStr); }
-        catch (...) { saldoFin = 0.0; }
+        int id = Int32::Parse(datos[0]);
 
-        // Recuperar empleado por código usando EmpleadoDAO
-        Empleado^ empleado = nullptr;
-        try {
-            EmpleadoDAO^ empDao = gcnew EmpleadoDAO();
-            empleado = empDao->buscarxCodigoArchivo(empleadoCodigo);
+        DateTime ingreso;
+        DateTime salida = DateTime::MinValue;
+
+        // Leer fechas antiguas ISO 8601 con zona horaria
+        // y fechas nuevas en formato dd/MM/yyyy.
+        if (!DateTime::TryParseExact(
+            datos[1],
+            formatos,
+            CultureInfo::InvariantCulture,
+            DateTimeStyles::RoundtripKind,
+            ingreso))
+        {
+            throw gcnew FormatException(
+                L"Fecha de ingreso incorrecta en turno " +
+                datos[0]);
         }
-        catch (...) { empleado = nullptr; }
 
-        TurnoCaja^ t = gcnew TurnoCaja();
-        t->setIdTurno(id);
-        t->setFechaHoraIngreso(fechaIngreso);
-        t->setFechaHoraSalida(fechaSalida);
-        t->setSaldoInicial(saldoIni);
-        t->setSaldoFinal(saldoFin);
-        t->setObservacion(observacion);
-        t->setEstado(estado);
-        t->setEmpleado(empleado);
-        t->setListaMovimientos(gcnew List<Movimiento^>()); // (Opcional: aquí podrías enlazar movimientos si decides guardarlos por ID)
+        // Un turno abierto puede tener SIN_CIERRE.
+        if (!String::IsNullOrWhiteSpace(datos[2]) &&
+            !String::Equals(
+                datos[2],
+                "SIN_CIERRE",
+                StringComparison::OrdinalIgnoreCase))
+        {
+            if (!DateTime::TryParseExact(
+                datos[2],
+                formatos,
+                CultureInfo::InvariantCulture,
+                DateTimeStyles::RoundtripKind,
+                salida))
+            {
+                throw gcnew FormatException(
+                    L"Fecha de salida incorrecta en turno " +
+                    datos[0]);
+            }
+        }
 
-        lista->Add(t);
+        double saldoInicial = Double::Parse(
+            datos[3], CultureInfo::InvariantCulture);
+
+        double saldoFinal = Double::Parse(
+            datos[4], CultureInfo::InvariantCulture);
+
+        String^ observacion = datos[5];
+        String^ estado = datos[6];
+        String^ codigoEmpleado = datos[7];
+
+        EmpleadoDAO^ empleadoDAO = gcnew EmpleadoDAO();
+
+        Empleado^ empleado =
+            empleadoDAO->buscarxCodigoArchivo(codigoEmpleado);
+
+        if (empleado == nullptr)
+        {
+            throw gcnew InvalidDataException(
+                "No se encontró el empleado del turno " +
+                id.ToString() + ".");
+        }
+
+        TurnoCaja^ turno = gcnew TurnoCaja(
+            id,
+            ingreso,
+            salida,
+            saldoInicial,
+            saldoFinal,
+            observacion,
+            estado,
+            nullptr,
+            empleado);
+
+        lista->Add(turno);
     }
 
     return lista;
 }
 
-TurnoCaja^ TurnoCajaDAO::buscarxIdArchivo(int idTurno) {
-	List<TurnoCaja^>^ lista = buscarTodosArchivo();
-	for (int i = 0; i < lista->Count; i++) {
-		if (lista[i]->getIdTurno() == idTurno) return lista[i];
-	}
-	return nullptr;
+// Buscar por ID.
+TurnoCaja^ TurnoCajaDAO::buscarxIdArchivo(int idTurno)
+{
+    for each (TurnoCaja ^ turno in buscarTodosArchivo())
+    {
+        if (turno->getIdTurno() == idTurno)
+            return turno;
+    }
+
+    return nullptr;
 }
 
-void TurnoCajaDAO::registrarTurnoArchivo(TurnoCaja^ turno) {
-	List<TurnoCaja^>^ lista = buscarTodosArchivo();
-	lista->Add(turno);
-	escribirArchivo(lista);
+// Registrar turno sin duplicar ID.
+void TurnoCajaDAO::registrarTurnoArchivo(TurnoCaja^ turno)
+{
+    if (turno == nullptr)
+        throw gcnew ArgumentNullException("turno");
+
+    List<TurnoCaja^>^ lista = buscarTodosArchivo();
+
+    for each (TurnoCaja ^ existente in lista)
+    {
+        if (existente->getIdTurno() == turno->getIdTurno())
+        {
+            throw gcnew InvalidOperationException(
+                "Ya existe un turno con ese ID.");
+        }
+    }
+
+    lista->Add(turno);
+    escribirArchivo(lista);
 }
 
-void TurnoCajaDAO::modificarTurnoArchivo(TurnoCaja^ turno) {
-	List<TurnoCaja^>^ lista = buscarTodosArchivo();
-	for (int i = 0; i < lista->Count; i++) {
-		if (lista[i]->getIdTurno() == turno->getIdTurno()) {
-			lista[i] = turno;
-			break;
-		}
-	}
-	escribirArchivo(lista);
+// Modificar turno existente.
+void TurnoCajaDAO::modificarTurnoArchivo(TurnoCaja^ turno)
+{
+    if (turno == nullptr)
+        throw gcnew ArgumentNullException("turno");
+
+    List<TurnoCaja^>^ lista = buscarTodosArchivo();
+
+    for (int i = 0; i < lista->Count; i++)
+    {
+        if (lista[i]->getIdTurno() == turno->getIdTurno())
+        {
+            lista[i] = turno;
+            escribirArchivo(lista);
+            return;
+        }
+    }
+
+    throw gcnew InvalidOperationException(
+        "No se encontró el turno que desea modificar.");
 }
 
-void TurnoCajaDAO::eliminarTurnoArchivos(int idTurno) {
-	List<TurnoCaja^>^ lista = buscarTodosArchivo();
-	for (int i = 0; i < lista->Count; i++) {
-		if (lista[i]->getIdTurno() == idTurno) {
-			lista->RemoveAt(i);
-			break;
-		}
-	}
-	escribirArchivo(lista);
+// Eliminar turno existente.
+void TurnoCajaDAO::eliminarTurnoArchivos(int idTurno)
+{
+    List<TurnoCaja^>^ lista = buscarTodosArchivo();
+
+    for (int i = 0; i < lista->Count; i++)
+    {
+        if (lista[i]->getIdTurno() == idTurno)
+        {
+            lista->RemoveAt(i);
+            escribirArchivo(lista);
+            return;
+        }
+    }
+
+    throw gcnew InvalidOperationException(
+        "No se encontró el turno que desea eliminar.");
 }
 
-void TurnoCajaDAO::escribirArchivo(List<TurnoCaja^>^ listaTurnos) {
-	array<String^>^ lineas = gcnew array<String^>(listaTurnos->Count);
-	for (int i = 0; i < listaTurnos->Count; i++) {
-		TurnoCaja^ t = listaTurnos[i];
+// Guardar todos los turnos.
+void TurnoCajaDAO::escribirArchivo(
+    List<TurnoCaja^>^ listaTurnos)
+{
+    verificarDirectorio();
 
-		String^ fechaIngresoStr = t->getFechaHoraIngreso().ToString("o");
+    List<String^>^ lineas = gcnew List<String^>();
 
-		// Si el turno está abierto, guardamos un marcador en vez de una fecha vacía
-		String^ fechaSalidaStr = (t->getEstado() == "Cerrado") ? t->getFechaHoraSalida().ToString("o") : "SIN_CIERRE";
+    for each (TurnoCaja ^ turno in listaTurnos)
+    {
+        if (turno == nullptr || turno->getEmpleado() == nullptr)
+        {
+            throw gcnew InvalidOperationException(
+                "El turno debe tener un empleado asociado.");
+        }
 
-		String^ saldoIniStr = Convert::ToString(t->getSaldoInicial());
-		String^ saldoFinStr = Convert::ToString(t->getSaldoFinal());
-		String^ observ = String::IsNullOrEmpty(t->getObservacion()) ? "" : t->getObservacion();
-		String^ estado = t->getEstado();
-		String^ empCodigo = t->getEmpleado() != nullptr ? t->getEmpleado()->getCodigoEmpleado() : String::Empty;
+        String^ codigo =
+            turno->getEmpleado()->getCodigoEmpleado();
 
-		lineas[i] = Convert::ToString(t->getIdTurno()) + ";" +
-			fechaIngresoStr + ";" +
-			fechaSalidaStr + ";" +
-			saldoIniStr + ";" +
-			saldoFinStr + ";" +
-			observ + ";" +
-			estado + ";" +
-			empCodigo;
-	}
-	File::WriteAllLines("TurnosCaja.txt", lineas);
+        if (String::IsNullOrWhiteSpace(codigo))
+        {
+            throw gcnew InvalidOperationException(
+                "El empleado no tiene código válido.");
+        }
+
+        String^ observacion = turno->getObservacion();
+
+        if (String::IsNullOrEmpty(observacion))
+            observacion = String::Empty;
+
+        if (observacion->Contains("|") ||
+            codigo->Contains("|"))
+        {
+            throw gcnew ArgumentException(
+                "Los campos no pueden contener el carácter |.");
+        }
+
+        String^ ingreso = turno->getFechaHoraIngreso().ToString(
+            "dd/MM/yyyy HH:mm:ss",
+            CultureInfo::InvariantCulture);
+
+        String^ salida = turno->getEstado() == "Cerrado"
+            ? turno->getFechaHoraSalida().ToString(
+                "dd/MM/yyyy HH:mm:ss",
+                CultureInfo::InvariantCulture)
+            : String::Empty;
+
+        String^ linea =
+            turno->getIdTurno().ToString() + "|" +
+            ingreso + "|" +
+            salida + "|" +
+            turno->getSaldoInicial().ToString(
+                "F2", CultureInfo::InvariantCulture) + "|" +
+            turno->getSaldoFinal().ToString(
+                "F2", CultureInfo::InvariantCulture) + "|" +
+            observacion + "|" +
+            turno->getEstado() + "|" +
+            codigo;
+
+        lineas->Add(linea);
+    }
+
+    // Escribir primero un archivo temporal para evitar
+    // truncar el archivo principal si falla la escritura.
+    String^ temporal = rutaArchivo + ".tmp";
+
+    File::WriteAllLines(
+        temporal,
+        lineas->ToArray(),
+        gcnew UTF8Encoding(false));
+
+    if (File::Exists(rutaArchivo))
+        File::Replace(temporal, rutaArchivo, nullptr);
+    else
+        File::Move(temporal, rutaArchivo);
+}
+
+// Siguiente ID.
+int TurnoCajaDAO::obtenerSiguienteId()
+{
+    int mayor = 0;
+
+    for each (TurnoCaja ^ turno in buscarTodosArchivo())
+    {
+        if (turno->getIdTurno() > mayor)
+            mayor = turno->getIdTurno();
+    }
+
+    return mayor + 1;
+}
+
+// Buscar turno que sigue abierto.
+TurnoCaja^ TurnoCajaDAO::buscarTurnoAbierto()
+{
+    for each (TurnoCaja ^ turno in buscarTodosArchivo())
+    {
+        if (String::Equals(
+            turno->getEstado(), "Abierto",
+            StringComparison::OrdinalIgnoreCase))
+        {
+            return turno;
+        }
+    }
+
+    return nullptr;
 }

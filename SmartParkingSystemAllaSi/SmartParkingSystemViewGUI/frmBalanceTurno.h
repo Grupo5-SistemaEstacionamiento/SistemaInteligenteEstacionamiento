@@ -1,5 +1,8 @@
 #pragma once
 
+using namespace SmartParkingSystemModel;
+using namespace SmartParkingSystemController;
+
 namespace SmartParkingSystemViewGUI {
 
 	using namespace System;
@@ -14,13 +17,123 @@ namespace SmartParkingSystemViewGUI {
 	/// </summary>
 	public ref class frmBalanceTurno : public System::Windows::Forms::Form
 	{
+	private:
+		TurnoCajaController^ turnoController;
+		TableLayoutPanel^ tablaBalance;
+
+		void agregarDato(
+			int fila,
+			String^ titulo,
+			String^ valor)
+		{
+			Label^ etiqueta = gcnew Label();
+			etiqueta->Text = titulo;
+			etiqueta->Dock = DockStyle::Fill;
+			etiqueta->TextAlign = ContentAlignment::MiddleLeft;
+			etiqueta->Font = gcnew Drawing::Font(
+				L"Arial", 10, FontStyle::Bold);
+
+			Label^ contenido = gcnew Label();
+			contenido->Text = valor;
+			contenido->Dock = DockStyle::Fill;
+			contenido->TextAlign = ContentAlignment::MiddleLeft;
+			contenido->AutoEllipsis = true;
+
+			tablaBalance->Controls->Add(etiqueta, 0, fila);
+			tablaBalance->Controls->Add(contenido, 1, fila);
+		}
+
+		void mostrarBalance()
+		{
+			tablaBalance->Controls->Clear();
+
+			TurnoCaja^ turno =
+				turnoController->buscarTurnoAbierto();
+
+			if (turno == nullptr)
+			{
+				agregarDato(0, L"Estado", L"No hay turno abierto");
+				return;
+			}
+
+			String^ empleado = L"No identificado";
+
+			if (turno->getEmpleado() != nullptr)
+			{
+				empleado =
+					turno->getEmpleado()->getCodigoEmpleado();
+			}
+
+			agregarDato(0, L"Turno",
+				turno->getIdTurno().ToString());
+
+			agregarDato(1, L"Empleado", empleado);
+
+			agregarDato(2, L"Fecha de inicio",
+				turno->getFechaHoraIngreso().ToString(
+					L"dd/MM/yyyy HH:mm:ss"));
+
+			agregarDato(3, L"Estado", turno->getEstado());
+
+			agregarDato(4, L"Saldo inicial",
+				L"S/ " + turno->getSaldoInicial().ToString(L"F2"));
+
+			agregarDato(5, L"Saldo final",
+				L"Pendiente de cierre");
+		}
+
 	public:
 		frmBalanceTurno(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: Add the constructor code here
-			//
+
+			turnoController = gcnew TurnoCajaController();
+
+			tablaBalance = gcnew TableLayoutPanel();
+			tablaBalance->ColumnCount = 2;
+			tablaBalance->RowCount = 6;
+			tablaBalance->Location = Drawing::Point(25, 65);
+			tablaBalance->Size = Drawing::Size(630, 155);
+			tablaBalance->Anchor =
+				AnchorStyles::Top | AnchorStyles::Left |
+				AnchorStyles::Right;
+
+			tablaBalance->ColumnStyles->Add(
+				gcnew ColumnStyle(SizeType::Percent, 40));
+
+			tablaBalance->ColumnStyles->Add(
+				gcnew ColumnStyle(SizeType::Percent, 60));
+
+			for (int i = 0; i < 6; i++)
+			{
+				tablaBalance->RowStyles->Add(
+					gcnew RowStyle(SizeType::Percent, 100.0f / 6));
+			}
+
+			this->Controls->Add(tablaBalance);
+			tablaBalance->BringToFront();
+
+			try
+			{
+				// Recuperar la información del turno.
+				mostrarBalance();
+			}
+			catch (Exception^ ex)
+			{
+				// Permitir que el formulario permanezca abierto.
+				tablaBalance->Controls->Clear();
+
+				agregarDato(
+					0,
+					L"Estado",
+					L"No se pudieron recuperar los datos");
+
+				MessageBox::Show(
+					L"Error al recuperar el balance:\n" + ex->Message,
+					L"Advertencia",
+					MessageBoxButtons::OK,
+					MessageBoxIcon::Warning);
+			}
 		}
 
 	protected:
@@ -127,8 +240,10 @@ namespace SmartParkingSystemViewGUI {
 		}
 #pragma endregion
 	private: System::Void btnRegresarEdit_Click(System::Object^ sender, System::EventArgs^ e) { //Regresar
-		this->DialogResult = System::Windows::Forms::DialogResult::Cancel; //Cancelamos la ventana emergente (No se guarda nada)
-		this->Close(); //Cerramos la ventana
+		this->DialogResult =
+			System::Windows::Forms::DialogResult::Cancel;
+
+		this->Close();
 	}
 };
 }

@@ -1,13 +1,25 @@
 #include "pch.h"
+
 #include "TurnoCaja.h"
 #include "Empleado.h"
 
 namespace SmartParkingSystemModel {
 
-	TurnoCaja::TurnoCaja() {
-		this->listaMovimientos = gcnew List<Movimiento^>();
-
+	// Constructor predeterminado.
+	TurnoCaja::TurnoCaja()
+	{
+		idTurno = 0;
+		fechaHoraIngreso = DateTime::MinValue;
+		fechaHoraSalida = DateTime::MinValue;
+		saldoInicial = 0.0;
+		saldoFinal = 0.0;
+		observacion = String::Empty;
+		estado = "Cerrado";
+		empleado = nullptr;
+		listaMovimientos = gcnew List<Movimiento^>();
 	}
+
+	// Constructor completo.
 	TurnoCaja::TurnoCaja(
 		int idTurno,
 		DateTime fechaHoraIngreso,
@@ -17,9 +29,8 @@ namespace SmartParkingSystemModel {
 		String^ observacion,
 		String^ estado,
 		List<Movimiento^>^ listaMovimientos,
-		Empleado^ empleado
-
-	) {
+		Empleado^ empleado)
+	{
 		this->idTurno = idTurno;
 		this->fechaHoraIngreso = fechaHoraIngreso;
 		this->fechaHoraSalida = fechaHoraSalida;
@@ -27,21 +38,29 @@ namespace SmartParkingSystemModel {
 		this->saldoFinal = saldoFinal;
 		this->observacion = observacion;
 		this->estado = estado;
-		this->listaMovimientos = listaMovimientos;
 		this->empleado = empleado;
 
+		this->listaMovimientos =
+			listaMovimientos == nullptr
+			? gcnew List<Movimiento^>()
+			: listaMovimientos;
 	}
 
-
-	TurnoCaja::TurnoCaja(int idTurno, double saldoInicial, Empleado^ empleado) {
+	// Constructor para iniciar un turno.
+	TurnoCaja::TurnoCaja(
+		int idTurno,
+		double saldoInicial,
+		Empleado^ empleado)
+	{
 		this->idTurno = idTurno;
 		this->fechaHoraIngreso = DateTime::Now;
+		this->fechaHoraSalida = DateTime::MinValue;
 		this->saldoInicial = saldoInicial;
 		this->saldoFinal = 0.0;
-		this->observacion = "";
+		this->observacion = String::Empty;
 		this->estado = "Abierto";
-		this->listaMovimientos = gcnew List<Movimiento^>();
 		this->empleado = empleado;
+		this->listaMovimientos = gcnew List<Movimiento^>();
 	}
 
 	void TurnoCaja::CerrarTurno(double saldoFinal, String^ observacion) {
@@ -50,7 +69,6 @@ namespace SmartParkingSystemModel {
 		this->observacion = observacion;
 		this->estado = "Cerrado";
 	}
-
 
 	int TurnoCaja::getIdTurno() {
 		return this->idTurno;
@@ -79,7 +97,6 @@ namespace SmartParkingSystemModel {
 	Empleado^ TurnoCaja::getEmpleado() {
 		return this->empleado;
 	}
-
 
 	void TurnoCaja::setIdTurno(int idTurno) {
 		this->idTurno = idTurno;
