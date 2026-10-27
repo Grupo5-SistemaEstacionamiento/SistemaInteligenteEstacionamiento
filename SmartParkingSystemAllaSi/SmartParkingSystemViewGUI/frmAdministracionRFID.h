@@ -28,6 +28,8 @@ namespace SmartParkingSystemViewGUI {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ colEmision;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ colVencimiento;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ colEstado;
+	private: System::Windows::Forms::Panel^ panel2;
+	private: System::Windows::Forms::Panel^ panel3;
 		   SmartParkingSystemController::ClienteController^ clienteController;
 
 		   // Muestra en el DataGridView las tarjetas RFID de una lista determinada.
@@ -185,7 +187,9 @@ namespace SmartParkingSystemViewGUI {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle12 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->grpBuscar = (gcnew System::Windows::Forms::GroupBox());
 			this->btnDesactivarRFID = (gcnew System::Windows::Forms::Button());
 			this->btnEditarRFID = (gcnew System::Windows::Forms::Button());
@@ -204,43 +208,45 @@ namespace SmartParkingSystemViewGUI {
 			this->lblBuscar = (gcnew System::Windows::Forms::Label());
 			this->lblTitulo = (gcnew System::Windows::Forms::Label());
 			this->pnlTitulo = (gcnew System::Windows::Forms::Panel());
+			this->panel2 = (gcnew System::Windows::Forms::Panel());
+			this->panel3 = (gcnew System::Windows::Forms::Panel());
 			this->grpBuscar->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvTarjetasRFID))->BeginInit();
 			this->pnlTitulo->SuspendLayout();
+			this->panel2->SuspendLayout();
+			this->panel3->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// grpBuscar
 			// 
-			this->grpBuscar->BackColor = System::Drawing::SystemColors::Control;
-			this->grpBuscar->Controls->Add(this->btnDesactivarRFID);
-			this->grpBuscar->Controls->Add(this->btnEditarRFID);
-			this->grpBuscar->Controls->Add(this->btnAsociarRFID);
+			this->grpBuscar->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->grpBuscar->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(180)), static_cast<System::Int32>(static_cast<System::Byte>(190)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
 			this->grpBuscar->Controls->Add(this->btnMostrarTodos);
 			this->grpBuscar->Controls->Add(this->btnBuscar);
 			this->grpBuscar->Controls->Add(this->txtBuscar);
-			this->grpBuscar->Controls->Add(this->dgvTarjetasRFID);
 			this->grpBuscar->Controls->Add(this->lblBuscar);
-			this->grpBuscar->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->grpBuscar->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->grpBuscar->Location = System::Drawing::Point(0, 65);
+			this->grpBuscar->Font = (gcnew System::Drawing::Font(L"Arial", 14, System::Drawing::FontStyle::Bold));
+			this->grpBuscar->Location = System::Drawing::Point(47, 138);
+			this->grpBuscar->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->grpBuscar->Name = L"grpBuscar";
-			this->grpBuscar->Size = System::Drawing::Size(1126, 483);
+			this->grpBuscar->Padding = System::Windows::Forms::Padding(3, 4, 3, 4);
+			this->grpBuscar->Size = System::Drawing::Size(1188, 145);
 			this->grpBuscar->TabIndex = 59;
 			this->grpBuscar->TabStop = false;
 			this->grpBuscar->Text = L"Buscar tarjeta / cliente";
 			// 
 			// btnDesactivarRFID
 			// 
+			this->btnDesactivarRFID->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->btnDesactivarRFID->AutoSize = true;
 			this->btnDesactivarRFID->BackColor = System::Drawing::Color::Red;
-			this->btnDesactivarRFID->Font = (gcnew System::Drawing::Font(L"Arial", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
+			this->btnDesactivarRFID->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold));
 			this->btnDesactivarRFID->ForeColor = System::Drawing::Color::White;
-			this->btnDesactivarRFID->Location = System::Drawing::Point(666, 400);
-			this->btnDesactivarRFID->Margin = System::Windows::Forms::Padding(4);
+			this->btnDesactivarRFID->Location = System::Drawing::Point(779, 26);
+			this->btnDesactivarRFID->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btnDesactivarRFID->Name = L"btnDesactivarRFID";
-			this->btnDesactivarRFID->Size = System::Drawing::Size(240, 53);
+			this->btnDesactivarRFID->Size = System::Drawing::Size(260, 48);
 			this->btnDesactivarRFID->TabIndex = 82;
 			this->btnDesactivarRFID->Text = L"Desactivar RFID";
 			this->btnDesactivarRFID->UseVisualStyleBackColor = false;
@@ -248,15 +254,15 @@ namespace SmartParkingSystemViewGUI {
 			// 
 			// btnEditarRFID
 			// 
+			this->btnEditarRFID->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->btnEditarRFID->AutoSize = true;
 			this->btnEditarRFID->BackColor = System::Drawing::Color::DarkOrange;
-			this->btnEditarRFID->Font = (gcnew System::Drawing::Font(L"Arial", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
+			this->btnEditarRFID->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold));
 			this->btnEditarRFID->ForeColor = System::Drawing::Color::White;
-			this->btnEditarRFID->Location = System::Drawing::Point(439, 400);
-			this->btnEditarRFID->Margin = System::Windows::Forms::Padding(4);
+			this->btnEditarRFID->Location = System::Drawing::Point(477, 26);
+			this->btnEditarRFID->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btnEditarRFID->Name = L"btnEditarRFID";
-			this->btnEditarRFID->Size = System::Drawing::Size(178, 53);
+			this->btnEditarRFID->Size = System::Drawing::Size(260, 48);
 			this->btnEditarRFID->TabIndex = 81;
 			this->btnEditarRFID->Text = L"Editar RFID";
 			this->btnEditarRFID->UseVisualStyleBackColor = false;
@@ -264,15 +270,15 @@ namespace SmartParkingSystemViewGUI {
 			// 
 			// btnAsociarRFID
 			// 
+			this->btnAsociarRFID->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->btnAsociarRFID->AutoSize = true;
-			this->btnAsociarRFID->BackColor = System::Drawing::Color::ForestGreen;
-			this->btnAsociarRFID->Font = (gcnew System::Drawing::Font(L"Arial", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
+			this->btnAsociarRFID->BackColor = System::Drawing::Color::LimeGreen;
+			this->btnAsociarRFID->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold));
 			this->btnAsociarRFID->ForeColor = System::Drawing::Color::White;
-			this->btnAsociarRFID->Location = System::Drawing::Point(186, 400);
-			this->btnAsociarRFID->Margin = System::Windows::Forms::Padding(4);
+			this->btnAsociarRFID->Location = System::Drawing::Point(170, 26);
+			this->btnAsociarRFID->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btnAsociarRFID->Name = L"btnAsociarRFID";
-			this->btnAsociarRFID->Size = System::Drawing::Size(200, 53);
+			this->btnAsociarRFID->Size = System::Drawing::Size(260, 48);
 			this->btnAsociarRFID->TabIndex = 80;
 			this->btnAsociarRFID->Text = L"Asociar RFID";
 			this->btnAsociarRFID->UseVisualStyleBackColor = false;
@@ -280,15 +286,15 @@ namespace SmartParkingSystemViewGUI {
 			// 
 			// btnMostrarTodos
 			// 
+			this->btnMostrarTodos->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->btnMostrarTodos->AutoSize = true;
 			this->btnMostrarTodos->BackColor = System::Drawing::Color::Blue;
-			this->btnMostrarTodos->Font = (gcnew System::Drawing::Font(L"Arial", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
+			this->btnMostrarTodos->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold));
 			this->btnMostrarTodos->ForeColor = System::Drawing::Color::White;
-			this->btnMostrarTodos->Location = System::Drawing::Point(874, 40);
-			this->btnMostrarTodos->Margin = System::Windows::Forms::Padding(4);
+			this->btnMostrarTodos->Location = System::Drawing::Point(933, 51);
+			this->btnMostrarTodos->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btnMostrarTodos->Name = L"btnMostrarTodos";
-			this->btnMostrarTodos->Size = System::Drawing::Size(212, 53);
+			this->btnMostrarTodos->Size = System::Drawing::Size(235, 48);
 			this->btnMostrarTodos->TabIndex = 79;
 			this->btnMostrarTodos->Text = L"Mostrar todos";
 			this->btnMostrarTodos->UseVisualStyleBackColor = false;
@@ -296,15 +302,15 @@ namespace SmartParkingSystemViewGUI {
 			// 
 			// btnBuscar
 			// 
+			this->btnBuscar->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->btnBuscar->AutoSize = true;
-			this->btnBuscar->BackColor = System::Drawing::Color::Gray;
-			this->btnBuscar->Font = (gcnew System::Drawing::Font(L"Arial", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
+			this->btnBuscar->BackColor = System::Drawing::Color::DarkOrchid;
+			this->btnBuscar->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold));
 			this->btnBuscar->ForeColor = System::Drawing::Color::White;
-			this->btnBuscar->Location = System::Drawing::Point(725, 40);
-			this->btnBuscar->Margin = System::Windows::Forms::Padding(4);
+			this->btnBuscar->Location = System::Drawing::Point(761, 51);
+			this->btnBuscar->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btnBuscar->Name = L"btnBuscar";
-			this->btnBuscar->Size = System::Drawing::Size(119, 53);
+			this->btnBuscar->Size = System::Drawing::Size(154, 48);
 			this->btnBuscar->TabIndex = 78;
 			this->btnBuscar->Text = L"Buscar";
 			this->btnBuscar->UseVisualStyleBackColor = false;
@@ -312,14 +318,13 @@ namespace SmartParkingSystemViewGUI {
 			// 
 			// txtBuscar
 			// 
-			this->txtBuscar->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
-				static_cast<System::Int32>(static_cast<System::Byte>(192)));
-			this->txtBuscar->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->txtBuscar->Location = System::Drawing::Point(419, 44);
-			this->txtBuscar->Margin = System::Windows::Forms::Padding(4);
+			this->txtBuscar->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->txtBuscar->BackColor = System::Drawing::Color::White;
+			this->txtBuscar->Font = (gcnew System::Drawing::Font(L"Arial", 14, System::Drawing::FontStyle::Bold));
+			this->txtBuscar->Location = System::Drawing::Point(390, 55);
+			this->txtBuscar->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->txtBuscar->Name = L"txtBuscar";
-			this->txtBuscar->Size = System::Drawing::Size(213, 42);
+			this->txtBuscar->Size = System::Drawing::Size(363, 40);
 			this->txtBuscar->TabIndex = 77;
 			// 
 			// dgvTarjetasRFID
@@ -327,34 +332,52 @@ namespace SmartParkingSystemViewGUI {
 			this->dgvTarjetasRFID->AllowUserToAddRows = false;
 			this->dgvTarjetasRFID->AllowUserToDeleteRows = false;
 			this->dgvTarjetasRFID->AllowUserToResizeRows = false;
+			this->dgvTarjetasRFID->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->dgvTarjetasRFID->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
 			this->dgvTarjetasRFID->BackgroundColor = System::Drawing::Color::White;
-			dataGridViewCellStyle12->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			dataGridViewCellStyle12->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)),
-				static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)));
-			dataGridViewCellStyle12->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle1->BackColor = System::Drawing::Color::MediumSlateBlue;
+			dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle12->ForeColor = System::Drawing::Color::Black;
-			dataGridViewCellStyle12->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle12->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle12->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->dgvTarjetasRFID->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+			dataGridViewCellStyle1->ForeColor = System::Drawing::Color::Black;
+			dataGridViewCellStyle1->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle1->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle1->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dgvTarjetasRFID->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
 			this->dgvTarjetasRFID->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dgvTarjetasRFID->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(7) {
 				this->colId,
 					this->colUID, this->colCliente, this->colDocumento, this->colEmision, this->colVencimiento, this->colEstado
 			});
+			dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle2->BackColor = System::Drawing::SystemColors::Window;
+			dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			dataGridViewCellStyle2->ForeColor = System::Drawing::SystemColors::ControlText;
+			dataGridViewCellStyle2->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
+			this->dgvTarjetasRFID->DefaultCellStyle = dataGridViewCellStyle2;
 			this->dgvTarjetasRFID->EnableHeadersVisualStyles = false;
-			this->dgvTarjetasRFID->Location = System::Drawing::Point(41, 121);
-			this->dgvTarjetasRFID->Margin = System::Windows::Forms::Padding(4);
+			this->dgvTarjetasRFID->Location = System::Drawing::Point(47, 323);
+			this->dgvTarjetasRFID->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->dgvTarjetasRFID->MultiSelect = false;
 			this->dgvTarjetasRFID->Name = L"dgvTarjetasRFID";
 			this->dgvTarjetasRFID->ReadOnly = true;
+			dataGridViewCellStyle3->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle3->BackColor = System::Drawing::Color::MediumSlateBlue;
+			dataGridViewCellStyle3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			dataGridViewCellStyle3->ForeColor = System::Drawing::SystemColors::WindowText;
+			dataGridViewCellStyle3->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle3->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle3->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dgvTarjetasRFID->RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
 			this->dgvTarjetasRFID->RowHeadersVisible = false;
 			this->dgvTarjetasRFID->RowHeadersWidth = 51;
 			this->dgvTarjetasRFID->RowTemplate->Height = 24;
 			this->dgvTarjetasRFID->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->dgvTarjetasRFID->Size = System::Drawing::Size(1045, 250);
+			this->dgvTarjetasRFID->Size = System::Drawing::Size(1188, 312);
 			this->dgvTarjetasRFID->TabIndex = 76;
 			// 
 			// colId
@@ -414,48 +437,76 @@ namespace SmartParkingSystemViewGUI {
 			// 
 			// lblBuscar
 			// 
+			this->lblBuscar->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->lblBuscar->AutoSize = true;
-			this->lblBuscar->BackColor = System::Drawing::SystemColors::Control;
-			this->lblBuscar->Font = (gcnew System::Drawing::Font(L"Gadugi", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->lblBuscar->Location = System::Drawing::Point(35, 49);
+			this->lblBuscar->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(180)), static_cast<System::Int32>(static_cast<System::Byte>(190)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			this->lblBuscar->Font = (gcnew System::Drawing::Font(L"Arial", 14, System::Drawing::FontStyle::Bold));
+			this->lblBuscar->Location = System::Drawing::Point(19, 58);
 			this->lblBuscar->Name = L"lblBuscar";
-			this->lblBuscar->Size = System::Drawing::Size(359, 34);
+			this->lblBuscar->Size = System::Drawing::Size(364, 33);
 			this->lblBuscar->TabIndex = 61;
 			this->lblBuscar->Text = L"UID, cliente o documento:";
 			// 
 			// lblTitulo
 			// 
 			this->lblTitulo->AutoSize = true;
-			this->lblTitulo->Font = (gcnew System::Drawing::Font(L"Gadugi", 19.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
+			this->lblTitulo->Font = (gcnew System::Drawing::Font(L"Arial", 20, System::Drawing::FontStyle::Bold));
 			this->lblTitulo->ForeColor = System::Drawing::Color::White;
-			this->lblTitulo->Location = System::Drawing::Point(12, 12);
+			this->lblTitulo->Location = System::Drawing::Point(14, 15);
 			this->lblTitulo->Name = L"lblTitulo";
-			this->lblTitulo->Size = System::Drawing::Size(334, 40);
+			this->lblTitulo->Size = System::Drawing::Size(408, 46);
 			this->lblTitulo->TabIndex = 57;
 			this->lblTitulo->Text = L"Administración RFID";
 			this->lblTitulo->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// pnlTitulo
 			// 
-			this->pnlTitulo->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(25)), static_cast<System::Int32>(static_cast<System::Byte>(27)),
-				static_cast<System::Int32>(static_cast<System::Byte>(52)));
+			this->pnlTitulo->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(110)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
 			this->pnlTitulo->Controls->Add(this->lblTitulo);
 			this->pnlTitulo->Dock = System::Windows::Forms::DockStyle::Top;
 			this->pnlTitulo->Location = System::Drawing::Point(0, 0);
+			this->pnlTitulo->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->pnlTitulo->Name = L"pnlTitulo";
-			this->pnlTitulo->Size = System::Drawing::Size(1126, 65);
+			this->pnlTitulo->Size = System::Drawing::Size(1270, 81);
 			this->pnlTitulo->TabIndex = 58;
+			// 
+			// panel2
+			// 
+			this->panel2->BackColor = System::Drawing::Color::White;
+			this->panel2->Controls->Add(this->grpBuscar);
+			this->panel2->Controls->Add(this->panel3);
+			this->panel2->Controls->Add(this->dgvTarjetasRFID);
+			this->panel2->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->panel2->Location = System::Drawing::Point(0, 0);
+			this->panel2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->panel2->Name = L"panel2";
+			this->panel2->Size = System::Drawing::Size(1270, 862);
+			this->panel2->TabIndex = 60;
+			// 
+			// panel3
+			// 
+			this->panel3->BackColor = System::Drawing::SystemColors::ScrollBar;
+			this->panel3->Controls->Add(this->btnDesactivarRFID);
+			this->panel3->Controls->Add(this->btnEditarRFID);
+			this->panel3->Controls->Add(this->btnAsociarRFID);
+			this->panel3->Dock = System::Windows::Forms::DockStyle::Bottom;
+			this->panel3->Location = System::Drawing::Point(0, 763);
+			this->panel3->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->panel3->Name = L"panel3";
+			this->panel3->Size = System::Drawing::Size(1270, 99);
+			this->panel3->TabIndex = 27;
 			// 
 			// frmAdministracionRFID
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1126, 548);
-			this->Controls->Add(this->grpBuscar);
+			this->ClientSize = System::Drawing::Size(1270, 862);
 			this->Controls->Add(this->pnlTitulo);
-			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
+			this->Controls->Add(this->panel2);
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
+			this->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->MaximizeBox = false;
 			this->MinimizeBox = false;
 			this->Name = L"frmAdministracionRFID";
@@ -467,6 +518,9 @@ namespace SmartParkingSystemViewGUI {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvTarjetasRFID))->EndInit();
 			this->pnlTitulo->ResumeLayout(false);
 			this->pnlTitulo->PerformLayout();
+			this->panel2->ResumeLayout(false);
+			this->panel3->ResumeLayout(false);
+			this->panel3->PerformLayout();
 			this->ResumeLayout(false);
 
 		}
