@@ -20,6 +20,6 @@ namespace SmartParkingSystemController {
 
         // Recibe el clic, busca qué auto se tocó, cambia su estado y guarda en el TXT
         // Devuelve true si un espacio cambió de estado (para saber si hay que redibujar)
-        bool ProcesarClic(int x, int y, List<EspacioEstacionamiento^>^ espacios);
+        bool ProcesarClic(int x, int y, List<EspacioEstacionamiento^>^ espacios, int pisoActual);
     };
 }

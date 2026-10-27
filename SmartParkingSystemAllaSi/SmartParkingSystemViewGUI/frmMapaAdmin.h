@@ -29,9 +29,23 @@ namespace SmartParkingSystemViewGUI {
 			controlador = gcnew EspacioEstacionamientoController();
 			listaEspacios = controlador->ObtenerEspacios();
 
-			// Cargar imágenes de fondo y autos
-			imgFondo = Image::FromFile("Piso1.png");
+			imgPiso1 = Image::FromFile("Piso1.png");
+			imgPiso2 = Image::FromFile("Piso2.png");
+			imgPiso3 = Image::FromFile("Piso3.png");
 			imgAuto = Image::FromFile("autos.png");
+
+			// Llenar el ComboBox programáticamente
+			cmbPisos->Items->Clear();
+			cmbPisos->Items->Add("Piso 1");
+			cmbPisos->Items->Add("Piso 2");
+			cmbPisos->Items->Add("Piso 3");
+			cmbPisos->SelectedIndex = 0; // Esto seleccionará "Piso 1" y mostrará el texto
+
+			// Estado inicial
+			imgFondo = imgPiso1;
+			if (cmbPisos->Items->Count > 0) {
+				cmbPisos->SelectedIndex = 0; // Selecciona "Piso 1"
+			}
 
 			// Activar Double Buffering para evitar parpadeos al repintar
 			//this->SetStyle(ControlStyles::OptimizedDoubleBuffer |
@@ -71,8 +85,14 @@ namespace SmartParkingSystemViewGUI {
 		System::ComponentModel::Container^ components;
 		EspacioEstacionamientoController^ controlador;
 		List<EspacioEstacionamiento^>^ listaEspacios;
+		int pisoActual = 1;
 		Image^ imgFondo;
+		Image^ imgPiso1;
+		Image^ imgPiso2;
+		Image^ imgPiso3;
 		Image^ imgAuto;
+	private: System::Windows::Forms::Panel^ pnlSuperior;
+	private: System::Windows::Forms::ComboBox^ cmbPisos;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -82,29 +102,55 @@ namespace SmartParkingSystemViewGUI {
 		void InitializeComponent(void)
 		{
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
+			this->pnlSuperior = (gcnew System::Windows::Forms::Panel());
+			this->cmbPisos = (gcnew System::Windows::Forms::ComboBox());
+			this->panel1->SuspendLayout();
+			this->pnlSuperior->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// panel1
 			// 
+			this->panel1->Controls->Add(this->pnlSuperior);
 			this->panel1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->panel1->Location = System::Drawing::Point(0, 0);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(1049, 605);
+			this->panel1->Size = System::Drawing::Size(1049, 650);
 			this->panel1->TabIndex = 0;
 			this->panel1->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &frmMapaAdmin::panel1_Paint);
 			this->panel1->MouseClick += gcnew System::Windows::Forms::MouseEventHandler(this, &frmMapaAdmin::panel1_MouseClick);
+			// 
+			// pnlSuperior
+			// 
+			this->pnlSuperior->Controls->Add(this->cmbPisos);
+			this->pnlSuperior->Dock = System::Windows::Forms::DockStyle::Top;
+			this->pnlSuperior->Location = System::Drawing::Point(0, 0);
+			this->pnlSuperior->Name = L"pnlSuperior";
+			this->pnlSuperior->Size = System::Drawing::Size(1049, 40);
+			this->pnlSuperior->TabIndex = 0;
+			// 
+			// cmbPisos
+			// 
+			this->cmbPisos->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
+			this->cmbPisos->FormattingEnabled = true;
+			this->cmbPisos->Location = System::Drawing::Point(725, 3);
+			this->cmbPisos->Name = L"cmbPisos";
+			this->cmbPisos->Size = System::Drawing::Size(121, 28);
+			this->cmbPisos->TabIndex = 0;
+			this->cmbPisos->SelectedIndexChanged += gcnew System::EventHandler(this, &frmMapaAdmin::cmbPisos_SelectedIndexChanged);
 			// 
 			// frmMapaAdmin
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ControlDarkDark;
-			this->ClientSize = System::Drawing::Size(1049, 605);
+			this->ClientSize = System::Drawing::Size(1049, 650);
 			this->Controls->Add(this->panel1);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->Name = L"frmMapaAdmin";
 			this->Text = L"frmMapaAdmin";
+			this->panel1->ResumeLayout(false);
+			this->pnlSuperior->ResumeLayout(false);
 			this->ResumeLayout(false);
 
 		}
@@ -139,8 +185,11 @@ namespace SmartParkingSystemViewGUI {
 		// 5. Dibujar los vehículos sobre las coordenadas nativas
 		for (int i = 0; i < listaEspacios->Count; i++) {
 			EspacioEstacionamiento^ espacio = listaEspacios[i];
+			int id = espacio->getIdEspacio();
+			int pisoDelEspacio = ((id - 1) / 30) + 1; // 1-30=Piso1, 31-60=Piso2, 61-90=Piso3
 
-			if (espacio->getEstaOcupado()) {
+			// SOLO dibujar si el espacio pertenece al piso seleccionado y está ocupado
+			if (pisoDelEspacio == pisoActual && espacio->getEstaOcupado()) {
 				Rectangle areaDestino = espacio->getArea();
 
 				// Evaluar orientación respecto al centro de la imagen nativa (1024 / 2 = 512)
@@ -176,12 +225,24 @@ namespace SmartParkingSystemViewGUI {
 		int xRelativo = e->X - offsetX;
 		int yRelativo = e->Y - offsetY;
 
+		// 3. Enviar las coordenadas relativas corregidas y el piso actual al controlador
+		bool huboCambio = controlador->ProcesarClic(xRelativo, yRelativo, listaEspacios, pisoActual);
+
 		// 3. Enviar las coordenadas relativas corregidas al controlador
-		bool huboCambio = controlador->ProcesarClic(xRelativo, yRelativo, listaEspacios);
+		//bool huboCambio = controlador->ProcesarClic(xRelativo, yRelativo, listaEspacios);
 
 		if (huboCambio) {
 			panel1->Invalidate();
 		}
 	}
-	};
+	private: System::Void cmbPisos_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+		pisoActual = cmbPisos->SelectedIndex + 1; // 0=Piso1, 1=Piso2, 2=Piso3
+
+		if (pisoActual == 1) imgFondo = imgPiso1;
+		else if (pisoActual == 2) imgFondo = imgPiso2;
+		else if (pisoActual == 3) imgFondo = imgPiso3;
+
+		panel1->Invalidate();
+	}
+};
 }

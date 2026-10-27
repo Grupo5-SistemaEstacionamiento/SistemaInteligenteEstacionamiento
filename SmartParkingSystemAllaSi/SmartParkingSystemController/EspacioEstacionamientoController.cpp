@@ -12,11 +12,15 @@ List<EspacioEstacionamiento^>^ EspacioEstacionamientoController::ObtenerEspacios
     List<EspacioEstacionamiento^>^ espacios = dao->ObtenerTodos();
 
     // 2. Inyectar las coordenadas visuales (Rectangle) a cada espacio según su ID
-    for each (EspacioEstacionamiento ^ espacio in espacios) {
+    for (int i = 0; i < espacios->Count; i++) {
+        EspacioEstacionamiento^ espacio = espacios[i];
         int id = espacio->getIdEspacio();
 
-        // Aquí debes colocar las coordenadas (X, Y, Ancho, Alto) reales de tu imagen
-        switch (id) {
+        // Convertir IDs del 31-90 a posiciones equivalentes del 1 al 30
+        int idRelativo = ((id - 1) % 30) + 1;
+
+        // Evaluar idRelativo en lugar del id real
+        switch (idRelativo) {
             // --- COLUMNA 1 (Pared Izquierda: X = 64) ---
         case 1: espacio->setArea(Rectangle(64, 128, 64, 64)); break;
         case 2: espacio->setArea(Rectangle(64, 192, 64, 64)); break;
@@ -58,7 +62,6 @@ List<EspacioEstacionamiento^>^ EspacioEstacionamientoController::ObtenerEspacios
         case 28: espacio->setArea(Rectangle(896, 256, 64, 64)); break;
         case 29: espacio->setArea(Rectangle(896, 320, 64, 64)); break;
         case 30: espacio->setArea(Rectangle(896, 384, 64, 64)); break;// Discapacitado Der
-            
 
         default: espacio->setArea(Rectangle(0, 0, 0, 0)); break;
         }
@@ -67,21 +70,26 @@ List<EspacioEstacionamiento^>^ EspacioEstacionamientoController::ObtenerEspacios
     return espacios;
 }
 
-bool EspacioEstacionamientoController::ProcesarClic(int x, int y, List<EspacioEstacionamiento^>^ espacios) {
+bool EspacioEstacionamientoController::ProcesarClic(int x, int y, List<EspacioEstacionamiento^>^ espacios, int pisoActual) {
     bool estadoCambiado = false;
 
     for each (EspacioEstacionamiento ^ espacio in espacios) {
-        // Si el clic del mouse ocurrió dentro de los límites del rectángulo de este cajón
-        if (espacio->getArea().Contains(x, y)) {
-            // Invertir estado (si era true pasa a false y viceversa)
+        // 1. Calcular a qué piso pertenece el cajón evaluado (1-30=Piso1, 31-60=Piso2, 61-90=Piso3)
+        int id = espacio->getIdEspacio();
+        int pisoDelEspacio = ((id - 1) / 30) + 1;
+
+        // 2. Verificar que el cajón es del piso visible Y que el clic está en su área
+        if (pisoDelEspacio == pisoActual && espacio->getArea().Contains(x, y)) {
+
+            // Invertir estado
             bool nuevoEstado = !espacio->getEstaOcupado();
             espacio->setEstaOcupado(nuevoEstado);
 
             // Guardar el nuevo estado en el archivo .txt a través del DAO
-            dao->ActualizarEstado(espacio->getIdEspacio(), nuevoEstado);
+            dao->ActualizarEstado(id, nuevoEstado);
 
             estadoCambiado = true;
-            break; // Detener la búsqueda, ya encontramos el cajón clickeado
+            break; // Detener la búsqueda
         }
     }
 
