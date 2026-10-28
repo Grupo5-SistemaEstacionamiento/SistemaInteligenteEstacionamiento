@@ -1599,8 +1599,6 @@ namespace SmartParkingSystemViewGUI {
 	}
 
 	private: System::Void btnGraficas_Click(System::Object^ sender, System::EventArgs^ e) {
-		
-		//this->AbrirFormulario(gcnew frmGraficasBalances);
 	    
 		// Crea el formulario para registrar una nueva suscripción.
 		frmGraficasBalances^ formularioGraficas =
