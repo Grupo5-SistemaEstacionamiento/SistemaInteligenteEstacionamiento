@@ -512,6 +512,7 @@ namespace SmartParkingSystemViewGUI {
 public:
 
 	event System::EventHandler^ OnRegresar;
+	event System::EventHandler^ OnVerMas;
 
 private: System::Void btnRegresar_Click(System::Object^ sender, System::EventArgs^ e) { //Regresar
 
@@ -630,7 +631,7 @@ private: System::Void btnMas_Click(System::Object^ sender, System::EventArgs^ e)
 
 			this->idSelect = idCapturado;
 
-			//OnVerMasV(this, e); //ver mas del vehiculo
+			OnVerMas(this, e);
 		}
 		catch (Exception^ ex) {
 			MessageBox::Show("No se pudo extraer el ID del vehiculo de la tabla.", "Error de Lectura", MessageBoxButtons::OK, MessageBoxIcon::Error);
@@ -658,8 +659,8 @@ private: bool obtenerColorVehiculo(String^ nombre, System::Drawing::Color% resul
 	else if (n == "PLATA" || n == "PLATEADO") resultado = System::Drawing::Color::Silver; //10
 	else if (n == "MARRON" || n == "MARRÓN") resultado = System::Drawing::Color::SaddleBrown; //11
 	else if (n == "BEIGE") resultado = System::Drawing::Color::Beige; //12
-	else if (n == "TURQUESA") resultado = System::Drawing::Color::Turquoise; //13
-	else if (n == "MORADO") resultado = System::Drawing::Color::MediumSlateBlue; //14
+	else if (n == "MORADO") resultado = System::Drawing::Color::MediumPurple; //13
+	else if (n == "TURQUESA") resultado = System::Drawing::Color::Turquoise; //14
 
 
 	

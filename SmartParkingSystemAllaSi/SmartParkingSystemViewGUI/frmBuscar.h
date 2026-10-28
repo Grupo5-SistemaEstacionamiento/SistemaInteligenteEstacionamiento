@@ -118,9 +118,11 @@ namespace SmartParkingSystemViewGUI {
 			this->groupBox1->Controls->Add(this->TextBuscarCliente);
 			this->groupBox1->Controls->Add(this->label1);
 			this->groupBox1->Font = (gcnew System::Drawing::Font(L"Arial", 14, System::Drawing::FontStyle::Bold));
-			this->groupBox1->Location = System::Drawing::Point(88, 48);
+			this->groupBox1->Location = System::Drawing::Point(124, 166);
+			this->groupBox1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(664, 94);
+			this->groupBox1->Padding = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->groupBox1->Size = System::Drawing::Size(996, 145);
 			this->groupBox1->TabIndex = 1;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Buscar Cliente:";
@@ -132,10 +134,10 @@ namespace SmartParkingSystemViewGUI {
 			this->btnMoreCliente->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->btnMoreCliente->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->btnMoreCliente->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btnMoreCliente.Image")));
-			this->btnMoreCliente->Location = System::Drawing::Point(568, 51);
-			this->btnMoreCliente->Margin = System::Windows::Forms::Padding(2, 1, 2, 1);
+			this->btnMoreCliente->Location = System::Drawing::Point(852, 78);
+			this->btnMoreCliente->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btnMoreCliente->Name = L"btnMoreCliente";
-			this->btnMoreCliente->Size = System::Drawing::Size(29, 27);
+			this->btnMoreCliente->Size = System::Drawing::Size(42, 40);
 			this->btnMoreCliente->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->btnMoreCliente->TabIndex = 50;
 			this->btnMoreCliente->TabStop = false;
@@ -145,10 +147,10 @@ namespace SmartParkingSystemViewGUI {
 			// 
 			this->pictureBox1->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(527, 51);
-			this->pictureBox1->Margin = System::Windows::Forms::Padding(2, 1, 2, 1);
+			this->pictureBox1->Location = System::Drawing::Point(790, 78);
+			this->pictureBox1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(28, 26);
+			this->pictureBox1->Size = System::Drawing::Size(42, 40);
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pictureBox1->TabIndex = 39;
 			this->pictureBox1->TabStop = false;
@@ -158,10 +160,10 @@ namespace SmartParkingSystemViewGUI {
 			// 
 			this->TextBuscarCliente->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->TextBuscarCliente->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->TextBuscarCliente->Location = System::Drawing::Point(190, 51);
-			this->TextBuscarCliente->Margin = System::Windows::Forms::Padding(2, 1, 2, 1);
+			this->TextBuscarCliente->Location = System::Drawing::Point(285, 78);
+			this->TextBuscarCliente->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->TextBuscarCliente->Name = L"TextBuscarCliente";
-			this->TextBuscarCliente->Size = System::Drawing::Size(325, 29);
+			this->TextBuscarCliente->Size = System::Drawing::Size(486, 40);
 			this->TextBuscarCliente->TabIndex = 38;
 			// 
 			// label1
@@ -172,24 +174,22 @@ namespace SmartParkingSystemViewGUI {
 				static_cast<System::Int32>(static_cast<System::Byte>(255)));
 			this->label1->Font = (gcnew System::Drawing::Font(L"Arial", 14, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(32, 48);
-			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label1->Location = System::Drawing::Point(48, 74);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(105, 22);
+			this->label1->Size = System::Drawing::Size(155, 33);
 			this->label1->TabIndex = 29;
 			this->label1->Text = L"ID Cliente:";
 			// 
 			// panel2
 			// 
-			this->panel2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(225)), static_cast<System::Int32>(static_cast<System::Byte>(225)),
-				static_cast<System::Int32>(static_cast<System::Byte>(225)));
+			this->panel2->BackColor = System::Drawing::Color::White;
 			this->panel2->Controls->Add(this->groupBox2);
 			this->panel2->Controls->Add(this->groupBox1);
 			this->panel2->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->panel2->Location = System::Drawing::Point(0, 55);
-			this->panel2->Margin = System::Windows::Forms::Padding(2, 1, 2, 1);
+			this->panel2->Location = System::Drawing::Point(0, 85);
+			this->panel2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->panel2->Name = L"panel2";
-			this->panel2->Size = System::Drawing::Size(847, 441);
+			this->panel2->Size = System::Drawing::Size(1270, 679);
 			this->panel2->TabIndex = 22;
 			// 
 			// groupBox2
@@ -202,9 +202,11 @@ namespace SmartParkingSystemViewGUI {
 			this->groupBox2->Controls->Add(this->TextBuscarPlaca);
 			this->groupBox2->Controls->Add(this->label2);
 			this->groupBox2->Font = (gcnew System::Drawing::Font(L"Arial", 14, System::Drawing::FontStyle::Bold));
-			this->groupBox2->Location = System::Drawing::Point(88, 211);
+			this->groupBox2->Location = System::Drawing::Point(124, 358);
+			this->groupBox2->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->groupBox2->Name = L"groupBox2";
-			this->groupBox2->Size = System::Drawing::Size(664, 94);
+			this->groupBox2->Padding = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->groupBox2->Size = System::Drawing::Size(996, 145);
 			this->groupBox2->TabIndex = 40;
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Buscar Vehiculo";
@@ -215,10 +217,10 @@ namespace SmartParkingSystemViewGUI {
 			this->btnMorePlaca->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->btnMorePlaca->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->btnMorePlaca->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btnMorePlaca.Image")));
-			this->btnMorePlaca->Location = System::Drawing::Point(568, 51);
-			this->btnMorePlaca->Margin = System::Windows::Forms::Padding(2, 1, 2, 1);
+			this->btnMorePlaca->Location = System::Drawing::Point(852, 78);
+			this->btnMorePlaca->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btnMorePlaca->Name = L"btnMorePlaca";
-			this->btnMorePlaca->Size = System::Drawing::Size(29, 27);
+			this->btnMorePlaca->Size = System::Drawing::Size(42, 40);
 			this->btnMorePlaca->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->btnMorePlaca->TabIndex = 51;
 			this->btnMorePlaca->TabStop = false;
@@ -228,10 +230,10 @@ namespace SmartParkingSystemViewGUI {
 			// 
 			this->pictureBox2->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.Image")));
-			this->pictureBox2->Location = System::Drawing::Point(527, 51);
-			this->pictureBox2->Margin = System::Windows::Forms::Padding(2, 1, 2, 1);
+			this->pictureBox2->Location = System::Drawing::Point(790, 78);
+			this->pictureBox2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pictureBox2->Name = L"pictureBox2";
-			this->pictureBox2->Size = System::Drawing::Size(28, 26);
+			this->pictureBox2->Size = System::Drawing::Size(42, 40);
 			this->pictureBox2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pictureBox2->TabIndex = 39;
 			this->pictureBox2->TabStop = false;
@@ -241,10 +243,10 @@ namespace SmartParkingSystemViewGUI {
 			// 
 			this->TextBuscarPlaca->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->TextBuscarPlaca->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->TextBuscarPlaca->Location = System::Drawing::Point(190, 51);
-			this->TextBuscarPlaca->Margin = System::Windows::Forms::Padding(2, 1, 2, 1);
+			this->TextBuscarPlaca->Location = System::Drawing::Point(285, 78);
+			this->TextBuscarPlaca->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->TextBuscarPlaca->Name = L"TextBuscarPlaca";
-			this->TextBuscarPlaca->Size = System::Drawing::Size(325, 29);
+			this->TextBuscarPlaca->Size = System::Drawing::Size(486, 40);
 			this->TextBuscarPlaca->TabIndex = 38;
 			// 
 			// label2
@@ -255,38 +257,37 @@ namespace SmartParkingSystemViewGUI {
 				static_cast<System::Int32>(static_cast<System::Byte>(255)));
 			this->label2->Font = (gcnew System::Drawing::Font(L"Arial", 14, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(21, 51);
-			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label2->Location = System::Drawing::Point(32, 78);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(153, 22);
+			this->label2->Size = System::Drawing::Size(223, 33);
 			this->label2->TabIndex = 29;
 			this->label2->Text = L"Placa Vehiculo:";
 			// 
 			// textInfoCliente
 			// 
-			this->textInfoCliente->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(225)), static_cast<System::Int32>(static_cast<System::Byte>(225)),
-				static_cast<System::Int32>(static_cast<System::Byte>(225)));
+			this->textInfoCliente->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(110)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
 			this->textInfoCliente->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->textInfoCliente->Font = (gcnew System::Drawing::Font(L"Arial", 20, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textInfoCliente->ForeColor = System::Drawing::Color::Black;
-			this->textInfoCliente->Location = System::Drawing::Point(25, 8);
-			this->textInfoCliente->Margin = System::Windows::Forms::Padding(2, 1, 2, 1);
+			this->textInfoCliente->ForeColor = System::Drawing::Color::White;
+			this->textInfoCliente->Location = System::Drawing::Point(35, 22);
+			this->textInfoCliente->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->textInfoCliente->Name = L"textInfoCliente";
-			this->textInfoCliente->Size = System::Drawing::Size(541, 31);
+			this->textInfoCliente->Size = System::Drawing::Size(812, 46);
 			this->textInfoCliente->TabIndex = 0;
-			this->textInfoCliente->Text = L"Buscador";
+			this->textInfoCliente->Text = L"Administrar Clientes y Vehículos";
 			// 
 			// panel1
 			// 
-			this->panel1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(225)), static_cast<System::Int32>(static_cast<System::Byte>(225)),
-				static_cast<System::Int32>(static_cast<System::Byte>(225)));
+			this->panel1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(110)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
 			this->panel1->Controls->Add(this->textInfoCliente);
 			this->panel1->Dock = System::Windows::Forms::DockStyle::Top;
 			this->panel1->Location = System::Drawing::Point(0, 0);
-			this->panel1->Margin = System::Windows::Forms::Padding(2, 1, 2, 1);
+			this->panel1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(847, 55);
+			this->panel1->Size = System::Drawing::Size(1270, 85);
 			this->panel1->TabIndex = 21;
 			// 
 			// button1
@@ -296,10 +297,10 @@ namespace SmartParkingSystemViewGUI {
 			this->button1->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button1->ForeColor = System::Drawing::Color::White;
-			this->button1->Location = System::Drawing::Point(325, 19);
-			this->button1->Margin = System::Windows::Forms::Padding(2, 1, 2, 1);
+			this->button1->Location = System::Drawing::Point(488, 29);
+			this->button1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(166, 31);
+			this->button1->Size = System::Drawing::Size(249, 48);
 			this->button1->TabIndex = 11;
 			this->button1->Text = L"Regresar";
 			this->button1->UseVisualStyleBackColor = false;
@@ -310,21 +311,22 @@ namespace SmartParkingSystemViewGUI {
 			this->panel3->BackColor = System::Drawing::SystemColors::ScrollBar;
 			this->panel3->Controls->Add(this->button1);
 			this->panel3->Dock = System::Windows::Forms::DockStyle::Bottom;
-			this->panel3->Location = System::Drawing::Point(0, 496);
-			this->panel3->Margin = System::Windows::Forms::Padding(2, 1, 2, 1);
+			this->panel3->Location = System::Drawing::Point(0, 764);
+			this->panel3->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->panel3->Name = L"panel3";
-			this->panel3->Size = System::Drawing::Size(847, 64);
+			this->panel3->Size = System::Drawing::Size(1270, 98);
 			this->panel3->TabIndex = 23;
 			// 
 			// frmBuscar
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(847, 560);
+			this->ClientSize = System::Drawing::Size(1270, 862);
 			this->Controls->Add(this->panel2);
 			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->panel3);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
+			this->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->Name = L"frmBuscar";
 			this->Text = L"frmBuscar";
 			this->groupBox1->ResumeLayout(false);
@@ -386,15 +388,21 @@ private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArg
 }
 
 private: System::Void pictureBox2_Click(System::Object^ sender, System::EventArgs^ e) { //Lupa Placa
+	String^ placa = this->TextBuscarPlaca->Text->Trim();
 
-	if (!System::String::IsNullOrWhiteSpace(TextBuscarPlaca->Text)) {
-		MessageBox::Show("Búsqueda realizada con éxito", "Éxito", MessageBoxButtons::OK, MessageBoxIcon::Information); //para debuggin en realidad
-		OnBuscarPlacaClick(this, e); //Activamos el evento si se da click y hay algo de texto en la textbox
-	}
-	else {
+	if (String::IsNullOrWhiteSpace(placa)) {
 		MessageBox::Show("Por favor, complete la casilla para buscar", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		return;
 	}
-		
+
+	Vehiculo^ encontrado = (gcnew VehiculoController())->buscarxPlacaArchivo(placa);
+	if (encontrado == nullptr) {
+		MessageBox::Show("La placa ingresada no se encuentra registrada en el sistema.", "Vehículo no encontrado", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		return;
+	}
+
+	this->idSeleccionado = encontrado->getIdVehiculo(); // reutiliza el mismo campo que la búsqueda de cliente
+	OnBuscarPlacaClick(this, e);
 }
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) { //Regresar
 	this ->Close();

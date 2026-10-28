@@ -11,20 +11,64 @@ namespace SmartParkingSystemViewGUI {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
+	using namespace System::Collections::Generic;
+	using namespace SmartParkingSystemController;
+	using namespace SmartParkingSystemModel;
+
 	/// <summary>
 	/// Summary for frmBuscarPlaca
 	/// </summary>
 	public ref class frmBuscarPlaca : public System::Windows::Forms::Form
 	{
 	public:
-		frmBuscarPlaca(void)
+		int idVehiculoVisualizar;
+		int idDuenoSelect; // lo lee el dashboard al abrir la ficha del dueño
+
+		frmBuscarPlaca(int idVehiculo)
 		{
 			InitializeComponent();
-			//
-			//TODO: Add the constructor code here
-			//
-		}
+			this->idVehiculoVisualizar = idVehiculo;
+			this->idDuenoSelect = 0;
+			this->clienteDueno = nullptr;
 
+			try {
+				VehiculoController^ controller = gcnew VehiculoController();
+				Vehiculo^ v = controller->buscarxIdArchivo(idVehiculo);
+
+				if (v == nullptr) {
+					MessageBox::Show("No se encontró el vehículo seleccionado.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+					this->btnGuardarEdit->Enabled = false;
+					return;
+				}
+
+				this->txtIDVehiculo->Text = v->getIdVehiculo().ToString();
+				this->txtPlaca->Text = v->getPlaca();
+				this->txtMarca->Text = v->getMarca();
+				this->txtModelo->Text = v->getModelo();
+				this->txtAnotaciones->Text = v->getAnotaciones();
+				this->cboTipo->SelectedIndex = (v->getTipo() == TipoVehiculo::automovil) ? 0 : 1;
+
+				// Si el color guardado no está en la lista, queda sin seleccionar (-1)
+				this->cboColor->SelectedIndex = this->cboColor->FindStringExact(v->getColor()->Trim());
+				if (this->cboColor->SelectedIndex < 0) {
+					MessageBox::Show("El color registrado (" + v->getColor() + ") no está en la lista. Elija uno nuevo antes de guardar.", "Color no reconocido", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				}
+
+				if (v->getCliente() != nullptr) {
+					// Dispara TextChanged: rellena txtOwner y clienteDueno
+					this->txtIDOwner->Text = v->getCliente()->getIdPersona().ToString();
+				}
+				else {
+					mostrarEstadoDueno("Sin dueño asignado", Color::LightCoral);
+				}
+
+				mostrarSinDatosOperativos();
+				// actualizarImagenVehiculo(); // pendiente, ver bloque comentado abajo
+			}
+			catch (Exception^ ex) {
+				MessageBox::Show("Error al cargar los datos del vehículo: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			}
+		}
 	protected:
 		/// <summary>
 		/// Clean up any resources being used.
@@ -36,11 +80,14 @@ namespace SmartParkingSystemViewGUI {
 				delete components;
 			}
 		}
+
+	private: Cliente^ clienteDueno;
+
 	private: System::Windows::Forms::TextBox^ textInfoCliente;
 	protected:
 	private: System::Windows::Forms::Panel^ panel1;
 
-
+	
 
 
 
@@ -530,7 +577,7 @@ private: System::Windows::Forms::ComboBox^ cboColor;
 			this->MoreOwner->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->MoreOwner->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->MoreOwner->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"MoreOwner.Image")));
-			this->MoreOwner->Location = System::Drawing::Point(1843, 892);
+			this->MoreOwner->Location = System::Drawing::Point(1891, 892);
 			this->MoreOwner->Name = L"MoreOwner";
 			this->MoreOwner->Size = System::Drawing::Size(42, 39);
 			this->MoreOwner->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
@@ -554,7 +601,7 @@ private: System::Windows::Forms::ComboBox^ cboColor;
 			this->pictureBox3->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->pictureBox3->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->pictureBox3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox3.Image")));
-			this->pictureBox3->Location = System::Drawing::Point(1843, 803);
+			this->pictureBox3->Location = System::Drawing::Point(1843, 892);
 			this->pictureBox3->Name = L"pictureBox3";
 			this->pictureBox3->Size = System::Drawing::Size(42, 39);
 			this->pictureBox3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
@@ -609,26 +656,27 @@ private: System::Windows::Forms::ComboBox^ cboColor;
 			// 
 			// txtOwner
 			// 
-			this->txtOwner->BackColor = System::Drawing::Color::White;
+			this->txtOwner->BackColor = System::Drawing::Color::Silver;
 			this->txtOwner->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->txtOwner->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F));
 			this->txtOwner->Location = System::Drawing::Point(1350, 892);
 			this->txtOwner->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->txtOwner->Name = L"txtOwner";
+			this->txtOwner->ReadOnly = true;
 			this->txtOwner->Size = System::Drawing::Size(487, 39);
 			this->txtOwner->TabIndex = 96;
 			// 
 			// txtIDOwner
 			// 
-			this->txtIDOwner->BackColor = System::Drawing::Color::Silver;
+			this->txtIDOwner->BackColor = System::Drawing::Color::White;
 			this->txtIDOwner->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->txtIDOwner->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F));
 			this->txtIDOwner->Location = System::Drawing::Point(1350, 803);
 			this->txtIDOwner->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->txtIDOwner->Name = L"txtIDOwner";
-			this->txtIDOwner->ReadOnly = true;
 			this->txtIDOwner->Size = System::Drawing::Size(487, 39);
 			this->txtIDOwner->TabIndex = 95;
+			this->txtIDOwner->TextChanged += gcnew System::EventHandler(this, &frmBuscarPlaca::txtIDOwner_TextChanged);
 			// 
 			// cboTipo
 			// 
@@ -959,21 +1007,114 @@ private: System::Windows::Forms::ComboBox^ cboColor;
 #pragma endregion
 
 public:
-
 	event System::EventHandler^ OnRegresar;
+	event System::EventHandler^ OnVerDueno;
+
+//----------------------------------------------------------------------------------------------
 
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) { //Regresar
-
 	OnRegresar(this, e);
-
 }
 
+private: String^ limpiar(String^ s) { // evita que un ';' o salto de línea rompa el .txt
+	if (s == nullptr) return String::Empty;
+	return s->Replace(";", ",")->Replace("\r", " ")->Replace("\n", " ")->Trim();
+}
+
+private: void mostrarEstadoDueno(String^ texto, Color fondo) {
+	this->txtOwner->Text = texto;
+	this->txtOwner->BackColor = fondo;
+}
+
+	   // FASE 2: aquí se llenará con RegistroAcceso (estado, estadía, ingreso, espacio, monto) y Penalizacion.
+private: void mostrarSinDatosOperativos() {
+	this->lblEstado->Text = "Sin datos";
+	this->pnlEstadoColor->BackColor = Color::Silver;
+	this->txtTiempoEstadia->Text = "-";
+	this->txtHoraIngreso->Text = "-";
+	this->txtEspacioOcupado->Text = "-";
+	this->txtMontonAcumulado->Text = "-";
+	this->txtPenalizaciones->Text = "-";
+}
+
+private: System::Void txtIDOwner_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	this->clienteDueno = nullptr;
+	String^ txt = this->txtIDOwner->Text->Trim();
+
+	if (txt->Length == 0) { mostrarEstadoDueno("", Color::Silver); return; }
+
+	int id;
+	if (!Int32::TryParse(txt, id)) { mostrarEstadoDueno("ID inválido (solo números)", Color::LightCoral); return; }
+
+	Cliente^ c = (gcnew ClienteController())->buscarxIdArchivo(id);
+	if (c == nullptr) { mostrarEstadoDueno("Cliente inexistente", Color::LightCoral); return; }
+
+	this->clienteDueno = c;
+	mostrarEstadoDueno(c->getNombres() + " " + c->getApellidos(), Color::LightGreen);
+}
+
+private: System::Void MoreOwner_Click(System::Object^ sender, System::EventArgs^ e) { //Abre la ficha del dueño
+	if (this->clienteDueno == nullptr) {
+		MessageBox::Show("Ingrese un ID de dueño válido para ver su ficha.", "Dueño no válido", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+		return;
+	}
+	this->idDuenoSelect = this->clienteDueno->getIdPersona();
+	OnVerDueno(this, e);
+}
 
 private: System::Void btnGuardarEdit_Click(System::Object^ sender, System::EventArgs^ e) { //Guardar
+	if (String::IsNullOrWhiteSpace(this->txtPlaca->Text) || String::IsNullOrWhiteSpace(this->txtMarca->Text) ||
+		String::IsNullOrWhiteSpace(this->txtModelo->Text) || String::IsNullOrWhiteSpace(this->txtIDOwner->Text) ||
+		this->cboColor->SelectedIndex < 0 || this->cboTipo->SelectedIndex < 0) {
+		MessageBox::Show("Por favor, complete todos los campos obligatorios.", "Advertencia", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+		return;
+	}
+	if (this->clienteDueno == nullptr) {
+		MessageBox::Show("El ID del dueño no corresponde a ningún cliente registrado.", "Cliente inexistente", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		this->txtIDOwner->Focus();
+		return;
+	}
 
+	try {
+		VehiculoController^ controller = gcnew VehiculoController();
+		Vehiculo^ v = controller->buscarxIdArchivo(this->idVehiculoVisualizar);
+		if (v == nullptr) {
+			MessageBox::Show("El vehículo ya no existe en el sistema.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			return;
+		}
+
+		String^ placa = limpiar(this->txtPlaca->Text)->ToUpper();
+		Vehiculo^ otro = controller->buscarxPlacaArchivo(placa);
+		if (otro != nullptr && otro->getIdVehiculo() != this->idVehiculoVisualizar) {
+			MessageBox::Show("Ya existe otro vehículo registrado con esta placa.", "Error de Duplicidad", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			return;
+		}
+
+		v->setPlaca(placa);
+		v->setMarca(limpiar(this->txtMarca->Text));
+		v->setModelo(limpiar(this->txtModelo->Text));
+		v->setColor(this->cboColor->Text);
+		v->setAnotaciones(limpiar(this->txtAnotaciones->Text));
+		v->setTipo((this->cboTipo->SelectedIndex == 0) ? TipoVehiculo::automovil : TipoVehiculo::motocicleta);
+		v->setCliente(this->clienteDueno);
+
+		controller->modificarArchivo(v);
+
+		this->txtPlaca->Text = placa; // refleja la normalización
+		MessageBox::Show("Vehículo actualizado exitosamente.", "Éxito", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		// No se cierra: esta pantalla vive dentro del panel del dashboard.
+	}
+	catch (Exception^ ex) {
+		MessageBox::Show("Ocurrió un error al guardar los cambios: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+	}
 }
+
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) { //Historial
 	//Por ahora no hace nada
 }
+
+//Cambio de imagen queda pendiente
+
+//---------------------------------------------------------------------------------
 };
 }
