@@ -430,6 +430,10 @@ namespace SmartParkingSystemViewGUI {
 			this->ResumeLayout(false);
 
 		}
+
+private: int idPlacaActual;
+private: bool placaDesdeTabla;
+
 #pragma endregion
 
 	private: System::Windows::Forms::Form^ actual = nullptr;
@@ -503,52 +507,76 @@ private: System::Void AbrirMenuBuscador() {
 //Funciones Callback --------------------------------------------------------------------------------------------
 private: System::Void AbrirBusquedaCliente(System::Object^ sender, System::EventArgs^ e) {
 
-	int idCapturado = 0;
-	frmBuscarCliente^ BuscaClientes = nullptr; // vacio
+	   frmBuscarCliente^ BuscaClientes = nullptr;
 
-	// 1. Preguntamos si el evento viene de la pantalla del Buscador (Lupita)
-	frmBuscar^ BuscadorOrigen = dynamic_cast<frmBuscar^>(sender);
-	
+	   frmBuscar^ BuscadorOrigen = dynamic_cast<frmBuscar^>(sender);
+	   frmMoreCliente^ GrillaOrigen = dynamic_cast<frmMoreCliente^>(sender);
+	   frmBuscarPlaca^ PlacaOrigen = dynamic_cast<frmBuscarPlaca^>(sender);
 
-	if (BuscadorOrigen != nullptr) {
-		idCapturado = BuscadorOrigen->idSeleccionado;
+	   if (BuscadorOrigen != nullptr) {
+		   BuscaClientes = gcnew frmBuscarCliente(BuscadorOrigen->idSeleccionado);
+		   BuscaClientes->OnRegresar += gcnew System::EventHandler(this, &frmPrincipalAdmin::RegresarBuscador);
+	   }
+	   else if (GrillaOrigen != nullptr) {
+		   BuscaClientes = gcnew frmBuscarCliente(GrillaOrigen->idSelect);
+		   BuscaClientes->OnRegresar += gcnew System::EventHandler(this, &frmPrincipalAdmin::RegresarTablaClientes);
+	   }
+	   else if (PlacaOrigen != nullptr) { // viene del "..." del dueño en la ficha del vehículo
+		   BuscaClientes = gcnew frmBuscarCliente(PlacaOrigen->idDuenoSelect);
+		   BuscaClientes->OnRegresar += gcnew System::EventHandler(this, &frmPrincipalAdmin::RegresarFichaPlaca);
+	   }
 
-		BuscaClientes = gcnew frmBuscarCliente(idCapturado);
-
-		// Como vino de la lupa, al presionar regresar, volveremos al menú buscador
-		BuscaClientes->OnRegresar += gcnew System::EventHandler(this, &frmPrincipalAdmin::RegresarBuscador);
-	}
-	else {
-		// 2. Si no es el buscador, preguntamos si viene de la tabla (DataGrid)
-		frmMoreCliente^ GrillaOrigen = dynamic_cast<frmMoreCliente^>(sender);
-		if (GrillaOrigen != nullptr) {
-			idCapturado = GrillaOrigen->idSelect; 
-
-			BuscaClientes = gcnew frmBuscarCliente(idCapturado);
-
-			// Como vino de la tabla, al presionar regresar, conectamos a la otra funcion
-			BuscaClientes->OnRegresar += gcnew System::EventHandler(this, &frmPrincipalAdmin::RegresarTablaClientes);
-		}
-	}
-	if (BuscaClientes != nullptr) {
-		this->AbrirFormulario(BuscaClientes);
-	}
+	   if (BuscaClientes != nullptr) {
+		   this->AbrirFormulario(BuscaClientes);
+	   }
 }
 
 private: System::Void AbrirBusquedaPlaca(System::Object^ sender, System::EventArgs^ e) {
 
-	frmBuscarPlaca^ BuscaPlacas = gcnew frmBuscarPlaca();
-	BuscaPlacas->OnRegresar += gcnew System::EventHandler(this, &frmPrincipalAdmin::RegresarBuscador);
+	frmBuscar^ BuscadorOrigen = dynamic_cast<frmBuscar^>(sender);
+	frmMorePlaca^ GrillaOrigen = dynamic_cast<frmMorePlaca^>(sender);
 
-	this->AbrirFormulario(BuscaPlacas);
+	if (BuscadorOrigen != nullptr) {
+		MostrarFichaPlaca(BuscadorOrigen->idSeleccionado, false);
+	}
+	else if (GrillaOrigen != nullptr) {
+		MostrarFichaPlaca(GrillaOrigen->idSelect, true);
+	}
+}
+
+private: System::Void MostrarFichaPlaca(int idVehiculo, bool desdeTabla) {
+
+	this->idPlacaActual = idVehiculo;
+	this->placaDesdeTabla = desdeTabla;
+
+	frmBuscarPlaca^ Ficha = gcnew frmBuscarPlaca(idVehiculo);
+
+	if (desdeTabla) {
+		Ficha->OnRegresar += gcnew System::EventHandler(this, &frmPrincipalAdmin::RegresarTablaPlacas);
+	}
+	else {
+		Ficha->OnRegresar += gcnew System::EventHandler(this, &frmPrincipalAdmin::RegresarBuscador);
+	}
+	Ficha->OnVerDueno += gcnew System::EventHandler(this, &frmPrincipalAdmin::AbrirBusquedaCliente);
+
+	this->AbrirFormulario(Ficha);
 }
 
 private: System::Void AbrirMorePlaca(System::Object^ sender, System::EventArgs^ e) {
 
 	frmMorePlaca^ MorePlacas = gcnew frmMorePlaca();
 	MorePlacas->OnRegresar += gcnew System::EventHandler(this, &frmPrincipalAdmin::RegresarBuscador);
+	MorePlacas->OnVerMas += gcnew System::EventHandler(this, &frmPrincipalAdmin::AbrirBusquedaPlaca);
 
 	this->AbrirFormulario(MorePlacas);
+}
+
+private: System::Void RegresarTablaPlacas(System::Object^ sender, System::EventArgs^ e) {
+	AbrirMorePlaca(nullptr, nullptr);
+}
+
+private: System::Void RegresarFichaPlaca(System::Object^ sender, System::EventArgs^ e) {
+	MostrarFichaPlaca(this->idPlacaActual, this->placaDesdeTabla);
 }
 
 private: System::Void AbrirMoreCliente(System::Object^ sender, System::EventArgs^ e) {
@@ -605,7 +633,7 @@ private: System::Void AdminTarifasbtn_Click(System::Object^ sender, System::Even
 	this->AbrirFormulario(gcnew frmTarifa());
 }
 private: System::Void Balancebtn_Click(System::Object^ sender, System::EventArgs^ e) { //Balance
-	this->AbrirFormulario(gcnew frmBalances(pnlContenedor));
+	this->AbrirFormulario(gcnew frmBalances());
 }
 private: System::Void btnPerifericos_Click(System::Object^ sender, System::EventArgs^ e) { //Perifericos
 

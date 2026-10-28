@@ -158,6 +158,8 @@ namespace SmartParkingSystemViewGUI {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ colFechaInicio;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ colFechaFin;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ colEstado;
+private: System::Windows::Forms::Panel^ panel2;
+private: System::Windows::Forms::Panel^ panel3;
 
 
 
@@ -180,15 +182,22 @@ namespace SmartParkingSystemViewGUI {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle4 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle5 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle6 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->pnlInfo = (gcnew System::Windows::Forms::Panel());
+			this->pnlTitulo = (gcnew System::Windows::Forms::Panel());
+			this->lblTitulo = (gcnew System::Windows::Forms::Label());
+			this->panel2 = (gcnew System::Windows::Forms::Panel());
 			this->gbBusqueda = (gcnew System::Windows::Forms::GroupBox());
-			this->btnCancelarSuscripcion = (gcnew System::Windows::Forms::Button());
-			this->btnEditarSuscripcion = (gcnew System::Windows::Forms::Button());
-			this->btnNuevaSuscripcion = (gcnew System::Windows::Forms::Button());
 			this->btnMostrarTodos = (gcnew System::Windows::Forms::Button());
 			this->btnBuscar = (gcnew System::Windows::Forms::Button());
 			this->txtBuscar = (gcnew System::Windows::Forms::TextBox());
+			this->lblBuscar = (gcnew System::Windows::Forms::Label());
+			this->panel3 = (gcnew System::Windows::Forms::Panel());
+			this->btnCancelarSuscripcion = (gcnew System::Windows::Forms::Button());
+			this->btnEditarSuscripcion = (gcnew System::Windows::Forms::Button());
+			this->btnNuevaSuscripcion = (gcnew System::Windows::Forms::Button());
 			this->dgvClientesSuscritos = (gcnew System::Windows::Forms::DataGridView());
 			this->colIdMembresia = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->colCliente = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -197,107 +206,94 @@ namespace SmartParkingSystemViewGUI {
 			this->colFechaInicio = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->colFechaFin = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->colEstado = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->lblBuscar = (gcnew System::Windows::Forms::Label());
-			this->pnlTitulo = (gcnew System::Windows::Forms::Panel());
-			this->lblTitulo = (gcnew System::Windows::Forms::Label());
 			this->pnlInfo->SuspendLayout();
-			this->gbBusqueda->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvClientesSuscritos))->BeginInit();
 			this->pnlTitulo->SuspendLayout();
+			this->panel2->SuspendLayout();
+			this->gbBusqueda->SuspendLayout();
+			this->panel3->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvClientesSuscritos))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// pnlInfo
 			// 
 			this->pnlInfo->BackColor = System::Drawing::Color::White;
-			this->pnlInfo->Controls->Add(this->gbBusqueda);
 			this->pnlInfo->Controls->Add(this->pnlTitulo);
+			this->pnlInfo->Controls->Add(this->panel2);
 			this->pnlInfo->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pnlInfo->Location = System::Drawing::Point(0, 0);
 			this->pnlInfo->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pnlInfo->Name = L"pnlInfo";
-			this->pnlInfo->Size = System::Drawing::Size(1126, 548);
+			this->pnlInfo->Size = System::Drawing::Size(1270, 862);
 			this->pnlInfo->TabIndex = 15;
+			// 
+			// pnlTitulo
+			// 
+			this->pnlTitulo->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(110)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			this->pnlTitulo->Controls->Add(this->lblTitulo);
+			this->pnlTitulo->Dock = System::Windows::Forms::DockStyle::Top;
+			this->pnlTitulo->Location = System::Drawing::Point(0, 0);
+			this->pnlTitulo->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
+			this->pnlTitulo->Name = L"pnlTitulo";
+			this->pnlTitulo->Size = System::Drawing::Size(1270, 81);
+			this->pnlTitulo->TabIndex = 56;
+			// 
+			// lblTitulo
+			// 
+			this->lblTitulo->AutoSize = true;
+			this->lblTitulo->Font = (gcnew System::Drawing::Font(L"Arial", 20, System::Drawing::FontStyle::Bold));
+			this->lblTitulo->ForeColor = System::Drawing::Color::White;
+			this->lblTitulo->Location = System::Drawing::Point(14, 15);
+			this->lblTitulo->Name = L"lblTitulo";
+			this->lblTitulo->Size = System::Drawing::Size(364, 46);
+			this->lblTitulo->TabIndex = 57;
+			this->lblTitulo->Text = L"Clientes Suscritos";
+			this->lblTitulo->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// panel2
+			// 
+			this->panel2->AutoScroll = true;
+			this->panel2->BackColor = System::Drawing::Color::White;
+			this->panel2->Controls->Add(this->gbBusqueda);
+			this->panel2->Controls->Add(this->panel3);
+			this->panel2->Controls->Add(this->dgvClientesSuscritos);
+			this->panel2->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->panel2->Location = System::Drawing::Point(0, 0);
+			this->panel2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->panel2->Name = L"panel2";
+			this->panel2->Size = System::Drawing::Size(1270, 862);
+			this->panel2->TabIndex = 61;
 			// 
 			// gbBusqueda
 			// 
-			this->gbBusqueda->BackColor = System::Drawing::SystemColors::Control;
-			this->gbBusqueda->Controls->Add(this->btnCancelarSuscripcion);
-			this->gbBusqueda->Controls->Add(this->btnEditarSuscripcion);
-			this->gbBusqueda->Controls->Add(this->btnNuevaSuscripcion);
+			this->gbBusqueda->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->gbBusqueda->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(180)), static_cast<System::Int32>(static_cast<System::Byte>(190)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
 			this->gbBusqueda->Controls->Add(this->btnMostrarTodos);
 			this->gbBusqueda->Controls->Add(this->btnBuscar);
 			this->gbBusqueda->Controls->Add(this->txtBuscar);
-			this->gbBusqueda->Controls->Add(this->dgvClientesSuscritos);
 			this->gbBusqueda->Controls->Add(this->lblBuscar);
-			this->gbBusqueda->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->gbBusqueda->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->gbBusqueda->Location = System::Drawing::Point(0, 65);
+			this->gbBusqueda->Font = (gcnew System::Drawing::Font(L"Arial", 14, System::Drawing::FontStyle::Bold));
+			this->gbBusqueda->Location = System::Drawing::Point(45, 140);
+			this->gbBusqueda->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->gbBusqueda->Name = L"gbBusqueda";
-			this->gbBusqueda->Size = System::Drawing::Size(1126, 483);
+			this->gbBusqueda->Padding = System::Windows::Forms::Padding(3, 4, 3, 4);
+			this->gbBusqueda->Size = System::Drawing::Size(1188, 145);
 			this->gbBusqueda->TabIndex = 57;
 			this->gbBusqueda->TabStop = false;
 			this->gbBusqueda->Text = L"Buscar cliente";
 			// 
-			// btnCancelarSuscripcion
-			// 
-			this->btnCancelarSuscripcion->AutoSize = true;
-			this->btnCancelarSuscripcion->BackColor = System::Drawing::Color::Red;
-			this->btnCancelarSuscripcion->Font = (gcnew System::Drawing::Font(L"Arial", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->btnCancelarSuscripcion->ForeColor = System::Drawing::Color::White;
-			this->btnCancelarSuscripcion->Location = System::Drawing::Point(730, 400);
-			this->btnCancelarSuscripcion->Margin = System::Windows::Forms::Padding(4);
-			this->btnCancelarSuscripcion->Name = L"btnCancelarSuscripcion";
-			this->btnCancelarSuscripcion->Size = System::Drawing::Size(310, 53);
-			this->btnCancelarSuscripcion->TabIndex = 82;
-			this->btnCancelarSuscripcion->Text = L"Cancelar suscripción";
-			this->btnCancelarSuscripcion->UseVisualStyleBackColor = false;
-			this->btnCancelarSuscripcion->Click += gcnew System::EventHandler(this, &frmClientesSuscritos::btnCancelarSuscripcion_Click);
-			// 
-			// btnEditarSuscripcion
-			// 
-			this->btnEditarSuscripcion->AutoSize = true;
-			this->btnEditarSuscripcion->BackColor = System::Drawing::Color::DarkOrange;
-			this->btnEditarSuscripcion->Font = (gcnew System::Drawing::Font(L"Arial", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->btnEditarSuscripcion->ForeColor = System::Drawing::Color::White;
-			this->btnEditarSuscripcion->Location = System::Drawing::Point(412, 400);
-			this->btnEditarSuscripcion->Margin = System::Windows::Forms::Padding(4);
-			this->btnEditarSuscripcion->Name = L"btnEditarSuscripcion";
-			this->btnEditarSuscripcion->Size = System::Drawing::Size(270, 53);
-			this->btnEditarSuscripcion->TabIndex = 81;
-			this->btnEditarSuscripcion->Text = L"Editar suscripción";
-			this->btnEditarSuscripcion->UseVisualStyleBackColor = false;
-			this->btnEditarSuscripcion->Click += gcnew System::EventHandler(this, &frmClientesSuscritos::btnEditarSuscripcion_Click);
-			// 
-			// btnNuevaSuscripcion
-			// 
-			this->btnNuevaSuscripcion->AutoSize = true;
-			this->btnNuevaSuscripcion->BackColor = System::Drawing::Color::ForestGreen;
-			this->btnNuevaSuscripcion->Font = (gcnew System::Drawing::Font(L"Arial", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->btnNuevaSuscripcion->ForeColor = System::Drawing::Color::White;
-			this->btnNuevaSuscripcion->Location = System::Drawing::Point(88, 400);
-			this->btnNuevaSuscripcion->Margin = System::Windows::Forms::Padding(4);
-			this->btnNuevaSuscripcion->Name = L"btnNuevaSuscripcion";
-			this->btnNuevaSuscripcion->Size = System::Drawing::Size(274, 53);
-			this->btnNuevaSuscripcion->TabIndex = 80;
-			this->btnNuevaSuscripcion->Text = L"Nueva suscripción";
-			this->btnNuevaSuscripcion->UseVisualStyleBackColor = false;
-			this->btnNuevaSuscripcion->Click += gcnew System::EventHandler(this, &frmClientesSuscritos::btnNuevaSuscripcion_Click);
-			// 
 			// btnMostrarTodos
 			// 
+			this->btnMostrarTodos->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->btnMostrarTodos->AutoSize = true;
 			this->btnMostrarTodos->BackColor = System::Drawing::Color::Blue;
-			this->btnMostrarTodos->Font = (gcnew System::Drawing::Font(L"Arial", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
+			this->btnMostrarTodos->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold));
 			this->btnMostrarTodos->ForeColor = System::Drawing::Color::White;
-			this->btnMostrarTodos->Location = System::Drawing::Point(874, 40);
-			this->btnMostrarTodos->Margin = System::Windows::Forms::Padding(4);
+			this->btnMostrarTodos->Location = System::Drawing::Point(935, 54);
+			this->btnMostrarTodos->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btnMostrarTodos->Name = L"btnMostrarTodos";
-			this->btnMostrarTodos->Size = System::Drawing::Size(212, 53);
+			this->btnMostrarTodos->Size = System::Drawing::Size(235, 48);
 			this->btnMostrarTodos->TabIndex = 79;
 			this->btnMostrarTodos->Text = L"Mostrar todos";
 			this->btnMostrarTodos->UseVisualStyleBackColor = false;
@@ -305,15 +301,15 @@ namespace SmartParkingSystemViewGUI {
 			// 
 			// btnBuscar
 			// 
+			this->btnBuscar->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->btnBuscar->AutoSize = true;
-			this->btnBuscar->BackColor = System::Drawing::Color::Gray;
-			this->btnBuscar->Font = (gcnew System::Drawing::Font(L"Arial", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
+			this->btnBuscar->BackColor = System::Drawing::Color::DarkOrchid;
+			this->btnBuscar->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold));
 			this->btnBuscar->ForeColor = System::Drawing::Color::White;
-			this->btnBuscar->Location = System::Drawing::Point(727, 40);
-			this->btnBuscar->Margin = System::Windows::Forms::Padding(4);
+			this->btnBuscar->Location = System::Drawing::Point(773, 54);
+			this->btnBuscar->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btnBuscar->Name = L"btnBuscar";
-			this->btnBuscar->Size = System::Drawing::Size(119, 53);
+			this->btnBuscar->Size = System::Drawing::Size(154, 48);
 			this->btnBuscar->TabIndex = 78;
 			this->btnBuscar->Text = L"Buscar";
 			this->btnBuscar->UseVisualStyleBackColor = false;
@@ -321,49 +317,139 @@ namespace SmartParkingSystemViewGUI {
 			// 
 			// txtBuscar
 			// 
-			this->txtBuscar->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
-				static_cast<System::Int32>(static_cast<System::Byte>(192)));
-			this->txtBuscar->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->txtBuscar->Location = System::Drawing::Point(491, 44);
-			this->txtBuscar->Margin = System::Windows::Forms::Padding(4);
+			this->txtBuscar->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->txtBuscar->BackColor = System::Drawing::Color::White;
+			this->txtBuscar->Font = (gcnew System::Drawing::Font(L"Arial", 14, System::Drawing::FontStyle::Bold));
+			this->txtBuscar->Location = System::Drawing::Point(453, 58);
+			this->txtBuscar->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->txtBuscar->Name = L"txtBuscar";
-			this->txtBuscar->Size = System::Drawing::Size(206, 42);
+			this->txtBuscar->Size = System::Drawing::Size(312, 40);
 			this->txtBuscar->TabIndex = 77;
+			// 
+			// lblBuscar
+			// 
+			this->lblBuscar->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->lblBuscar->AutoSize = true;
+			this->lblBuscar->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(180)), static_cast<System::Int32>(static_cast<System::Byte>(190)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			this->lblBuscar->Font = (gcnew System::Drawing::Font(L"Arial", 14, System::Drawing::FontStyle::Bold));
+			this->lblBuscar->Location = System::Drawing::Point(6, 58);
+			this->lblBuscar->Name = L"lblBuscar";
+			this->lblBuscar->Size = System::Drawing::Size(440, 33);
+			this->lblBuscar->TabIndex = 61;
+			this->lblBuscar->Text = L"Nombre, apellido o documento:";
+			// 
+			// panel3
+			// 
+			this->panel3->BackColor = System::Drawing::SystemColors::ScrollBar;
+			this->panel3->Controls->Add(this->btnCancelarSuscripcion);
+			this->panel3->Controls->Add(this->btnEditarSuscripcion);
+			this->panel3->Controls->Add(this->btnNuevaSuscripcion);
+			this->panel3->Dock = System::Windows::Forms::DockStyle::Bottom;
+			this->panel3->Location = System::Drawing::Point(0, 763);
+			this->panel3->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->panel3->Name = L"panel3";
+			this->panel3->Size = System::Drawing::Size(1270, 99);
+			this->panel3->TabIndex = 27;
+			// 
+			// btnCancelarSuscripcion
+			// 
+			this->btnCancelarSuscripcion->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->btnCancelarSuscripcion->AutoSize = true;
+			this->btnCancelarSuscripcion->BackColor = System::Drawing::Color::Red;
+			this->btnCancelarSuscripcion->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold));
+			this->btnCancelarSuscripcion->ForeColor = System::Drawing::Color::White;
+			this->btnCancelarSuscripcion->Location = System::Drawing::Point(818, 26);
+			this->btnCancelarSuscripcion->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->btnCancelarSuscripcion->Name = L"btnCancelarSuscripcion";
+			this->btnCancelarSuscripcion->Size = System::Drawing::Size(307, 48);
+			this->btnCancelarSuscripcion->TabIndex = 82;
+			this->btnCancelarSuscripcion->Text = L"Cancelar suscripción";
+			this->btnCancelarSuscripcion->UseVisualStyleBackColor = false;
+			this->btnCancelarSuscripcion->Click += gcnew System::EventHandler(this, &frmClientesSuscritos::btnCancelarSuscripcion_Click);
+			// 
+			// btnEditarSuscripcion
+			// 
+			this->btnEditarSuscripcion->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->btnEditarSuscripcion->AutoSize = true;
+			this->btnEditarSuscripcion->BackColor = System::Drawing::Color::DarkOrange;
+			this->btnEditarSuscripcion->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold));
+			this->btnEditarSuscripcion->ForeColor = System::Drawing::Color::White;
+			this->btnEditarSuscripcion->Location = System::Drawing::Point(461, 26);
+			this->btnEditarSuscripcion->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->btnEditarSuscripcion->Name = L"btnEditarSuscripcion";
+			this->btnEditarSuscripcion->Size = System::Drawing::Size(307, 48);
+			this->btnEditarSuscripcion->TabIndex = 81;
+			this->btnEditarSuscripcion->Text = L"Editar suscripción";
+			this->btnEditarSuscripcion->UseVisualStyleBackColor = false;
+			this->btnEditarSuscripcion->Click += gcnew System::EventHandler(this, &frmClientesSuscritos::btnEditarSuscripcion_Click);
+			// 
+			// btnNuevaSuscripcion
+			// 
+			this->btnNuevaSuscripcion->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->btnNuevaSuscripcion->AutoSize = true;
+			this->btnNuevaSuscripcion->BackColor = System::Drawing::Color::ForestGreen;
+			this->btnNuevaSuscripcion->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold));
+			this->btnNuevaSuscripcion->ForeColor = System::Drawing::Color::White;
+			this->btnNuevaSuscripcion->Location = System::Drawing::Point(96, 26);
+			this->btnNuevaSuscripcion->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->btnNuevaSuscripcion->Name = L"btnNuevaSuscripcion";
+			this->btnNuevaSuscripcion->Size = System::Drawing::Size(307, 48);
+			this->btnNuevaSuscripcion->TabIndex = 80;
+			this->btnNuevaSuscripcion->Text = L"Nueva suscripción";
+			this->btnNuevaSuscripcion->UseVisualStyleBackColor = false;
+			this->btnNuevaSuscripcion->Click += gcnew System::EventHandler(this, &frmClientesSuscritos::btnNuevaSuscripcion_Click);
 			// 
 			// dgvClientesSuscritos
 			// 
 			this->dgvClientesSuscritos->AllowUserToAddRows = false;
 			this->dgvClientesSuscritos->AllowUserToDeleteRows = false;
 			this->dgvClientesSuscritos->AllowUserToResizeRows = false;
+			this->dgvClientesSuscritos->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->dgvClientesSuscritos->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
 			this->dgvClientesSuscritos->BackgroundColor = System::Drawing::Color::White;
-			dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			dataGridViewCellStyle1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)),
-				static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)));
-			dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle4->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle4->BackColor = System::Drawing::Color::MediumSlateBlue;
+			dataGridViewCellStyle4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle1->ForeColor = System::Drawing::Color::Black;
-			dataGridViewCellStyle1->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle1->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle1->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->dgvClientesSuscritos->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle4->ForeColor = System::Drawing::Color::Black;
+			dataGridViewCellStyle4->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle4->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle4->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dgvClientesSuscritos->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
 			this->dgvClientesSuscritos->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dgvClientesSuscritos->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(7) {
 				this->colIdMembresia,
 					this->colCliente, this->colDocumento, this->colTipoMembresia, this->colFechaInicio, this->colFechaFin, this->colEstado
 			});
+			dataGridViewCellStyle5->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle5->BackColor = System::Drawing::SystemColors::Window;
+			dataGridViewCellStyle5->Font = (gcnew System::Drawing::Font(L"Arial", 14, System::Drawing::FontStyle::Bold));
+			dataGridViewCellStyle5->ForeColor = System::Drawing::SystemColors::ControlText;
+			dataGridViewCellStyle5->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle5->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle5->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
+			this->dgvClientesSuscritos->DefaultCellStyle = dataGridViewCellStyle5;
 			this->dgvClientesSuscritos->EnableHeadersVisualStyles = false;
-			this->dgvClientesSuscritos->Location = System::Drawing::Point(41, 121);
-			this->dgvClientesSuscritos->Margin = System::Windows::Forms::Padding(4);
+			this->dgvClientesSuscritos->Location = System::Drawing::Point(45, 311);
+			this->dgvClientesSuscritos->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->dgvClientesSuscritos->MultiSelect = false;
 			this->dgvClientesSuscritos->Name = L"dgvClientesSuscritos";
 			this->dgvClientesSuscritos->ReadOnly = true;
+			dataGridViewCellStyle6->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle6->BackColor = System::Drawing::Color::MediumSlateBlue;
+			dataGridViewCellStyle6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			dataGridViewCellStyle6->ForeColor = System::Drawing::SystemColors::WindowText;
+			dataGridViewCellStyle6->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle6->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle6->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dgvClientesSuscritos->RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
 			this->dgvClientesSuscritos->RowHeadersVisible = false;
 			this->dgvClientesSuscritos->RowHeadersWidth = 51;
 			this->dgvClientesSuscritos->RowTemplate->Height = 24;
 			this->dgvClientesSuscritos->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->dgvClientesSuscritos->Size = System::Drawing::Size(1045, 250);
+			this->dgvClientesSuscritos->Size = System::Drawing::Size(1188, 404);
 			this->dgvClientesSuscritos->TabIndex = 76;
 			// 
 			// colIdMembresia
@@ -420,49 +506,14 @@ namespace SmartParkingSystemViewGUI {
 			this->colEstado->Name = L"colEstado";
 			this->colEstado->ReadOnly = true;
 			// 
-			// lblBuscar
-			// 
-			this->lblBuscar->AutoSize = true;
-			this->lblBuscar->BackColor = System::Drawing::SystemColors::Control;
-			this->lblBuscar->Font = (gcnew System::Drawing::Font(L"Gadugi", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->lblBuscar->Location = System::Drawing::Point(35, 49);
-			this->lblBuscar->Name = L"lblBuscar";
-			this->lblBuscar->Size = System::Drawing::Size(435, 34);
-			this->lblBuscar->TabIndex = 61;
-			this->lblBuscar->Text = L"Nombre, apellido o documento:";
-			// 
-			// pnlTitulo
-			// 
-			this->pnlTitulo->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(25)), static_cast<System::Int32>(static_cast<System::Byte>(27)),
-				static_cast<System::Int32>(static_cast<System::Byte>(52)));
-			this->pnlTitulo->Controls->Add(this->lblTitulo);
-			this->pnlTitulo->Dock = System::Windows::Forms::DockStyle::Top;
-			this->pnlTitulo->Location = System::Drawing::Point(0, 0);
-			this->pnlTitulo->Name = L"pnlTitulo";
-			this->pnlTitulo->Size = System::Drawing::Size(1126, 65);
-			this->pnlTitulo->TabIndex = 56;
-			// 
-			// lblTitulo
-			// 
-			this->lblTitulo->AutoSize = true;
-			this->lblTitulo->Font = (gcnew System::Drawing::Font(L"Gadugi", 19.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->lblTitulo->ForeColor = System::Drawing::Color::White;
-			this->lblTitulo->Location = System::Drawing::Point(12, 12);
-			this->lblTitulo->Name = L"lblTitulo";
-			this->lblTitulo->Size = System::Drawing::Size(289, 40);
-			this->lblTitulo->TabIndex = 57;
-			this->lblTitulo->Text = L"Clientes Suscritos";
-			this->lblTitulo->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			// 
 			// frmClientesSuscritos
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1126, 548);
+			this->ClientSize = System::Drawing::Size(1270, 862);
 			this->Controls->Add(this->pnlInfo);
-			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
+			this->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->MaximizeBox = false;
 			this->MinimizeBox = false;
 			this->Name = L"frmClientesSuscritos";
@@ -470,11 +521,14 @@ namespace SmartParkingSystemViewGUI {
 			this->Text = L"Clientes Suscritos";
 			this->Load += gcnew System::EventHandler(this, &frmClientesSuscritos::frmClientesSuscritos_Load);
 			this->pnlInfo->ResumeLayout(false);
-			this->gbBusqueda->ResumeLayout(false);
-			this->gbBusqueda->PerformLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvClientesSuscritos))->EndInit();
 			this->pnlTitulo->ResumeLayout(false);
 			this->pnlTitulo->PerformLayout();
+			this->panel2->ResumeLayout(false);
+			this->gbBusqueda->ResumeLayout(false);
+			this->gbBusqueda->PerformLayout();
+			this->panel3->ResumeLayout(false);
+			this->panel3->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvClientesSuscritos))->EndInit();
 			this->ResumeLayout(false);
 
 		}

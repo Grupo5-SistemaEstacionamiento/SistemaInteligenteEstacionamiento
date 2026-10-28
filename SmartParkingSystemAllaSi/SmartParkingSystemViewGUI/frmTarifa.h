@@ -192,23 +192,23 @@ namespace SmartParkingSystemViewGUI {
 
 	private: System::Windows::Forms::Label^ lblTitulo;
 	private: System::Windows::Forms::GroupBox^ gbDatosTarifa;
-	private: System::Windows::Forms::Label^ lblIdTarifa;
-	private: System::Windows::Forms::TextBox^ txtPenalizacionTicket;
 
 
-	private: System::Windows::Forms::Label^ lblPenalizacionTicket;
-	private: System::Windows::Forms::TextBox^ txtDescuentoMembresia;
 
 
-	private: System::Windows::Forms::Label^ lblDescuentoMembresia;
-	private: System::Windows::Forms::TextBox^ txtValorFraccion;
 
 
-	private: System::Windows::Forms::Label^ lblValorFraccion;
-	private: System::Windows::Forms::TextBox^ txtValorHora;
 
 
-	private: System::Windows::Forms::Label^ lblValorHora;
+
+
+
+
+
+
+
+
+
 	private: System::Windows::Forms::TextBox^ txtIdTarifa;
 	private: System::Windows::Forms::DataGridView^ dgvTarifas;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ colIdTarifa;
@@ -224,6 +224,16 @@ private: System::Windows::Forms::Button^ btnLimpiar;
 	private: System::Windows::Forms::Button^ btnModificar;
 
 	private: System::Windows::Forms::Button^ btnRegistrar;
+private: System::Windows::Forms::Panel^ panel3;
+private: System::Windows::Forms::TextBox^ txtPenalizacionTicket;
+private: System::Windows::Forms::Label^ lblPenalizacionTicket;
+private: System::Windows::Forms::TextBox^ txtDescuentoMembresia;
+private: System::Windows::Forms::Label^ lblDescuentoMembresia;
+private: System::Windows::Forms::TextBox^ txtValorFraccion;
+private: System::Windows::Forms::Label^ lblValorFraccion;
+private: System::Windows::Forms::TextBox^ txtValorHora;
+private: System::Windows::Forms::Label^ lblValorHora;
+private: System::Windows::Forms::Label^ lblIdTarifa;
 
 
 
@@ -285,18 +295,21 @@ private: System::Windows::Forms::Button^ btnLimpiar;
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle4 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->pnlInfo = (gcnew System::Windows::Forms::Panel());
-			this->gbDatosTarifa = (gcnew System::Windows::Forms::GroupBox());
+			this->panel3 = (gcnew System::Windows::Forms::Panel());
+			this->btnLimpiar = (gcnew System::Windows::Forms::Button());
+			this->btnModificar = (gcnew System::Windows::Forms::Button());
+			this->btnEliminar = (gcnew System::Windows::Forms::Button());
+			this->btnRegistrar = (gcnew System::Windows::Forms::Button());
 			this->dgvTarifas = (gcnew System::Windows::Forms::DataGridView());
 			this->colIdTarifa = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->colValorHora = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->colFraccion = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->colDescuento = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->colPenalizacion = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->btnLimpiar = (gcnew System::Windows::Forms::Button());
-			this->btnEliminar = (gcnew System::Windows::Forms::Button());
-			this->btnModificar = (gcnew System::Windows::Forms::Button());
-			this->btnRegistrar = (gcnew System::Windows::Forms::Button());
+			this->gbDatosTarifa = (gcnew System::Windows::Forms::GroupBox());
 			this->txtPenalizacionTicket = (gcnew System::Windows::Forms::TextBox());
 			this->lblPenalizacionTicket = (gcnew System::Windows::Forms::Label());
 			this->txtDescuentoMembresia = (gcnew System::Windows::Forms::TextBox());
@@ -310,70 +323,145 @@ private: System::Windows::Forms::Button^ btnLimpiar;
 			this->pnlTitulo = (gcnew System::Windows::Forms::Panel());
 			this->lblTitulo = (gcnew System::Windows::Forms::Label());
 			this->pnlInfo->SuspendLayout();
-			this->gbDatosTarifa->SuspendLayout();
+			this->panel3->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvTarifas))->BeginInit();
+			this->gbDatosTarifa->SuspendLayout();
 			this->pnlTitulo->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// pnlInfo
 			// 
 			this->pnlInfo->BackColor = System::Drawing::Color::White;
+			this->pnlInfo->Controls->Add(this->panel3);
+			this->pnlInfo->Controls->Add(this->dgvTarifas);
 			this->pnlInfo->Controls->Add(this->gbDatosTarifa);
 			this->pnlInfo->Controls->Add(this->pnlTitulo);
 			this->pnlInfo->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pnlInfo->Location = System::Drawing::Point(0, 0);
 			this->pnlInfo->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pnlInfo->Name = L"pnlInfo";
-			this->pnlInfo->Size = System::Drawing::Size(1165, 720);
+			this->pnlInfo->Size = System::Drawing::Size(1270, 862);
 			this->pnlInfo->TabIndex = 14;
 			// 
-			// gbDatosTarifa
+			// panel3
 			// 
-			this->gbDatosTarifa->Controls->Add(this->dgvTarifas);
-			this->gbDatosTarifa->Controls->Add(this->btnLimpiar);
-			this->gbDatosTarifa->Controls->Add(this->btnEliminar);
-			this->gbDatosTarifa->Controls->Add(this->btnModificar);
-			this->gbDatosTarifa->Controls->Add(this->btnRegistrar);
-			this->gbDatosTarifa->Controls->Add(this->txtPenalizacionTicket);
-			this->gbDatosTarifa->Controls->Add(this->lblPenalizacionTicket);
-			this->gbDatosTarifa->Controls->Add(this->txtDescuentoMembresia);
-			this->gbDatosTarifa->Controls->Add(this->lblDescuentoMembresia);
-			this->gbDatosTarifa->Controls->Add(this->txtValorFraccion);
-			this->gbDatosTarifa->Controls->Add(this->lblValorFraccion);
-			this->gbDatosTarifa->Controls->Add(this->txtValorHora);
-			this->gbDatosTarifa->Controls->Add(this->lblValorHora);
-			this->gbDatosTarifa->Controls->Add(this->txtIdTarifa);
-			this->gbDatosTarifa->Controls->Add(this->lblIdTarifa);
-			this->gbDatosTarifa->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->gbDatosTarifa->Location = System::Drawing::Point(12, 71);
-			this->gbDatosTarifa->Name = L"gbDatosTarifa";
-			this->gbDatosTarifa->Size = System::Drawing::Size(1141, 642);
-			this->gbDatosTarifa->TabIndex = 57;
-			this->gbDatosTarifa->TabStop = false;
-			this->gbDatosTarifa->Text = L"Datos de la tarifa";
+			this->panel3->BackColor = System::Drawing::SystemColors::ScrollBar;
+			this->panel3->Controls->Add(this->btnLimpiar);
+			this->panel3->Controls->Add(this->btnModificar);
+			this->panel3->Controls->Add(this->btnEliminar);
+			this->panel3->Controls->Add(this->btnRegistrar);
+			this->panel3->Dock = System::Windows::Forms::DockStyle::Bottom;
+			this->panel3->Location = System::Drawing::Point(0, 764);
+			this->panel3->Name = L"panel3";
+			this->panel3->Size = System::Drawing::Size(1270, 98);
+			this->panel3->TabIndex = 77;
+			// 
+			// btnLimpiar
+			// 
+			this->btnLimpiar->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->btnLimpiar->AutoSize = true;
+			this->btnLimpiar->BackColor = System::Drawing::Color::Purple;
+			this->btnLimpiar->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold));
+			this->btnLimpiar->ForeColor = System::Drawing::Color::White;
+			this->btnLimpiar->Location = System::Drawing::Point(194, 18);
+			this->btnLimpiar->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->btnLimpiar->Name = L"btnLimpiar";
+			this->btnLimpiar->Size = System::Drawing::Size(188, 48);
+			this->btnLimpiar->TabIndex = 75;
+			this->btnLimpiar->Text = L"Limpiar";
+			this->btnLimpiar->UseVisualStyleBackColor = false;
+			this->btnLimpiar->Click += gcnew System::EventHandler(this, &frmTarifa::btnLimpiar_Click);
+			// 
+			// btnModificar
+			// 
+			this->btnModificar->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->btnModificar->AutoSize = true;
+			this->btnModificar->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->btnModificar->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold));
+			this->btnModificar->ForeColor = System::Drawing::Color::White;
+			this->btnModificar->Location = System::Drawing::Point(648, 18);
+			this->btnModificar->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->btnModificar->Name = L"btnModificar";
+			this->btnModificar->Size = System::Drawing::Size(188, 48);
+			this->btnModificar->TabIndex = 73;
+			this->btnModificar->Text = L"Editar";
+			this->btnModificar->UseVisualStyleBackColor = false;
+			this->btnModificar->Click += gcnew System::EventHandler(this, &frmTarifa::btnModificar_Click);
+			// 
+			// btnEliminar
+			// 
+			this->btnEliminar->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->btnEliminar->AutoSize = true;
+			this->btnEliminar->BackColor = System::Drawing::Color::Red;
+			this->btnEliminar->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold));
+			this->btnEliminar->ForeColor = System::Drawing::Color::White;
+			this->btnEliminar->Location = System::Drawing::Point(872, 18);
+			this->btnEliminar->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->btnEliminar->Name = L"btnEliminar";
+			this->btnEliminar->Size = System::Drawing::Size(188, 48);
+			this->btnEliminar->TabIndex = 74;
+			this->btnEliminar->Text = L"Eliminar";
+			this->btnEliminar->UseVisualStyleBackColor = false;
+			this->btnEliminar->Click += gcnew System::EventHandler(this, &frmTarifa::btnEliminar_Click);
+			// 
+			// btnRegistrar
+			// 
+			this->btnRegistrar->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->btnRegistrar->AutoSize = true;
+			this->btnRegistrar->BackColor = System::Drawing::Color::LimeGreen;
+			this->btnRegistrar->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold));
+			this->btnRegistrar->ForeColor = System::Drawing::Color::White;
+			this->btnRegistrar->Location = System::Drawing::Point(421, 18);
+			this->btnRegistrar->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->btnRegistrar->Name = L"btnRegistrar";
+			this->btnRegistrar->Size = System::Drawing::Size(188, 48);
+			this->btnRegistrar->TabIndex = 72;
+			this->btnRegistrar->Text = L"Registrar";
+			this->btnRegistrar->UseVisualStyleBackColor = false;
+			this->btnRegistrar->Click += gcnew System::EventHandler(this, &frmTarifa::btnRegistrar_Click);
 			// 
 			// dgvTarifas
 			// 
 			this->dgvTarifas->AllowUserToAddRows = false;
 			this->dgvTarifas->AllowUserToDeleteRows = false;
 			this->dgvTarifas->AllowUserToResizeRows = false;
+			this->dgvTarifas->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->dgvTarifas->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
+			dataGridViewCellStyle3->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle3->BackColor = System::Drawing::Color::MediumSlateBlue;
+			dataGridViewCellStyle3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			dataGridViewCellStyle3->ForeColor = System::Drawing::SystemColors::WindowText;
+			dataGridViewCellStyle3->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle3->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle3->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dgvTarifas->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
 			this->dgvTarifas->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dgvTarifas->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
 				this->colIdTarifa,
 					this->colValorHora, this->colFraccion, this->colDescuento, this->colPenalizacion
 			});
-			this->dgvTarifas->Location = System::Drawing::Point(82, 382);
-			this->dgvTarifas->Margin = System::Windows::Forms::Padding(4);
+			this->dgvTarifas->EnableHeadersVisualStyles = false;
+			this->dgvTarifas->Location = System::Drawing::Point(48, 444);
+			this->dgvTarifas->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->dgvTarifas->MultiSelect = false;
 			this->dgvTarifas->Name = L"dgvTarifas";
 			this->dgvTarifas->ReadOnly = true;
+			dataGridViewCellStyle4->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle4->BackColor = System::Drawing::Color::MediumSlateBlue;
+			dataGridViewCellStyle4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			dataGridViewCellStyle4->ForeColor = System::Drawing::SystemColors::WindowText;
+			dataGridViewCellStyle4->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle4->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle4->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dgvTarifas->RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
 			this->dgvTarifas->RowHeadersVisible = false;
 			this->dgvTarifas->RowHeadersWidth = 51;
 			this->dgvTarifas->RowTemplate->Height = 24;
 			this->dgvTarifas->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->dgvTarifas->Size = System::Drawing::Size(980, 250);
+			this->dgvTarifas->Size = System::Drawing::Size(1188, 312);
 			this->dgvTarifas->TabIndex = 76;
 			this->dgvTarifas->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &frmTarifa::dgvTarifas_CellClick);
 			// 
@@ -417,231 +505,196 @@ private: System::Windows::Forms::Button^ btnLimpiar;
 			this->colPenalizacion->Name = L"colPenalizacion";
 			this->colPenalizacion->ReadOnly = true;
 			// 
-			// btnLimpiar
+			// gbDatosTarifa
 			// 
-			this->btnLimpiar->AutoSize = true;
-			this->btnLimpiar->BackColor = System::Drawing::Color::MediumSlateBlue;
-			this->btnLimpiar->Font = (gcnew System::Drawing::Font(L"Arial", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->btnLimpiar->ForeColor = System::Drawing::Color::White;
-			this->btnLimpiar->Location = System::Drawing::Point(192, 308);
-			this->btnLimpiar->Margin = System::Windows::Forms::Padding(4);
-			this->btnLimpiar->Name = L"btnLimpiar";
-			this->btnLimpiar->Size = System::Drawing::Size(128, 53);
-			this->btnLimpiar->TabIndex = 75;
-			this->btnLimpiar->Text = L"Limpiar";
-			this->btnLimpiar->UseVisualStyleBackColor = false;
-			this->btnLimpiar->Click += gcnew System::EventHandler(this, &frmTarifa::btnLimpiar_Click);
-			// 
-			// btnEliminar
-			// 
-			this->btnEliminar->AutoSize = true;
-			this->btnEliminar->BackColor = System::Drawing::Color::Red;
-			this->btnEliminar->Font = (gcnew System::Drawing::Font(L"Arial", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->btnEliminar->ForeColor = System::Drawing::Color::White;
-			this->btnEliminar->Location = System::Drawing::Point(752, 308);
-			this->btnEliminar->Margin = System::Windows::Forms::Padding(4);
-			this->btnEliminar->Name = L"btnEliminar";
-			this->btnEliminar->Size = System::Drawing::Size(138, 53);
-			this->btnEliminar->TabIndex = 74;
-			this->btnEliminar->Text = L"Eliminar";
-			this->btnEliminar->UseVisualStyleBackColor = false;
-			this->btnEliminar->Click += gcnew System::EventHandler(this, &frmTarifa::btnEliminar_Click);
-			// 
-			// btnModificar
-			// 
-			this->btnModificar->AutoSize = true;
-			this->btnModificar->BackColor = System::Drawing::Color::MediumSlateBlue;
-			this->btnModificar->Font = (gcnew System::Drawing::Font(L"Arial", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->btnModificar->ForeColor = System::Drawing::Color::White;
-			this->btnModificar->Location = System::Drawing::Point(558, 308);
-			this->btnModificar->Margin = System::Windows::Forms::Padding(4);
-			this->btnModificar->Name = L"btnModificar";
-			this->btnModificar->Size = System::Drawing::Size(152, 53);
-			this->btnModificar->TabIndex = 73;
-			this->btnModificar->Text = L"Modificar";
-			this->btnModificar->UseVisualStyleBackColor = false;
-			this->btnModificar->Click += gcnew System::EventHandler(this, &frmTarifa::btnModificar_Click);
-			// 
-			// btnRegistrar
-			// 
-			this->btnRegistrar->AutoSize = true;
-			this->btnRegistrar->BackColor = System::Drawing::Color::MediumSlateBlue;
-			this->btnRegistrar->Font = (gcnew System::Drawing::Font(L"Arial", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->btnRegistrar->ForeColor = System::Drawing::Color::White;
-			this->btnRegistrar->Location = System::Drawing::Point(366, 308);
-			this->btnRegistrar->Margin = System::Windows::Forms::Padding(4);
-			this->btnRegistrar->Name = L"btnRegistrar";
-			this->btnRegistrar->Size = System::Drawing::Size(148, 53);
-			this->btnRegistrar->TabIndex = 72;
-			this->btnRegistrar->Text = L"Registrar";
-			this->btnRegistrar->UseVisualStyleBackColor = false;
-			this->btnRegistrar->Click += gcnew System::EventHandler(this, &frmTarifa::btnRegistrar_Click);
+			this->gbDatosTarifa->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->gbDatosTarifa->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(180)), static_cast<System::Int32>(static_cast<System::Byte>(190)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			this->gbDatosTarifa->Controls->Add(this->txtPenalizacionTicket);
+			this->gbDatosTarifa->Controls->Add(this->lblPenalizacionTicket);
+			this->gbDatosTarifa->Controls->Add(this->txtDescuentoMembresia);
+			this->gbDatosTarifa->Controls->Add(this->lblDescuentoMembresia);
+			this->gbDatosTarifa->Controls->Add(this->txtValorFraccion);
+			this->gbDatosTarifa->Controls->Add(this->lblValorFraccion);
+			this->gbDatosTarifa->Controls->Add(this->txtValorHora);
+			this->gbDatosTarifa->Controls->Add(this->lblValorHora);
+			this->gbDatosTarifa->Controls->Add(this->txtIdTarifa);
+			this->gbDatosTarifa->Controls->Add(this->lblIdTarifa);
+			this->gbDatosTarifa->Font = (gcnew System::Drawing::Font(L"Arial", 14, System::Drawing::FontStyle::Bold));
+			this->gbDatosTarifa->Location = System::Drawing::Point(48, 89);
+			this->gbDatosTarifa->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
+			this->gbDatosTarifa->Name = L"gbDatosTarifa";
+			this->gbDatosTarifa->Padding = System::Windows::Forms::Padding(3, 4, 3, 4);
+			this->gbDatosTarifa->Size = System::Drawing::Size(1188, 346);
+			this->gbDatosTarifa->TabIndex = 57;
+			this->gbDatosTarifa->TabStop = false;
+			this->gbDatosTarifa->Text = L"Datos de la tarifa";
 			// 
 			// txtPenalizacionTicket
 			// 
-			this->txtPenalizacionTicket->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)),
-				static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(192)));
-			this->txtPenalizacionTicket->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 16.2F, System::Drawing::FontStyle::Regular,
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->txtPenalizacionTicket->Location = System::Drawing::Point(726, 244);
-			this->txtPenalizacionTicket->Margin = System::Windows::Forms::Padding(4);
+			this->txtPenalizacionTicket->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->txtPenalizacionTicket->BackColor = System::Drawing::Color::White;
+			this->txtPenalizacionTicket->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F));
+			this->txtPenalizacionTicket->Location = System::Drawing::Point(656, 289);
+			this->txtPenalizacionTicket->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->txtPenalizacionTicket->Name = L"txtPenalizacionTicket";
-			this->txtPenalizacionTicket->Size = System::Drawing::Size(164, 42);
+			this->txtPenalizacionTicket->Size = System::Drawing::Size(373, 39);
 			this->txtPenalizacionTicket->TabIndex = 70;
 			// 
 			// lblPenalizacionTicket
 			// 
+			this->lblPenalizacionTicket->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->lblPenalizacionTicket->AutoSize = true;
-			this->lblPenalizacionTicket->BackColor = System::Drawing::Color::White;
-			this->lblPenalizacionTicket->Font = (gcnew System::Drawing::Font(L"Gadugi", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->lblPenalizacionTicket->Location = System::Drawing::Point(186, 249);
+			this->lblPenalizacionTicket->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(180)),
+				static_cast<System::Int32>(static_cast<System::Byte>(190)), static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			this->lblPenalizacionTicket->Font = (gcnew System::Drawing::Font(L"Arial", 14, System::Drawing::FontStyle::Bold));
+			this->lblPenalizacionTicket->Location = System::Drawing::Point(140, 295);
 			this->lblPenalizacionTicket->Name = L"lblPenalizacionTicket";
-			this->lblPenalizacionTicket->Size = System::Drawing::Size(487, 34);
+			this->lblPenalizacionTicket->Size = System::Drawing::Size(495, 33);
 			this->lblPenalizacionTicket->TabIndex = 69;
 			this->lblPenalizacionTicket->Text = L"Penalizacion por ticket perdido (S/):";
 			// 
 			// txtDescuentoMembresia
 			// 
-			this->txtDescuentoMembresia->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)),
-				static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(192)));
-			this->txtDescuentoMembresia->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 16.2F, System::Drawing::FontStyle::Regular,
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->txtDescuentoMembresia->Location = System::Drawing::Point(726, 194);
-			this->txtDescuentoMembresia->Margin = System::Windows::Forms::Padding(4);
+			this->txtDescuentoMembresia->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->txtDescuentoMembresia->BackColor = System::Drawing::Color::White;
+			this->txtDescuentoMembresia->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F));
+			this->txtDescuentoMembresia->Location = System::Drawing::Point(656, 226);
+			this->txtDescuentoMembresia->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->txtDescuentoMembresia->Name = L"txtDescuentoMembresia";
-			this->txtDescuentoMembresia->Size = System::Drawing::Size(164, 42);
+			this->txtDescuentoMembresia->Size = System::Drawing::Size(373, 39);
 			this->txtDescuentoMembresia->TabIndex = 68;
 			// 
 			// lblDescuentoMembresia
 			// 
+			this->lblDescuentoMembresia->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->lblDescuentoMembresia->AutoSize = true;
-			this->lblDescuentoMembresia->BackColor = System::Drawing::Color::White;
-			this->lblDescuentoMembresia->Font = (gcnew System::Drawing::Font(L"Gadugi", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->lblDescuentoMembresia->Location = System::Drawing::Point(186, 199);
+			this->lblDescuentoMembresia->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(180)),
+				static_cast<System::Int32>(static_cast<System::Byte>(190)), static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			this->lblDescuentoMembresia->Font = (gcnew System::Drawing::Font(L"Arial", 14, System::Drawing::FontStyle::Bold));
+			this->lblDescuentoMembresia->Location = System::Drawing::Point(140, 233);
 			this->lblDescuentoMembresia->Name = L"lblDescuentoMembresia";
-			this->lblDescuentoMembresia->Size = System::Drawing::Size(366, 34);
+			this->lblDescuentoMembresia->Size = System::Drawing::Size(378, 33);
 			this->lblDescuentoMembresia->TabIndex = 67;
 			this->lblDescuentoMembresia->Text = L"Descuento membresia (%):";
 			// 
 			// txtValorFraccion
 			// 
-			this->txtValorFraccion->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)),
-				static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(192)));
-			this->txtValorFraccion->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->txtValorFraccion->Location = System::Drawing::Point(726, 144);
-			this->txtValorFraccion->Margin = System::Windows::Forms::Padding(4);
+			this->txtValorFraccion->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->txtValorFraccion->BackColor = System::Drawing::Color::White;
+			this->txtValorFraccion->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F));
+			this->txtValorFraccion->Location = System::Drawing::Point(656, 164);
+			this->txtValorFraccion->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->txtValorFraccion->Name = L"txtValorFraccion";
-			this->txtValorFraccion->Size = System::Drawing::Size(164, 42);
+			this->txtValorFraccion->Size = System::Drawing::Size(373, 39);
 			this->txtValorFraccion->TabIndex = 66;
 			// 
 			// lblValorFraccion
 			// 
+			this->lblValorFraccion->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->lblValorFraccion->AutoSize = true;
-			this->lblValorFraccion->BackColor = System::Drawing::Color::White;
-			this->lblValorFraccion->Font = (gcnew System::Drawing::Font(L"Gadugi", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->lblValorFraccion->Location = System::Drawing::Point(186, 149);
+			this->lblValorFraccion->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(180)),
+				static_cast<System::Int32>(static_cast<System::Byte>(190)), static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			this->lblValorFraccion->Font = (gcnew System::Drawing::Font(L"Arial", 14, System::Drawing::FontStyle::Bold));
+			this->lblValorFraccion->Location = System::Drawing::Point(140, 170);
 			this->lblValorFraccion->Name = L"lblValorFraccion";
-			this->lblValorFraccion->Size = System::Drawing::Size(361, 34);
+			this->lblValorFraccion->Size = System::Drawing::Size(364, 33);
 			this->lblValorFraccion->TabIndex = 65;
 			this->lblValorFraccion->Text = L"Valor fraccion 15 min (S/):";
 			// 
 			// txtValorHora
 			// 
-			this->txtValorHora->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
-				static_cast<System::Int32>(static_cast<System::Byte>(192)));
-			this->txtValorHora->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->txtValorHora->Location = System::Drawing::Point(726, 94);
-			this->txtValorHora->Margin = System::Windows::Forms::Padding(4);
+			this->txtValorHora->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->txtValorHora->BackColor = System::Drawing::Color::White;
+			this->txtValorHora->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F));
+			this->txtValorHora->Location = System::Drawing::Point(656, 102);
+			this->txtValorHora->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->txtValorHora->Name = L"txtValorHora";
-			this->txtValorHora->Size = System::Drawing::Size(164, 42);
+			this->txtValorHora->Size = System::Drawing::Size(373, 39);
 			this->txtValorHora->TabIndex = 64;
 			// 
 			// lblValorHora
 			// 
+			this->lblValorHora->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->lblValorHora->AutoSize = true;
-			this->lblValorHora->BackColor = System::Drawing::Color::White;
-			this->lblValorHora->Font = (gcnew System::Drawing::Font(L"Gadugi", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->lblValorHora->Location = System::Drawing::Point(186, 99);
+			this->lblValorHora->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(180)), static_cast<System::Int32>(static_cast<System::Byte>(190)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			this->lblValorHora->Font = (gcnew System::Drawing::Font(L"Arial", 14, System::Drawing::FontStyle::Bold));
+			this->lblValorHora->Location = System::Drawing::Point(140, 108);
 			this->lblValorHora->Name = L"lblValorHora";
-			this->lblValorHora->Size = System::Drawing::Size(270, 34);
+			this->lblValorHora->Size = System::Drawing::Size(269, 33);
 			this->lblValorHora->TabIndex = 63;
 			this->lblValorHora->Text = L"Valor por hora (S/):";
 			// 
 			// txtIdTarifa
 			// 
-			this->txtIdTarifa->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
-				static_cast<System::Int32>(static_cast<System::Byte>(192)));
-			this->txtIdTarifa->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->txtIdTarifa->Location = System::Drawing::Point(726, 44);
-			this->txtIdTarifa->Margin = System::Windows::Forms::Padding(4);
+			this->txtIdTarifa->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->txtIdTarifa->BackColor = System::Drawing::Color::White;
+			this->txtIdTarifa->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F));
+			this->txtIdTarifa->Location = System::Drawing::Point(656, 42);
+			this->txtIdTarifa->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->txtIdTarifa->Name = L"txtIdTarifa";
 			this->txtIdTarifa->ReadOnly = true;
-			this->txtIdTarifa->Size = System::Drawing::Size(164, 42);
+			this->txtIdTarifa->Size = System::Drawing::Size(373, 39);
 			this->txtIdTarifa->TabIndex = 62;
 			// 
 			// lblIdTarifa
 			// 
+			this->lblIdTarifa->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->lblIdTarifa->AutoSize = true;
-			this->lblIdTarifa->BackColor = System::Drawing::Color::White;
-			this->lblIdTarifa->Font = (gcnew System::Drawing::Font(L"Gadugi", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->lblIdTarifa->Location = System::Drawing::Point(186, 49);
+			this->lblIdTarifa->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(180)), static_cast<System::Int32>(static_cast<System::Byte>(190)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			this->lblIdTarifa->Font = (gcnew System::Drawing::Font(L"Arial", 14, System::Drawing::FontStyle::Bold));
+			this->lblIdTarifa->Location = System::Drawing::Point(140, 45);
 			this->lblIdTarifa->Name = L"lblIdTarifa";
-			this->lblIdTarifa->Size = System::Drawing::Size(137, 34);
+			this->lblIdTarifa->Size = System::Drawing::Size(137, 33);
 			this->lblIdTarifa->TabIndex = 61;
 			this->lblIdTarifa->Text = L"ID Tarifa:";
 			// 
 			// pnlTitulo
 			// 
-			this->pnlTitulo->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(128)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
+			this->pnlTitulo->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(110)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
 				static_cast<System::Int32>(static_cast<System::Byte>(255)));
 			this->pnlTitulo->Controls->Add(this->lblTitulo);
 			this->pnlTitulo->Dock = System::Windows::Forms::DockStyle::Top;
 			this->pnlTitulo->Location = System::Drawing::Point(0, 0);
+			this->pnlTitulo->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->pnlTitulo->Name = L"pnlTitulo";
-			this->pnlTitulo->Size = System::Drawing::Size(1165, 65);
+			this->pnlTitulo->Size = System::Drawing::Size(1270, 85);
 			this->pnlTitulo->TabIndex = 56;
 			// 
 			// lblTitulo
 			// 
 			this->lblTitulo->AutoSize = true;
-			this->lblTitulo->Font = (gcnew System::Drawing::Font(L"Gadugi", 19.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
+			this->lblTitulo->Font = (gcnew System::Drawing::Font(L"Arial", 20, System::Drawing::FontStyle::Bold));
 			this->lblTitulo->ForeColor = System::Drawing::Color::White;
-			this->lblTitulo->Location = System::Drawing::Point(12, 12);
+			this->lblTitulo->Location = System::Drawing::Point(14, 15);
 			this->lblTitulo->Name = L"lblTitulo";
-			this->lblTitulo->Size = System::Drawing::Size(298, 40);
+			this->lblTitulo->Size = System::Drawing::Size(359, 46);
 			this->lblTitulo->TabIndex = 57;
 			this->lblTitulo->Text = L"Configurar Tarifas";
 			this->lblTitulo->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// frmTarifa
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoScroll = true;
 			this->BackColor = System::Drawing::SystemColors::ControlLight;
-			this->ClientSize = System::Drawing::Size(1165, 720);
+			this->ClientSize = System::Drawing::Size(1270, 862);
 			this->Controls->Add(this->pnlInfo);
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
+			this->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->Name = L"frmTarifa";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Configurar Tarifas";
 			this->Load += gcnew System::EventHandler(this, &frmTarifa::frmTarifa_Load);
 			this->pnlInfo->ResumeLayout(false);
+			this->panel3->ResumeLayout(false);
+			this->panel3->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvTarifas))->EndInit();
 			this->gbDatosTarifa->ResumeLayout(false);
 			this->gbDatosTarifa->PerformLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvTarifas))->EndInit();
 			this->pnlTitulo->ResumeLayout(false);
 			this->pnlTitulo->PerformLayout();
 			this->ResumeLayout(false);

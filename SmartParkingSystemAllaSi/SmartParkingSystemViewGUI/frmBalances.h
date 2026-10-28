@@ -10,6 +10,7 @@ using namespace SmartParkingSystemDAO;
 
 namespace SmartParkingSystemViewGUI {
 
+	ref class frmGraficasBalances;
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
@@ -323,8 +324,32 @@ namespace SmartParkingSystemViewGUI {
 		/// Método necesario para admitir el Diseñador. No se puede modificar
 		/// el contenido de este método con el editor de código.
 		/// </summary>
+		private: System::Windows::Forms::Form^ actual = nullptr;
+		/*private: System::Void AbrirFormulario(System::Windows::Forms::Form^ hijo) {
+			//Cerramos la ventana ya abierta si es q se desea abrir otra
+			if (this->actual != nullptr) {
+				this->actual->Close();
+			}
+
+			this->actual = hijo; //Actualizamos a la ventana actualmente abierta
+
+			hijo->TopLevel = false; //Evitamos que se abra sobre el dashboard
+
+			hijo->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None; //Quitamos bordes a todas las ventanas emergentes
+
+			hijo->Dock = System::Windows::Forms::DockStyle::Fill;
+
+			this->pnlContenedor->Controls->Add(hijo); //Agnadimos en el panel contenedor la ventana emergente
+			hijo->Show();
+		}*/
+		
 		void InitializeComponent(void)
 		{
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle27 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle28 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle29 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle30 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle31 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->lblTitulo = (gcnew System::Windows::Forms::Label());
 			this->pnlTitulo = (gcnew System::Windows::Forms::Panel());
 			this->dgvTurnos = (gcnew System::Windows::Forms::DataGridView());
@@ -397,8 +422,7 @@ namespace SmartParkingSystemViewGUI {
 			// lblTitulo
 			// 
 			this->lblTitulo->AutoSize = true;
-			this->lblTitulo->Font = (gcnew System::Drawing::Font(L"Gadugi", 19.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
+			this->lblTitulo->Font = (gcnew System::Drawing::Font(L"Arial", 20, System::Drawing::FontStyle::Bold));
 			this->lblTitulo->ForeColor = System::Drawing::Color::White;
 			this->lblTitulo->Location = System::Drawing::Point(9, 10);
 			this->lblTitulo->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
@@ -410,7 +434,7 @@ namespace SmartParkingSystemViewGUI {
 			// 
 			// pnlTitulo
 			// 
-			this->pnlTitulo->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(128)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
+			this->pnlTitulo->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(110)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
 				static_cast<System::Int32>(static_cast<System::Byte>(255)));
 			this->pnlTitulo->Controls->Add(this->lblTitulo);
 			this->pnlTitulo->Dock = System::Windows::Forms::DockStyle::Top;
@@ -427,6 +451,15 @@ namespace SmartParkingSystemViewGUI {
 			this->dgvTurnos->AllowUserToDeleteRows = false;
 			this->dgvTurnos->AllowUserToResizeRows = false;
 			this->dgvTurnos->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
+			dataGridViewCellStyle27->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle27->BackColor = System::Drawing::Color::MediumSlateBlue;
+			dataGridViewCellStyle27->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			dataGridViewCellStyle27->ForeColor = System::Drawing::SystemColors::WindowText;
+			dataGridViewCellStyle27->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle27->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle27->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dgvTurnos->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle27;
 			this->dgvTurnos->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dgvTurnos->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
 				this->colIdTurno,
@@ -436,6 +469,15 @@ namespace SmartParkingSystemViewGUI {
 			this->dgvTurnos->MultiSelect = false;
 			this->dgvTurnos->Name = L"dgvTurnos";
 			this->dgvTurnos->ReadOnly = true;
+			dataGridViewCellStyle29->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle29->BackColor = System::Drawing::Color::MediumSlateBlue;
+			dataGridViewCellStyle29->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			dataGridViewCellStyle29->ForeColor = System::Drawing::SystemColors::WindowText;
+			dataGridViewCellStyle29->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle29->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle29->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dgvTurnos->RowHeadersDefaultCellStyle = dataGridViewCellStyle29;
 			this->dgvTurnos->RowHeadersVisible = false;
 			this->dgvTurnos->RowHeadersWidth = 51;
 			this->dgvTurnos->RowTemplate->Height = 24;
@@ -494,9 +536,8 @@ namespace SmartParkingSystemViewGUI {
 			// btnLimpiar1
 			// 
 			this->btnLimpiar1->AutoSize = true;
-			this->btnLimpiar1->BackColor = System::Drawing::Color::MediumSlateBlue;
-			this->btnLimpiar1->Font = (gcnew System::Drawing::Font(L"Arial", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
+			this->btnLimpiar1->BackColor = System::Drawing::Color::Purple;
+			this->btnLimpiar1->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold));
 			this->btnLimpiar1->ForeColor = System::Drawing::Color::White;
 			this->btnLimpiar1->Location = System::Drawing::Point(46, 168);
 			this->btnLimpiar1->Name = L"btnLimpiar1";
@@ -509,9 +550,8 @@ namespace SmartParkingSystemViewGUI {
 			// btnIniciarTurno
 			// 
 			this->btnIniciarTurno->AutoSize = true;
-			this->btnIniciarTurno->BackColor = System::Drawing::Color::MediumSlateBlue;
-			this->btnIniciarTurno->Font = (gcnew System::Drawing::Font(L"Arial", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
+			this->btnIniciarTurno->BackColor = System::Drawing::Color::LimeGreen;
+			this->btnIniciarTurno->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold));
 			this->btnIniciarTurno->ForeColor = System::Drawing::Color::White;
 			this->btnIniciarTurno->Location = System::Drawing::Point(176, 168);
 			this->btnIniciarTurno->Name = L"btnIniciarTurno";
@@ -523,6 +563,8 @@ namespace SmartParkingSystemViewGUI {
 			// 
 			// gbTurnosCaja
 			// 
+			this->gbTurnosCaja->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(180)), static_cast<System::Int32>(static_cast<System::Byte>(190)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
 			this->gbTurnosCaja->Controls->Add(this->btnGestionarMov);
 			this->gbTurnosCaja->Controls->Add(this->btnLimpiar2);
 			this->gbTurnosCaja->Controls->Add(this->btnCerrarCaja);
@@ -557,8 +599,7 @@ namespace SmartParkingSystemViewGUI {
 			// 
 			this->btnGestionarMov->AutoSize = true;
 			this->btnGestionarMov->BackColor = System::Drawing::Color::RoyalBlue;
-			this->btnGestionarMov->Font = (gcnew System::Drawing::Font(L"Arial", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
+			this->btnGestionarMov->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold));
 			this->btnGestionarMov->ForeColor = System::Drawing::Color::White;
 			this->btnGestionarMov->Location = System::Drawing::Point(418, 127);
 			this->btnGestionarMov->Name = L"btnGestionarMov";
@@ -571,9 +612,8 @@ namespace SmartParkingSystemViewGUI {
 			// btnLimpiar2
 			// 
 			this->btnLimpiar2->AutoSize = true;
-			this->btnLimpiar2->BackColor = System::Drawing::Color::MediumSlateBlue;
-			this->btnLimpiar2->Font = (gcnew System::Drawing::Font(L"Arial", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
+			this->btnLimpiar2->BackColor = System::Drawing::Color::Purple;
+			this->btnLimpiar2->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold));
 			this->btnLimpiar2->ForeColor = System::Drawing::Color::White;
 			this->btnLimpiar2->Location = System::Drawing::Point(397, 168);
 			this->btnLimpiar2->Name = L"btnLimpiar2";
@@ -587,8 +627,7 @@ namespace SmartParkingSystemViewGUI {
 			// 
 			this->btnCerrarCaja->AutoSize = true;
 			this->btnCerrarCaja->BackColor = System::Drawing::Color::Crimson;
-			this->btnCerrarCaja->Font = (gcnew System::Drawing::Font(L"Arial", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
+			this->btnCerrarCaja->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold));
 			this->btnCerrarCaja->ForeColor = System::Drawing::Color::White;
 			this->btnCerrarCaja->Location = System::Drawing::Point(128, 462);
 			this->btnCerrarCaja->Name = L"btnCerrarCaja";
@@ -601,9 +640,8 @@ namespace SmartParkingSystemViewGUI {
 			// btnCalBalance
 			// 
 			this->btnCalBalance->AutoSize = true;
-			this->btnCalBalance->BackColor = System::Drawing::Color::MediumAquamarine;
-			this->btnCalBalance->Font = (gcnew System::Drawing::Font(L"Arial", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
+			this->btnCalBalance->BackColor = System::Drawing::Color::Green;
+			this->btnCalBalance->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold));
 			this->btnCalBalance->ForeColor = System::Drawing::Color::White;
 			this->btnCalBalance->Location = System::Drawing::Point(388, 462);
 			this->btnCalBalance->Name = L"btnCalBalance";
@@ -668,9 +706,8 @@ namespace SmartParkingSystemViewGUI {
 			// btnTerminarTurno
 			// 
 			this->btnTerminarTurno->AutoSize = true;
-			this->btnTerminarTurno->BackColor = System::Drawing::Color::MediumSlateBlue;
-			this->btnTerminarTurno->Font = (gcnew System::Drawing::Font(L"Arial", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
+			this->btnTerminarTurno->BackColor = System::Drawing::Color::Red;
+			this->btnTerminarTurno->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold));
 			this->btnTerminarTurno->ForeColor = System::Drawing::Color::White;
 			this->btnTerminarTurno->Location = System::Drawing::Point(518, 168);
 			this->btnTerminarTurno->Name = L"btnTerminarTurno";
@@ -767,6 +804,7 @@ namespace SmartParkingSystemViewGUI {
 			// 
 			// pnlInfo
 			// 
+			this->pnlInfo->AutoScroll = true;
 			this->pnlInfo->BackColor = System::Drawing::Color::White;
 			this->pnlInfo->Controls->Add(this->btnGraficas);
 			this->pnlInfo->Controls->Add(this->gbTurnosCaja);
@@ -781,6 +819,8 @@ namespace SmartParkingSystemViewGUI {
 			// 
 			// groupBoxBalances
 			// 
+			this->groupBoxBalances->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(180)),
+				static_cast<System::Int32>(static_cast<System::Byte>(190)), static_cast<System::Int32>(static_cast<System::Byte>(255)));
 			this->groupBoxBalances->Controls->Add(this->btnBuscar);
 			this->groupBoxBalances->Controls->Add(this->txtBusqFecha);
 			this->groupBoxBalances->Controls->Add(this->lblBuscarFechaBalance);
@@ -798,9 +838,8 @@ namespace SmartParkingSystemViewGUI {
 			// btnBuscar
 			// 
 			this->btnBuscar->AutoSize = true;
-			this->btnBuscar->BackColor = System::Drawing::Color::MediumSlateBlue;
-			this->btnBuscar->Font = (gcnew System::Drawing::Font(L"Arial", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
+			this->btnBuscar->BackColor = System::Drawing::Color::DarkOrchid;
+			this->btnBuscar->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold));
 			this->btnBuscar->ForeColor = System::Drawing::Color::White;
 			this->btnBuscar->Location = System::Drawing::Point(426, 35);
 			this->btnBuscar->Name = L"btnBuscar";
@@ -840,6 +879,14 @@ namespace SmartParkingSystemViewGUI {
 			this->dgvBalances->AllowUserToDeleteRows = false;
 			this->dgvBalances->AllowUserToResizeRows = false;
 			this->dgvBalances->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
+			dataGridViewCellStyle30->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle30->BackColor = System::Drawing::Color::MediumSlateBlue;
+			dataGridViewCellStyle30->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8));
+			dataGridViewCellStyle30->ForeColor = System::Drawing::SystemColors::WindowText;
+			dataGridViewCellStyle30->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle30->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle30->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dgvBalances->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle30;
 			this->dgvBalances->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dgvBalances->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
 				this->colFechaBalance,
@@ -849,6 +896,14 @@ namespace SmartParkingSystemViewGUI {
 			this->dgvBalances->MultiSelect = false;
 			this->dgvBalances->Name = L"dgvBalances";
 			this->dgvBalances->ReadOnly = true;
+			dataGridViewCellStyle31->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle31->BackColor = System::Drawing::Color::MediumSlateBlue;
+			dataGridViewCellStyle31->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12));
+			dataGridViewCellStyle31->ForeColor = System::Drawing::SystemColors::WindowText;
+			dataGridViewCellStyle31->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle31->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle31->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dgvBalances->RowHeadersDefaultCellStyle = dataGridViewCellStyle31;
 			this->dgvBalances->RowHeadersVisible = false;
 			this->dgvBalances->RowHeadersWidth = 51;
 			this->dgvBalances->RowTemplate->Height = 24;
@@ -1542,29 +1597,21 @@ namespace SmartParkingSystemViewGUI {
 			MessageBox::Show("Error al abrir la gestión de movimientos: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 	}
-    public:
-			   // Guardamos una referencia al panel contenedor
-			   System::Windows::Forms::Panel^ panelContenedorPadre;
 
-			   // Modificas tu constructor para que reciba el panel:
-			   frmBalances(System::Windows::Forms::Panel^ panelDestino) {
-				   InitializeComponent();
-				   panelContenedorPadre = panelDestino;
-	}
 	private: System::Void btnGraficas_Click(System::Object^ sender, System::EventArgs^ e) {
+	    
+		// Crea el formulario para registrar una nueva suscripción.
+		frmGraficasBalances^ formularioGraficas =
+			gcnew frmGraficasBalances();
 
-		frmGraficasBalances^ formGraficas = gcnew frmGraficasBalances(panelContenedorPadre);
+		// Abre el formulario como ventana modal.
+		System::Windows::Forms::DialogResult resultado =
+			formularioGraficas->ShowDialog();
 
-		// Si en 'frmBalance' también tienen la misma función 'AbrirFormulario', 
-		// pueden llamarla directamente pasándole el panel padre, o configurar las propiedades a mano:
-
-		formGraficas->TopLevel = false;
-		formGraficas->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
-		formGraficas->Dock = System::Windows::Forms::DockStyle::Fill;
-
-		panelContenedorPadre->Controls->Clear();
-		panelContenedorPadre->Controls->Add(formGraficas);
-		formGraficas->Show();
+		
+	
 	}
+
+	
 };
 }
