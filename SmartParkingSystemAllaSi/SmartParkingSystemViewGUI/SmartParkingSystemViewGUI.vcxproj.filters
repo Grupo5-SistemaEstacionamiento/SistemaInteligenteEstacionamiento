@@ -186,6 +186,15 @@
     <ClCompile Include="frmGraficasBalances.cpp">
       <Filter>Header Files\UI_Admin\Graficas Balances</Filter>
     </ClCompile>
+    <ClCompile Include="frmEditarVehiculo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="frmNuevoVehiculo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="frmRegistroAcceso.cpp">
+      <Filter>Header Files\UI_Admin</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="frmLogin.h">
@@ -310,6 +319,15 @@
     </ClInclude>
     <ClInclude Include="frmGraficasBalances.h">
       <Filter>Header Files\UI_Admin\Graficas Balances</Filter>
+    </ClInclude>
+    <ClInclude Include="frmEditarVehiculo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="frmNuevoVehiculo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="frmRegistroAcceso.h">
+      <Filter>Header Files\UI_Admin</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

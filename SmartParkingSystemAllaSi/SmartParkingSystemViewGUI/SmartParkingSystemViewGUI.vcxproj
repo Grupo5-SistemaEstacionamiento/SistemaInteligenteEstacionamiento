@@ -161,6 +161,7 @@
     <ClCompile Include="frmPrincipalAdmin.cpp" />
     <ClCompile Include="frmRegistrarEmpleado.cpp" />
     <ClCompile Include="frmRegistrarMulta.cpp" />
+    <ClCompile Include="frmRegistroAcceso.cpp" />
     <ClCompile Include="frmReportar.cpp" />
     <ClCompile Include="frmSaldo.cpp" />
     <ClCompile Include="frmSuscripcion.cpp" />
@@ -278,6 +279,9 @@
     </ClInclude>
     <ClInclude Include="frmRegistrarMulta.h">
       <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmRegistroAcceso.h">
+      <FileType>CppHeader</FileType>
     </ClInclude>
     <ClInclude Include="frmReportar.h">
       <FileType>CppForm</FileType>
@@ -410,6 +414,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmRegistrarMulta.resx">
       <DependentUpon>frmRegistrarMulta.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRegistroAcceso.resx">
+      <DependentUpon>frmRegistroAcceso.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmReportar.resx">
       <DependentUpon>frmReportar.h</DependentUpon>

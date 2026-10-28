@@ -29,16 +29,19 @@ bool RegistroAccesoDAO::guardarRegistros(List<RegistroAcceso^>^ registros)
 	try {
 		StreamWriter^ escritor = gcnew StreamWriter(rutaArchivo, false);
 		for each (RegistroAcceso ^ r in registros) {
-			// Formato: id|fechaIngreso|fechaSalida|accesoAutorizado|observacion|seHaPagado|montoTotal|espacioId|tarifaId|vehiculoId|empleadoId
+			String^ codTarjeta = (r->getObservacion() != nullptr && !String::IsNullOrEmpty(r->getObservacion())) ? r->getObservacion() : "S/N";
+			String^ codEspacio = (r->getEspacioEstacionamiento() != nullptr) ? r->getEspacioEstacionamiento()->getCodigo() : "S/N";
+
 			escritor->WriteLine(
 				r->getIdRegistro().ToString() + "|" +
 				r->getFechaHoraIngreso().ToString("o") + "|" +
 				r->getFechaHoraSalida().ToString("o") + "|" +
 				(r->getAccesoAutorizado() ? "1" : "0") + "|" +
-				(r->getObservacion() == nullptr ? "" : r->getObservacion()) + "|" +
+				codTarjeta + "|" +
 				(r->getSeHaPagado() ? "1" : "0") + "|" +
 				r->getMontoTotalServicio().ToString("F2", CultureInfo::InvariantCulture) + "|" +
-				"0|0|0|0"
+				codTarjeta + "|" +
+				codEspacio
 			);
 		}
 		escritor->Close();
@@ -56,13 +59,14 @@ List<RegistroAcceso^>^ RegistroAccesoDAO::listarRegistros()
 	for each (String ^ linea in lineas) {
 		if (String::IsNullOrWhiteSpace(linea)) continue;
 		array<String^>^ campos = linea->Split('|');
-		if (campos->Length < 7) continue;
+		if (campos->Length < 9) continue;
 
 		int id;
 		DateTime fechaIngreso;
 		DateTime fechaSalida;
 		bool accesoAutorizado;
-		String^ observacion = campos[4];
+		String^ codTarjeta = campos[7];
+		String^ codEspacio = campos[8];
 		bool seHaPagado;
 		double monto;
 
@@ -77,15 +81,18 @@ List<RegistroAcceso^>^ RegistroAccesoDAO::listarRegistros()
 
 		if (!ok) continue;
 
+		EspacioEstacionamiento^ espacio = gcnew EspacioEstacionamiento();
+		espacio->setCodigo(codEspacio); // Usando setCodigo() real
+
 		RegistroAcceso^ r = gcnew RegistroAcceso(
 			id,
 			fechaIngreso,
 			fechaSalida,
 			accesoAutorizado,
-			observacion,
+			codTarjeta,
 			seHaPagado,
 			monto,
-			nullptr,
+			espacio,
 			nullptr,
 			nullptr,
 			nullptr,
@@ -114,15 +121,20 @@ bool RegistroAccesoDAO::registrarRegistro(RegistroAcceso^ registro)
 
 	try {
 		StreamWriter^ escritor = gcnew StreamWriter(rutaArchivo, true);
+
+		String^ codTarjeta = (registro->getObservacion() != nullptr) ? registro->getObservacion() : "S/N";
+		String^ codEspacio = (registro->getEspacioEstacionamiento() != nullptr) ? registro->getEspacioEstacionamiento()->getCodigo() : "S/N";
+
 		escritor->WriteLine(
 			registro->getIdRegistro().ToString() + "|" +
 			registro->getFechaHoraIngreso().ToString("o") + "|" +
 			registro->getFechaHoraSalida().ToString("o") + "|" +
 			(registro->getAccesoAutorizado() ? "1" : "0") + "|" +
-			(registro->getObservacion() == nullptr ? "" : registro->getObservacion()) + "|" +
+			codTarjeta + "|" +
 			(registro->getSeHaPagado() ? "1" : "0") + "|" +
 			registro->getMontoTotalServicio().ToString("F2", CultureInfo::InvariantCulture) + "|" +
-			"0|0|0|0"
+			codTarjeta + "|" +
+			codEspacio
 		);
 		escritor->Close();
 		return true;
